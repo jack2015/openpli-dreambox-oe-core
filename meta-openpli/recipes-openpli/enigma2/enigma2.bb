@@ -142,6 +142,7 @@ def get_crashaddr(d):
 EXTRA_OECONF = "\
 	--with-libsdl=no --with-boxtype=${MACHINE} \
 	--enable-dependency-tracking \
+	--with-boxbrand="${BOX_BRAND}" \
 	ac_cv_prog_c_openmp=-fopenmp \
 	${@get_crashaddr(d)} \
 	BUILD_SYS=${BUILD_SYS} \
