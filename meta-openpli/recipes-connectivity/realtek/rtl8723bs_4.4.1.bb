@@ -4,6 +4,8 @@ SECTION = "kernel/modules"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://README.md;md5=c416860023e780aa96e0616b1cda6a49"
 
+INSANE_SKIP_${PN} += "src-uri-bad"
+
 inherit module
 
 SRC_URI = " \
