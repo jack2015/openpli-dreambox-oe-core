@@ -8,7 +8,7 @@ PR = "r1"
 
 inherit pkgconfig
 
-SRC_URI = "http://www.jspenguin.org/software/${PN}/${PN}-${PV}.tar.gz \
+SRC_URI = "http://www.jspenguin.org/software/${BPN}/${BPN}-${PV}.tar.gz \
 	file://crosscompile.patch \
 	file://defaultdevicesr0.patch \
 	"
@@ -16,7 +16,7 @@ TARGET_CC_ARCH += "${LDFLAGS}"
 
 do_install() {
 	install -d ${D}${bindir}
-	install -m 755 ${S}/${PN} ${D}${bindir}/${PN}
+	install -m 755 ${S}/${PN} ${D}${bindir}/${BPN}
 }
 
 SRC_URI[md5sum] = "dc771ef0114fcad783df180f1ebfa66b"
