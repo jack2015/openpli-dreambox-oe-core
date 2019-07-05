@@ -63,14 +63,10 @@ sudo ln -s /home/<your username>/openpli-dm8000-oe-core/build/tmp/deploy/ipk/all
 
 sudo ln -s /home/<your username>/openpli-dm8000-oe-core/build/tmp/deploy/ipk/mips32el mips32el
 ```
-When it doesn't work, with FTP you can change the opkg config files of the box in etc/opkg/<br>
--all-feed.conf<br>
--dm8000-feed.conf<br>
--mips32el-feed.conf<br>
-
-With these files you can change e.g. hostname or ipadress and change path corresponding to the symlinks.
-<br>
-<br>
+Add hostname or ip address to the site.conf file (exist after make command), e.g. at the end of the file.
+```
+DISTRO_HOST = " <your ip address or hostname> "
+```
 To update the image, run:
 ```
 make image                         // update image only.
