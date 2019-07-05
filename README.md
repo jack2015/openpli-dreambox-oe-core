@@ -6,13 +6,13 @@ Thanks to OpenPLi to make this possible.
 
 In comparison to OpenPLi this repository has:<br>
 -Submodules bitbake, openembedded-core and meta-openembedded from master branch,<br>
-&nbsp;with git snapshot of April 21th, 2019.<br>
--GCC 8.3.0<br>
+&nbsp;with git snapshot of July 5th, 2019.<br>
+-GCC 9.1.0<br>
 -Glibc 2.29<br>
--GStreamer 1.16.0<br>
+-GStreamer 1.17.0.1<br>
 -Python 2.7.16<br>
--OpenSSL 1.1.1b<br>
--Busybox 1.30.1<br>
+-OpenSSL 1.1.1c<br>
+-Busybox 1.31.0<br>
 -Dreambox kernel 3.2.102<br>
 and more.<br>
 <br>
@@ -55,7 +55,7 @@ Create symlinks to your build-environment:
 ```
 cd /var/www/html
 
-sudo mkdir feeds;cd feeds;sudo mkdir openpli-homebuild;cd openpli-homebuild;
+sudo mkdir feeds;cd feeds;sudo mkdir openpli-9.1;cd openpli-9.1;
 
 sudo ln -s /home/<your username>/openpli-dm8000-oe-core/build/tmp/deploy/ipk/dm8000 dm8000 
 
