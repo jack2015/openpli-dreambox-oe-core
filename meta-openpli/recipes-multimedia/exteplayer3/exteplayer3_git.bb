@@ -12,9 +12,7 @@ inherit gitpkgv
 PV = "68+gitr${SRCPV}"
 PKGV = "68+gitr${GITPKGV}"
 
-SRC_URI = " git://github.com/e2iplayer/exteplayer3.git;branch=master \
-			file://use-ioctl-7-for-ac3plus.patch \
-"
+SRC_URI = "git://github.com/e2iplayer/exteplayer3.git;branch=master"
 
 S = "${WORKDIR}/git/"
 
