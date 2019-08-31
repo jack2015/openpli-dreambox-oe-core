@@ -6,9 +6,9 @@ Thanks to OpenPLi to make this possible.
 
 In comparison to OpenPLi this repository has:<br>
 -Submodules bitbake, openembedded-core and meta-openembedded from master branch,<br>
-&nbsp;with git snapshot of August 3rd, 2019.<br>
--GCC 9.1.0<br>
--Glibc 2.29<br>
+&nbsp;with git snapshot of August 31th, 2019.<br>
+-GCC 9.2.0<br>
+-Glibc 2.30<br>
 -GStreamer 1.17.0.1<br>
 -Python 2.7.16<br>
 -OpenSSL 1.1.1c<br>
@@ -55,7 +55,7 @@ Create symlinks to your build-environment:
 ```
 cd /var/www/html
 
-sudo mkdir feeds;cd feeds;sudo mkdir openpli-9.1;cd openpli-9.1;
+sudo mkdir feeds;cd feeds;sudo mkdir openpli-9.2;cd openpli-9.2;
 
 sudo ln -s /home/<your username>/openpli-dm8000-oe-core/build/tmp/deploy/ipk/dm8000 dm8000 
 
