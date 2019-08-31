@@ -23,7 +23,9 @@ inherit gitpkgv
 
 require openplugins-distutils.inc
 
-SRC_URI += "file://get-rid-of-orgdream-check.patch"
+SRC_URI += "file://get-rid-of-orgdream-check.patch \
+			file://remove-obsolete-import-version.patch \
+"
 
 PV = "1+git${SRCPV}"
 PKGV = "1+git${GITPKGV}"
