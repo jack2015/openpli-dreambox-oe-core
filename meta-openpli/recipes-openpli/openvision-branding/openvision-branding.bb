@@ -4,7 +4,7 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 DEPENDS = "python"
 
-require conf/license/openvision-gplv2.inc
+require conf/license/openpli-gplv2.inc
 
 inherit autotools-brokensep gitpkgv pythonnative
 
