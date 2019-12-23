@@ -2,11 +2,11 @@ Build environment dreambox 8000 based on OpenPLi-homebuild(develop branch).
 
 https://github.com/OpenPLi/openpli-oe-core/commits/develop
 
-Thanks to OpenPLi to make this possible.
+Thanks to OpenPLi.
 
 In comparison to OpenPLi this repository has:<br>
 -Submodules bitbake, openembedded-core and meta-openembedded from master branch,<br>
-&nbsp;with git snapshot of October 25th, 2019.<br>
+&nbsp;with git snapshot of December 22nd, 2019.<br>
 -GCC 9.2.0<br>
 -Glibc 2.30<br>
 -GStreamer 1.17.0.1<br>
