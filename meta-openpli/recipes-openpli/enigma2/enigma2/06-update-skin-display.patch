@@ -8,7 +8,7 @@ index ddeb91caa..578065e21 100644
  <!--  Skin: LCD from Magic by MiLo -->
  <skin>
  	<windowstyle id="1" type="skinned">
-@@ -37,66 +36,77 @@
+@@ -37,65 +36,76 @@
  	</screen>
  
  <!-- main-->
@@ -103,8 +103,6 @@ index ddeb91caa..578065e21 100644
 +			<convert type="ClockToText"></convert>
 +		</widget>
  	</screen>
--	
-+
  	<screen name="MovieContextMenuSummary" position="fill">
  		<widget source="parent.Title" render="Label" position="top" size="*,14" font="FdLcD;12" halign="left" valign="top" noWrap="1" />
  		<widget source="selected" render="Label" position="top" size="*,32" font="FdLcD;16" />
