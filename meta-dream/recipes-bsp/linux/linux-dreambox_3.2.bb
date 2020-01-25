@@ -39,6 +39,10 @@ SRC_URI = " \
 			file://029-move-atomic-flags-field-after-cputime-expires-field.patch \
 			file://030-fix-build-gcc8.patch \
 			file://031-dvb_frontend-backport-multistream-support.patch \
+			file://032-STV-Add-MIS-PLS-support.patch \
+			file://033-STV-Add-SNR-Signal-report-parameters.patch  \
+			file://034-stv090x-optimized-TS-sync-control.patch \
+			file://035-tbs.patch \
 			file://defconfig \
 "
 
