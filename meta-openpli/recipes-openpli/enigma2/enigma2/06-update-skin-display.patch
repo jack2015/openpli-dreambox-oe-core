@@ -1,7 +1,7 @@
-diff --git a/data/display128/skin_display.xml b/data/display128/skin_display.xml
+diff --git a/data/display/display128/skin_display.xml b/data/display/display128/skin_display.xml
 index ddeb91caa..578065e21 100644
---- a/data/display128/skin_display.xml
-+++ b/data/display128/skin_display.xml
+--- a/data/display/display128/skin_display.xml
++++ b/data/display/display128/skin_display.xml
 @@ -1,5 +1,4 @@
  <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 -<!--suppress XmlUnboundNsPrefix, XmlUnboundNsPrefix -->
