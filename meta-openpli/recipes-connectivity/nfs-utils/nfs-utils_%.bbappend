@@ -2,10 +2,10 @@
 # bash into our system, which we definitely don't want to happen. This
 # bbappend basically reverses that commit.
 #
-RDEPENDS_${PN}-client = "rpcbind"
+RDEPENDS_${PN}-client_remove = "bash"
 
 # The startup script does a check that doesn't work, replace it. It's
 # also overly complex, so simplified it too.
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
-SRC_URI_remove = "file://0001-Don-t-build-tools-with-CC_FOR_BUILD.patch"
+CFLAGS_remove_sh4 = "-Wno-error=format-overflow"

@@ -42,8 +42,6 @@ SSTATE_DIR = $(TOPDIR)/sstate-cache
 TMPDIR = $(TOPDIR)/tmp
 DEPDIR = $(TOPDIR)/.deps
 
-MACHINE=dm8000
-
 BBLAYERS ?= \
 	$(CURDIR)/meta-openembedded/meta-oe \
 	$(CURDIR)/meta-openembedded/meta-filesystems \
@@ -72,6 +70,7 @@ GIT ?= git
 GIT_REMOTE := $(shell $(GIT) remote)
 GIT_USER_NAME := $(shell $(GIT) config user.name)
 GIT_USER_EMAIL := $(shell $(GIT) config user.email)
+GIT_BRANCH := $(shell $(GIT) symbolic-ref -q --short HEAD)
 
 hash = $(shell echo $(1) | $(XSUM) | awk '{print $$1}')
 
@@ -138,6 +137,7 @@ $(TOPDIR)/env.source: $(DEPDIR)/.env.source.$(BITBAKE_ENV_HASH)
 	@echo 'export BB_ENV_EXTRAWHITE="MACHINE"' > $@
 	@echo 'export MACHINE' >> $@
 	@echo 'export PATH=$(CURDIR)/openembedded-core/scripts:$(CURDIR)/bitbake/bin:$${PATH}' >> $@
+	@echo 'export BUILDDIR=$(BUILD_DIR)' >> $@
 
 OPENPLI_CONF_HASH := $(call hash, \
 	'OPENPLI_CONF_VERSION = "1"' \
@@ -180,7 +180,7 @@ $(CURDIR)/site.conf:
 	@echo 'SCONF_VERSION = "1"' >> $@
 	@echo 'BB_NUMBER_THREADS = "$(BB_NUMBER_THREADS)"' >> $@
 	@echo 'PARALLEL_MAKE = "$(PARALLEL_MAKE)"' >> $@
-	@echo 'BUILD_OPTIMIZATION = "-march=native -O2 -pipe"' >> $@
+	@echo 'BUILD_OPTIMIZATION = "-O2 -pipe"' >> $@
 	@echo 'DL_DIR = "$(DL_DIR)"' >> $@
 	@echo 'INHERIT += "rm_work"' >> $@
 
