@@ -4,12 +4,14 @@ SRC_URI = "git://github.com/jack2015/enigma2-openpli.git;branch=develop"
 
 RRECOMMENDS_${PN}_remove = "enigma2-plugin-skins-octetfhd"
 
-PYTHON_RDEPS_append_dm800se += " \
+PYTHON_RDEPS_append += " \
 	python-mmap \
 	"
 
-PYTHON_RDEPS_append_dm8000 += " \
-	python-mmap \
+RDEPENDS_${PN}_remove = "openvision-branding"
+
+RDEPENDS_${PN}_append += " \
+	dm800se-branding \
 	"
 
 EXTRA_OECONF = "\
