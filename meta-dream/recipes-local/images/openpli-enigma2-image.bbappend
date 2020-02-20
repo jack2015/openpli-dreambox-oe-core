@@ -1,6 +1,6 @@
 IMAGE_INSTALL_remove = "distro-feed-configs"
 
-#dm800se-cn
+#dm800se-en
 
 DEPENDS += " \
 	zip-native \
@@ -25,6 +25,8 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-extensions-backupsuite \
 	enigma2-plugin-extensions-cutlisteditor \
 	enigma2-plugin-extensions-cacheflush \
+	enigma2-plugin-extensions-epgimport \
+	enigma2-plugin-extensions-flashexpander \
 	enigma2-plugin-extensions-graphmultiepg \
 	enigma2-plugin-extensions-mediaplayer \
 	enigma2-plugin-extensions-mediascanner \
@@ -34,7 +36,8 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-extensions-pictureplayer \
 	enigma2-plugin-extensions-ppanel \
 	enigma2-plugin-softcams-oscam-dm800se \
-	enigma2-plugin-extensions-pluginskinmover \
+	enigma2-plugin-extensions-openmultiboot \
+	openmultiboot \
 	\
 	enigma2-plugin-systemplugins-cablescan \
 	enigma2-plugin-systemplugins-fastscan \
@@ -65,6 +68,21 @@ rmpy() {
 	done
 }
 
+rmpo() {
+	for file2 in `ls -A $1`
+	do
+		if [ $file2 = "en" ]; then
+			echo "do nothing"
+		elif [ $file2 = "ru" ]; then
+			echo "do nothing"
+		elif [ $file2 = "it" ]; then
+			echo "do nothing"
+		else
+			rm -rf $1/$file2
+		fi
+	done
+}
+
 upxall() {
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/enigma2
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/dbus-daemon
@@ -91,7 +109,6 @@ upxall() {
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/sbin/mkfs.ext3
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/sbin/mkfs.ext4
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/sbin/e2label
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/sbin/e2fsck
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/sbin/fsck.ext2
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/sbin/fsck.ext3
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/sbin/fsck.ext4
@@ -105,25 +122,28 @@ rootfs_myworks() {
 	rmpy ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Components
 	rm -rf ${IMAGE_ROOTFS}/usr/share/locale/*
 	rm -rf ${IMAGE_ROOTFS}/usr/share/mime/*
-	rm -rf ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/AudioSync/locale
-	rm -rf ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/AutoBackup/locale
-	rm -rf ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/BackupSuite/locale
-	rm -rf ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/CacheFlush/locale
-	rm -rf ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/locale
-	rm -rf ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/OscamStatus/locale
-	rm -rf ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/MovieCut/locale
-	rm -rf ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/EPGImport/locale
-	rm -rf ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/PluginSkinMover/locale
-	rm -rf ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/SystemPlugins/NetworkBrowser/locale
-	rm -rf ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/SystemPlugins/SystemTime/locale
+	rm -rf ${IMAGE_ROOTFS}/usr/share/zoneinfo/*
+	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/AudioSync/locale
+	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/AutoBackup/locale
+	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/BackupSuite/locale
+	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/CacheFlush/locale
+	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/locale
+	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/OscamStatus/locale
+	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/MovieCut/locale
+	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/EPGImport/locale
+	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/PluginSkinMover/locale
+	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/SystemPlugins/NetworkBrowser/locale
+	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/SystemPlugins/SystemTime/locale
 	mv -f ${IMAGE_ROOTFS}/usr/lib/bitratecalc.so ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Components/Converter/
 	rm -f ${IMAGE_ROOTFS}/usr/share/enigma2/PLi-HD/picon_default.png
 	rm -f ${IMAGE_ROOTFS}/usr/share/enigma2/PLi-FullHD/picon_default.png
 	rm -f ${IMAGE_ROOTFS}/usr/share/enigma2/PLi-FullNightHD/picon_default.png
 	rm -f ${IMAGE_ROOTFS}/usr/lib/locale/locale-archive
-	cp -rf ${THISDIR}/files/dm800se-cn/usr ${IMAGE_ROOTFS}/
-	cp -rf ${THISDIR}/files/dm800se-cn/etc ${IMAGE_ROOTFS}/
-	rm -rf ${IMAGE_ROOTFS}/usr/share/enigma2/po/ru
+	cp -rf ${THISDIR}/files/dm800se-en/usr ${IMAGE_ROOTFS}/
+	cp -rf ${THISDIR}/files/dm800se-en/etc ${IMAGE_ROOTFS}/
+	rm -f ${IMAGE_ROOTFS}/usr/share/fonts/fallback.font
+	rm -f ${IMAGE_ROOTFS}/usr/share/fonts/wqy-microhei.ttc
+	rm -rf ${IMAGE_ROOTFS}/usr/share/enigma2/po/zh_CN
 	upxall
 }
 
