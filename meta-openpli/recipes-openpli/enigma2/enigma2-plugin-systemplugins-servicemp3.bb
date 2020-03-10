@@ -75,9 +75,6 @@ DEPENDS = "\
 
 RDEPENDS_${PN} = "\
 	enigma2 \
-	"
-
-RDEPENDS_${PN} = "\
 	glib-networking \
 	gstreamer${GST_VERSION}-plugin-subsink \
 	virtual/gstreamer${GST_VERSION}-dvbmediasink \

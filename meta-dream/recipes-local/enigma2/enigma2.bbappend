@@ -1,6 +1,6 @@
 #FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
-SRC_URI = "git://github.com/jack2015/enigma2-openpli.git;branch=develop"
+SRC_URI = "git://github.com/jack2015/enigma2-openpli.git;branch=dm800se"
 
 RRECOMMENDS_${PN}_remove = "enigma2-plugin-skins-octetfhd"
 
@@ -8,7 +8,7 @@ PYTHON_RDEPS_remove = "python-service-identity"
 
 PYTHON_RDEPS_append += " \
 	python-mmap \
-	${@bb.utils.contains_any("MACHINE_FEATURES", "smallflash", "", "python-service-identity", d)} \
+	${@bb.utils.contains_any("MACHINE", "dm500hd dm800 dm800se", "", "python-service-identity", d)} \
 	"
 
 RDEPENDS_enigma2-plugin-systemplugins-wirelesslan = "wpa-supplicant wireless-tools python-wifi"
@@ -49,9 +49,9 @@ do_install_append_dm800se() {
 	cp -f ${D}/usr/share/enigma2/po/en/LC_MESSAGES/enigma2.mo ${WORKDIR}/en-enigma2.mo
 	cp -f ${D}/usr/share/enigma2/po/ru/LC_MESSAGES/enigma2.mo ${WORKDIR}/ru-enigma2.mo
 	cp -f ${D}/usr/share/enigma2/po/zh_CN/LC_MESSAGES/enigma2.mo ${WORKDIR}/zh_CN-enigma2.mo
-	rm -rf /media/jack/dm800se/build/dm800se/po
-	mkdir -p /media/jack/dm800se/build/dm800se/po
-	cp -rf ${D}/usr/share/enigma2/po/* /media/jack/dm800se/build/dm800se/po/
+	rm -rf /media/jack/dm800se/backup/po
+	mkdir -p /media/jack/dm800se/backup/po
+	cp -rf ${D}/usr/share/enigma2/po/* /media/jack/dm800se/backup/po/
 	rm -rf ${D}/usr/share/enigma2/po
 	install -d ${D}/usr/share/enigma2/po/en/LC_MESSAGES
 	install -m 0644 ${WORKDIR}/en-enigma2.mo ${D}/usr/share/enigma2/po/en/LC_MESSAGES/enigma2.mo

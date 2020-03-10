@@ -1,6 +1,7 @@
 config.av.policy_169=scale
 config.av.policy_43=scale
 config.misc.disable_background_scan=true
+config.usage.infobar_timeout=0
 config.mediaplayer.onMainMenu=true
 config.misc.hotkey.blue=Infobar/showExtensionSelection
 config.misc.hotkey.green=Module/Screens.PluginBrowser/PluginBrowser
@@ -25,3 +26,4 @@ config.plugins.FanControl.vlt=100
 config.timezone.val=(GMT+08:00) Beijing, Chongqing, Hong Kong, Urumqi
 config.usage.setup_level=expert
 config.skin.primary_skin=PLi-FullNightHD/skin.xml
+config.plugins.serviceapp.servicemp3.player=gstplayer

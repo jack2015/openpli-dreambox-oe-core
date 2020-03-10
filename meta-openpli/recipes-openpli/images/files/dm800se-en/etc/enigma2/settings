@@ -1,6 +1,5 @@
 config.av.policy_169=scale
 config.av.policy_43=scale
-config.OpenWebif.vpn_access=true
 config.mediaplayer.onMainMenu=true
 config.misc.disable_background_scan=true
 config.misc.hotkey.blue=Infobar/showExtensionSelection
@@ -23,3 +22,4 @@ config.plugins.FanControl.temp=35
 config.plugins.FanControl.vlt=100
 config.usage.setup_level=expert
 config.skin.primary_skin=PLi-FullNightHD/skin.xml
+config.plugins.serviceapp.servicemp3.player=gstplayer
