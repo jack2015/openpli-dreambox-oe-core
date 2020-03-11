@@ -11,13 +11,3 @@ git submodule update --init
 git pull
 echo ""
 echo "Done!"
-echo ""
-echo ""
-cd meta-python2
-echo "Checking out meta-python2 master branch:"
-git checkout master
-git pull
-echo ""
-echo "Done!"
-echo ""
-echo ""
