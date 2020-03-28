@@ -7,11 +7,11 @@ Thanks to OpenPLi.
 In comparison to OpenPLi this repository has:<br>
 -Submodules bitbake, openembedded-core and meta-openembedded from master branch,<br>
 &nbsp;with git snapshot of February 8th, 2020.<br>
--GCC 9.2.0<br>
+-GCC 9.3.0<br>
 -Glibc 2.31<br>
 -GStreamer 1.17.0.1<br>
 -Python 2.7.16<br>
--OpenSSL 1.1.1d<br>
+-OpenSSL 1.1.1e<br>
 -Busybox 1.31.1<br>
 -Dreambox kernel 3.2.102<br>
 and more.<br>
@@ -19,7 +19,7 @@ and more.<br>
 <br>
 Feel free to send pull-request.
 
-Tested on Ubuntu 19.10.
+Tested with Ubuntu 20.04.
 <br>
 <br>
 Dependencies:
@@ -55,7 +55,7 @@ Create symlinks to your build-environment:
 ```
 cd /var/www/html
 
-sudo mkdir feeds;cd feeds;sudo mkdir openpli-9.2;cd openpli-9.2;
+sudo mkdir feeds;cd feeds;sudo mkdir openpli-9.3;cd openpli-9.3;
 
 sudo ln -s /home/<your username>/openpli-dm8000-oe-core/build/tmp/deploy/ipk/dm8000 dm8000 
 
