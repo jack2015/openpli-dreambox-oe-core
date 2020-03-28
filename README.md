@@ -10,7 +10,7 @@ In comparison to OpenPLi this repository has:<br>
 -GCC 9.3.0<br>
 -Glibc 2.31<br>
 -GStreamer 1.17.0.1<br>
--Python 2.7.16<br>
+-Python 2.7.17<br>
 -OpenSSL 1.1.1e<br>
 -Busybox 1.31.1<br>
 -Dreambox kernel 3.2.102<br>
