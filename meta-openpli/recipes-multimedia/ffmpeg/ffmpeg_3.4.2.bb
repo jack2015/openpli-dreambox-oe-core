@@ -47,7 +47,7 @@ PROVIDES = "libav libpostproc"
 
 DEPENDS = "alsa-lib zlib libogg yasm-native libxml2"
 
-inherit autotools pkgconfig upx_compress
+inherit autotools pkgconfig
 
 PACKAGECONFIG ??= "avdevice avfilter avcodec avformat swresample swscale postproc \
                    bzlib gpl lzma theora x264 \
