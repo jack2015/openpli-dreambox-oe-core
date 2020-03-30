@@ -25,3 +25,5 @@ config.usage.setup_level=expert
 config.skin.primary_skin=PLi-FullNightHD/skin.xml
 config.plugins.serviceapp.servicemp3.player=exteplayer3
 config.plugins.serviceapp.servicemp3.replace=true
+config.timezone.area=Classic
+config.timezone.val=Asia/Hong_Kong

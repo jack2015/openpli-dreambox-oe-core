@@ -23,3 +23,5 @@ config.plugins.FanControl.vlt=100
 config.usage.setup_level=expert
 config.skin.primary_skin=PLi-FullNightHD/skin.xml
 config.plugins.serviceapp.servicemp3.player=gstplayer
+config.timezone.area=Classic
+config.timezone.val=Asia/Hong_Kong
