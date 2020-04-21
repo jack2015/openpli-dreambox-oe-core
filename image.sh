@@ -23,34 +23,34 @@ fi
 
 if [ $MACHINESPECIFIC = "dm800se-only" ]; then
         cp -pf $def_path/dm800se/defconfig $def_path/defconfig
-	cp -pf ../backup/dm800se-only/* meta-dream/recipes-local/images/
-	cp -pf ../backup/image-size/only/* meta-dream/conf/machine/include/
-	cp -pf ../backup/serviceapp/onlyserviceapp/enigma2.bbappend meta-dream/recipes-local/enigma2/
-	cp -pf ../backup/serviceapp/onlyserviceapp/enigma2-plugin-systemplugins-serviceapp_0.5.bbappend meta-dream/recipes-local/enigma2-plugins/
+	cp -pf backup/dm800se-only/* meta-dream/recipes-local/images/
+	cp -pf backup/image-size/only/* meta-dream/conf/machine/include/
+	cp -pf backup/serviceapp/onlyserviceapp/enigma2.bbappend meta-dream/recipes-local/enigma2/
+	cp -pf backup/serviceapp/onlyserviceapp/enigma2-plugin-systemplugins-serviceapp_0.5.bbappend meta-dream/recipes-local/enigma2-plugins/
 	echo "Compiling $MACHINESPECIFIC image, please wait ..."
         MACHINE=dm800se make image
 elif [ $MACHINESPECIFIC = "dm800se-big" ]; then
         cp -pf $def_path/dm800se/defconfig $def_path/defconfig
-	cp -pf ../backup/dm800se-big/* meta-dream/recipes-local/images/
-	cp -pf ../backup/image-size/big/* meta-dream/conf/machine/include/
-	cp -pf ../backup/serviceapp/big/enigma2.bbappend meta-dream/recipes-local/enigma2/
-	cp -pf ../backup/serviceapp/big/enigma2-plugin-systemplugins-serviceapp_0.5.bbappend meta-dream/recipes-local/enigma2-plugins/
+	cp -pf backup/dm800se-big/* meta-dream/recipes-local/images/
+	cp -pf backup/image-size/big/* meta-dream/conf/machine/include/
+	cp -pf backup/serviceapp/big/enigma2.bbappend meta-dream/recipes-local/enigma2/
+	cp -pf backup/serviceapp/big/enigma2-plugin-systemplugins-serviceapp_0.5.bbappend meta-dream/recipes-local/enigma2-plugins/
 	echo "Compiling $MACHINESPECIFIC image, please wait ..."
         MACHINE=dm800se make image
 elif [ $MACHINESPECIFIC = "dm800se-cn" ]; then
         cp -pf $def_path/dm800se/defconfig $def_path/defconfig
-	cp -pf ../backup/dm800se-cn/* meta-dream/recipes-local/images/
-	cp -pf ../backup/image-size/64m/* meta-dream/conf/machine/include/
-	cp -pf ../backup/serviceapp/normal/enigma2.bbappend meta-dream/recipes-local/enigma2/
-	cp -pf ../backup/serviceapp/normal/enigma2-plugin-systemplugins-serviceapp_0.5.bbappend meta-dream/recipes-local/enigma2-plugins/
+	cp -pf backup/dm800se-cn/* meta-dream/recipes-local/images/
+	cp -pf backup/image-size/64m/* meta-dream/conf/machine/include/
+	cp -pf backup/serviceapp/normal/enigma2.bbappend meta-dream/recipes-local/enigma2/
+	cp -pf backup/serviceapp/normal/enigma2-plugin-systemplugins-serviceapp_0.5.bbappend meta-dream/recipes-local/enigma2-plugins/
 	echo "Compiling $MACHINESPECIFIC image, please wait ..."
         MACHINE=dm800se make image
 elif [ $MACHINESPECIFIC = "dm800se-en" ]; then
         cp -pf $def_path/dm800se/defconfig $def_path/defconfig
-	cp -pf ../backup/dm800se-en/* meta-dream/recipes-local/images/
-	cp -pf ../backup/image-size/64m/* meta-dream/conf/machine/include/
-	cp -pf ../backup/serviceapp/normal/enigma2.bbappend meta-dream/recipes-local/enigma2/
-	cp -pf ../backup/serviceapp/normal/enigma2-plugin-systemplugins-serviceapp_0.5.bbappend meta-dream/recipes-local/enigma2-plugins/
+	cp -pf backup/dm800se-en/* meta-dream/recipes-local/images/
+	cp -pf backup/image-size/64m/* meta-dream/conf/machine/include/
+	cp -pf backup/serviceapp/normal/enigma2.bbappend meta-dream/recipes-local/enigma2/
+	cp -pf backup/serviceapp/normal/enigma2-plugin-systemplugins-serviceapp_0.5.bbappend meta-dream/recipes-local/enigma2-plugins/
 	echo "Compiling $MACHINESPECIFIC image, please wait ..."
         MACHINE=dm800se make image
 elif [ $MACHINESPECIFIC = "dm8000" ]; then

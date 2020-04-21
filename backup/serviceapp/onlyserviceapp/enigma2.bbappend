@@ -4,6 +4,8 @@ SRC_URI = "git://github.com/jack2015/enigma2-openpli.git;branch=dm800se"
 
 RRECOMMENDS_${PN}_remove = "enigma2-plugin-skins-octetfhd"
 
+RRECOMMENDS_${PN}_remove = "virtual/enigma2-mediaservice"
+
 PYTHON_RDEPS_append += " \
 	python-mmap \
 	"
@@ -43,4 +45,17 @@ do_install_append_dm800se() {
 	install -m 0644 ${S}/data/rc_models/dmmadv.png ${D}/usr/share/enigma2/rc_models/dmmadv.png
 	install -m 0644 ${S}/data/rc_models/dmm.xml ${D}/usr/share/enigma2/rc_models/dmm.xml
 	install -m 0644 ${S}/data/rc_models/dmmadv.xml ${D}/usr/share/enigma2/rc_models/dmmadv.xml
+	cp -f ${D}/usr/share/enigma2/po/en/LC_MESSAGES/enigma2.mo ${WORKDIR}/en-enigma2.mo
+	cp -f ${D}/usr/share/enigma2/po/ru/LC_MESSAGES/enigma2.mo ${WORKDIR}/ru-enigma2.mo
+	cp -f ${D}/usr/share/enigma2/po/zh_CN/LC_MESSAGES/enigma2.mo ${WORKDIR}/zh_CN-enigma2.mo
+	#rm -rf /media/jack/dm800se/backup/po
+	#mkdir -p /media/jack/dm800se/backup/po
+	#cp -rf ${D}/usr/share/enigma2/po/* /media/jack/dm800se/backup/po/
+	#rm -rf ${D}/usr/share/enigma2/po
+	install -d ${D}/usr/share/enigma2/po/en/LC_MESSAGES
+	install -m 0644 ${WORKDIR}/en-enigma2.mo ${D}/usr/share/enigma2/po/en/LC_MESSAGES/enigma2.mo
+	install -d ${D}/usr/share/enigma2/po/zh_CN/LC_MESSAGES
+	install -m 0644 ${WORKDIR}/zh_CN-enigma2.mo ${D}/usr/share/enigma2/po/zh_CN/LC_MESSAGES/enigma2.mo
+	install -d ${D}/usr/share/enigma2/po/ru/LC_MESSAGES
+	install -m 0644 ${WORKDIR}/ru-enigma2.mo ${D}/usr/share/enigma2/po/ru/LC_MESSAGES/enigma2.mo
 }

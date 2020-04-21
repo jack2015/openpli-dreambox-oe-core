@@ -18,7 +18,7 @@ FILES_${PN} = "/usr/"
 S = "${WORKDIR}/git"
 
 do_compile() {
-	python -O -m compileall ${S}/usr/lib/enigma2/python/Plugins/Extensions/Flashexpander/*.py
+	python2 -O -m compileall ${S}/usr/lib/enigma2/python/Plugins/Extensions/Flashexpander/*.py
 }
 
 do_install() {

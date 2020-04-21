@@ -1,5 +1,3 @@
-MACHINE_KERNEL_PR_append = ".${INC_PR}.90"
-
 COMPATIBLE_MACHINE = "^(dm500hd|dm500hdv2|dm800se|dm800sev2|dm7020hd|dm8000)$"
 
 PATCHLEVEL = "102"

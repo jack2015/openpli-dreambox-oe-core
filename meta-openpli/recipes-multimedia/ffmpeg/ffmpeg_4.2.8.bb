@@ -45,8 +45,8 @@ S = "${WORKDIR}/git"
 
 inherit gitpkgv autotools pkgconfig
 
-PV = "4.2.2+git${SRCPV}"
-PKGV = "4.2.2+git${GITPKGV}"
+PV = "4.2.8+git${SRCPV}"
+PKGV = "4.2.8+git${GITPKGV}"
 
 # Build fails when thumb is enabled: https://bugzilla.yoctoproject.org/show_bug.cgi?id=7717
 ARM_INSTRUCTION_SET = "arm"
@@ -56,7 +56,7 @@ ARM_INSTRUCTION_SET = "arm"
 PROVIDES = "libav libpostproc"
 
 RDEPENDS_${PN} = "libbluray rtmpdump libxml2 openssl"
-DEPENDS = "alsa-lib zlib libogg nasm-native libxml2"
+DEPENDS = "alsa-lib zlib libogg nasm-native libxml2 librtmp"
 
 PACKAGECONFIG = "avdevice avfilter avcodec avformat avresample swscale swresample postproc \
 	bzlib gpl x264 openssl libbluray libfreetype librtmp mp3lame theora libvorbis lzma vpx \
