@@ -36,7 +36,7 @@ python do_cleanup () {
     images = "%s/public/images/" % pluginpath
     keymaps = "%s/public/static/" % pluginpath
 
-    target_box = 'dm8000.png'
+    target_box = 'dm800se.png'
     target_remote = 'dmm1.png'
     target_keymap = 'dmm1.html'
     exception = ''
@@ -69,6 +69,8 @@ PLUGINPATH = "${libdir}/enigma2/python/Plugins/Extensions/${MODULE}"
 do_install_append() {
 	install -d ${D}${PLUGINPATH}
 	cp -r ${S}/plugin/* ${D}${PLUGINPATH}
+	rm -rf ${D}${PLUGINPATH}/public/themes
+	rm -rf ${D}${PLUGINPATH}/public/webtv
 	chmod a+rX ${D}${PLUGINPATH}
 }
 

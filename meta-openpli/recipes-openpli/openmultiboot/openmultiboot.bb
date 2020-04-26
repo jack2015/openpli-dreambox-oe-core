@@ -23,6 +23,7 @@ EXTRA_OEMAKE = " \
     'CFLAGS=${CFLAGS} \
     -I=${includedir}/freetype2 \
     -DOMB_DREAMBOX \
+    -DOMB_FLASH_JFFS2 \
     -DOMB_KERNEL_MTD=\"/dev/${MTD_KERNEL}\"' \
     'LDFLAGS= -lfreetype ${LDFLAGS}' \
     "

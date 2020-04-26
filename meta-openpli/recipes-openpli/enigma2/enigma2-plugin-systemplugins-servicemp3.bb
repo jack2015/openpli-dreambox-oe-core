@@ -75,9 +75,6 @@ DEPENDS = "\
 
 RDEPENDS_${PN} = "\
 	enigma2 \
-	"
-
-RDEPENDS_${PN} = "\
 	glib-networking \
 	gstreamer${GST_VERSION}-plugin-subsink \
 	virtual/gstreamer${GST_VERSION}-dvbmediasink \
@@ -87,7 +84,7 @@ RDEPENDS_${PN} = "\
 	${GST_UGLY_RDEPS} \
 	"
 
-SRC_URI = "git://github.com/Hains/servicemp3.git;branch=master"
+SRC_URI = "git://github.com/jack2015/servicemp3.git;branch=master"
 
 S = "${WORKDIR}/git"
 

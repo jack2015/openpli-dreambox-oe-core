@@ -50,6 +50,7 @@ OPTIONAL_PACKAGES += " \
 	mpd \
 	mt7601u \
 	mt7610u \
+	rt3070 \
 	mtd-utils \
 	mtools \
 	nano \
