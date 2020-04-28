@@ -3,15 +3,11 @@ IMAGE_INSTALL_remove = "hdparm"
 
 #dm800se-big
 
-DEPENDS += " \
-	zip-native \
-	upx-native \
-	ucl-native \
-	"
-
 IMAGE_INSTALL_append += " \
 	bitratecalc \
-	openssh-sftp \
+	ffmpeg \
+	exteplayer3 \
+	gstplayer \
 	"
 
 KERNEL_WIFI_DRIVERS = " \
@@ -107,4 +103,4 @@ rootfs_myworks() {
 	cp -rf ${THISDIR}/files/dm800se-big/etc ${IMAGE_ROOTFS}/
 }
 
-ROOTFS_POSTPROCESS_COMMAND_append_dm800se += "rootfs_myworks; "
+ROOTFS_POSTPROCESS_COMMAND += "rootfs_myworks; "

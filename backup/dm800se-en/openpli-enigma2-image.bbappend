@@ -3,15 +3,8 @@ IMAGE_INSTALL_remove = "hdparm"
 
 #dm800se-en
 
-DEPENDS += " \
-	zip-native \
-	upx-native \
-	ucl-native \
-	"
-
 IMAGE_INSTALL_append += " \
 	bitratecalc \
-	openssh-sftp \
 	"
 
 KERNEL_WIFI_DRIVERS = " \
@@ -155,4 +148,4 @@ rootfs_myworks() {
 	upxall
 }
 
-ROOTFS_POSTPROCESS_COMMAND_append_dm800se += "rootfs_myworks; "
+ROOTFS_POSTPROCESS_COMMAND += "rootfs_myworks; "
