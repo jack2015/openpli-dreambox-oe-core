@@ -3,11 +3,6 @@
 SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 cd "${SCRIPTPATH}"
 
-if [ ! -d $SCRIPTPATH/build/tmp/sysroots-components/x86_64/upx-native/usr/bin ]; then
-	mkdir -p $SCRIPTPATH/build/tmp/sysroots-components/x86_64/upx-native/usr/bin
-fi
-ln -sfn /usr/bin/upx $SCRIPTPATH/build/tmp/sysroots-components/x86_64/upx-native/usr/bin/upx
-
 def_path="${SCRIPTPATH}/meta-dream/recipes-bsp/linux/linux-dreambox-3.2"
 
 echo "Please enter: (1)dm800se-cn (2)dm800se-en (3)dm800se-big (4)dm800se-only"
