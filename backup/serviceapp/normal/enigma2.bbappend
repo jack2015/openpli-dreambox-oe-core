@@ -44,9 +44,6 @@ do_install_append_dm800se() {
 	cp -f ${D}/usr/share/enigma2/po/en/LC_MESSAGES/enigma2.mo ${WORKDIR}/en-enigma2.mo
 	cp -f ${D}/usr/share/enigma2/po/ru/LC_MESSAGES/enigma2.mo ${WORKDIR}/ru-enigma2.mo
 	cp -f ${D}/usr/share/enigma2/po/zh_CN/LC_MESSAGES/enigma2.mo ${WORKDIR}/zh_CN-enigma2.mo
-	rm -rf /media/jack/dm800se/openpli-dm8000-oe-core/backup/po
-	mkdir -p /media/jack/dm800se/openpli-dm8000-oe-core/backup/po
-	cp -rf ${D}/usr/share/enigma2/po/* /media/jack/dm800se/openpli-dm8000-oe-core/backup/po/
 	rm -rf ${D}/usr/share/enigma2/po
 	install -d ${D}/usr/share/enigma2/po/en/LC_MESSAGES
 	install -m 0644 ${WORKDIR}/en-enigma2.mo ${D}/usr/share/enigma2/po/en/LC_MESSAGES/enigma2.mo
