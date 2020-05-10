@@ -5,6 +5,7 @@ IMAGE_INSTALL_remove = "hdparm"
 
 IMAGE_INSTALL_append += " \
 	bitratecalc \
+	libcrypto-compat \
 	"
 
 KERNEL_WIFI_DRIVERS = " \

@@ -5,6 +5,7 @@ IMAGE_INSTALL_remove = "hdparm"
 
 IMAGE_INSTALL_append += " \
 	bitratecalc \
+	libcrypto-compat \
 	"
 
 KERNEL_WIFI_DRIVERS = " \
@@ -103,9 +104,6 @@ rootfs_myworks() {
 	rmpy ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Components
 	rm -rf ${IMAGE_ROOTFS}/usr/share/locale/*
 	rm -rf ${IMAGE_ROOTFS}/usr/share/enigma2/countries/*
-	rm -rf /media/jack/dm800se/build/dm800se/locale
-	mkdir -p /media/jack/dm800se/build/dm800se/locale
-	cp -rf ${IMAGE_ROOTFS}/usr/lib/locale/* /media/jack/dm800se/build/dm800se/locale
 	rm -rf ${IMAGE_ROOTFS}/usr/lib/locale/*
 	rm -rf ${IMAGE_ROOTFS}/usr/share/mime/*
 	rm -f ${IMAGE_ROOTFS}/bin/bash.bash
@@ -127,7 +125,6 @@ rootfs_myworks() {
 	rm -f ${IMAGE_ROOTFS}/usr/share/enigma2/PLi-HD/picon_default.png
 	rm -f ${IMAGE_ROOTFS}/usr/share/enigma2/PLi-FullHD/picon_default.png
 	rm -f ${IMAGE_ROOTFS}/usr/share/enigma2/PLi-FullNightHD/picon_default.png
-	rm -f ${IMAGE_ROOTFS}/usr/lib/locale/locale-archive
 	cp -rf ${THISDIR}/files/dm800se-cn/usr ${IMAGE_ROOTFS}/
 	cp -rf ${THISDIR}/files/dm800se-cn/etc ${IMAGE_ROOTFS}/
 	rm -rf ${IMAGE_ROOTFS}/usr/share/enigma2/po/ru

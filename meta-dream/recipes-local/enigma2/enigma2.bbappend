@@ -1,5 +1,3 @@
-#FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
-
 SRC_URI = "git://github.com/jack2015/enigma2-openpli.git;branch=dm800se"
 
 RRECOMMENDS_${PN}_remove = "enigma2-plugin-skins-octetfhd"

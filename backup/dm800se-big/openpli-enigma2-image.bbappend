@@ -4,6 +4,7 @@ IMAGE_INSTALL_remove = "hdparm"
 #dm800se-big
 
 IMAGE_INSTALL_append += " \
+	libcrypto-compat \
 	bitratecalc \
 	ffmpeg \
 	exteplayer3 \

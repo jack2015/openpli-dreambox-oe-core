@@ -3,7 +3,6 @@ SECTION = "kernel/modules"
 LICENSE = "GPLv2+"
 LIC_FILES_CHKSUM = "file://os/linux/rt_linux.c;endline=25;md5=21ed2a5918a3062a6c0323ef549f0803"
 
-
 inherit module
 
 SRC_URI = " \
@@ -16,8 +15,6 @@ SRC_URI[md5sum] = "c314f126ba47fac563988b08b5554d82"
 SRC_URI[sha256sum] = "c1555c6e8b042eb50579f5dae379d8dab3b2cde20e2e443a6b056d4b7812b3fe"
 
 S = "${WORKDIR}/2011_0719_RT3070_RT3370_RT5370_RT5372_Linux_STA_V${PV}_DPO"
-
-inherit module
 
 EXTRA_OEMAKE = "LINUX_SRC=${STAGING_KERNEL_DIR} KDIR=${STAGING_KERNEL_DIR}"
 
