@@ -29,7 +29,7 @@ SRC_URI += " \
 # include/mtd/* we cannot build in parallel with mtd-utils
 DEPENDS += "mtd-utils"
 
-PACKAGES += "${PN}-inetd"
+PACKAGES =+ "${PN}-inetd"
 INITSCRIPT_PACKAGES += "${PN}-inetd"
 INITSCRIPT_NAME_${PN}-inetd = "inetd.${BPN}" 
 CONFFILES_${PN}-inetd = "${sysconfdir}/inetd.conf"
@@ -38,7 +38,7 @@ RDEPENDS_${PN}-inetd += "${PN}"
 
 RRECOMMENDS_${PN} += "${PN}-inetd"
 
-PACKAGES += "${PN}-cron"
+PACKAGES =+ "${PN}-cron"
 INITSCRIPT_PACKAGES += "${PN}-cron"
 INITSCRIPT_NAME_${PN}-cron = "${BPN}-cron" 
 FILES_${PN}-cron = "${sysconfdir}/cron ${sysconfdir}/init.d/${BPN}-cron"
