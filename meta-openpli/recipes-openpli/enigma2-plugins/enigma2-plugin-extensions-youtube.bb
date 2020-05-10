@@ -5,9 +5,7 @@ HOMEPAGE = "https://github.com/Taapat/enigma2-plugin-youtube"
 SECTION = "multimedia"
 LICENSE = "PD"
 LIC_FILES_CHKSUM = "file://COPYING.GPLv2;md5=b234ee4d69f5fce4486a80fdaf4a4263"
-
 SRC_URI = "git://github.com/Taapat/enigma2-plugin-youtube.git"
-SRC_URI_append = " file://0001-Add_option_to_choose_style_of_VirtualKeyBoard.patch"
 S = "${WORKDIR}/git"
 
 inherit gitpkgv
@@ -25,6 +23,17 @@ RDEPENDS_${PN} = " \
 	python-zlib \
 	python-twisted-web \
 	"
+
+SRC_URI += "file://YouTube.key"
+
+CONFFILES = "/etc/enigma2/YouTube.key"
+
+do_install_append() {
+	install -d ${D}/etc/enigma2
+	install -m 0644 ${WORKDIR}/YouTube.key ${D}/etc/enigma2/YouTube.key
+}
+
+FILES_${PN} = "${sysconfdir} ${libdir}"
 
 RDEPENDS_{PN}-src = "${PN}"
 FILES_${PN}-src = "${libdir}/enigma2/python/Plugins/Extensions/YouTube/*.py"
