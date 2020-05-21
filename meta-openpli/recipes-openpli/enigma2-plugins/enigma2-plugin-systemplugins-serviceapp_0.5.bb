@@ -1,3 +1,4 @@
+SUMMARY = "serviceapp service for enigma2"
 DESCRIPTION = "serviceapp service for enigma2"
 AUTHOR = "Maroš Ondrášek <mx3ldev@gmail.com>"
 LICENSE = "GPLv2"

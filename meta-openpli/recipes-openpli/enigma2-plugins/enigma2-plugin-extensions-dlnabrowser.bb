@@ -1,3 +1,4 @@
+SUMMARY = "VU+ DLNA Browser plugin"
 DESCRIPTION = "VU+ DLNA Browser plugin"
 
 LICENSE = "GPLv2"

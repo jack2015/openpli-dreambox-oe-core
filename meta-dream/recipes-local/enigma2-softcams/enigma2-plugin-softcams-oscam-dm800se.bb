@@ -1,8 +1,6 @@
 require conf/license/openpli-gplv2.inc
 require oscam-version.inc
-SUMMARY = "Softcam for DM800se"
-SECTION = "base"
-LICENSE = "CLOSED"
+SUMMARY = "Oscam Softcam for DM800se"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 PACKAGES = "${PN}"
 
@@ -27,7 +25,30 @@ do_install() {
 	install -m 0755 ${S}/oscam ${D}/usr/bin/oscam
 	install -d ${D}/etc/init.d
 	install -m 0755 ${S}/softcam.oscam ${D}/etc/init.d/softcam.oscam
-	ln -sfn "softcam.oscam" "${D}/etc/init.d/softcam"
-	install -d ${D}/etc/rcS.d
-	ln -sfn "../init.d/softcam" "${D}/etc/rcS.d/S96softcam"
+}
+
+CAMNAME = "oscam"
+CAMPATH = "/etc/init.d/softcam.${CAMNAME}"
+CAMLINK = "/etc/init.d/softcam"
+# If no cam selected yet, install and start this cam (and don't start it on the build host).
+pkg_postinst_${PN}() {
+	if [ ! -e "$D/etc/rcS.d/S96softcam" ]
+	then
+		ln -s "../init.d/softcam" "$D/etc/rcS.d/S96softcam"
+	fi
+
+	if [ ! -e "$D${CAMLINK}" ] || [ "/etc/init.d/softcam.None" = "`readlink -f $D${CAMLINK}`" ] || [ "softcam.None" = "`readlink -f $D${CAMLINK}`" ]
+	then
+		ln -sf "softcam.${CAMNAME}" "$D${CAMLINK}"
+		$D${CAMPATH} restart > /dev/null 2>&1
+	fi
+}
+
+# Stop this cam (if running), and move softlink to None if we're the current cam
+pkg_prerm_${PN}_prepend() {
+	if  [ "/etc/init.d/softcam.${CAMNAME}" = "`readlink -f $D${CAMLINK}`" ] || [ "softcam.${CAMNAME}" = "`readlink -f $D${CAMLINK}`" ]
+	then
+		$D${CAMPATH} stop > /dev/null 2>&1
+		ln -sf "softcam.None" "$D${CAMLINK}"
+	fi
 }

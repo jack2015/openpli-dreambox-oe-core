@@ -1,3 +1,4 @@
+SUMMARY = "Mount devices at your decision (label,uuid)"
 DESCRIPTION = "Mount devices at your decision (label,uuid)"
 HOMEPAGE = "https://github.com/Dima73/enigma2-plugin-mountmanager"
 LICENSE = "PD"

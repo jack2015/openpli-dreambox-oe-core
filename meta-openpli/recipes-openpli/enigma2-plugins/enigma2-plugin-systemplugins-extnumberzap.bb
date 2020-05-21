@@ -1,3 +1,4 @@
+SUMMARY = "Extended number zap addon for enigma2"
 DESCRIPTION = "Extended number zap addon for enigma2"
 HOMEPAGE = "https://github.com/Dima73/Extended-NumberZap"
 LICENSE = "PD"

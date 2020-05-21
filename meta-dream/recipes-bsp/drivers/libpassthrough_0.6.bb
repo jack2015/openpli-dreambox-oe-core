@@ -12,6 +12,7 @@ FILES_${PN} = "${libdir}/lib*${SOLIBSDEV}"
 FILES_SOLIBSDEV = ""
 
 DEBIAN_NOAUTONAME_${PN} = "1"
+INSANE_SKIP_${PN} += "file-rdeps"
 
 
 SRC_URI += "file://LICENSE-CLOSE"

@@ -1,3 +1,4 @@
+SUMMARY = "USB ATSC driver for Hauppauge 950Q WinTV-HVR Tuners"
 DESCRIPTION = "USB ATSC driver for Hauppauge 950Q WinTV-HVR Tuners"
 
 require dvb-usb-drivers-meta.inc

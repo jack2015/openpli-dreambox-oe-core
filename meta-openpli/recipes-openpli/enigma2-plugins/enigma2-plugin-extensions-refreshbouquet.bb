@@ -1,3 +1,4 @@
+SUMMARY = "Actualize services in bouquets."
 DESCRIPTION = "Actualize services in bouquets."
 MAINTAINER = "ims(ims21)"
 LICENSE = "Proprietary"

@@ -1,4 +1,5 @@
 MODULE = "UsbFormatWizard"
+SUMMARY = "Wizard to Format Usb devices "
 DESCRIPTION = "Wizard to Format Usb devices "
 
 inherit gitpkgv

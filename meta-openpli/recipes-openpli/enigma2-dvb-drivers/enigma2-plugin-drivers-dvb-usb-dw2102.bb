@@ -1,3 +1,4 @@
+SUMMARY = "USB DVB driver for DW210x/DW310x chipset"
 DESCRIPTION = "USB DVB driver for DW210x/DW310x chipset"
 
 require dvb-usb-drivers-meta.inc

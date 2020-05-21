@@ -1,4 +1,5 @@
 MODULE = "OggiSport"
+SUMMARY = "Italian daily Sport Tv guide"
 DESCRIPTION = "Italian daily Sport Tv guide"
 
 inherit gitpkgv

@@ -1,3 +1,4 @@
+SUMMARY = "USB DVB driver for TBS Tuners"
 DESCRIPTION = "USB DVB driver for TBS Tuners"
 
 require dvb-usb-drivers-meta.inc

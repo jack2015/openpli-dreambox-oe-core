@@ -1,4 +1,5 @@
 MODULE = "EPGImportFilter"
+SUMMARY = "EPGImport Filter"
 DESCRIPTION = "EPGImport Filter"
 
 RDEPENDS_${PN} = "\

@@ -1,3 +1,4 @@
+SUMMARY = "NewVirtualKeyBoard plugin by mfaraj57"
 DESCRIPTION = "NewVirtualKeyBoard plugin by mfaraj57"
 MAINTAINER = "Open Vision Developers"
 LICENSE = "GPLv3"

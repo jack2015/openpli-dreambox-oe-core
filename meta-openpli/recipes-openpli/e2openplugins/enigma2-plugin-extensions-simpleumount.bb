@@ -1,4 +1,5 @@
 MODULE = "SimpleUmount"
+SUMMARY = "Unmounter for mass storage devices"
 DESCRIPTION = "Unmounter for mass storage devices"
 MAINTAINTER = "ambrosa"
 

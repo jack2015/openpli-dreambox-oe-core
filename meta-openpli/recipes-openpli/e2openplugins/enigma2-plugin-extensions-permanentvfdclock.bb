@@ -1,4 +1,5 @@
 MODULE = "PermanentVfdClock"
+SUMMARY = "Show clock in VFD permanently"
 DESCRIPTION = "Show clock in VFD permanently"
 
 PR="r0"

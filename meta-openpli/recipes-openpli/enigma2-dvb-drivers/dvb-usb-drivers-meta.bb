@@ -1,6 +1,7 @@
-DESCRIPTION = "meta file for USB DVB drivers"
+SUMMARY = "meta file for USB DVB drivers"
+inherit packagegroup
 
-require dvb-usb-drivers-meta.inc
+require conf/license/license-gplv2.inc
 
 DEPENDS = "\
 	enigma2-plugin-drivers-atsc-usb-hauppauge \
@@ -26,3 +27,5 @@ DEPENDS = "\
 	"
 
 PV = "1.1"
+PACKAGES = "${PN}"
+ALLOW_EMPTY_${PN} = "1"

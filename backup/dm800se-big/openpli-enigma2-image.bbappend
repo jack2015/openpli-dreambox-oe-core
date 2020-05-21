@@ -1,5 +1,6 @@
 IMAGE_INSTALL_remove = "distro-feed-configs"
 IMAGE_INSTALL_remove = "hdparm"
+IMAGE_INSTALL_remove = "3rd-party-feed-configs"
 
 #dm800se-big
 
@@ -33,12 +34,16 @@ KERNEL_WIFI_DRIVERS = " \
 	\
 	rtl8188eu \
 	rtl8192eu \
-	rt3070 \
+	enigma2-plugin-drivers-rt3070 \
 	"
 
 EXTERNAL_WIFI_DRIVERS = ""
 
 ENIGMA2_PLUGINS = " \
+	enigma2-plugin-language-en \
+	enigma2-plugin-language-zh-cn \
+	enigma2-plugin-language-ru \
+	\
 	enigma2-plugin-extensions-audiosync \
 	enigma2-plugin-extensions-autobackup \
 	enigma2-plugin-extensions-backupsuite \

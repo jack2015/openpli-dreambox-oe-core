@@ -1,3 +1,4 @@
+SUMMARY = "USB dvbsky driver for T330"
 DESCRIPTION = "USB dvbsky driver for T330"
 
 require dvb-usb-drivers-meta.inc

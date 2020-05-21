@@ -1,3 +1,4 @@
+SUMMARY = "Modify colors anf font in PLi-FullHD and PLi-HD1"
 DESCRIPTION = "Modify colors anf font in PLi-FullHD and PLi-HD1"
 MAINTAINER = "ims"
 LICENSE = "Proprietary"

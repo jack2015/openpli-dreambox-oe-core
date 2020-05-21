@@ -1,4 +1,5 @@
 MODULE = "HetWeer"
+SUMMARY = "HetWeer plugin"
 DESCRIPTION = "HetWeer plugin"
 
 require conf/license/license-gplv2.inc

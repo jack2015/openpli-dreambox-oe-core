@@ -1,4 +1,5 @@
 MODULE = "Blackoutblind"
+SUMMARY = "Hide white dotted lines (VBI) on top of the screen"
 DESCRIPTION = "Hide white dotted lines (VBI) on top of the screen"
 
 inherit gitpkgv

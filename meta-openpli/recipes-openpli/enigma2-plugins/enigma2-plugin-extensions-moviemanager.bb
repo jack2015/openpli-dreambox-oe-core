@@ -1,3 +1,4 @@
+SUMMARY = "Plugin for copy or move more files at once"
 DESCRIPTION = "Plugin for copy or move more files at once"
 MAINTAINER = "ims"
 LICENSE = "Proprietary"

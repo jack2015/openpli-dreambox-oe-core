@@ -1,4 +1,5 @@
 MODULE = "AutoShutDown"
+SUMMARY = "automated power off for STB"
 DESCRIPTION = "automated power off for STB"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 

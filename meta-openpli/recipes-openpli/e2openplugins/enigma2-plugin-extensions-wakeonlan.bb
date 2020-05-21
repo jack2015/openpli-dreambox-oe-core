@@ -1,4 +1,5 @@
 MODULE = "WakeOnLan"
+SUMMARY = "Send a WOL packet to devices"
 DESCRIPTION = "Send a WOL packet to devices"
 
 require conf/license/license-gplv2.inc

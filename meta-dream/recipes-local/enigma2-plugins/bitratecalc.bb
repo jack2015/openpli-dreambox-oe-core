@@ -1,3 +1,4 @@
+SUMMARY = "Library that implements bitrate calculations from enigma2"
 DESCRIPTION = "Library that implements bitrate calculations from enigma2"
 HOMEPAGE = "https://github/Taapat/bitratecalc"
 require conf/license/license-gplv2.inc

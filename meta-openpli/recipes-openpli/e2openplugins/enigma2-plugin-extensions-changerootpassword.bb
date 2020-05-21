@@ -1,4 +1,5 @@
 MODULE = "ChangeRootPassword"
+SUMMARY = "Set/Change your box password"
 DESCRIPTION = "Set/Change your box password"
 
 inherit gitpkgv

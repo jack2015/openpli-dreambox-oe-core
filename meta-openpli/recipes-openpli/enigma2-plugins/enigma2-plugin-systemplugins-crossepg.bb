@@ -1,3 +1,4 @@
+SUMMARY = "Handle your EPG on enigma2 from various sources (opentv, xmltv, custom sources)"
 DESCRIPTION = "Handle your EPG on enigma2 from various sources (opentv, xmltv, custom sources)"
 HOMEPAGE = "https://github.com/oe-alliance/e2openplugin-CrossEPG"
 LICENSE = "LGPLv2.1"

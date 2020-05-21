@@ -1,3 +1,4 @@
+SUMMARY = "USB DVB driver for Technisat Skystar HD"
 DESCRIPTION = "USB DVB driver for Technisat Skystar HD"
 
 require dvb-usb-drivers-meta.inc

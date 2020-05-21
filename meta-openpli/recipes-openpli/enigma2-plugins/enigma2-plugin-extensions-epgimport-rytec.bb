@@ -1,3 +1,4 @@
+SUMMARY = "Rytec's XMLTV sources and channels for the EPGImporter"
 DESCRIPTION = "Rytec's XMLTV sources and channels for the EPGImporter"
 MAINTAINER = "Rytec forum @ forums.openpli.org"
 

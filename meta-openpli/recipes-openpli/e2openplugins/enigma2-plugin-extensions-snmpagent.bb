@@ -1,4 +1,5 @@
 MODULE = "SnmpAgent"
+SUMMARY = "SNMP Agent"
 DESCRIPTION = "SNMP Agent"
 
 RDEPENDS_${PN} = "enigma2-plugin-extensions-bitrate twistedsnmp"

@@ -1,3 +1,4 @@
+SUMMARY = "Advanced history zap selector"
 DESCRIPTION = "Advanced history zap selector"
 HOMEPAGE = "https://github.com/Dima73/enigma2-plugin-extensions-historyzapselector"
 LICENSE = "PD"

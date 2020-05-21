@@ -1,4 +1,5 @@
 MODULE = "ShootYourScreen"
+SUMMARY = "create screenshots with remote control of your STB"
 DESCRIPTION = "create screenshots with remote control of your STB"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 RDEPENDS_${PN} = "aio-grab"

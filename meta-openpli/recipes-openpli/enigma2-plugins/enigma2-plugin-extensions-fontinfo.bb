@@ -1,3 +1,4 @@
+SUMMARY = "Display line height for fonts used in skin"
 DESCRIPTION = "Display line height for fonts used in skin"
 MAINTAINER = "ims"
 LICENSE = "Proprietary"

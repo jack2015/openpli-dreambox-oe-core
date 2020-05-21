@@ -1,3 +1,4 @@
+SUMMARY = "USB DVB driver for dtt200u chipsets"
 DESCRIPTION = "USB DVB driver for dtt200u chipsets"
 
 require dvb-usb-drivers-meta.inc

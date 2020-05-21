@@ -1,3 +1,4 @@
+SUMMARY = "USB DVB driver for af9035 devices"
 DESCRIPTION = "USB DVB driver for af9035 devices"
 
 require dvb-usb-drivers-meta.inc

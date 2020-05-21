@@ -1,3 +1,4 @@
+SUMMARY = "Backup and restore your image"
 DESCRIPTION = "Backup Suite"
 LICENSE = "GPLv3"
 MAINTAINER = "Open Vision Developers"

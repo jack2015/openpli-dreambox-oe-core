@@ -1,3 +1,4 @@
+SUMMARY = "Imports XMLTV and epg.dat files into the EPG cache of enigma2"
 DESCRIPTION = "Imports XMLTV and epg.dat files into the EPG cache of enigma2"
 MAINTAINER = "OpenPLi team"
 

@@ -1,3 +1,4 @@
+SUMMARY = "USB serial drivers"
 DESCRIPTION = "USB serial drivers"
 
 require conf/license/openpli-gplv2.inc

@@ -1,4 +1,5 @@
 MODULE = "StreamInterface"
+SUMMARY = "Stream webinterface on port 40080"
 DESCRIPTION = "Stream webinterface on port 40080"
 
 RDEPENDS_${PN} = "python-twisted-web"

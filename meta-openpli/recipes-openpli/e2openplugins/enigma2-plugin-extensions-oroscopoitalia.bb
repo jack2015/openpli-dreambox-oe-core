@@ -1,4 +1,5 @@
 MODULE = "OroscopoItalia"
+SUMMARY = "Italian ppl horoscope"
 DESCRIPTION = "Italian ppl horoscope"
 
 inherit gitpkgv

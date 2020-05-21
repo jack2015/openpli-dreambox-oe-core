@@ -1,3 +1,4 @@
+SUMMARY = "Search the internet bases themoviedb.org/kinopoisk.ru"
 DESCRIPTION = "Search the internet bases themoviedb.org/kinopoisk.ru"
 HOMEPAGE = "https://github.com/Dima73/enigma2-plugin-extensions-tmbd"
 LICENSE = "PD"

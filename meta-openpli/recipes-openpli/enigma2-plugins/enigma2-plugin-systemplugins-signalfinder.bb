@@ -1,3 +1,4 @@
+SUMMARY = "Signal finder for DVB-S2 tuners"
 DESCRIPTION = "Signal finder for DVB-S2 tuners"
 HOMEPAGE = "https://github.com/Dima73/enigma2-plugin-signalfinder"
 LICENSE = "PD"

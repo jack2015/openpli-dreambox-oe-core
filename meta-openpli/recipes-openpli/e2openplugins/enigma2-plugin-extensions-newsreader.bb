@@ -1,4 +1,5 @@
 MODULE = "NewsReader"
+SUMMARY = "RSS reader"
 DESCRIPTION = "RSS reader"
 
 require conf/license/license-gplv2.inc

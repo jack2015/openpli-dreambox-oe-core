@@ -1,3 +1,4 @@
+SUMMARY = "PluginSkinMover"
 DESCRIPTION = "PluginSkinMover"
 LICENSE = "GPLv3"
 MAINTAINER = "Openpli Developers"

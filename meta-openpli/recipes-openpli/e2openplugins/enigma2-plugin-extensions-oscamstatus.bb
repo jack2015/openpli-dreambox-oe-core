@@ -1,4 +1,5 @@
 MODULE = "OscamStatus"
+SUMMARY = "shows status of your oscam server"
 DESCRIPTION = "shows status of your oscam server"
 
 inherit gitpkgv

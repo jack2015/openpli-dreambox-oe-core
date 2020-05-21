@@ -1,3 +1,4 @@
+SUMMARY = "Extra fan control - using HDD/SSD/CPU temp"
 DESCRIPTION = "Extra fan control - using HDD/SSD/CPU temp"
 HOMEPAGE = "https://github.com/Dima73/enigma2-plugin-systemplugins-extrafancontrol"
 LICENSE = "PD"

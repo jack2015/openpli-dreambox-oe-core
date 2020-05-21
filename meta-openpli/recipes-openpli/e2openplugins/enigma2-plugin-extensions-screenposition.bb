@@ -1,4 +1,5 @@
 MODULE = "ScreenPosition"
+SUMMARY = "Adjust the screen position"
 DESCRIPTION = "Adjust the screen position"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 

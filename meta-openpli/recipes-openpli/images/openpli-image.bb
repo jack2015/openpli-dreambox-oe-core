@@ -21,6 +21,7 @@ IMAGE_INSTALL = "\
 	nfs-utils \
 	nfs-utils-client \
 	openpli-bootlogo \
+	openssh-sftp \
 	openssh-sftp-server \
 	opkg \
 	packagegroup-base \

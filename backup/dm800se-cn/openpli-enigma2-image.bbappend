@@ -1,5 +1,6 @@
 IMAGE_INSTALL_remove = "distro-feed-configs"
 IMAGE_INSTALL_remove = "hdparm"
+IMAGE_INSTALL_remove = "3rd-party-feed-configs"
 
 #dm800se-cn
 
@@ -8,14 +9,16 @@ IMAGE_INSTALL_append += " \
 	libcrypto-compat \
 	"
 
-KERNEL_WIFI_DRIVERS = " \
-	firmware-rtl8712u \
-	kernel-module-r8712u \
-	"
+KERNEL_WIFI_DRIVERS = ""
 
 EXTERNAL_WIFI_DRIVERS = ""
 
 ENIGMA2_PLUGINS = " \
+	enigma2-plugin-language-en \
+	enigma2-plugin-language-zh-cn \
+	enigma2-plugin-font-wqy-microhei \
+	enigma2-plugin-drivers-network-usb-r8712u \
+	\
 	enigma2-plugin-extensions-audiosync \
 	enigma2-plugin-extensions-autobackup \
 	enigma2-plugin-extensions-backupsuite \
@@ -122,12 +125,13 @@ rootfs_myworks() {
 	rm -rf ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/SystemPlugins/NetworkBrowser/locale
 	rm -rf ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/SystemPlugins/ServiceApp/locale
 	rm -rf ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/SystemPlugins/SystemTime/locale
+	rm -rf ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/SystemPlugins/MountManager/locale/ru
+	rm -rf ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/SystemPlugins/MountManager/locale/fr
 	rm -f ${IMAGE_ROOTFS}/usr/share/enigma2/PLi-HD/picon_default.png
 	rm -f ${IMAGE_ROOTFS}/usr/share/enigma2/PLi-FullHD/picon_default.png
 	rm -f ${IMAGE_ROOTFS}/usr/share/enigma2/PLi-FullNightHD/picon_default.png
 	cp -rf ${THISDIR}/files/dm800se-cn/usr ${IMAGE_ROOTFS}/
 	cp -rf ${THISDIR}/files/dm800se-cn/etc ${IMAGE_ROOTFS}/
-	rm -rf ${IMAGE_ROOTFS}/usr/share/enigma2/po/ru
 	upxall
 }
 

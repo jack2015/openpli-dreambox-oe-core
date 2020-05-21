@@ -1,5 +1,6 @@
 IMAGE_INSTALL_remove = "distro-feed-configs"
 IMAGE_INSTALL_remove = "hdparm"
+IMAGE_INSTALL_remove = "3rd-party-feed-configs"
 
 #dm800se-en
 
@@ -8,22 +9,21 @@ IMAGE_INSTALL_append += " \
 	libcrypto-compat \
 	"
 
-KERNEL_WIFI_DRIVERS = " \
-	firmware-rtl8712u \
-	kernel-module-r8712u \
-	"
+KERNEL_WIFI_DRIVERS = ""
 
 EXTERNAL_WIFI_DRIVERS = ""
 
 ENIGMA2_PLUGINS = " \
+	enigma2-plugin-language-en \
+	enigma2-plugin-language-ru \
+	enigma2-plugin-drivers-network-usb-r8712u \
+	\
 	enigma2-plugin-extensions-audiosync \
 	enigma2-plugin-extensions-autobackup \
 	enigma2-plugin-extensions-backupsuite \
 	enigma2-plugin-extensions-cutlisteditor \
 	enigma2-plugin-extensions-cacheflush \
 	enigma2-plugin-extensions-epgimport \
-	enigma2-plugin-extensions-filecommander \
-	enigma2-plugin-extensions-flashexpander \
 	enigma2-plugin-extensions-graphmultiepg \
 	enigma2-plugin-extensions-mediaplayer \
 	enigma2-plugin-extensions-mediascanner \
@@ -133,19 +133,17 @@ rootfs_myworks() {
 	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/OscamStatus/locale
 	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/MovieCut/locale
 	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/EPGImport/locale
-	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/PluginSkinMover/locale
+	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/OpenMultiboot/locale
 	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/SystemPlugins/NetworkBrowser/locale
 	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/SystemPlugins/ServiceApp/locale
 	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/SystemPlugins/SystemTime/locale
+	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/SystemPlugins/MountManager/locale
 	rm -f ${IMAGE_ROOTFS}/usr/share/enigma2/PLi-HD/picon_default.png
 	rm -f ${IMAGE_ROOTFS}/usr/share/enigma2/PLi-FullHD/picon_default.png
 	rm -f ${IMAGE_ROOTFS}/usr/share/enigma2/PLi-FullNightHD/picon_default.png
 	rm -f ${IMAGE_ROOTFS}/usr/lib/locale/locale-archive
 	cp -rf ${THISDIR}/files/dm800se-en/usr ${IMAGE_ROOTFS}/
 	cp -rf ${THISDIR}/files/dm800se-en/etc ${IMAGE_ROOTFS}/
-	rm -f ${IMAGE_ROOTFS}/usr/share/fonts/fallback.font
-	rm -f ${IMAGE_ROOTFS}/usr/share/fonts/wqy-microhei.ttc
-	rm -rf ${IMAGE_ROOTFS}/usr/share/enigma2/po/zh_CN
 	upxall
 }
 

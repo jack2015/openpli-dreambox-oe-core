@@ -1,3 +1,4 @@
+SUMMARY = "Plugin for managing autofs files, mount and umount"
 DESCRIPTION = "Plugin for managing autofs files, mount and umount"
 MAINTAINER = "ims"
 LICENSE = "GPLv2"
