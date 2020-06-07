@@ -48,8 +48,8 @@ index aa78217..deeae6e 100644
 +		configlist.append(getConfigListEntry(_('Choose VirtualKeyBoard Style:'),
 +			config.plugins.YouTube.VirtualKeyBoard,
 +			_('You can choose what style of VirtualKeyBoard to use it.\nYouTube OR Image (VirtualKeyBoard).')))
- 
- 		self['config'].list = configlist
- 		self['config'].l.setList(configlist)
+ 		for p in plugins.getPlugins(where=PluginDescriptor.WHERE_MENU):
+ 			# TRANSLATORS: Don't translate this! It is used as a variable, so it must be equal to the translation in the plugin!
+ 			if p.name == _("ServiceApp"):
 -- 
 2.20.1
