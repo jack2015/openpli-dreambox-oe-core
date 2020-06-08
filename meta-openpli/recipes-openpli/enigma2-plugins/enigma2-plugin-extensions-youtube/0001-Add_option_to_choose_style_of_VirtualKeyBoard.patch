@@ -29,10 +29,10 @@ index 81e97ff..0d37513 100644
  	def keyBoardCallback(self, name):
  		config = self['config'].getCurrent()[1]
 diff --git a/src/YouTubeUi.py b/src/YouTubeUi.py
-index aa78217..deeae6e 100644
+index 8888915..de06bce 100644
 --- a/src/YouTubeUi.py
 +++ b/src/YouTubeUi.py
-@@ -113,6 +113,8 @@ config.plugins.YouTube.onMovieEof = ConfigSelection(default='quit', choices=[
+@@ -116,6 +116,8 @@ config.plugins.YouTube.onMovieEof = ConfigSelection(default='quit', choices=[
  	('playprev', _('Play previous'))])
  config.plugins.YouTube.onMovieStop = ConfigSelection(default='ask', choices=[
  	('ask', _('Ask user')), ('quit', _('Return to list'))])
@@ -41,7 +41,7 @@ index aa78217..deeae6e 100644
  config.plugins.YouTube.login = ConfigYesNo(default=False)
  config.plugins.YouTube.downloadDir = ConfigDirectory(default=resolveFilename(SCOPE_HDD))
  config.plugins.YouTube.mergeFiles = ConfigYesNo(default=False)
-@@ -1530,6 +1532,9 @@ class YouTubeSetup(ConfigListScreen, Screen):
+@@ -1476,6 +1478,9 @@ class YouTubeSetup(ConfigListScreen, Screen):
  		configlist.append(getConfigListEntry(_('Merge downloaded files:'),
  			config.plugins.YouTube.mergeFiles,
  			_('FFmpeg will be used to merge downloaded DASH video and audio files.\nFFmpeg will be installed if necessary.')))
