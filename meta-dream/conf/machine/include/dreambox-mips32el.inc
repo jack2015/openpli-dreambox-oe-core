@@ -1,5 +1,8 @@
 # dreambox-mips32el.inc
 
+STB_PLATFORM = "dm1gen"
+BOX_BRAND = "dreambox"
+
 TARGET_ARCH = "mipsel"
 DEFAULTTUNE = "mips32el"
 
