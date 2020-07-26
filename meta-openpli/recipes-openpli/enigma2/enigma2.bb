@@ -102,7 +102,7 @@ RDEPENDS_${PN}-build-dependencies = "\
 inherit gitpkgv pythonnative
 
 PV = "2.7+git${SRCPV}"
-PKGV = "2.7+git${GITPKGV}"004-restore-last-update-date-time
+PKGV = "2.7+git${GITPKGV}"
 
 ENIGMA2_BRANCH ?= "develop"
 GITHUB_URI ?= "git://github.com"
