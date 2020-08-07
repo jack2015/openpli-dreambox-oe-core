@@ -112,7 +112,6 @@ SRC_URI = " ${GITHUB_URI}/OpenVisionE2/enigma2-openvision.git;branch=${ENIGMA2_B
 			file://02-dont-remove-e2iplayer.patch \
 			file://03-make-PLi-FullNightHD-skin-default.patch \
 			file://04-restore-last-update-date-time.patch \
-			file://05-set-box-brand-to-dreambox.patch \
 			file://06-update-skin-display.patch \
 			file://012-set-default-hide-channel-list-radio.patch \
 			"
