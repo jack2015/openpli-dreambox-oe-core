@@ -3,7 +3,7 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 DEPENDS = "python"
 
-require conf/license/openvision-gplv2.inc
+require conf/license/openpli-gplv2.inc
 
 inherit autotools-brokensep gitpkgv pythonnative
 
@@ -67,6 +67,7 @@ EXTRA_OECONF = " \
     --with-blindscanbinary="${BLINDSCAN_BINARY}" \
     --with-socfamily="${SOC_FAMILY}" \
     --with-vfd-symbol="${HAVE_VFDSYMBOL}" \
+    --with-kernelversion="${KERNELVERSION}" \
     "
 
 FILES_${PN} = "${libdir}/enigma2/python/*.so"
