@@ -6,13 +6,13 @@ Thanks to OpenPLi.
 
 In comparison to OpenPLi this repository has:<br>
 -Submodules bitbake, openembedded-core and meta-openembedded from master branch,<br>
-&nbsp;with git snapshot of May 17th, 2020.<br>
+&nbsp;with git snapshot of August 10th, 2020.<br>
 -GCC 10.1.0<br>
--Glibc 2.31<br>
--GStreamer 1.17.0.1<br>
+-Glibc 2.32<br>
+-GStreamer 1.17.2.1<br>
 -Python 2.7.18<br>
 -OpenSSL 1.1.1g<br>
--Busybox 1.31.1<br>
+-Busybox 1.32.0<br>
 -Dreambox kernel 3.2.102<br>
 and more.<br>
 <br>
