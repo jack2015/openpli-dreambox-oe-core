@@ -1,5 +1,5 @@
 diff --git a/data/display/display128/skin_display.xml b/data/display/display128/skin_display.xml
-index ddeb91caa..578065e21 100644
+index 04d813af7..d0cd90f3c 100644
 --- a/data/display/display128/skin_display.xml
 +++ b/data/display/display128/skin_display.xml
 @@ -1,5 +1,4 @@
@@ -59,7 +59,6 @@ index ddeb91caa..578065e21 100644
  		</widget>
 -		<panel position="bottom" size="*,24" name="SummaryClockPanel" />
 -	</screen>
--
 +		<widget source="global.CurrentTime" render="Label" position="68,40" size="60,24" font="FdLcD;24" halign="right" valign="top" noWrap="1">
 +			<convert type="ClockToText"></convert>
 +		</widget>
@@ -67,7 +66,7 @@ index ddeb91caa..578065e21 100644
 +			<convert type="ConditionalShowHide">Blink</convert>
 +		</widget>
 +	</screen>  
-+
+ 
  <!-- menus-->
  	<screen name="MenuSummary" position="fill">
  		<widget source="parent.title" render="Label" position="top" size="*,16" font="FdLcD;14" halign="center" valign="top" noWrap="1" />
@@ -112,7 +111,7 @@ index ddeb91caa..578065e21 100644
  				<convert type="ClockToText"></convert>
  			</widget>
  		</panel>
-@@ -159,8 +169,8 @@
+@@ -156,8 +166,8 @@
  	</screen>
  
  <!-- standby -->
