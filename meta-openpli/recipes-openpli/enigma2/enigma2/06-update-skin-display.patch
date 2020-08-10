@@ -59,7 +59,7 @@ index ddeb91caa..578065e21 100644
  		</widget>
 -		<panel position="bottom" size="*,24" name="SummaryClockPanel" />
 -	</screen>
--  
+-
 +		<widget source="global.CurrentTime" render="Label" position="68,40" size="60,24" font="FdLcD;24" halign="right" valign="top" noWrap="1">
 +			<convert type="ClockToText"></convert>
 +		</widget>
