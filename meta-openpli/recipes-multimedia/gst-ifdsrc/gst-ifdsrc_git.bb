@@ -10,7 +10,7 @@ PV = "1.0+git${SRCPV}"
 PKGV = "1.0+git${GITPKGV}"
 PR = "r0"
 
-SRC_URI = "git://github.com/OpenVisionE2/gst-ifdsrc.git;protocol=git"
+SRC_URI = "git://github.com/jack2015/gst-ifdsrc.git"
 
 S = "${WORKDIR}/git/"
 

@@ -1,13 +1,16 @@
 SRC_URI = "git://github.com/jack2015/enigma2-openpli.git;branch=dm800se"
 
-RRECOMMENDS_${PN}_remove = "enigma2-plugin-skins-octetfhd"
-
 PYTHON_RDEPS_append += " \
 	python-mmap \
+	python-six \
 	python-netifaces \
 	"
 
 RDEPENDS_enigma2-plugin-systemplugins-wirelesslan = "wpa-supplicant wireless-tools python-wifi"
+
+RRECOMMENDS_enigma2-plugin-extensions-dvdplayer = "kernel-module-udf"
+RRECOMMENDS_enigma2-plugin-extensions-dvdburn = "kernel-module-pktcdvd"
+RRECOMMENDS_${PN}-build-dependencies = "kernel-module-udf kernel-module-pktcdvd"
 
 RDEPENDS_${PN}-build-dependencies_remove = "iw"
 

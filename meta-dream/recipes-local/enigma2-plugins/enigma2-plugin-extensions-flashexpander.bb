@@ -2,7 +2,6 @@ SUMMARY = "Expand your flash using an USB stick or an NFS share"
 DESCRIPTION = "Expand your flash using an USB stick or an NFS share"
 MAINTAINER = "Openpli Developers"
 require conf/license/openpli-gplv2.inc
-LICENSE = "CLOSED"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 PACKAGES = "${PN}"
 

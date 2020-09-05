@@ -1,5 +1,7 @@
 COMPATIBLE_MACHINE = "^(dm500hd|dm500hdv2|dm800se|dm800sev2|dm7020hd|dm8000)$"
 
+PACKAGE_ARCH = "${MACHINE_ARCH}"
+
 PATCHLEVEL = "102"
 
 SRC_URI = " \
@@ -33,15 +35,18 @@ SRC_URI = " \
 			file://025-fixme-hardfloat.patch \
 			file://026-correctly-initiate-nand-flash-ecc-config-when-old-2n.patch \
 			file://027-kernel-add-support-for-gcc9.patch \
-			file://028-fix-build-with-gcc7.patch \
-			file://029-move-atomic-flags-field-after-cputime-expires-field.patch \
-			file://030-fix-build-gcc8.patch \
-			file://031-dvb_frontend-backport-multistream-support.patch \
-			file://032-STV-Add-MIS-PLS-support.patch \
-			file://033-STV-Add-SNR-Signal-report-parameters.patch  \
-			file://034-stv090x-optimized-TS-sync-control.patch \
-			file://035-tbs.patch \
+			file://028-move-atomic-flags-field-after-cputime-expires-field.patch \
+			file://029-dvb_frontend-backport-multistream-support.patch \
+			file://030-STV-Add-MIS-PLS-support.patch \
+			file://031-STV-Add-SNR-Signal-report-parameters.patch  \
+			file://032-stv090x-optimized-TS-sync-control.patch \
+			file://033-tbs.patch \
 			file://defconfig \
+			file://genksyms_fix_typeof_handling.patch \
+			file://0012-log2-give-up-on-gcc-constant-optimizations.patch \
+			file://0013-cp1emu-do-not-use-bools-for-arithmetic.patch \
+			file://0014-makefile-silence-packed-not-aligned-warn.patch \
+			file://0015-fcrypt-fix-bitoperation-for-gcc.patch \
 "
 
 SRC_URI[kernel.md5sum] = "7ceb61f87c097fc17509844b71268935"

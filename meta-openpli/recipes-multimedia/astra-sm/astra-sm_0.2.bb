@@ -7,7 +7,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=d32239bcb673463ab874e80d47fae504"
 
 DEPENDS = "libaio"
 
-SRC_URI = "git://gitlab.com/berdyansk/astra-sm.git;protocol=http \
+SRC_URI = "git://gitlab.com/berdyansk/astra-sm.git;protocol=https \
 	file://version.patch \
 	file://undef_dvb_net.patch \
 	file://astra-sm \

@@ -1,0 +1,22 @@
+--- sl/os_dep/linux/ioctl_cfg80211.c	2018-05-20 11:34:54.000000000 +0300
++++ sd/os_dep/linux/ioctl_cfg80211.c	2020-06-23 00:20:07.120851000 +0300
+@@ -32,7 +32,11 @@
+ #endif /* Linux kernel >= 4.0.0 */
+ 
+ #include <rtw_wifi_regd.h>
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(3, 5, 0))
++#include <linux/nl80211.h>
++#else
+ #include <uapi/linux/nl80211.h>
++#endif
+ 
+ #define RTW_MAX_MGMT_TX_CNT (8)
+ #define RTW_MAX_MGMT_TX_MS_GAS (500)
+@@ -4455,6 +4459,7 @@
+ struct sta_info *rtw_sta_info_get_by_idx(const int idx, struct sta_priv *pstapriv)
+ 
+ {
++
+ 	_list	*phead, *plist;
+ 	struct sta_info *psta = NULL;
+ 	int i = 0;

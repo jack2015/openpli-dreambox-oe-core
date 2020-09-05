@@ -2,7 +2,7 @@
 case "$1" in
 start)
 	echo -n "Starting udpxy: "
-	start-stop-daemon -S -b -n udpxy -a /usr/bin/udpxy -- -p 4022
+	start-stop-daemon -S -b -n udpxy -a ${bindir}/udpxy -- -p 4022
 	echo "done"
 	;;
 stop)

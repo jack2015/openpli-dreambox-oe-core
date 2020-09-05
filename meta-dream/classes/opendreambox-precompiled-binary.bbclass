@@ -1,4 +1,3 @@
-require conf/license/license-close.inc
 PRECOMPILED_NAME ?= "${PN}"
 PRECOMPILED_ARCH ?= "${PACKAGE_ARCH}"
 PRECOMPILED_VERSION ?= "${PV}"

@@ -1,14 +1,5 @@
-From 4fd3139906b7864fb5b9f56aca031ab61ddf5e43 Mon Sep 17 00:00:00 2001
-From: Persian Prince <persianpros@yahoo.com>
-Date: Fri, 3 Jan 2020 18:40:59 +0330
- 0002-opkg-symlink-to-directory-workarounds.patch
-
----
- libopkg/opkg_install.c | 16 +++++++++++++---
- 1 file changed, 13 insertions(+), 3 deletions(-)
-
 diff --git a/libopkg/opkg_install.c b/libopkg/opkg_install.c
-index c2b4182..e743bbb 100644
+index b8ee4b3..31f2c6b 100644
 --- a/libopkg/opkg_install.c
 +++ b/libopkg/opkg_install.c
 @@ -431,6 +431,7 @@ static int check_data_file_clashes(pkg_t * pkg, pkg_t * old_pkg)

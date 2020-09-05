@@ -1,2 +1,2 @@
-X264_DISABLE_ASM = "--disable-asm \
-					"
+SRCREV = "${AUTOREV}"
+X264_DISABLE_ASM = "--disable-asm"

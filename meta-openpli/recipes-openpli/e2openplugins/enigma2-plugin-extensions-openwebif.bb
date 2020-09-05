@@ -24,7 +24,8 @@ inherit gitpkgv
 
 require openplugins-distutils.inc
 
-SRC_URI += "file://get-rid-of-orgdream-check.patch"
+SRC_URI += " \
+	file://0001-revert-workaround-for-non-pli-streamproxy.patch"
 
 PV = "1+git${SRCPV}"
 PKGV = "1+git${GITPKGV}"

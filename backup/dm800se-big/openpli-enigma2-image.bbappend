@@ -10,32 +10,11 @@ IMAGE_INSTALL_append += " \
 	ffmpeg \
 	exteplayer3 \
 	gstplayer \
+	wget \
+	busybox-cron \
 	"
 
-KERNEL_WIFI_DRIVERS = " \
-	firmware-carl9170 \
-	firmware-htc7010 \
-	firmware-htc9271 \
-	firmware-rt2870 \
-	firmware-rt73 \
-	firmware-rtl8712u \
-	firmware-zd1211 \
-	\
-	kernel-module-ath9k-htc \
-	kernel-module-carl9170 \
-	kernel-module-r8712u \
-	kernel-module-rt2500usb \
-	kernel-module-rt2800usb \
-	kernel-module-rt73usb \
-	kernel-module-rtl8187 \
-	kernel-module-zd1211rw \
-	firmware-rtl8192eu \
-	firmware-rtl8188eu \
-	\
-	rtl8188eu \
-	rtl8192eu \
-	enigma2-plugin-drivers-rt3070 \
-	"
+KERNEL_WIFI_DRIVERS = ""
 
 EXTERNAL_WIFI_DRIVERS = ""
 
@@ -43,6 +22,9 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-language-en \
 	enigma2-plugin-language-zh-cn \
 	enigma2-plugin-language-ru \
+	enigma2-plugin-font-wqy-microhei \
+	enigma2-plugin-skins-pli-fullnighthd \
+	enigma2-plugin-extensions-fancontrol2 \
 	\
 	enigma2-plugin-extensions-audiosync \
 	enigma2-plugin-extensions-autobackup \
@@ -50,6 +32,7 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-extensions-cutlisteditor \
 	enigma2-plugin-extensions-cacheflush \
 	enigma2-plugin-extensions-epgimport \
+	enigma2-plugin-extensions-e2iplayer \
 	enigma2-plugin-extensions-filecommander \
 	enigma2-plugin-extensions-graphmultiepg \
 	enigma2-plugin-extensions-mediaplayer \

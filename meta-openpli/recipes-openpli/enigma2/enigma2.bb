@@ -30,8 +30,6 @@ RDEPENDS_${PN} = " \
 	"
 
 RRECOMMENDS_${PN} = " \
-	enigma2-plugin-skins-pli-hd \
-	enigma2-plugin-skins-octetfhd \
 	hotplug-e2-helper \
 	glibc-gconv-utf-16 \
 	python-sendfile \
@@ -54,6 +52,7 @@ PYTHON_RDEPS = " \
 	python-re \
 	python-service-identity \
 	python-shell \
+	python-six \
 	python-threading \
 	python-twisted-core \
 	python-twisted-web \

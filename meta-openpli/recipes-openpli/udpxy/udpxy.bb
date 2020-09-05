@@ -5,24 +5,20 @@ PRIORITY = "optional"
 LICENSE = "GPLv3"
 LIC_FILES_CHKSUM = "file://README;md5=b0c7b851d6d40e5194e73ca66db0e257"
 
-inherit gitpkgv
+inherit gitpkgv autotools-brokensep pkgconfig update-rc.d
 
 PV = "1+git${SRCPV}"
 PKGV = "1+git${GITPKGV}"
 
-inherit autotools-brokensep pkgconfig
-
-SRC_URI = " git://github.com/pcherenkov/udpxy.git \
-			file://fix-build-with-gcc8.patch \
-			file://udpxy.sh \
-			"
+SRC_URI = "git://github.com/pcherenkov/udpxy.git file://udpxy.sh"
+CFLAGS_append = " -Wno-format-truncation ${@bb.utils.contains("TARGET_ARCH", "sh4", "", "-Wno-error=stringop-truncation", d)} "
 
 S = "${WORKDIR}/git/chipmunk"
 
 FILES_${PN} = "${bindir}/* ${sysconfdir}/init.d/udpxy.sh"
 
 do_compile() {
-	make -f Makefile udpxy
+    make -f Makefile udpxy
 }
 
 do_install() {
@@ -34,5 +30,3 @@ do_install() {
 
 INITSCRIPT_NAME = "udpxy.sh"
 INITSCRIPT_PARAMS = "defaults"
-
-inherit update-rc.d

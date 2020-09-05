@@ -9,7 +9,7 @@ INSANE_SKIP_${PN} += "src-uri-bad"
 inherit module
 
 SRC_URI = " \
-          https://github.com/anthonywong/rtl8723bs/archive/v4.4.1.tar.gz \
+          file://rtl8723bs-4.4.1.tar.gz \
           file://rt8723bs-makefile.patch \
           file://rt8723bs-remove-debug.patch \
           file://rt8723bs-gcc5.patch \

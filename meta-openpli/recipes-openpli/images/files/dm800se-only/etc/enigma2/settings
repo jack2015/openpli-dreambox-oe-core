@@ -27,4 +27,5 @@ config.plugins.serviceapp.servicemp3.player=exteplayer3
 config.plugins.serviceapp.servicemp3.replace=true
 config.timezone.area=Classic
 config.timezone.val=Asia/Hong_Kong
+config.misc.enableGeolocation=false
 config.plugins.softwaremanager.onSetupMenu=true

@@ -78,7 +78,6 @@ IMAGE_INSTALL += " \
 	cdtextinfo \
 	enigma2 \
 	libavahi-client \
-	settings-autorestore \
 	tuxbox-common \
 	${ENIGMA2_PLUGINS} \
 	${KERNEL_WIFI_DRIVERS} \

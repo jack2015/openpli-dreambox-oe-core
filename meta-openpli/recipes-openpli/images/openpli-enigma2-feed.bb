@@ -21,19 +21,35 @@ OPTIONAL_PACKAGES += " \
 	dvbsnoop \
 	exteplayer3 \
 	ffmpeg \
+	hddtemp \
+	curl \
 	gstplayer \
 	inadyn-mt \
 	mc \
+	nfs-utils \
+	libtorrent \
 	openssh \
 	openvpn \
+	openresolv \
+	openssh \
 	ushare \
-	openmultiboot \
+	python-attr \
+	python-attrs \
 	python-beautifulsoup4 \
+	python-future \
+	python-futures \
+	python-isodate \
 	python-js2py \
 	python-lxml \
 	python-mechanize \
 	python-ntplib \
+	python-pexpect \
+	python-pip \
+	python-pyasn1-modules \
 	python-requests \
+	python-singledispatch \
+	python-ujson \
+	python-websocket-client \
 	${OPTIONAL_BSP_PACKAGES} \
 	"
 
@@ -51,14 +67,18 @@ ENIGMA2_OPTIONAL = " \
 	enigma2-plugin-softcams-cccam-v209 \
 	enigma2-plugin-softcams-cccam-v221 \
 	enigma2-plugin-softcams-cccam-v238 \
+	enigma2-plugin-softcams-wicardd \
 	enigma2-plugin-softcams-mgcamd-v135a \
 	enigma2-plugin-softcams-mgcamd-v145c \
 	enigma2-plugin-extensions-keyadder \
-	enigma2-plugin-extensions-yahooweather \
+	enigma2-plugin-extensions-weathermsn \
+	enigma2-plugin-extensions-weatherplugin \
 	enigma2-plugin-extensions-backupsuite \
 	enigma2-plugin-extensions-blurayplayer \
+	enigma2-plugin-extensions-vpnmanager \
 	enigma2-plugin-extensions-e2iplayer \
 	enigma2-plugin-extensions-epgimport \
+	enigma2-plugin-extensions-tsmedia \
 	enigma2-plugin-extensions-filecommander \
 	enigma2-plugin-extensions-fontinfo \
 	enigma2-plugin-extensions-flashexpander \
@@ -70,6 +90,7 @@ ENIGMA2_OPTIONAL = " \
 	enigma2-plugin-extensions-openmultiboot \
 	enigma2-plugin-extensions-refreshbouquet \
 	enigma2-plugin-extensions-subssupport \
+	enigma2-plugin-extensions-xstreamity \
 	enigma2-plugin-extensions-tmbd \
 	enigma2-plugin-extensions-vcs \
 	enigma2-plugin-extensions-xmodem \
@@ -80,7 +101,16 @@ ENIGMA2_OPTIONAL = " \
 	enigma2-plugin-extensions-oscamstatus \
 	enigma2-plugin-softcams-oscam-dm800se \
 	enigma2-plugin-skins-pli-hd \
-	enigma2-plugin-skins-pli-hd-fullnight \
+	enigma2-plugin-skins-pli-hd1 \
+	enigma2-plugin-skins-pli-hd2 \
+	enigma2-plugin-skins-pli-fullnighthd \
+	enigma2-plugin-skins-pli-fullhd \
+	enigma2-plugin-skins-mx-hq7 \
+	enigma2-plugin-skins-mx-hq9w \
+	enigma2-plugin-skins-mx-hq10 \
+	enigma2-plugin-skins-mx-titaniumc \
+	enigma2-plugin-skins-mx-black \
+	enigma2-plugin-skins-metropolishd \
 	enigma2-plugin-skins-simple-gray-hd \
 	enigma2-plugin-security-firewall \
 	enigma2-plugin-systemplugins-crossepg \

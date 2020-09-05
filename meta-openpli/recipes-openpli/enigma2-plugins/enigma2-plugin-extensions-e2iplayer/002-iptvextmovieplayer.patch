@@ -1,0 +1,19 @@
+--- a/IPTVPlayer/components/iptvextmovieplayer.py	2020-06-16 21:36:13.226403531 +0800
++++ b/IPTVPlayer/components/iptvextmovieplayer.py	2020-06-16 22:07:51.422492347 +0800
+@@ -1887,7 +1887,6 @@
+                             tmp = re.search('([^:]+?://)([^:]+?):([^@]+?)@(.+?)$', tmp)
+                             if tmp: cmd += (' "proxy=%s" "proxy-id=%s" "proxy-pw=%s" ' % (tmp.group(1)+tmp.group(4), tmp.group(2), tmp.group(3)) )
+                         else: cmd += (' "proxy=%s" ' % tmp)
+-            cmd += " > /dev/null"
+         else:
+             cmd = '/usr/bin/exteplayer3'
+             tmpUri = strwithmeta(self.fileSRC)
+@@ -1983,7 +1982,7 @@
+             if self.extAdditionalParams.get('moov_atom_file', '') != '':
+                  cmd += ' -F "%s" -S %s -O %s' % (self.extAdditionalParams['moov_atom_file'], self.extAdditionalParams['moov_atom_offset'] + self.extAdditionalParams['moov_atom_size'], self.extAdditionalParams['moov_atom_offset'])
+             
+-            cmd += (' "%s"' % videoUri) + " > /dev/null"
++            cmd += ' "%s"' % videoUri
+         
+         self.console = eConsoleAppContainer()
+         self.console_appClosed_conn = eConnectCallback(self.console.appClosed, self.eplayer3Finished)
