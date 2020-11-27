@@ -108,7 +108,6 @@ ENIGMA2_BRANCH ?= "develop"
 GITHUB_URI ?= "git://github.com"
 
 SRC_URI = " ${GITHUB_URI}/OpenVisionE2/enigma2-openvision.git;branch=${ENIGMA2_BRANCH} \
-			file://02-dont-remove-e2iplayer.patch \
 			file://03-make-PLi-FullNightHD-skin-default.patch \
 			file://04-restore-last-update-date-time.patch \
 			file://06-update-skin-display.patch \
