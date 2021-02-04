@@ -107,27 +107,20 @@ PKGV = "2.7+git${GITPKGV}"
 ENIGMA2_BRANCH ?= "develop"
 GITHUB_URI ?= "git://github.com"
 
-SRC_URI = " ${GITHUB_URI}/OpenVisionE2/enigma2-openvision.git;branch=${ENIGMA2_BRANCH} \
-			file://03-make-PLi-FullNightHD-skin-default.patch \
-			file://04-restore-last-update-date-time.patch \
-			file://06-update-skin-display.patch \
-			file://012-set-default-hide-channel-list-radio.patch \
+SRC_URI = " ${GITHUB_URI}/OpenPLi/enigma2.git;branch=${ENIGMA2_BRANCH} \
+			file://04-restore-last-update-date-time.patch;apply=no \
+			file://06-update-skin-display.patch;apply=no \
 			"
 
 LDFLAGS_prepend = " -lxml2 "
 
 S = "${WORKDIR}/git"
 
-FILES_${PN} += "${datadir}/keymaps"
-FILES_${PN}-meta = "${datadir}/meta"
-PACKAGES += "${PN}-meta ${PN}-build-dependencies"
-PACKAGE_ARCH = "${MACHINE_ARCH}"
+PACKAGES += "${PN}-meta ${PN}-build-dependencies enigma2-fonts"
 
 inherit autotools pkgconfig
 
-PACKAGES =+ "enigma2-fonts"
-PKGV_enigma2-fonts = "2018.08.15"
-FILES_enigma2-fonts = "${datadir}/fonts"
+PKGV_enigma2-fonts = "2020.10.17"
 
 def get_crashaddr(d):
     if d.getVar('CRASHADDR', True):
@@ -138,9 +131,6 @@ def get_crashaddr(d):
 EXTRA_OECONF = "\
 	--with-libsdl=no --with-boxtype=${MACHINE} \
 	--enable-dependency-tracking \
-	--with-boxbrand=${BOX_BRAND} \
-	--with-stbplatform=${STB_PLATFORM} \
-	--with-oever=${VISIONVERSION} \
 	ac_cv_prog_c_openmp=-fopenmp \
 	${@get_crashaddr(d)} \
 	BUILD_SYS=${BUILD_SYS} \
@@ -153,6 +143,12 @@ EXTRA_OECONF = "\
 EXTRA_OEMAKE = "\
 	ENIGMA2_BRANCH=${ENIGMA2_BRANCH} \
 	"
+
+FILES_enigma2-fonts = "${datadir}/fonts"
+
+FILES_${PN} += "${datadir}/keymaps"
+
+FILES_${PN}-meta = "${datadir}/meta"
 
 # some plugins contain so's, their stripped symbols should not end up in the enigma2 package
 FILES_${PN}-dbg += "\
@@ -185,8 +181,7 @@ FILES_${PN}-src += "\
 
 do_install_append() {
 	install -d ${D}${datadir}/keymaps
-	install -m 0644 ${S}/data/rc_models/${RCNAME}.png ${D}${datadir}/enigma2/rc_models/
-	install -m 0644 ${S}/data/rc_models/${RCNAME}.xml ${D}${datadir}/enigma2/rc_models/
+	find ${D}${libdir}/enigma2/python/ -name '*.pyc' -exec rm {} \;
 }
 
 python populate_packages_prepend() {
