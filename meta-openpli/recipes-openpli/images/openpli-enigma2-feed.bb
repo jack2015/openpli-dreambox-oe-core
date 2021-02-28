@@ -71,6 +71,7 @@ OPTIONAL_PACKAGES += " \
 	python-mechanize \
 	python-ntplib \
 	python-requests \
+	python-youtube-dl \
 	rsync \
 	rt3573 \
 	rt5572 \
@@ -133,7 +134,6 @@ ENIGMA2_OPTIONAL = " \
 	enigma2-plugin-extensions-vcs \
 	enigma2-plugin-extensions-xmodem \
 	enigma2-plugin-extensions-youtube \
-	enigma2-plugin-extensions-youtube-dl \
 	enigma2-plugin-security-firewall \
 	enigma2-plugin-skins-pd1loi-hd-night \
 	enigma2-plugin-skins-pli-hd \

@@ -60,6 +60,7 @@ PYTHON_RDEPS = " \
 	python-xml \
 	python-zlib \
 	python-zopeinterface \
+	python-youtube-dl \
 	"
 
 # DVD and iso playback is integrated, we need the libraries
