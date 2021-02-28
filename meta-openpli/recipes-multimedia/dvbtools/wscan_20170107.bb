@@ -5,7 +5,7 @@ MAINTAINER = "wirbel <w_scan@gmx-topmail.de>"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://COPYING;md5=892f569a555ba9c07a568a7c0c4fa63a"
 
-SRC_URI = " https://www.gen2vdr.de/wirbel/w_scan/w_scan-${PV}.tar.bz2 \
+SRC_URI = " http://deb.debian.org/debian/pool/main/w/w-scan/w-scan_${PV}.orig.tar.bz2 \
 			file://make-structure-variables-extern.patch \
 "
 
