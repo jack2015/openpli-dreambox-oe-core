@@ -47,7 +47,6 @@ OPTIONAL_PACKAGES += " \
 	mc \
 	mediainfo \
 	minisatip \
-	mpd \
 	mt7601u \
 	mt7610u \
 	mtd-utils \
