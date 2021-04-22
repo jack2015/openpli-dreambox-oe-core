@@ -9,22 +9,20 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=7246f848faa4e9c9fc0ea91122d6e680"
 
 DEPENDS = "libxml2 bash-completion"
 
-inherit gitpkgv
+inherit setuptools gittag
 
 SRCREV = "${AUTOREV}"
-
-PV = "2021.03.25+git${SRCPV}"
-PKGV = "2021.03.25+${GITPKGV}"
+PV = "git${SRCPV}"
+PKGV = "${GITPKGVTAG}"
 
 SRC_URI = "git://github.com/ytdl-org/youtube-dl.git;protocol=https;branch=master"
 
 S = "${WORKDIR}/git"
 
-inherit setuptools
-
 EXTRA_OEMAKE = "PYTHON=${PYTHON}"
 
 do_compile_prepend() {
+    cd ${S}
     oe_runmake lazy-extractors youtube-dl.bash-completion
 }
 
@@ -54,4 +52,3 @@ FILES_${PN}-src = " \
     "
 
 FILES_${PN} += "${sysconfdir}"
-
