@@ -104,11 +104,14 @@ inherit gitpkgv pythonnative
 PV = "2.7+git${SRCPV}"
 PKGV = "2.7+git${GITPKGV}"
 
+CXXFLAGS = " -std=c++14"
+
 ENIGMA2_BRANCH ?= "develop"
 GITHUB_URI ?= "git://github.com"
 
 SRC_URI = " ${GITHUB_URI}/OpenPLi/enigma2.git;branch=${ENIGMA2_BRANCH} \
 			file://01-use-mallinfo2.patch \
+			file://02-fix-build-gcc11.patch \
 			file://04-restore-last-update-date-time.patch;apply=no \
 			file://06-update-skin-display.patch;apply=no \
 			"
