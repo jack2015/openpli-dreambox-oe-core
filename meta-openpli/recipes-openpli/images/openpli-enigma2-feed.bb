@@ -35,6 +35,7 @@ OPTIONAL_PACKAGES += " \
 	gstplayer \
 	hddtemp \
 	hdparm \
+	htop \
 	inadyn-mt \
 	inetutils \
 	iperf3 \
@@ -68,6 +69,8 @@ OPTIONAL_PACKAGES += " \
 	python-js2py \
 	python-lxml \
 	python-mechanize \
+	python-pycryptodome \
+	python-websocket-client \
 	python-ntplib \
 	python-requests \
 	python-youtube-dl \
@@ -89,6 +92,8 @@ OPTIONAL_PACKAGES += " \
 	smbnetfs \
 	sshpass \
 	strace \
+	streamlink-27 \
+	streamlinksrv \	
 	tcpdump \
 	tmux \
 	transmission \
