@@ -141,6 +141,7 @@ ENIGMA2_OPTIONAL = " \
 	enigma2-plugin-extensions-xstreamity \
 	enigma2-plugin-extensions-youtube \
 	enigma2-plugin-security-firewall \
+	enigma2-plugin-skins-octetfhd \
 	enigma2-plugin-skins-pd1loi-hd-night \
 	enigma2-plugin-skins-pli-hd \
 	enigma2-plugin-skins-pli-hd-fullnight \
