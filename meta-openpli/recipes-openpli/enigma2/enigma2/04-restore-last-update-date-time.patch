@@ -1,15 +1,15 @@
 diff --git a/lib/python/Screens/About.py b/lib/python/Screens/About.py
-index 4ca9cf0d3..9b176652d 100644
+index 80a6eea12..6200cb648 100644
 --- a/lib/python/Screens/About.py
 +++ b/lib/python/Screens/About.py
-@@ -80,7 +80,9 @@ class About(Screen):
- 		EnigmaVersion = _("Enigma2 version: ") + EnigmaVersion
- 		self["EnigmaVersion"] = StaticText(EnigmaVersion)
- 		AboutText += "\n" + EnigmaVersion + "\n"
+@@ -32,7 +32,9 @@ class About(Screen):
+ 		AboutText += _("CPU: ") + cpu + "\n"
+ 		AboutText += _("Image: ") + about.getImageTypeString() + "\n"
+ 		AboutText += _("Build date: ") + about.getBuildDateString() + "\n"
 -		AboutText += _("Last update: ") + about.getUpdateDateString() + "\n"
 +		ImageVersion = _("Last update: ") + about.getImageVersionString()
 +		self["ImageVersion"] = StaticText(ImageVersion)
 +		AboutText += ImageVersion + "\n"
- 		AboutText += _("Enigma2 (re)starts: %d\n") % config.misc.startCounter.value
- 		AboutText += _("Enigma2 debug level: %d\n") % eGetEnigmaDebugLvl()
  
+ 		# [WanWizard] Removed until we find a reliable way to determine the installation date
+ 		# AboutText += _("Installed: ") + about.getFlashDateString() + "\n"
