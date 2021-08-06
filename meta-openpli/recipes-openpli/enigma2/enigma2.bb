@@ -113,6 +113,8 @@ SRC_URI = " ${GITHUB_URI}/OpenPLi/enigma2.git;branch=${ENIGMA2_BRANCH} \
 			file://04-restore-last-update-date-time.patch \
 			file://05-fix-wrong-driver-date.patch \
 			file://06-add-skin_display_dm8000.patch \
+			file://07-revert-kill-the-pinguin.patch \
+			file://screensaverpicture.png \
 			"
 
 LDFLAGS_prepend = " -lxml2 "
@@ -180,6 +182,10 @@ FILES_${PN}-src += "\
 	${libdir}/enigma2/python/*/*/*/*/*.py \
 	${libdir}/enigma2/python/*/*/*/*/*/*.py \
 	"
+
+do_install_prepend() {
+	mv ${WORKDIR}/screensaverpicture.png ${B}/data/skin_default/screensaverpicture.png
+}
 
 do_install_append() {
 	install -d ${D}${datadir}/keymaps
