@@ -21,18 +21,18 @@ S = "${WORKDIR}/git"
 
 EXTRA_OEMAKE = "PYTHON=${PYTHON}"
 
-do_compile_prepend() {
+do_compile:prepend() {
     cd ${S}
     oe_runmake lazy-extractors youtube-dl.bash-completion
 }
 
-do_install_append() {
+do_install:append() {
     mv ${D}${datadir}/etc ${D}${sysconfdir}
     install -m 0755 -d ${D}${sysconfdir}/bash_completion.d
     install -m 0644 youtube-dl.bash-completion ${D}${sysconfdir}/bash_completion.d
 }
 
-RDEPENDS_${PN} = " \
+RDEPENDS:${PN} = " \
     python-email \
     python-gdata \
     python-subprocess \
@@ -42,8 +42,8 @@ RDEPENDS_${PN} = " \
     python-html \
     "
 
-RDEPENDS_{PN}-src = "${PN}"
-FILES_${PN}-src = " \
+RDEPENDS:{PN}-src = "${PN}"
+FILES:${PN}-src = " \
     ${libdir}/${PYTHON_DIR}/site-packages/*/*.py \
     ${libdir}/${PYTHON_DIR}/site-packages/*/*/*.py \
     ${libdir}/${PYTHON_DIR}/site-packages/*/*/*/*.py \
@@ -51,4 +51,4 @@ FILES_${PN}-src = " \
     ${datadir}/etc/* \
     "
 
-FILES_${PN} += "${sysconfdir}"
+FILES:${PN} += "${sysconfdir}"

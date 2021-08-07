@@ -11,7 +11,7 @@ PACKAGES = "${PN}"
 SRC_URI[md5sum] = "03267762480bd86b50580dc19dff3c66"
 SRC_URI[sha256sum] = "713e7a8228ae80341c70586d1cc0a8caa5207346927e23d09dcbcaf18eadec80"
 
-do_install_append() {
+do_install:append() {
     # python-lzma already provides __init__.py(o) files
     rm -rf ${D}${libdir}/${PYTHON_DIR}/site-packages/backports/__init__.py*
 }

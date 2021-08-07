@@ -11,7 +11,7 @@ PKGV = "1+git${GITPKGV}"
 
 inherit distutils-openplugins
 
-RDEPENDS_${PN} = " \
+RDEPENDS:${PN} = " \
 	python-twisted-web \
 	python-xml \
 	python-shell \

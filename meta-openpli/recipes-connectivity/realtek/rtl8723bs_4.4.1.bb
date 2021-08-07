@@ -4,7 +4,7 @@ SECTION = "kernel/modules"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://README.md;md5=c416860023e780aa96e0616b1cda6a49"
 
-INSANE_SKIP_${PN} += "src-uri-bad"
+INSANE_SKIP:${PN} += "src-uri-bad"
 
 inherit module
 
@@ -31,7 +31,7 @@ do_install() {
     install -m 0644 ${S}/r8723bs.ko ${D}${nonarch_base_libdir}/modules/${KERNEL_VERSION}/kernel/drivers/staging/rtl8723bs
 }
 
-python do_package_prepend() {
+python do_package:prepend() {
     d.appendVar('PKGV', '-')
     d.appendVar('PKGV', d.getVar("KERNEL_VERSION", True).split("-")[0])
 }

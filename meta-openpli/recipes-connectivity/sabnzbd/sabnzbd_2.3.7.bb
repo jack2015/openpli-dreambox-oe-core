@@ -5,11 +5,11 @@ LIC_FILES_CHKSUM = "file://COPYRIGHT.txt;md5=6c2cd2089133de5067e13a6d4f75afef"
 PR = "r1"
 
 DEPENDS = "python"
-RDEPENDS_${PN} = "\
+RDEPENDS:${PN} = "\
 	python-core python-shell python-compression python-crypt python-ctypes python-sqlite3 \
 	python-cheetah python-misc python-subprocess python-html python-email python-yenc \
 	"
-RRECOMMENDS_${PN} = "par2cmdline unrar"
+RRECOMMENDS:${PN} = "par2cmdline unrar"
 
 SRC_URI = "https://github.com/sabnzbd/sabnzbd/archive/${PV}.tar.gz \
 	file://sabnzbd \
@@ -26,10 +26,10 @@ INSTALLDIR = "${libdir}/${PN}"
 
 PACKAGES = "${PN}-doc ${PN}-src ${PN}"
 
-FILES_${PN}-src = "${INSTALLDIR}/*/*.py ${INSTALLDIR}/*/*/*.py"
-RDEPENDS_${PN}-src = "python"
-FILES_${PN}-doc = "${INSTALLDIR}/*.txt ${INSTALLDIR}/licenses ${INSTALLDIR}/interfaces/*/licenses"
-FILES_${PN} = "${INSTALLDIR} /etc/init.d/sabnzbd /etc/init.d/init-functions /etc/enigma2/sabnzbd.conf"
+FILES:${PN}-src = "${INSTALLDIR}/*/*.py ${INSTALLDIR}/*/*/*.py"
+RDEPENDS:${PN}-src = "python"
+FILES:${PN}-doc = "${INSTALLDIR}/*.txt ${INSTALLDIR}/licenses ${INSTALLDIR}/interfaces/*/licenses"
+FILES:${PN} = "${INSTALLDIR} /etc/init.d/sabnzbd /etc/init.d/init-functions /etc/enigma2/sabnzbd.conf"
 
 inherit update-rc.d
 INITSCRIPT_NAME = "sabnzbd"

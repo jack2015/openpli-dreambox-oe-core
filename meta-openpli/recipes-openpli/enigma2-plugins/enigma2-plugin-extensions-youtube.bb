@@ -18,7 +18,7 @@ PKGV = "1+git${GITPKGV}"
 
 inherit distutils-openplugins
 
-RDEPENDS_${PN} = " \
+RDEPENDS:${PN} = " \
 	python-core \
 	python-codecs \
 	python-json \
@@ -28,5 +28,5 @@ RDEPENDS_${PN} = " \
 	python-twisted-web \
 	"
 
-RDEPENDS_{PN}-src = "${PN}"
-FILES_${PN}-src = "${libdir}/enigma2/python/Plugins/Extensions/YouTube/*.py"
+RDEPENDS:{PN}-src = "${PN}"
+FILES:${PN}-src = "${libdir}/enigma2/python/Plugins/Extensions/YouTube/*.py"

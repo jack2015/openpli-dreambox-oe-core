@@ -6,17 +6,17 @@ HOMEPAGE = "https://www.ffmpeg.org/"
 SECTION = "libs"
 
 LICENSE = "BSD & GPLv2+ & LGPLv2.1+ & MIT"
-LICENSE_${PN} = "GPLv2+"
-LICENSE_libavcodec = "${@bb.utils.contains('PACKAGECONFIG', 'gpl', 'GPLv2+', 'LGPLv2.1+', d)}"
-LICENSE_libavdevice = "${@bb.utils.contains('PACKAGECONFIG', 'gpl', 'GPLv2+', 'LGPLv2.1+', d)}"
-LICENSE_libavfilter = "${@bb.utils.contains('PACKAGECONFIG', 'gpl', 'GPLv2+', 'LGPLv2.1+', d)}"
-LICENSE_libavformat = "${@bb.utils.contains('PACKAGECONFIG', 'gpl', 'GPLv2+', 'LGPLv2.1+', d)}"
-LICENSE_libavresample = "${@bb.utils.contains('PACKAGECONFIG', 'gpl', 'GPLv2+', 'LGPLv2.1+', d)}"
-LICENSE_libavutil = "${@bb.utils.contains('PACKAGECONFIG', 'gpl', 'GPLv2+', 'LGPLv2.1+', d)}"
-LICENSE_libpostproc = "GPLv2+"
-LICENSE_libswresample = "${@bb.utils.contains('PACKAGECONFIG', 'gpl', 'GPLv2+', 'LGPLv2.1+', d)}"
-LICENSE_libswscale = "${@bb.utils.contains('PACKAGECONFIG', 'gpl', 'GPLv2+', 'LGPLv2.1+', d)}"
-LICENSE_FLAGS = "commercial"
+LICENSE:${PN} = "GPLv2+"
+LICENSE:libavcodec = "${@bb.utils.contains('PACKAGECONFIG', 'gpl', 'GPLv2+', 'LGPLv2.1+', d)}"
+LICENSE:libavdevice = "${@bb.utils.contains('PACKAGECONFIG', 'gpl', 'GPLv2+', 'LGPLv2.1+', d)}"
+LICENSE:libavfilter = "${@bb.utils.contains('PACKAGECONFIG', 'gpl', 'GPLv2+', 'LGPLv2.1+', d)}"
+LICENSE:libavformat = "${@bb.utils.contains('PACKAGECONFIG', 'gpl', 'GPLv2+', 'LGPLv2.1+', d)}"
+LICENSE:libavresample = "${@bb.utils.contains('PACKAGECONFIG', 'gpl', 'GPLv2+', 'LGPLv2.1+', d)}"
+LICENSE:libavutil = "${@bb.utils.contains('PACKAGECONFIG', 'gpl', 'GPLv2+', 'LGPLv2.1+', d)}"
+LICENSE:libpostproc = "GPLv2+"
+LICENSE:libswresample = "${@bb.utils.contains('PACKAGECONFIG', 'gpl', 'GPLv2+', 'LGPLv2.1+', d)}"
+LICENSE:libswscale = "${@bb.utils.contains('PACKAGECONFIG', 'gpl', 'GPLv2+', 'LGPLv2.1+', d)}"
+LICENSE:FLAGS = "commercial"
 
 LIC_FILES_CHKSUM = "file://COPYING.GPLv2;md5=b234ee4d69f5fce4486a80fdaf4a4263 \
                     file://COPYING.GPLv3;md5=d32239bcb673463ab874e80d47fae504 \
@@ -123,11 +123,11 @@ EXTRA_OECONF = " \
     --pkg-config=pkg-config \
 "
 
-EXTRA_OECONF_append_linux-gnux32 = " --disable-asm"
+EXTRA_OECONF:append:linux-gnux32 = " --disable-asm"
 # gold crashes on x86, another solution is to --disable-asm but thats more hacky
 # ld.gold: internal error in relocate_section, at ../../gold/i386.cc:3684
 
-LDFLAGS_append_x86 = "${@bb.utils.contains('DISTRO_FEATURES', 'ld-is-gold', ' -fuse-ld=bfd ', '', d)}"
+LDFLAGS:append:x86 = "${@bb.utils.contains('DISTRO_FEATURES', 'ld-is-gold', ' -fuse-ld=bfd ', '', d)}"
 
 do_configure() {
     ${S}/configure ${EXTRA_OECONF}
@@ -154,12 +154,12 @@ FILES_libswresample = "${libdir}/libswresample${SOLIBS}"
 FILES_libswscale = "${libdir}/libswscale${SOLIBS}"
 
 # ffmpeg disables PIC on some platforms (e.g. x86-32)
-INSANE_SKIP_${MLPREFIX}libavcodec = "textrel"
-INSANE_SKIP_${MLPREFIX}libavdevice = "textrel"
-INSANE_SKIP_${MLPREFIX}libavfilter = "textrel"
-INSANE_SKIP_${MLPREFIX}libavformat = "textrel"
-INSANE_SKIP_${MLPREFIX}libavutil = "textrel"
-INSANE_SKIP_${MLPREFIX}libavresample = "textrel"
-INSANE_SKIP_${MLPREFIX}libswscale = "textrel"
-INSANE_SKIP_${MLPREFIX}libswresample = "textrel"
-INSANE_SKIP_${MLPREFIX}libpostproc = "textrel"
+INSANE_SKIP:${MLPREFIX}libavcodec = "textrel"
+INSANE_SKIP:${MLPREFIX}libavdevice = "textrel"
+INSANE_SKIP:${MLPREFIX}libavfilter = "textrel"
+INSANE_SKIP:${MLPREFIX}libavformat = "textrel"
+INSANE_SKIP:${MLPREFIX}libavutil = "textrel"
+INSANE_SKIP:${MLPREFIX}libavresample = "textrel"
+INSANE_SKIP:${MLPREFIX}libswscale = "textrel"
+INSANE_SKIP:${MLPREFIX}libswresample = "textrel"
+INSANE_SKIP:${MLPREFIX}libpostproc = "textrel"

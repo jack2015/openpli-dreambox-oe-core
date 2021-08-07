@@ -7,7 +7,7 @@ LIC_FILES_CHKSUM = "file://README.rst;beginline=166;endline=182;md5=a84a1caa65b8
                     file://COPYING-MIT;md5=b7e434aeb228ed731c00bcf177e79b19"
 
 DEPENDS = "curl ${PYTHON_PN}"
-RDEPENDS_${PN} = "${PYTHON_PN}-core curl"
+RDEPENDS:${PN} = "${PYTHON_PN}-core curl"
 SRCNAME = "pycurl"
 
 inherit distutils
@@ -24,10 +24,10 @@ S = "${WORKDIR}/${SRCNAME}-${PV}"
 BBCLASSEXTEND = "native"
 
 # Ensure the docstrings are generated as make clean will remove them
-do_compile_prepend() {
+do_compile:prepend() {
 	${STAGING_BINDIR_NATIVE}/${PYTHON_PN}-native/${PYTHON_PN} setup.py docstrings
 }
 
-do_install_append() {
+do_install:append() {
 	rm -rf ${D}${datadir}/share
 }

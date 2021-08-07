@@ -13,8 +13,8 @@ do_install() {
 }
 
 
-pkg_postrm_${PN}() {
+pkg_postrm:${PN}() {
     rm -rf ${libdir}/enigma2/python/Plugins/Extensions/HetWeer
 }
 
-FILES_${PN} = "${PLUGINPATH}"
+FILES:${PN} = "${PLUGINPATH}"

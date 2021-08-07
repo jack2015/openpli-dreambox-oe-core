@@ -10,18 +10,18 @@ SRC_URI[sha256sum] = "3e2e3a06580c5f190df843cdb90ea28d61099cf4924334d5297a995de6
 
 inherit pypi setuptools
 
-RDEPENDS_${PN} += " \
+RDEPENDS:${PN} += " \
     ${PYTHON_PN}-io \
     ${PYTHON_PN}-math \
 "
 
-RDEPENDS_${PN}-tests += " \
+RDEPENDS:${PN}-tests += " \
     ${PYTHON_PN}-unittest \
 "
 
 PACKAGES =+ "${PN}-tests"
 
-FILES_${PN}-tests += " \
+FILES:${PN}-tests += " \
     ${PYTHON_SITEPACKAGES_DIR}/Crypto/SelfTest/ \
     ${PYTHON_SITEPACKAGES_DIR}/Crypto/SelfTest/__pycache__/ \
 "
@@ -30,6 +30,6 @@ BBCLASSEXTEND = "native nativesdk"
 include python-package-split.inc
 
 PROVIDES += "python-pycrypto"
-RPROVIDES_${PN} += "python-pycrypto"
-RCONFLICTS_${PN} = "python-pycrypto"
-RREPLACES_${PN} = "python-pycrypto"
+RPROVIDES:${PN} += "python-pycrypto"
+RCONFLICTS:${PN} = "python-pycrypto"
+RREPLACES:${PN} = "python-pycrypto"

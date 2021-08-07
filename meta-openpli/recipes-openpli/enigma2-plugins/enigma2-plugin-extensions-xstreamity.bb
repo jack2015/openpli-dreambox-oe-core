@@ -3,7 +3,7 @@ HOMEPAGE = "https://www.linuxsat-support.com"
 MAINTAINER = "kiddac"
 require conf/license/license-gplv2.inc
 
-RDEPENDS_${PN} = "python-argparse python-image python-imaging python-lzma python-multiprocessing python-requests"
+RDEPENDS:${PN} = "python-argparse python-image python-imaging python-lzma python-multiprocessing python-requests"
 
 inherit gitpkgv allarch
 
@@ -16,7 +16,7 @@ SRC_URI = "git://github.com/kiddac/XStreamity.git;protocol=git"
 
 S = "${WORKDIR}/git"
 
-FILES_${PN} = " ${libdir}/enigma2/python/Components/Converter/* \
+FILES:${PN} = " ${libdir}/enigma2/python/Components/Converter/* \
                 ${libdir}/enigma2/python/Components/Renderer/* \
                 ${libdir}/enigma2/python/Plugins/Extensions/XStreamity/*"
 
@@ -35,7 +35,7 @@ cp -rf ${S}/XStreamity/usr/lib/enigma2/python/Components/Renderer/*.py ${D}${lib
 cp -rf ${S}/XStreamity/usr/lib/enigma2/python/Plugins/Extensions/XStreamity/* ${D}${libdir}/enigma2/python/Plugins/Extensions/XStreamity/
 }
 
-pkg_preinst_${PN}() {
+pkg_preinst:${PN}() {
 #!/bin/sh
 if [ -f "/etc/enigma2/X-Streamity/playlists.json" ]
 	then

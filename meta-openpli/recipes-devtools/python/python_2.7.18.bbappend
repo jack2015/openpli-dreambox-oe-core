@@ -1,4 +1,4 @@
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
 
 SRC_URI += " \
@@ -50,12 +50,12 @@ python(){
             newpackages.append(pypackage)
 
         # "Build" python's manifest FILES, RDEPENDS and SUMMARY
-        d.setVar('FILES_' + pypackage, '')
+        d.setVar('FILES:' + pypackage, '')
         for value in python_manifest[key]['files']:
-            d.appendVar('FILES_' + pypackage, ' ' + value)
+            d.appendVar('FILES:' + pypackage, ' ' + value)
             if include_pycs == '1':
                 if value.endswith('.py'):
-                    d.appendVar('FILES_' + pypackage, ' ' + value + 'o')
+                    d.appendVar('FILES:' + pypackage, ' ' + value + 'o')
 
         d.setVar('RDEPENDS_' + pypackage, '')
         for value in python_manifest[key]['rdepends']:
@@ -70,14 +70,14 @@ python(){
     # Prepending so to avoid python-misc getting everything
     packages = newpackages + packages
     d.setVar('PACKAGES', ' '.join(packages))
-    d.setVar('ALLOW_EMPTY_${PN}-modules', '1')
+    d.setVar('ALLOW_EMPTY:${PN}-modules', '1')
 }
 
-do_install_append(){
+do_install:append(){
     python -m py_compile ${D}/${libdir}/python${PYTHON_MAJMIN}/sitecustomize.py
 }
 
-python populate_packages_prepend() {
+python populate_packages:prepend() {
     import os
 
     dest_path = d.getVar('D')
@@ -102,30 +102,30 @@ python populate_packages_prepend() {
         newpackages.append(p + '-src')
         newpackages.append(p)
         newfiles = []
-        files = d.getVar('FILES_' + p).split()
+        files = d.getVar('FILES:' + p).split()
         for file in files:
             if file.endswith('.py'):
-                d.appendVar('FILES_' + p + '-src', ' ' + file)
+                d.appendVar('FILES:' + p + '-src', ' ' + file)
             elif isFolder(file):
                 newfiles.append(file + '/*.pyo')
                 newfiles.append(file + '/*/*.pyo')
-                d.appendVar('FILES_' + p + '-src', ' ' + file + '/*.py')
-                d.appendVar('FILES_' + p + '-src', ' ' + file + '/*/*.py')
-                d.appendVar('FILES_' + p + '-src', ' ' + file + '/*/*/*.py')
-                d.appendVar('FILES_' + p + '-src', ' ' + file + '/test/*')
-                d.appendVar('FILES_' + p + '-src', ' ' + file + '/tests/*')
-                d.appendVar('FILES_' + p + '-src', ' ' + file + '/*.exe')
-                d.appendVar('FILES_' + p + '-src', ' ' + file + '/*/*.exe')
-                d.appendVar('FILES_' + p + '-src', ' ' + file + '/*/*/*.exe')
-                d.appendVar('FILES_' + p + '-src', ' ' + file + '/*.whl')
-                d.appendVar('FILES_' + p + '-src', ' ' + file + '/*/*.whl')
-                d.appendVar('FILES_' + p + '-src', ' ' + file + '/*/*/*.whl')
+                d.appendVar('FILES:' + p + '-src', ' ' + file + '/*.py')
+                d.appendVar('FILES:' + p + '-src', ' ' + file + '/*/*.py')
+                d.appendVar('FILES:' + p + '-src', ' ' + file + '/*/*/*.py')
+                d.appendVar('FILES:' + p + '-src', ' ' + file + '/test/*')
+                d.appendVar('FILES:' + p + '-src', ' ' + file + '/tests/*')
+                d.appendVar('FILES:' + p + '-src', ' ' + file + '/*.exe')
+                d.appendVar('FILES:' + p + '-src', ' ' + file + '/*/*.exe')
+                d.appendVar('FILES:' + p + '-src', ' ' + file + '/*/*/*.exe')
+                d.appendVar('FILES:' + p + '-src', ' ' + file + '/*.whl')
+                d.appendVar('FILES:' + p + '-src', ' ' + file + '/*/*.whl')
+                d.appendVar('FILES:' + p + '-src', ' ' + file + '/*/*/*.whl')
             else:
                 newfiles.append(file)
         if p != 'python-misc':
-            d.setVar('FILES_' + p, ' '.join(newfiles))
-        d.setVar('RDEPENDS_' + p + '-src', p)
-        d.setVar('SUMMARY_' + p + '-src', p + ' (source)')
+            d.setVar('FILES:' + p, ' '.join(newfiles))
+        d.setVar('RDEPENDS:' + p + '-src', p)
+        d.setVar('SUMMARY:' + p + '-src', p + ' (source)')
 
     d.setVar('PACKAGES', ' '.join(newpackages))
 }

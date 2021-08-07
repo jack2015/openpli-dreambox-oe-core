@@ -34,11 +34,11 @@ do_configure () {
 INITSCRIPT_NAME = "ushare"
 INITSCRIPT_PARAMS = "defaults 20"
 
-FILES_${PN} += "${sysconfdir}/ushare.conf "
+FILES:${PN} += "${sysconfdir}/ushare.conf "
 
-do_install_append() {
+do_install:append() {
 	install -D -m 0755 ${WORKDIR}/init ${D}${sysconfdir}/init.d/ushare
 	install -D -m 0644 ${WORKDIR}/ushare.conf ${D}${sysconfdir}/ushare.conf
 }
 
-INSANE_SKIP_${PN} += "already-stripped"
+INSANE_SKIP:${PN} += "already-stripped"

@@ -17,10 +17,10 @@ DEPENDS = " \
 	"
 
 # SoftcamSetup, SkinSelector and Systemtime is integrated now
-RREPLACES_${PN} = "enigma2-plugin-pli-softcamsetup enigma2-plugin-systemplugins-skinselector enigma2-plugin-systemplugins-systemtime"
-RCONFLICTS_${PN} = "enigma2-plugin-pli-softcamsetup enigma2-plugin-systemplugins-skinselector enigma2-plugin-systemplugins-systemtime"
+RREPLACES:${PN} = "enigma2-plugin-pli-softcamsetup enigma2-plugin-systemplugins-skinselector enigma2-plugin-systemplugins-systemtime"
+RCONFLICTS:${PN} = "enigma2-plugin-pli-softcamsetup enigma2-plugin-systemplugins-skinselector enigma2-plugin-systemplugins-systemtime"
 
-RDEPENDS_${PN} = " \
+RDEPENDS:${PN} = " \
 	alsa-conf \
 	enigma2-fonts \
 	ethtool \
@@ -28,7 +28,7 @@ RDEPENDS_${PN} = " \
 	${PYTHON_RDEPS} \
 	"
 
-RRECOMMENDS_${PN} = " \
+RRECOMMENDS:${PN} = " \
 	enigma2-plugin-skins-pli-hd \
 	hotplug-e2-helper \
 	glibc-gconv-utf-16 \
@@ -62,36 +62,36 @@ PYTHON_RDEPS = " \
 	"
 
 # DVD and iso playback is integrated, we need the libraries
-RDEPENDS_${PN} += "libdreamdvd libudfread"
-RRECOMMENDS_${PN} += "libdvdcss"
+RDEPENDS:${PN} += "libdreamdvd libudfread"
+RRECOMMENDS:${PN} += "libdvdcss"
 
 # We depend on the font which we use for TXT subtitles (defined in skin_subtitles.xml)
-RDEPENDS_${PN} += "font-valis-enigma"
+RDEPENDS:${PN} += "font-valis-enigma"
 
-RDEPENDS_${PN} += "virtual/blindscan-dvbc"
+RDEPENDS:${PN} += "virtual/blindscan-dvbc"
 
 DEMUXTOOL ?= "replex"
 
-DESCRIPTION_append_enigma2-plugin-extensions-cutlisteditor = "enables you to cut your movies."
-RDEPENDS_enigma2-plugin-extensions-cutlisteditor = "aio-grab"
-DESCRIPTION_append_enigma2-plugin-extensions-graphmultiepg = "shows a graphical timeline EPG."
-DESCRIPTION_append_enigma2-plugin-extensions-pictureplayer = "displays photos on the TV."
-DESCRIPTION_append_enigma2-plugin-systemplugins-positionersetup = "helps you installing a motorized dish."
-DESCRIPTION_append_enigma2-plugin-systemplugins-satelliteequipmentcontrol = "allows you to fine-tune DiSEqC-settings."
-DESCRIPTION_append_enigma2-plugin-systemplugins-satfinder = "helps you to align your dish."
-DESCRIPTION_append_enigma2-plugin-systemplugins-videomode = "selects advanced video modes"
-RDEPENDS_enigma2-plugin-systemplugins-nfiflash = "python-twisted-web"
-RDEPENDS_enigma2-plugin-systemplugins-softwaremanager = "python-twisted-web"
-DESCRIPTION_append_enigma2-plugin-systemplugins-wirelesslan = "helps you configuring your wireless lan"
-RDEPENDS_enigma2-plugin-systemplugins-wirelesslan = "wpa-supplicant wireless-tools python-wifi"
-DESCRIPTION_append_enigma2-plugin-systemplugins-networkwizard = "provides easy step by step network configuration"
+DESCRIPTION:append:enigma2-plugin-extensions-cutlisteditor = "enables you to cut your movies."
+RDEPENDS:enigma2-plugin-extensions-cutlisteditor = "aio-grab"
+DESCRIPTION:append:enigma2-plugin-extensions-graphmultiepg = "shows a graphical timeline EPG."
+DESCRIPTION:append:enigma2-plugin-extensions-pictureplayer = "displays photos on the TV."
+DESCRIPTION:append:enigma2-plugin-systemplugins-positionersetup = "helps you installing a motorized dish."
+DESCRIPTION:append:enigma2-plugin-systemplugins-satelliteequipmentcontrol = "allows you to fine-tune DiSEqC-settings."
+DESCRIPTION:append:enigma2-plugin-systemplugins-satfinder = "helps you to align your dish."
+DESCRIPTION:append:enigma2-plugin-systemplugins-videomode = "selects advanced video modes"
+RDEPENDS:enigma2-plugin-systemplugins-nfiflash = "python-twisted-web"
+RDEPENDS:enigma2-plugin-systemplugins-softwaremanager = "python-twisted-web"
+DESCRIPTION:append:enigma2-plugin-systemplugins-wirelesslan = "helps you configuring your wireless lan"
+RDEPENDS:enigma2-plugin-systemplugins-wirelesslan = "wpa-supplicant wireless-tools python-wifi"
+DESCRIPTION:append:enigma2-plugin-systemplugins-networkwizard = "provides easy step by step network configuration"
 # Note that these tools lack recipes
-RDEPENDS_enigma2-plugin-extensions-dvdburn = "dvd+rw-tools dvdauthor mjpegtools cdrkit python-imaging ${DEMUXTOOL}"
-RDEPENDS_enigma2-plugin-systemplugins-hotplug = "hotplug-e2-helper"
+RDEPENDS:enigma2-plugin-extensions-dvdburn = "dvd+rw-tools dvdauthor mjpegtools cdrkit python-imaging ${DEMUXTOOL}"
+RDEPENDS:enigma2-plugin-systemplugins-hotplug = "hotplug-e2-helper"
 
 # Fake package that doesn't actually get built, but allows OE to detect
 # the RDEPENDS for the plugins above, preventing [build-deps] warnings.
-RDEPENDS_${PN}-build-dependencies = "\
+RDEPENDS:${PN}-build-dependencies = "\
 	aio-grab \
 	dvd+rw-tools dvdauthor mjpegtools cdrkit python-imaging ${DEMUXTOOL} \
 	wpa-supplicant wireless-tools python-wifi \
@@ -117,7 +117,7 @@ SRC_URI = " ${GITHUB_URI}/OpenPLi/enigma2.git;branch=${ENIGMA2_BRANCH} \
 			file://screensaverpicture.png \
 			"
 
-LDFLAGS_prepend = " -lxml2 "
+LDFLAGS:prepend = " -lxml2 "
 
 S = "${WORKDIR}/git"
 
@@ -149,20 +149,20 @@ EXTRA_OEMAKE = "\
 	ENIGMA2_BRANCH=${ENIGMA2_BRANCH} \
 	"
 
-FILES_enigma2-fonts = "${datadir}/fonts"
+FILES:enigma2-fonts = "${datadir}/fonts"
 
-FILES_${PN} += "${datadir}/keymaps"
+FILES:${PN} += "${datadir}/keymaps"
 
-FILES_${PN}-meta = "${datadir}/meta"
+FILES:${PN}-meta = "${datadir}/meta"
 
 # some plugins contain so's, their stripped symbols should not end up in the enigma2 package
-FILES_${PN}-dbg += "\
+FILES:${PN}-dbg += "\
 	${libdir}/enigma2/python/Plugins/*/*/.debug \
 	"
 
 # Swig generated 200k enigma.py file has no purpose for end users
 # Save some space by not installing sources (StartEnigma.py must remain)
-FILES_${PN}-src += "\
+FILES:${PN}-src += "\
 	${libdir}/enigma2/python/e2reactor.py \
 	${libdir}/enigma2/python/enigma.py \
 	${libdir}/enigma2/python/keyids.py \
@@ -183,16 +183,16 @@ FILES_${PN}-src += "\
 	${libdir}/enigma2/python/*/*/*/*/*/*.py \
 	"
 
-do_install_prepend() {
+do_install:prepend() {
 	mv ${WORKDIR}/screensaverpicture.png ${B}/data/skin_default/screensaverpicture.png
 }
 
-do_install_append() {
+do_install:append() {
 	install -d ${D}${datadir}/keymaps
 	find ${D}${libdir}/enigma2/python/ -name '*.pyc' -exec rm {} \;
 }
 
-python populate_packages_prepend() {
+python populate_packages:prepend() {
     enigma2_plugindir = bb.data.expand('${libdir}/enigma2/python/Plugins', d)
     do_split_packages(d, enigma2_plugindir, '^(\w+/\w+)/[a-zA-Z0-9_]+.*$', 'enigma2-plugin-%s', '%s', recursive=True, match_path=True, prepend=True, extra_depends='')
     do_split_packages(d, enigma2_plugindir, '^(\w+/\w+)/[a-zA-Z0-9_]+.py$', 'enigma2-plugin-%s-src', '%s (sources)', recursive=True, match_path=True, prepend=True, extra_depends='')

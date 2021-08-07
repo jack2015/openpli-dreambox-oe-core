@@ -11,15 +11,15 @@ PACKAGES_DYNAMIC = "kernel-*"
 # By default, kernel.bbclass modifies package names to allow multiple kernels
 # to be installed in parallel. We revert this change and rprovide the versioned
 # package names instead, to allow only one kernel to be installed.
-PKG_${KERNEL_PACKAGE_NAME}-base = "${KERNEL_PACKAGE_NAME}-base"
-PKG_${KERNEL_PACKAGE_NAME}-image = "${KERNEL_PACKAGE_NAME}-image"
-RPROVIDES_${KERNEL_PACKAGE_NAME}-base = "kernel-${KERNEL_VERSION}"
-RPROVIDES_${KERNEL_PACKAGE_NAME}-image = "kernel-image-${KERNEL_VERSION} ${KERNEL_BUILTIN_MODULES}"
+PKG:${KERNEL_PACKAGE_NAME}-base = "${KERNEL_PACKAGE_NAME}-base"
+PKG:${KERNEL_PACKAGE_NAME}-image = "${KERNEL_PACKAGE_NAME}-image"
+RPROVIDES:${KERNEL_PACKAGE_NAME}-base = "kernel-${KERNEL_VERSION}"
+RPROVIDES:${KERNEL_PACKAGE_NAME}-image = "kernel-image-${KERNEL_VERSION} ${KERNEL_BUILTIN_MODULES}"
 
 USB_ROOT = "/dev/sdb2"
 USB_ROOT_dm8000 = "/dev/sdf2"
 
-do_install_append() {
+do_install:append() {
 		${STRIP} ${D}/${KERNEL_IMAGEDEST}/${KERNEL_IMAGETYPE}-${KERNEL_VERSION}
 		gzip -9 ${D}/${KERNEL_IMAGEDEST}/${KERNEL_IMAGETYPE}-${KERNEL_VERSION}
 		echo "/boot/bootlogo-${MACHINE}.elf.gz filename=/boot/bootlogo-${MACHINE}.jpg" > ${D}/${KERNEL_IMAGEDEST}/autoexec.bat
@@ -29,14 +29,14 @@ do_install_append() {
 }
 
 # Set FILES for vmlinux package, so that kernel-image gets those files.
-FILES_${KERNEL_PACKAGE_NAME}-vmlinux = "boot/vmlinux-3.2-dm8000.gz"
+FILES:${KERNEL_PACKAGE_NAME}-vmlinux = "boot/vmlinux-3.2-dm8000.gz"
 ALLOW_EMPTY_kernel-vmlinux = "1"
 KERNEL_OUTPUT_DIR = "."
-FILES_${KERNEL_PACKAGE_NAME}-image += "\
+FILES:${KERNEL_PACKAGE_NAME}-image += "\
 	/${KERNEL_IMAGEDEST}/autoexec*.bat \
 	"
 
-pkg_preinst_kernel-image() {
+pkg_preinst:kernel-image() {
 	if [ -z "$D" ]
 	then
 		if mountpoint -q /${KERNEL_IMAGEDEST}
@@ -47,7 +47,7 @@ pkg_preinst_kernel-image() {
 		fi
 	fi
 }
-pkg_prerm_kernel-image() {
+pkg_prerm:kernel-image() {
 	if [ -z "$D" ]
 	then
 		if mountpoint -q /${KERNEL_IMAGEDEST}
@@ -58,7 +58,7 @@ pkg_prerm_kernel-image() {
 		fi
 	fi
 }
-pkg_postinst_kernel-image() {
+pkg_postinst:kernel-image() {
 		if [ -z "$D" ] && mountpoint -q /${KERNEL_IMAGEDEST}; then
 			if grep -q '\<root=/dev/mtdblock3\>' /proc/cmdline && grep -q '\<root=ubi0:rootfs\>' /boot/autoexec.bat; then
 				sed -ie 's!${CMDLINE_UBI}!${CMDLINE_JFFS2}!' /boot/autoexec.bat;
@@ -66,7 +66,7 @@ pkg_postinst_kernel-image() {
 			umount /${KERNEL_IMAGEDEST};
 		fi
 }
-pkg_postrm_kernel-image() {
+pkg_postrm:kernel-image() {
 	if [ -z "$D" ]
 	then
 		umount /${KERNEL_IMAGEDEST}
@@ -74,9 +74,9 @@ pkg_postrm_kernel-image() {
 }
 
 # Do not use update-alternatives!
-pkg_postinst_kernel () {
+pkg_postinst:kernel () {
 }
-pkg_postrm_kernel () {
+pkg_postrm:kernel () {
 }
 
 CMDLINE_JFFS2 = "root=/dev/mtdblock3 rootfstype=jffs2 rw ${CMDLINE_CONSOLE}"
@@ -87,7 +87,7 @@ USB_CMDLINE = "root=${USB_ROOT} rootdelay=10 rw ${CMDLINE_CONSOLE}"
 LOCALVERSION = "-${MACHINE}"
 
 
-do_configure_prepend() {
+do_configure:prepend() {
 
 		echo "" > ${S}/.config
 

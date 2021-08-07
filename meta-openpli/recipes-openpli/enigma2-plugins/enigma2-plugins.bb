@@ -41,20 +41,20 @@ EXTRA_OECONF = " \
 "
 
 # Main package should be empty
-FILES_${PN} = ""
+FILES:${PN} = ""
 # But something makes the packages think they depend on it, so just
 # deliver an empty hulk for them.
-ALLOW_EMPTY_${PN} = "1"
+ALLOW_EMPTY:${PN} = "1"
 
-FILES_enigma2-plugin-extensions-movietagger += "${sysconfdir}/enigma2/movietags"
-CONFFILES_enigma2-plugin-extensions-movietagger += "${sysconfdir}/enigma2/movietags"
+FILES:enigma2-plugin-extensions-movietagger += "${sysconfdir}/enigma2/movietags"
+CONFFILES:enigma2-plugin-extensions-movietagger += "${sysconfdir}/enigma2/movietags"
 
-FILES_enigma2-plugin-extensions-babelzapper += "${sysconfdir}/babelzapper"
+FILES:enigma2-plugin-extensions-babelzapper += "${sysconfdir}/babelzapper"
 
-FILES_enigma2-plugin-extensions-netcaster += "${sysconfdir}/NETcaster.conf"
-CONFFILES_enigma2-plugin-extensions-netcaster += "${sysconfdir}/NETcaster.conf"
+FILES:enigma2-plugin-extensions-netcaster += "${sysconfdir}/NETcaster.conf"
+CONFFILES:enigma2-plugin-extensions-netcaster += "${sysconfdir}/NETcaster.conf"
 
-FILES_${PN}-meta = "${datadir}/meta"
+FILES:${PN}-meta = "${datadir}/meta"
 PACKAGES += "${PN}-meta ${PN}-build-dependencies"
 
 inherit autotools-brokensep
@@ -74,7 +74,7 @@ DEPENDS = " \
 
 CFLAGS += "-I${STAGING_INCDIR}/tirpc"
 
-python populate_packages_prepend () {
+python populate_packages:prepend () {
     enigma2_plugindir = bb.data.expand('${libdir}/enigma2/python/Plugins', d)
     do_split_packages(d, enigma2_plugindir, '^(\w+/\w+)/[a-zA-Z0-9_]+.*$', 'enigma2-plugin-%s', '%s', recursive=True, match_path=True, prepend=True)
     do_split_packages(d, enigma2_plugindir, '^(\w+/\w+)/.*\.py$', 'enigma2-plugin-%s-src', '%s (source files)', recursive=True, match_path=True, prepend=True)
@@ -124,7 +124,7 @@ python populate_packages_prepend () {
         getControlLines(mydir, package.split('-')[-1])
 }
 
-do_install_append() {
+do_install:append() {
 	# remove unused .pyc files
 	find ${D}${libdir}/enigma2/python/ -name '*.pyc' -exec rm {} \;
 	# remove leftover webinterface garbage

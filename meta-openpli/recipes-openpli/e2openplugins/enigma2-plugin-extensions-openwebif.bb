@@ -6,7 +6,7 @@ LIC_FILES_CHKSUM = "file://README;md5=26abba37d1c2fcbf96a087ceb8e1db86"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 DEPENDS = "python-cheetah-native"
-RDEPENDS_${PN} = "\
+RDEPENDS:${PN} = "\
 	aio-grab \
 	python-cheetah \
 	python-compression\
@@ -66,16 +66,16 @@ do_compile() {
 }
 
 PLUGINPATH = "${libdir}/enigma2/python/Plugins/Extensions/${MODULE}"
-do_install_append() {
+do_install:append() {
 	install -d ${D}${PLUGINPATH}
 	cp -r ${S}/plugin/* ${D}${PLUGINPATH}
 	chmod a+rX ${D}${PLUGINPATH}
 }
 
-FILES_${PN}-src += "${PLUGINPATH}/controllers/views/*.tmpl ${PLUGINPATH}/controllers/views/*/*.tmpl ${PLUGINPATH}/controllers/views/*/*/*.tmpl"
-FILES_${PN} = "${PLUGINPATH}"
+FILES:${PN}-src += "${PLUGINPATH}/controllers/views/*.tmpl ${PLUGINPATH}/controllers/views/*/*.tmpl ${PLUGINPATH}/controllers/views/*/*/*.tmpl"
+FILES:${PN} = "${PLUGINPATH}"
 
 PACKAGES =+ "${PN}-vxg"
-DESCRIPTION_${PN}-vxg = "Adds Google Chrome support to OpenWebif's WebTV"
-FILES_${PN}-vxg = "${libdir}/enigma2/python/Plugins/Extensions/OpenWebif/public/vxg"
-RDEPENDS_${PN}-vxg =+ "${PN}"
+DESCRIPTION:${PN}-vxg = "Adds Google Chrome support to OpenWebif's WebTV"
+FILES:${PN}-vxg = "${libdir}/enigma2/python/Plugins/Extensions/OpenWebif/public/vxg"
+RDEPENDS:${PN}-vxg =+ "${PN}"

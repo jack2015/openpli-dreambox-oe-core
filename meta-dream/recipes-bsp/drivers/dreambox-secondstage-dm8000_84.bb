@@ -31,10 +31,10 @@ do_install() {
 }
 
 # busybox nandwrite requires oob patch and is not working in every box
-RDEPENDS_${PN} = "mtd-utils"
-FILES_${PN} = "/tmp/secondstage-${MACHINE}.bin"
+RDEPENDS:${PN} = "mtd-utils"
+FILES:${PN} = "/tmp/secondstage-${MACHINE}.bin"
 
-pkg_postinst_${PN}() {
+pkg_postinst:${PN}() {
 	if [ -z "$D" ] && grep -q '\<${MACHINE}\>' /proc/stb/info/model; then
 		if [ -f /tmp/secondstage-${MACHINE}.bin ]; then
 			flash_erase /dev/mtd1 0 0 2>/dev/null

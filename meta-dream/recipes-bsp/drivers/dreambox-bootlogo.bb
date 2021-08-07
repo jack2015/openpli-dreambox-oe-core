@@ -17,9 +17,9 @@ install -m 0755 ${S}/bootlogo-${MACHINE}.elf.gz ${D}/boot
 install -m 0755 ${S}/bootlogo-${MACHINE}.jpg ${D}/boot
 }
 
-FILES_${PN} = "/boot"
+FILES:${PN} = "/boot"
 
-pkg_preinst_${PN}_dreambox() {
+pkg_preinst:${PN}:dreambox() {
 	if [ -z "$D" ]
 	then
 		if mountpoint -q /boot
@@ -31,14 +31,14 @@ pkg_preinst_${PN}_dreambox() {
 	fi
 }
 
-pkg_postinst_${PN}_dreambox() {
+pkg_postinst:${PN}:dreambox() {
 	if [ -z "$D" ]
 	then
 		umount /boot
 	fi
 }
 
-pkg_prerm_${PN}_dreambox() {
+pkg_prerm:${PN}:dreambox() {
 	if [ -z "$D" ]
 	then
 		if mountpoint -q /boot
@@ -50,7 +50,7 @@ pkg_prerm_${PN}_dreambox() {
 	fi
 }
 
-pkg_postrm_${PN}_dreambox() {
+pkg_postrm:${PN}:dreambox() {
 	if [ -z "$D" ]
 	then
 		umount /boot

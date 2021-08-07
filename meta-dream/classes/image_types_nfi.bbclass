@@ -1,4 +1,4 @@
-IMAGE_CMD_ubifs_prepend = " \
+IMAGE_CMD:ubifs:prepend = " \
 	mkfs.jffs2 \
 		--root=${IMAGE_ROOTFS}/boot \
 		--compression-mode=none \

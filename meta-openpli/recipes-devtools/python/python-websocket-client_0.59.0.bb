@@ -8,7 +8,7 @@ SRC_URI[sha256sum] = "d376bd60eace9d437ab6d7ee16f4ab4e821c9dae591e1b783c58ebd8aa
 
 inherit pypi setuptools
 
-RDEPENDS_${PN} = "\
+RDEPENDS:${PN} = "\
     ${PYTHON_PN}-six \
     ${PYTHON_PN}-backports-ssl \
 "

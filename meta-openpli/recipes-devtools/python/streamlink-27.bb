@@ -6,7 +6,7 @@ SECTION = "devel/python"
 LICENSE = "BSD-2-Clause"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=7c0be52291b7252b878da806d185b1d1"
 
-RDEPENDS_${PN} = "python-core \
+RDEPENDS:${PN} = "python-core \
     python-backports-functools-lru-cache \
     python-backports-shutil-get-terminal-size \
     python-backports-shutil-which \
@@ -35,27 +35,27 @@ PKGV = "${GITPKGVTAG}"
 
 SRC_URI = "git://github.com/Billy2011/streamlink-27;protocol=https"
 
-FILESEXTRAPATHS_prepend := "${THISDIR}/streamlink-27:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/streamlink-27:"
 
 SRC_URI += " \
     file://0001-added-files.patch \
     "
 S = "${WORKDIR}/git"
 
-do_install_append() {
+do_install:append() {
     rm -rf ${D}${bindir}
     rm -rf ${D}${libdir}/${PYTHON_DIR}/site-packages/streamlink_cli
 }
 
 PACKAGES = "${PN}-src ${PN}"
 
-FILES_${PN} = " \
+FILES:${PN} = " \
     ${libdir}/${PYTHON_DIR}/site-packages/streamlink/*.pyo \
     ${libdir}/${PYTHON_DIR}/site-packages/streamlink/*/*.pyo \
     ${libdir}/${PYTHON_DIR}/site-packages/streamlink/*/*/*.pyo \
     "
 
-FILES_${PN}-src += " \
+FILES:${PN}-src += " \
     ${libdir}/${PYTHON_DIR}/site-packages/streamlink-*.egg-info/* \
     ${libdir}/${PYTHON_DIR}/site-packages/streamlink/plugins/.removed \
     ${libdir}/${PYTHON_DIR}/site-packages/streamlink/*.py \
