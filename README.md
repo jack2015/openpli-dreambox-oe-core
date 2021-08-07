@@ -6,8 +6,8 @@ Thanks to OpenPLi.
 
 In comparison to OpenPLi this repository has:<br>
 -Submodules bitbake, openembedded-core and meta-openembedded from master branch,<br>
-&nbsp;with git snapshot of July 20, 2021.<br>
--GCC 11.1.1<br>
+&nbsp;with git snapshot of August 7, 2021.<br>
+-GCC 11.2.0<br>
 -Glibc 2.33<br>
 -GStreamer 1.19.1.1<br>
 -Python 2.7.18<br>
@@ -34,7 +34,7 @@ cd openpli-dm8000-oe-core
 
 make image
 ```
-When the build is finished, the openpli-enigma2-11.1-dm8000.nfi image file is in the:
+When the build is finished, the openpli-enigma2-11.2-dm8000.nfi image file is in the:
 ```
 build/tmp/deploy/images/dm8000/
 ```
@@ -55,7 +55,7 @@ Create symlinks to your build-environment:
 ```
 cd /var/www/html
 
-sudo mkdir feeds;cd feeds;sudo mkdir openpli-11.1;cd openpli-11.1;
+sudo mkdir feeds;cd feeds;sudo mkdir openpli-11.2;cd openpli-11.2;
 
 sudo ln -s /home/<your username>/openpli-dm8000-oe-core/build/tmp/deploy/ipk/dm8000 dm8000 
 
