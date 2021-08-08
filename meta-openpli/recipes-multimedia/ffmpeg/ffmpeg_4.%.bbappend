@@ -1,5 +1,3 @@
-FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
-
 DEPENDS += "libxml2"
 
 PACKAGECONFIG:append = " libass libbluray libfreetype librtmp libvorbis \
@@ -14,12 +12,6 @@ PACKAGECONFIG[libv4l2] = "--enable-libv4l2,--disable-libv4l2,v4l-utils"
 PACKAGECONFIG[gnutls] = "--enable-gnutls,--disable-gnutls"
 
 MIPSFPU = "${@bb.utils.contains('TARGET_FPU', 'soft', '--disable-mipsfpu', '--enable-mipsfpu', d)}"
-
-SRC_URI:append += " \
-	file://4_02_fix_mpegts.patch \
-	file://4_10_rtsp_patch \
-	file://4_11_dxva2_patch \
-	"
 
 EXTRA_FFCONF = " \
 	--prefix=${prefix} \
