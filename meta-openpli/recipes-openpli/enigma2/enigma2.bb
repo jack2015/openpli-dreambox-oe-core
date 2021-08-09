@@ -43,6 +43,7 @@ PYTHON_RDEPS = " \
 	python-fcntl \
 	python-lang \
 	python-logging \
+	python-mmap \
 	python-netclient \
 	python-netserver \
 	python-numbers \
