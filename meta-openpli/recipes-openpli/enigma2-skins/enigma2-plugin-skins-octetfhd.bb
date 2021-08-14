@@ -17,6 +17,7 @@ SRC_URI="git://github.com/OpenVisionE2/OctEtFHD-skin.git;protocol=git \
 		file://OpenSans-Bold.ttf \
 		file://OpenSans-Regular.ttf \
 		file://segoe-ui-bold.ttf \
+		file://DejaVuSansCondensed-Bold.ttf \
 "
 
 S = "${WORKDIR}/git"
@@ -30,6 +31,7 @@ do_install:prepend() {
 	cp -f ${WORKDIR}/OpenSans-Bold.ttf ${B}${datadir}/fonts/OpenSans-Bold.ttf
 	cp -f ${WORKDIR}/OpenSans-Regular.ttf ${B}${datadir}/fonts/OpenSans-Regular.ttf
 	cp -f ${WORKDIR}/segoe-ui-bold.ttf ${B}${datadir}/fonts/segoe-ui-bold.ttf
+	cp -f ${WORKDIR}/DejaVuSansCondensed-Bold.ttf ${B}${datadir}/fonts/DejaVuSansCondensed-Bold.ttf
 }
 
 do_install() {
