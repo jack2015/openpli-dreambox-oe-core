@@ -6,14 +6,14 @@ LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://ntplib.py;beginline=1;endline=23;md5=afa07338a9595257e94c205c3e72224d"
 
 SRCNAME = "ntplib"
-SRC_URI = "https://pypi.python.org/packages/source/n/${SRCNAME}/${SRCNAME}-${PV}.tar.gz"
+SRC_URI = "https://files.pythonhosted.org/packages/b4/14/6b018fb602602d9f6cc7485cbad7c1be3a85d25cea18c233854f05284aed/${SRCNAME}-${PV}.tar.gz"
 
-SRC_URI[md5sum] = "c7cc8e9b09f40c84819859d70b7784ca"
-SRC_URI[sha256sum] = "c4621b64d50be9461d9bd9a71ba0b4af06fbbf818bbd483752d95c1a4e273ede"
+SRC_URI[md5sum] = "4c2118f6ef0d8c2c8a4f53d6318b2245"
+SRC_URI[sha256sum] = "899d8fb5f8c2555213aea95efca02934c7343df6ace9d7628a5176b176906267"
 
 S = "${WORKDIR}/${SRCNAME}-${PV}"
 
-inherit distutils
+inherit distutils setuptools
 
 RDEPENDS:${PN} = "python-core"
 
