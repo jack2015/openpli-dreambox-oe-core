@@ -154,6 +154,7 @@ ENIGMA2_OPTIONAL = " \
 	enigma2-plugin-systemplugins-newvirtualkeyboard \
 	enigma2-plugin-systemplugins-serviceapp \
 	enigma2-plugin-systemplugins-signalfinder \
+	enigma2-plugin-systemplugins-terrestrialscan \
 	enigma2-plugins \
 	meta-enigma2-dvdburn \
 	picons-enigma2-meta \
