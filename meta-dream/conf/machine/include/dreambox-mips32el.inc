@@ -11,4 +11,3 @@ require conf/machine/include/mips/tune-mips32.inc
 MACHINE_KERNEL_PR = "r14"
 
 KERNEL_SPLIT_MODULES = "1"
-EXTENDPKGV = ""
