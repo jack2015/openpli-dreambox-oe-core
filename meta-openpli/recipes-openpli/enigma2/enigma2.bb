@@ -115,6 +115,7 @@ SRC_URI = " ${GITHUB_URI}/OpenPLi/enigma2.git;branch=${ENIGMA2_BRANCH} \
 			file://05-fix-wrong-driver-date.patch \
 			file://06-add-skin_display_dm8000.patch \
 			file://07-revert-kill-the-pinguin.patch \
+			file://08-fix-crash-about-screen.patch \
 			file://screensaverpicture.png \
 			"
 
