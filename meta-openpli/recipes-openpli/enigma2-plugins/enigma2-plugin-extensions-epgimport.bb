@@ -1,4 +1,3 @@
-SUMMARY = "Imports XMLTV and epg.dat files into the EPG cache of enigma2"
 DESCRIPTION = "Imports XMLTV and epg.dat files into the EPG cache of enigma2"
 MAINTAINER = "OpenPLi team"
 
@@ -28,7 +27,7 @@ RCONFLICTS_${PN} = "enigma2-plugin-extensions-xmltvimport"
 PLUGIN = "EPGImport"
 
 FILES_${PN} = "${libdir}/enigma2/python"
-FILES_${PN}-dbg = "${libdir}/enigma2/python/Plugins/Extensions/${PLUGIN}/.debug /usr/src/debug"
+FILES_${PN}-dbg = "${libdir}/enigma2/python/Plugins/Extensions/${PLUGIN}/.debug ${prefix}/src/debug"
 
 pkg_postinst_${PN}() {
 

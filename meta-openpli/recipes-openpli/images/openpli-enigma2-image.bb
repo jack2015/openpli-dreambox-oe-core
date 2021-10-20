@@ -69,8 +69,6 @@ ENIGMA2_PLUGINS = " \
 
 DEPENDS += " \
 	enigma2 \
-	enigma2-pliplugins \
-	enigma2-plugins \
 	"
 
 IMAGE_INSTALL += " \
@@ -78,6 +76,8 @@ IMAGE_INSTALL += " \
 	cdtextinfo \
 	enigma2 \
 	libavahi-client \
+	ntpdate \
+	settings-autorestore \
 	tuxbox-common \
 	${ENIGMA2_PLUGINS} \
 	${KERNEL_WIFI_DRIVERS} \

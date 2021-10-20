@@ -1,8 +1,8 @@
 DESCRIPTION = "pyLoad is a fast, lightweight and full featured download manager for many One-Click-Hoster"
 LICENSE = "GPLv3"
-LIC_FILES_CHKSUM = "file://LICENSE;md5=d4333f07cbfa8fe036e90820f556b2ad"
+LIC_FILES_CHKSUM = "file://LICENSE.MD;md5=d4333f07cbfa8fe036e90820f556b2ad"
 HOMEPAGE = "http://pyload.org/"
-RDEPENDS_${PN} = "\
+RDEPENDS:${PN} = "\
   python-compression \
   python-db \
   python-email \
@@ -10,7 +10,7 @@ RDEPENDS_${PN} = "\
   python-imaging \
   python-numbers \
   python-pprint \
-  python-pycrypto \
+  python-pycryptodome \
   python-pycurl \
   python-sqlite3 \
   python-subprocess \
@@ -18,22 +18,20 @@ RDEPENDS_${PN} = "\
   python-unixadmin \
   python-xmlrpc \
 "
-RRECOMMENDS_${PN} = "unrar"
+RRECOMMENDS:${PN} = "unrar"
 
-PV = "0.4.9"
-PR = "r1"
+PV = "0.4.20"
 
 inherit update-rc.d
 
-SRC_URI = "http://sources.openelec.tv/mirror/pyload/pyload-src-v${PV}.zip \
-  file://pyload.init \
-  file://pyload.tar.gz.defaults"
-SRC_URI[md5sum] = "28876150af22999b6f539c8579d3b415"
-SRC_URI[sha256sum] = "f937631d376216bc830d6ffcd5b4ecb1806afd4012a184849da1a333a7ba0016"
+SRCREV = "1f29cd14d4c3d90d3249d20165a21c2b04ffed26"
+SRC_URI = "git://github.com/pyload/pyload.git;branch=stable \
+	file://pyload.init \
+	file://pyload.tar.gz.defaults"
 
-S = "${WORKDIR}/pyload"
+S = "${WORKDIR}/git"
 
-FILES_${PN} = "/usr/pyload/* /etc/*"
+FILES:${PN} = "/usr/pyload/* /etc/*"
 
 INITSCRIPT_NAME = "${PN}"
 INITSCRIPT_PARAMS = "defaults 60 "
@@ -57,4 +55,3 @@ do_install() {
 	
 	install -m 0755 ${WORKDIR}/pyload.init ${D}/etc/init.d/pyload
 }
-

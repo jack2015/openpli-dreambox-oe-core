@@ -1,4 +1,3 @@
-SUMMARY = "Rytec's XMLTV sources and channels for the EPGImporter"
 DESCRIPTION = "Rytec's XMLTV sources and channels for the EPGImporter"
 MAINTAINER = "Rytec forum @ forums.openpli.org"
 
@@ -6,7 +5,7 @@ require conf/license/openpli-gplv2.inc
 
 inherit allarch
 
-PV = "20200504"
+PV = "20210910"
 SRC_URI = "http://rytecepg.wanwizard.eu/rytec.sources.xml.${PV}.gz"
 S = "${WORKDIR}"
 
@@ -15,11 +14,11 @@ RCONFLICTS_${PN} = "enigma2-plugin-extensions-xmltvimport-rytec"
 
 PACKAGES = "${PN}"
 
-FILES_${PN} = "/etc/epgimport"
+FILES_${PN} = "${sysconfdir}/epgimport"
 
 do_install() {
-	install -d ${D}/etc/epgimport
-	install -m 644 ${S}/rytec.sources.xml.${PV} ${D}/etc/epgimport/rytec.sources.xml
+	install -d ${D}${sysconfdir}/epgimport
+	install -m 644 ${S}/rytec.sources.xml.${PV} ${D}${sysconfdir}/epgimport/rytec.sources.xml
 }
 
-SRC_URI[sha256sum] = "4b601ddd2a16b02380f3872fe683e4ed271a2f6baff3838cc97a1b6d9718e495"
+SRC_URI[sha256sum] = "50504ddbbe42b9fe8b7095ec58e3d070de290695e7b6183ebc43bd0a2240ffc4"

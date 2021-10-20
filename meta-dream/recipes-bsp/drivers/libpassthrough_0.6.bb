@@ -1,5 +1,4 @@
 SUMMARY = "Dreambox TS/M2TS audio passthrough helper lib"
-require conf/license/openpli-gplv2.inc
 DEPENDS = "libdlsym openssl"
 
 SRC_URI[cortexa15hf-neon-vfpv4.md5sum] = "2760da32a2553c88f6782525bb986495"
@@ -13,4 +12,4 @@ FILES_${PN} = "${libdir}/lib*${SOLIBSDEV}"
 FILES_SOLIBSDEV = ""
 
 DEBIAN_NOAUTONAME_${PN} = "1"
-INSANE_SKIP_${PN} += "file-rdeps"
+INSANE_SKIP_${PN} += " file-rdeps already-stripped"

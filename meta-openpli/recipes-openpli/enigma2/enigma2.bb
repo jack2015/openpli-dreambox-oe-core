@@ -17,15 +17,15 @@ DEPENDS = " \
 	"
 
 # SoftcamSetup is integrated now
-RREPLACES_${PN} = "enigma2-plugin-pli-softcamsetup"
-RCONFLICTS_${PN} = "enigma2-plugin-pli-softcamsetup"
+RREPLACES_${PN} = "enigma2-plugin-pli-softcamsetup enigma2-plugin-systemplugins-skinselector"
+RCONFLICTS_${PN} = "enigma2-plugin-pli-softcamsetup enigma2-plugin-systemplugins-skinselector"
 
 RDEPENDS_${PN} = " \
 	alsa-conf \
 	enigma2-fonts \
 	ethtool \
 	glibc-gconv-iso8859-15 \
-	openvision-branding \
+	${MACHINE}-branding \
 	${PYTHON_RDEPS} \
 	"
 
@@ -43,7 +43,9 @@ PYTHON_RDEPS = " \
 	python-fcntl \
 	python-lang \
 	python-logging \
+	python-mmap \
 	python-netclient \
+	python-netifaces \
 	python-netserver \
 	python-numbers \
 	python-pickle \
@@ -73,63 +75,60 @@ RDEPENDS_${PN} += "virtual/blindscan-dvbc"
 DEMUXTOOL ?= "replex"
 
 DESCRIPTION_append_enigma2-plugin-extensions-cutlisteditor = "enables you to cut your movies."
-RDEPENDS_enigma2-plugin-extensions-cutlisteditor = "aio-grab"
 DESCRIPTION_append_enigma2-plugin-extensions-graphmultiepg = "shows a graphical timeline EPG."
 DESCRIPTION_append_enigma2-plugin-extensions-pictureplayer = "displays photos on the TV."
 DESCRIPTION_append_enigma2-plugin-systemplugins-positionersetup = "helps you installing a motorized dish."
 DESCRIPTION_append_enigma2-plugin-systemplugins-satelliteequipmentcontrol = "allows you to fine-tune DiSEqC-settings."
 DESCRIPTION_append_enigma2-plugin-systemplugins-satfinder = "helps you to align your dish."
 DESCRIPTION_append_enigma2-plugin-systemplugins-videomode = "selects advanced video modes"
+DESCRIPTION_append_enigma2-plugin-systemplugins-wirelesslan = "helps you configuring your wireless lan"
+DESCRIPTION_append_enigma2-plugin-systemplugins-networkwizard = "provides easy step by step network configuration"
+
+RDEPENDS_enigma2-plugin-extensions-cutlisteditor = "aio-grab"
 RDEPENDS_enigma2-plugin-systemplugins-nfiflash = "python-twisted-web"
 RDEPENDS_enigma2-plugin-systemplugins-softwaremanager = "python-twisted-web"
-DESCRIPTION_append_enigma2-plugin-systemplugins-wirelesslan = "helps you configuring your wireless lan"
-RDEPENDS_enigma2-plugin-systemplugins-wirelesslan = "wpa-supplicant iw python-wifi"
-DESCRIPTION_append_enigma2-plugin-systemplugins-networkwizard = "provides easy step by step network configuration"
+RDEPENDS_enigma2-plugin-systemplugins-wirelesslan = "wpa-supplicant wireless-tools python-wifi"
+
 # Note that these tools lack recipes
 RDEPENDS_enigma2-plugin-extensions-dvdburn = "dvd+rw-tools dvdauthor mjpegtools cdrkit python-imaging ${DEMUXTOOL}"
 RDEPENDS_enigma2-plugin-systemplugins-hotplug = "hotplug-e2-helper"
+RRECOMMENDS_enigma2-plugin-extensions-dvdplayer = "kernel-module-udf"
+RRECOMMENDS_enigma2-plugin-extensions-dvdburn = "kernel-module-pktcdvd"
 
 # Fake package that doesn't actually get built, but allows OE to detect
 # the RDEPENDS for the plugins above, preventing [build-deps] warnings.
 RDEPENDS_${PN}-build-dependencies = "\
 	aio-grab \
 	dvd+rw-tools dvdauthor mjpegtools cdrkit python-imaging ${DEMUXTOOL} \
-	wpa-supplicant iw python-wifi \
+	wpa-supplicant wireless-tools python-wifi \
 	python-twisted-web \
 	"
+
+RRECOMMENDS_${PN}-build-dependencies = "kernel-module-udf kernel-module-pktcdvd"
 
 inherit gitpkgv pythonnative
 
 PV = "2.7+git${SRCPV}"
 PKGV = "2.7+git${GITPKGV}"
 
-ENIGMA2_BRANCH ?= "develop"
-GITHUB_URI ?= "git://github.com"
-
-SRC_URI = " ${GITHUB_URI}/OpenVisionE2/enigma2-openvision.git;branch=${ENIGMA2_BRANCH} \
-			file://01-set-default-debug-level-at-4.patch \
-			file://02-dont-remove-e2iplayer.patch \
-			file://03-make-PLi-FullNightHD-skin-default.patch \
-			file://04-update-about-screen.patch \
-			file://05-set-box-brand-to-dreambox.patch \
-			file://06-update-skin-display.patch \
-			file://011-fix-hardware-name.patch \
-			file://012-set-default-hide-channel-list-radio.patch \
-			"
+SRC_URI = "git://github.com/jack2015/enigma2-openpli.git;branch=${ENIGMA2_BRANCH}"
 
 LDFLAGS_prepend = " -lxml2 "
 
 S = "${WORKDIR}/git"
 
-FILES_${PN} += "${datadir}/keymaps"
-FILES_${PN}-meta = "${datadir}/meta"
-PACKAGES += "${PN}-meta ${PN}-build-dependencies"
-PACKAGE_ARCH = "${MACHINE_ARCH}"
-
 inherit autotools pkgconfig
 
-PACKAGES =+ "enigma2-fonts"
-PKGV_enigma2-fonts = "2018.08.15"
+PACKAGE_ARCH = "${MACHINE_ARCH}"
+
+PACKAGES += "${PN}-meta ${PN}-build-dependencies"
+FILES_${PN} += "${datadir}/keymaps"
+FILES_${PN}-meta = "${datadir}/meta"
+
+PACKAGES =+ "enigma2-plugin-font-wqy-microhei enigma2-fonts"
+FILES_enigma2-plugin-font-wqy-microhei = "${datadir}/fonts/wqy-microhei.ttc ${datadir}/fonts/fallback.font"
+ALLOW_EMPTY_enigma2-plugin-font-wqy-microhei = "1"
+PKGV_enigma2-fonts = "2020.10.17"
 FILES_enigma2-fonts = "${datadir}/fonts"
 
 def get_crashaddr(d):
@@ -141,9 +140,11 @@ def get_crashaddr(d):
 EXTRA_OECONF = "\
 	--with-libsdl=no --with-boxtype=${MACHINE} \
 	--enable-dependency-tracking \
-	--with-oever="9.2" \
 	ac_cv_prog_c_openmp=-fopenmp \
 	${@get_crashaddr(d)} \
+	${@bb.utils.contains("MACHINE_FEATURES", "textlcd", "--with-textlcd" , "", d)} \
+	${@bb.utils.contains("MACHINE_FEATURES", "7segment", "--with-7segment" , "", d)} \
+	${@bb.utils.contains("MACHINE_FEATURES", "7seg", "--with-7segment" , "", d)} \
 	BUILD_SYS=${BUILD_SYS} \
 	HOST_SYS=${HOST_SYS} \
 	STAGING_INCDIR=${STAGING_INCDIR} \

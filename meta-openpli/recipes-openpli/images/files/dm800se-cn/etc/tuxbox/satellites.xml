@@ -1251,6 +1251,8 @@
 		<transponder frequency="12477000" symbol_rate="45000000" polarization="1" fec_inner="3" system="1" modulation="2"/>
 		<transponder frequency="12538000" symbol_rate="45000000" polarization="1" fec_inner="3" system="1" modulation="2"/>
 		<transponder frequency="12660000" symbol_rate="45000000" polarization="1" fec_inner="3" system="1" modulation="2"/>
+		<transponder frequency="12598000" symbol_rate="43000000" polarization="1" fec_inner="3" system="1" modulation="2"/>
+		<transponder frequency="12721000" symbol_rate="43200000" polarization="1" fec_inner="2" system="1" modulation="2"/>
 	</sat>
 	<sat name="Express AM3 (140.0E C-band)" flags="0" position="1400">
 		<transponder frequency="3467000" symbol_rate="12581000" polarization="1" fec_inner="7" system="1" modulation="2"/>

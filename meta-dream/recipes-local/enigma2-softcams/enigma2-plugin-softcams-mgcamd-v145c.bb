@@ -52,16 +52,22 @@ pkg_postinst_${PN}() {
 		ln -sf "../init.d/softcam" "$D/etc/rcS.d/S96softcam"
 	fi
 
-	if [ -f "$D/lib/ld-2.31.so" ]; then
-		ln -sf "ld-2.31.so" "$D/lib/ld-linux.so.3"
+	if [ -f "$D/lib/ld-2.30.so" ]; then
+		ln -sf "ld-2.30.so" "$D/lib/ld-linux.so.3"
 	elif [ -f "$D/lib/ld-2.28.so" ]; then
 		ln -sf "ld-2.28.so" "$D/lib/ld-linux.so.3"
+	elif [ -f "$D/lib/ld-2.26.so" ]; then
+		ln -sf "ld-2.26.so" "$D/lib/ld-linux.so.3"
 	elif [ -f "$D/lib/ld-2.25.so" ]; then
 		ln -sf "ld-2.25.so" "$D/lib/ld-linux.so.3"
 	fi
 
 	if [ ! -e "$D${CAMLINK}" ] || [ "/etc/init.d/softcam.None" = "`readlink -f $D${CAMLINK}`" ] || [ "softcam.None" = "`readlink -f $D${CAMLINK}`" ]
 	then
+		ln -sf "softcam.${CAMNAME}" "$D${CAMLINK}"
+		$D${CAMPATH} restart > /dev/null 2>&1
+	else
+		$D${CAMLINK} stop > /dev/null 2>&1
 		ln -sf "softcam.${CAMNAME}" "$D${CAMLINK}"
 		$D${CAMPATH} restart > /dev/null 2>&1
 	fi

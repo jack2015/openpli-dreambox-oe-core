@@ -23,6 +23,7 @@ SRC_URI += " \
 			file://mdev \
 			file://mdev.conf \
 			file://mdev-mount.sh \
+			file://busybox-cron \
 			"
 
 # we do not really depend on mtd-utils, but as mtd-utils replaces 
@@ -60,7 +61,7 @@ pkg_prerm_${PN}_append () {
 
 do_install_append() {
 	if grep -q "CONFIG_CRONTAB=y" ${WORKDIR}/defconfig; then
-		install -d ${D}${sysconfdir}/cron/crontabs
+		install -d ${D}${localstatedir}/spool/cron/crontabs
 	fi
 	install -d ${D}${sysconfdir}/mdev
 	install -m 0755 ${WORKDIR}/mdev-mount.sh ${D}${sysconfdir}/mdev

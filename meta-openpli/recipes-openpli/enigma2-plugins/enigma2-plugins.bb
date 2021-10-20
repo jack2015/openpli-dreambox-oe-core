@@ -26,8 +26,8 @@ RRECOMMENDS_enigma2-plugin-extensions-transmission = "transmission transmission-
 
 inherit gitpkgv pythonnative pkgconfig
 
-PV = "9.3.0-git${SRCPV}"
-PKGV = "9.3.0-git${GITPKGV}"
+PV = "10.2.0-git${SRCPV}"
+PKGV = "10.2.0-git${GITPKGV}"
 
 GITHUB_URI ?= "git://github.com"
 SRC_URI = "${GITHUB_URI}/jack2015/${BPN}.git"
@@ -62,6 +62,7 @@ inherit autotools-brokensep
 S = "${WORKDIR}/git"
 
 DEPENDS = " \
+	python-six-native \
 	python-pyopenssl \
 	streamripper \
 	python-mutagen \

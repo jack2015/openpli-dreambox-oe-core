@@ -18,6 +18,12 @@ KERNEL_BUILTIN_MODULES_dm8000 = "\
 KERNEL_BUILTIN_MODULES_dm800se = "\
 	kernel-module-stv0299 \
 	"
+KERNEL_BUILTIN_MODULES_dm800sev2 = "\
+	kernel-module-stv0299 \
+	"
+KERNEL_BUILTIN_MODULES_dm7020hd = "\
+	kernel-module-stv0299 \
+	"
 # By default, kernel.bbclass modifies package names to allow multiple kernels
 # to be installed in parallel. We revert this change and rprovide the versioned
 # package names instead, to allow only one kernel to be installed.

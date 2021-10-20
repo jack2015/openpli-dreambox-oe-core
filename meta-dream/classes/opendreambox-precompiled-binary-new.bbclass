@@ -1,3 +1,4 @@
+require conf/license/openpli-gplv2.inc
 PRECOMPILED_NAME ?= "${PN}"
 PRECOMPILED_ARCH ?= "${PACKAGE_ARCH}"
 PRECOMPILED_VERSION ?= "${PV}"

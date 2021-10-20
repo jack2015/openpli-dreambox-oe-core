@@ -2,11 +2,12 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
 
 SRC_URI += " \
-            file://04-default-is-optimized.patch \
-            file://99-ignore-optimization-flag.patch \
-            file://no-ldconfig.patch \
-            file://setuptweaks-2.patch \
-            file://pgettext.patch \
+    file://04-default-is-optimized.patch \
+    file://99-ignore-optimization-flag.patch \
+    file://no-ldconfig.patch \
+    file://setuptweaks-2.patch \
+    file://pgettext.patch \
+    file://0001-mips-fix-MIPS-softfloat-build-issue.patch \
 "
 
 EXTRA_OECONF += " \

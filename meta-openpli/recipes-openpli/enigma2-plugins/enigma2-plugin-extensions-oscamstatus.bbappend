@@ -1,3 +1,3 @@
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+# FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
-SRC_URI += "file://remove-duplicate-server-name.patch"
+# SRC_URI += "file://remove-duplicate-server-name.patch"

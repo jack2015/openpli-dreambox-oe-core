@@ -1,0 +1,13 @@
+--- original/include/os/rt_linux.h	2020-06-26 19:32:00.199842000 +0300
++++ modified/include/os/rt_linux.h	2020-06-27 03:17:46.995547761 +0300
+@@ -277,8 +277,8 @@
+ 
+ typedef struct _OS_FS_INFO_
+ {
+-	int				fsuid;
+-	int				fsgid;
++	kuid_t				fsuid;
++	kgid_t				fsgid;
+ 	mm_segment_t	fs;
+ } OS_FS_INFO;
+ 

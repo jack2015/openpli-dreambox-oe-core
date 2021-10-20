@@ -7,14 +7,15 @@ require conf/license/license-gplv2.inc
 DEPENDS = "util-linux samba"
 
 SRC_URI = " \
-	file://Makefile \
-	file://wsdd.c \
-	"
+    file://Makefile \
+    file://wsdd.c \
+    "
 
-PR = "r1"
-PV = "1.0"
+PV = "1.08"
 
 S = "${WORKDIR}"
+
+TARGET_CC_ARCH += "${LDFLAGS}"
 
 do_compile() {
     make -f Makefile

@@ -1,5 +1,7 @@
-# make sure it starts automatically after installation
-# INITSCRIPT_NAME = "openvpn"
-# INITSCRIPT_PARAMS = "defaults"
-# FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
-# inherit update-rc.d
+# Replace init script with ours, so the tun device is created
+# before OpenVPN server starts
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+
+INITSCRIPT_NAME = "openvpn"
+
+RDEPENDS_${PN} += "kernel-module-tun"

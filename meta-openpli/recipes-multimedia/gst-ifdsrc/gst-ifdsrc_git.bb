@@ -12,6 +12,6 @@ PR = "r0"
 
 SRC_URI = "git://github.com/jack2015/gst-ifdsrc.git"
 
-S = "${WORKDIR}/git/"
+S = "${WORKDIR}/git"
 
 FILES_${PN} += "${libdir}/gstreamer-1.0"

@@ -1,16 +1,16 @@
 IMAGE_INSTALL_remove = "distro-feed-configs"
 IMAGE_INSTALL_remove = "hdparm"
 IMAGE_INSTALL_remove = "3rd-party-feed-configs"
+IMAGE_INSTALL_remove = "settings-autorestore"
 
 #dm800se-big
 
-IMAGE_INSTALL_append += " \
+IMAGE_INSTALL_append = " \
 	libcrypto-compat \
 	bitratecalc \
 	ffmpeg \
 	exteplayer3 \
 	gstplayer \
-	wget \
 	busybox-cron \
 	"
 
@@ -22,13 +22,13 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-language-en \
 	enigma2-plugin-language-zh-cn \
 	enigma2-plugin-language-ru \
+	enigma2-plugin-glibclocale-fake \
 	enigma2-plugin-font-wqy-microhei \
 	enigma2-plugin-skins-pli-fullnighthd \
 	enigma2-plugin-extensions-fancontrol2 \
 	\
 	enigma2-plugin-extensions-audiosync \
 	enigma2-plugin-extensions-autobackup \
-	enigma2-plugin-extensions-backupsuite \
 	enigma2-plugin-extensions-cutlisteditor \
 	enigma2-plugin-extensions-cacheflush \
 	enigma2-plugin-extensions-epgimport \
@@ -57,7 +57,6 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-systemplugins-osdpositionsetup \
 	enigma2-plugin-systemplugins-positionersetup \
 	enigma2-plugin-systemplugins-satfinder \
-	enigma2-plugin-systemplugins-systemtime \
 	enigma2-plugin-systemplugins-softwaremanager \
 	enigma2-plugin-systemplugins-videomode \
 	enigma2-plugin-systemplugins-videotune \

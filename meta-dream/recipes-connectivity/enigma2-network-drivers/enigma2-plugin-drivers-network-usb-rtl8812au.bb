@@ -1,4 +1,4 @@
-SUMMARY = "WiFi devices for Realtek 8812AU/8821AU chipsets."
+SUMMARY = "WiFi devices for Ralink 8812AU/8821AU chipsets."
 inherit allarch
 
 require conf/license/license-gplv2.inc

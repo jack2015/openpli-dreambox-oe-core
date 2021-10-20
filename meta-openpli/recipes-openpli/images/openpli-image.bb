@@ -49,12 +49,10 @@ rootfs_removeopkgleftovers() {
 	rm -r ${IMAGE_ROOTFS}/var/lib/opkg/lists
 }
 
-# Speedup boot by reducing the host key size. The time it takes grows
-# exponentially by key size, the default is 2k which takes several
-# seconds on most boxes.
-rootfs_speedup_dropbearkey() {
-	echo 'DROPBEAR_RSAKEY_ARGS="-s 1024"' >> ${IMAGE_ROOTFS}${sysconfdir}/default/dropbear
-}
+# Switch from ssh-rsa to ecdsa-sha2-nistp521, as OpenSSH has deprecated ssh-rsa
+# rootfs_speedup_dropbearkey() {
+#	echo 'DROPBEAR_RSAKEY_ARGS="-t ecdsa -s 521"' >> ${IMAGE_ROOTFS}${sysconfdir}/default/dropbear
+# }
 
 # Some features in image.bbclass we do NOT want, so override them
 # to be empty. We want to log in as root, but NOT via SSH. So we want
@@ -70,4 +68,5 @@ ssh_allow_empty_password () {
 license_create_manifest() {
 }
 
-ROOTFS_POSTPROCESS_COMMAND += "rootfs_removeopkgleftovers; rootfs_speedup_dropbearkey; "
+# ROOTFS_POSTPROCESS_COMMAND += "rootfs_removeopkgleftovers; rootfs_speedup_dropbearkey; "
+ROOTFS_POSTPROCESS_COMMAND += "rootfs_removeopkgleftovers; "

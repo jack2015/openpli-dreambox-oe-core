@@ -1,48 +1,8 @@
-#FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
-
-SRC_URI = "git://github.com/jack2015/enigma2-openpli.git;branch=dm800se"
+ENIGMA2_BRANCH = "dm800se"
 
 RRECOMMENDS_${PN}_remove = "virtual/enigma2-mediaservice"
 
-PYTHON_RDEPS_append += " \
-	python-mmap \
-	python-six \
-	python-netifaces \
-	"
-
-RDEPENDS_enigma2-plugin-systemplugins-wirelesslan = "wpa-supplicant wireless-tools python-wifi"
-
-RRECOMMENDS_enigma2-plugin-extensions-dvdplayer = "kernel-module-udf"
-RRECOMMENDS_enigma2-plugin-extensions-dvdburn = "kernel-module-pktcdvd"
-RRECOMMENDS_${PN}-build-dependencies = "kernel-module-udf kernel-module-pktcdvd"
-
-RDEPENDS_${PN}-build-dependencies_remove = "iw"
-
-RDEPENDS_${PN}-build-dependencies_append += " \
-	wireless-tools \
-	"
-
-RDEPENDS_${PN}_remove = "openvision-branding"
-
-RDEPENDS_${PN}_append += " \
-	dm800se-branding \
-	"
-
-EXTRA_OECONF = "\
-	--with-libsdl=no --with-boxtype=${MACHINE} \
-	--enable-dependency-tracking \
-	ac_cv_prog_c_openmp=-fopenmp \
-	${@get_crashaddr(d)} \
-	${@bb.utils.contains("MACHINE_FEATURES", "textlcd", "--with-textlcd" , "", d)} \
-	${@bb.utils.contains("MACHINE_FEATURES", "7segment", "--with-7segment" , "", d)} \
-	${@bb.utils.contains("MACHINE_FEATURES", "7seg", "--with-7segment" , "", d)} \
-	BUILD_SYS=${BUILD_SYS} \
-	HOST_SYS=${HOST_SYS} \
-	STAGING_INCDIR=${STAGING_INCDIR} \
-	STAGING_LIBDIR=${STAGING_LIBDIR} \
-	"
-
-do_install_append_dm800se() {
+do_install_append() {
 	find ${D}/usr/share/enigma2/rc_models/ -name '*.png' -exec rm {} \;
 	find ${D}/usr/share/enigma2/rc_models/ -name '*.xml' -exec rm {} \;
 	install -m 0644 ${S}/data/rc_models/dmm.png ${D}/usr/share/enigma2/rc_models/dmm.png
@@ -68,6 +28,7 @@ SUMMARY_enigma2-plugin-language-fa = "Persian"
 SUMMARY_enigma2-plugin-language-fi = "Finnish"
 SUMMARY_enigma2-plugin-language-fr = "French"
 SUMMARY_enigma2-plugin-language-fy = "Frisian"
+SUMMARY_enigma2-plugin-language-gl = "Galicia"
 SUMMARY_enigma2-plugin-language-he = "Hebrew"
 SUMMARY_enigma2-plugin-language-hr = "Croatian"
 SUMMARY_enigma2-plugin-language-hu = "Hungarian"
@@ -76,6 +37,7 @@ SUMMARY_enigma2-plugin-language-is = "Icelandic"
 SUMMARY_enigma2-plugin-language-ku = "Kurdish"
 SUMMARY_enigma2-plugin-language-lt = "Lithuanian"
 SUMMARY_enigma2-plugin-language-lv = "Latvian"
+SUMMARY_enigma2-plugin-language-mk = "Macedonian"
 SUMMARY_enigma2-plugin-language-nb = "Norwegian Bokm"
 SUMMARY_enigma2-plugin-language-nl = "Dutch"
 SUMMARY_enigma2-plugin-language-nn = "Norwegian Nynorsk"
@@ -92,8 +54,48 @@ SUMMARY_enigma2-plugin-language-uk = "Ukrainian"
 SUMMARY_enigma2-plugin-language-vi = "Vietnamese"
 SUMMARY_enigma2-plugin-language-zh-cn = "Chinese-China"
 SUMMARY_enigma2-plugin-language-zh-hk = "Chinese-Hong Kong"
-
 SUMMARY_enigma2-plugin-font-wqy-microhei = "wqy-microhei font supports Chinese EPG"
-PACKAGES =+ "enigma2-plugin-font-wqy-microhei"
-FILES_enigma2-plugin-font-wqy-microhei = "${datadir}/fonts/wqy-microhei.ttc ${datadir}/fonts/fallback.font"
-ALLOW_EMPTY_enigma2-plugin-font-wqy-microhei = "1"
+
+RRECOMMENDS_enigma2-plugin-language-en = "enigma2-plugin-glibclocale-en-en"
+RRECOMMENDS_enigma2-plugin-language-ru = "enigma2-plugin-glibclocale-ru-ru"
+RRECOMMENDS_enigma2-plugin-language-ar = "enigma2-plugin-glibclocale-ar-ae"
+RRECOMMENDS_enigma2-plugin-language-de = "enigma2-plugin-glibclocale-de-de"
+RRECOMMENDS_enigma2-plugin-language-es = "enigma2-plugin-glibclocale-es-es"
+RRECOMMENDS_enigma2-plugin-language-it = "enigma2-plugin-glibclocale-it-it"
+RRECOMMENDS_enigma2-plugin-language-tr = "enigma2-plugin-glibclocale-tr-tr"
+RRECOMMENDS_enigma2-plugin-language-bg = "enigma2-plugin-glibclocale-bg-bg"
+RRECOMMENDS_enigma2-plugin-language-ca = "enigma2-plugin-glibclocale-ca-ad"
+RRECOMMENDS_enigma2-plugin-language-cs = "enigma2-plugin-glibclocale-cs-cz"
+RRECOMMENDS_enigma2-plugin-language-da = "enigma2-plugin-glibclocale-da-dk"
+RRECOMMENDS_enigma2-plugin-language-el = "enigma2-plugin-glibclocale-el-gr"
+RRECOMMENDS_enigma2-plugin-language-et = "enigma2-plugin-glibclocale-et-ee"
+RRECOMMENDS_enigma2-plugin-language-fa = "enigma2-plugin-glibclocale-fa-ir"
+RRECOMMENDS_enigma2-plugin-language-fi = "enigma2-plugin-glibclocale-fi-fi"
+RRECOMMENDS_enigma2-plugin-language-fr = "enigma2-plugin-glibclocale-fr-fr"
+RRECOMMENDS_enigma2-plugin-language-fy = "enigma2-plugin-glibclocale-fy-nl"
+RRECOMMENDS_enigma2-plugin-language-gl = "enigma2-plugin-glibclocale-gl-es"
+RRECOMMENDS_enigma2-plugin-language-he = "enigma2-plugin-glibclocale-he-il"
+RRECOMMENDS_enigma2-plugin-language-hr = "enigma2-plugin-glibclocale-hr-hr"
+RRECOMMENDS_enigma2-plugin-language-hu = "enigma2-plugin-glibclocale-hu-hu"
+RRECOMMENDS_enigma2-plugin-language-id = "enigma2-plugin-glibclocale-id-id"
+RRECOMMENDS_enigma2-plugin-language-is = "enigma2-plugin-glibclocale-is-is"
+RRECOMMENDS_enigma2-plugin-language-ku = "enigma2-plugin-glibclocale-ku-tr"
+RRECOMMENDS_enigma2-plugin-language-lt = "enigma2-plugin-glibclocale-lt-lt"
+RRECOMMENDS_enigma2-plugin-language-lv = "enigma2-plugin-glibclocale-lv-lv"
+RRECOMMENDS_enigma2-plugin-language-mk = "enigma2-plugin-glibclocale-mk-mk"
+RRECOMMENDS_enigma2-plugin-language-nb = "enigma2-plugin-glibclocale-nb-no"
+RRECOMMENDS_enigma2-plugin-language-nl = "enigma2-plugin-glibclocale-nl-nl"
+RRECOMMENDS_enigma2-plugin-language-nn = "enigma2-plugin-glibclocale-nn-no"
+RRECOMMENDS_enigma2-plugin-language-pl = "enigma2-plugin-glibclocale-pl-pl"
+RRECOMMENDS_enigma2-plugin-language-pt = "enigma2-plugin-glibclocale-pt-pt"
+RRECOMMENDS_enigma2-plugin-language-pt-br = "enigma2-plugin-glibclocale-pt-br"
+RRECOMMENDS_enigma2-plugin-language-ro = "enigma2-plugin-glibclocale-ro-ro"
+RRECOMMENDS_enigma2-plugin-language-sk = "enigma2-plugin-glibclocale-sk-sk"
+RRECOMMENDS_enigma2-plugin-language-sl = "enigma2-plugin-glibclocale-sl-si"
+RRECOMMENDS_enigma2-plugin-language-sr = "enigma2-plugin-glibclocale-sr-rs"
+RRECOMMENDS_enigma2-plugin-language-sv = "enigma2-plugin-glibclocale-sv-se"
+RRECOMMENDS_enigma2-plugin-language-th = "enigma2-plugin-glibclocale-th-th"
+RRECOMMENDS_enigma2-plugin-language-uk = "enigma2-plugin-glibclocale-uk-ua"
+RRECOMMENDS_enigma2-plugin-language-vi = "enigma2-plugin-glibclocale-vi-vn"
+RRECOMMENDS_enigma2-plugin-language-zh-cn = "enigma2-plugin-glibclocale-zh-cn"
+RRECOMMENDS_enigma2-plugin-language-zh-hk = "enigma2-plugin-glibclocale-zh-hk"

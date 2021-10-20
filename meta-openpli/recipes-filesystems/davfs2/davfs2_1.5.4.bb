@@ -2,21 +2,20 @@ DESCRIPTION = "A Linux file system driver that allows you to mount a WebDAV serv
 SECTION = "network"
 PRIORITY = "optional"
 HOMEPAGE = "http://dav.sourceforge.net"
-DEPENDS = "virtual/gettext neon"
+DEPENDS = "gettext-native neon"
 RRECOMMENDS_${PN} = "kernel-module-coda"
 LICENSE = "GPLv3"
 LIC_FILES_CHKSUM = "file://COPYING;md5=8f0e2cd40e05189ec81232da84bd6e1a"
 
-PR = "r0"
 
 SRC_URI[md5sum] = "c9f0b557275b7ec88fec751bf22f30cf"
 SRC_URI[sha256sum] = "c9c4e0f0912a782386216b2147eb9c36c47f193b8fcf3d637719e0b9fe7c96e0"
 
-SRC_URI = "http://download.savannah.nongnu.org/releases/davfs2/${P}.tar.gz \
-           file://neon-config \
-           file://volatiles \
+SRC_URI = "http://download.savannah.nongnu.org/releases/davfs2/${BP}.tar.gz \
+           file://fix-build-with-fno-common.patch \
            file://davfs2.cfg \
-"
+           file://neon-config \
+           file://volatiles"
 
 inherit autotools pkgconfig useradd gettext
 
@@ -39,5 +38,5 @@ do_install_prepend () {
 do_install_append () {
         mkdir -p ${D}${sysconfdir}/default/volatiles
         install -m 644 ${WORKDIR}/volatiles ${D}${sysconfdir}/default/volatiles/10_davfs2
-        rm -rf ${D}${datadir}/davfs2
+        rm -rf ${D}/usr/share/davfs2
 }
