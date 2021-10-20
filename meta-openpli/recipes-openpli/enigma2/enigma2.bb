@@ -111,7 +111,9 @@ inherit gitpkgv pythonnative
 PV = "2.7+git${SRCPV}"
 PKGV = "2.7+git${GITPKGV}"
 
-SRC_URI = "git://github.com/jack2015/enigma2-openpli.git;branch=${ENIGMA2_BRANCH}"
+SRC_URI = " git://github.com/jack2015/enigma2-openpli.git;branch=${ENIGMA2_BRANCH} \
+	file://01-use-mallinfo2.patch \
+"
 
 LDFLAGS_prepend = " -lxml2 "
 

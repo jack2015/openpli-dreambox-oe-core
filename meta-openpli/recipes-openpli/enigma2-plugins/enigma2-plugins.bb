@@ -57,6 +57,10 @@ CONFFILES_enigma2-plugin-extensions-netcaster += "${sysconfdir}/NETcaster.conf"
 FILES_${PN}-meta = "${datadir}/meta"
 PACKAGES += "${PN}-meta ${PN}-build-dependencies"
 
+CFLAGS += "-I${STAGING_INCDIR}/tirpc"
+LDFLAGS += "-ltirpc"
+CXXFLAGS = " -std=c++11"
+
 inherit autotools-brokensep
 
 S = "${WORKDIR}/git"

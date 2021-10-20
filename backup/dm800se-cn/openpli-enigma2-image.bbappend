@@ -78,7 +78,6 @@ rmpo() {
 
 upxall() {
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/sbin/ldconfig || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/sbin/udevd || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/blindscan || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/bsdcat || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/dbus-daemon || true
@@ -88,8 +87,6 @@ upxall() {
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/openssl || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/vpxdec || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/vpxenc || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/udevadm || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/libexec/udevadm || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/sdparm || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/alsactl || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/avahi-daemon || true
