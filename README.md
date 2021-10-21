@@ -1,5 +1,5 @@
 # openpli-dreambox-oe-core 10.3
-Build environment based on OpenPLi-homebuild (develop branch).\
+Build environment based on OpenPLi-homebuild (develop branch).
 
 -For dm800se & dm800sev2 & dm900 & dm920\
 -GCC 10.2.0\
