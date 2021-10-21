@@ -24,14 +24,14 @@ inherit pypi setuptools
 
 # {standard input}: Assembler messages:
 # {standard input}:1488805: Error: branch out of range
-DEBUG_OPTIMIZATION_remove_mips = " -Og"
-DEBUG_OPTIMIZATION_append_mips = " -O"
-BUILD_OPTIMIZATION_remove_mips = " -Og"
-BUILD_OPTIMIZATION_append_mips = " -O"
-DEBUG_OPTIMIZATION_remove_mipsel = " -Og"
-DEBUG_OPTIMIZATION_append_mipsel = " -O"
-BUILD_OPTIMIZATION_remove_mipsel = " -Og"
-BUILD_OPTIMIZATION_append_mipsel = " -O"
+DEBUG_OPTIMIZATION:remove_mips = " -Og"
+DEBUG_OPTIMIZATION:append_mips = " -O"
+BUILD_OPTIMIZATION:remove_mips = " -Og"
+BUILD_OPTIMIZATION:append_mips = " -O"
+DEBUG_OPTIMIZATION:remove_mipsel = " -Og"
+DEBUG_OPTIMIZATION:append_mipsel = " -O"
+BUILD_OPTIMIZATION:remove_mipsel = " -Og"
+BUILD_OPTIMIZATION:append_mipsel = " -O"
 
 BBCLASSEXTEND = "native nativesdk"
 
