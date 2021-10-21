@@ -1,5 +1,5 @@
 require conf/license/openpli-gplv2.inc
-SUMMARY = "Wicardd Softcam for DM800se Ver1.19"
+SUMMARY = "Wicardd Softcam for DM900 & DM920 Ver1.19"
 PACKAGE_ARCH = "${DEFAULTTUNE}"
 
 INHIBIT_PACKAGE_STRIP = "1"
