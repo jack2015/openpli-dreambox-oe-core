@@ -46,6 +46,10 @@ pkg_postinst_${PN}() {
 	then
 		ln -sf "softcam.${CAMNAME}" "$D${CAMLINK}"
 		$D${CAMPATH} restart > /dev/null 2>&1
+	else
+		$D${CAMLINK} stop > /dev/null 2>&1
+		ln -sf "softcam.${CAMNAME}" "$D${CAMLINK}"
+		$D${CAMPATH} restart > /dev/null 2>&1
 	fi
 }
 

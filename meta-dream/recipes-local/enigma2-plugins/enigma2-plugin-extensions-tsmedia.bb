@@ -11,7 +11,7 @@ SRCREV = "${AUTOREV}"
 PV = "15.4+git${SRCPV}"
 PKGV = "15.4+git${GITPKGV}"
 
-SRC_URI = "git://github.com/jack2015/TSmedia.git;protocol=https"
+SRC_URI = "git://github.com/jack2015/TSmedia.git"
 
 FILES_${PN} = "/usr/"
 

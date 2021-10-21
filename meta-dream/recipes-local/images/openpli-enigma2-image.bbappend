@@ -7,7 +7,6 @@ IMAGE_INSTALL_remove = "3rd-party-feed-configs"
 IMAGE_INSTALL_append += " \
 	bitratecalc \
 	libcrypto-compat \
-	wget \
 	busybox-cron \
 	"
 

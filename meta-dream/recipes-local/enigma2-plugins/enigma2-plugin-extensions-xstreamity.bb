@@ -13,7 +13,7 @@ PR = "r1"
 
 inherit gitpkgv allarch rm_python_pyc compile_python_pyo
 
-SRC_URI = "git://github.com/jack2015/XStreamity.git;protocol=https"
+SRC_URI = "git://github.com/jack2015/XStreamity.git"
 
 S = "${WORKDIR}/git"
 

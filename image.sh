@@ -1,7 +1,17 @@
 #!/bin/sh
 
-sudo update-alternatives --config gcc
-gcc --version
+gcc --version | sed -nr '/Ubuntu [0-9]+/ s/.*Ubuntu +([0-9]+).*/\1/p' > /tmp/vision-gcc-version
+VISIONGCCVERSION=`cat /tmp/vision-gcc-version`
+if [ "${VISIONGCCVERSION}" != '9' ]; then
+	echo -e "${RED}GCC version is wrong!"
+	echo -e "It means you need to choose version 9 of GCC!"
+	sudo update-alternatives --config gcc
+	gcc --version | sed -nr '/Ubuntu [0-9]+/ s/.*Ubuntu +([0-9]+).*/\1/p' > /tmp/vision-gcc-version
+	VISIONGCCVERSION=`cat /tmp/vision-gcc-version`
+	echo -e "Done, now GCC version is: ${VISIONGCCVERSION} ${NC}"
+	echo -e ""
+	exit 0
+fi
 
 SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 cd "${SCRIPTPATH}"
