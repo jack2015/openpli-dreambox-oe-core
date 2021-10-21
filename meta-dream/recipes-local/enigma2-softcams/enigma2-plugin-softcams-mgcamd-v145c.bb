@@ -54,12 +54,14 @@ pkg_postinst_${PN}() {
 
 	if [ -f "$D/lib/ld-2.30.so" ]; then
 		ln -sf "ld-2.30.so" "$D/lib/ld-linux.so.3"
-	elif [ -f "$D/lib/ld-2.28.so" ]; then
-		ln -sf "ld-2.28.so" "$D/lib/ld-linux.so.3"
-	elif [ -f "$D/lib/ld-2.26.so" ]; then
-		ln -sf "ld-2.26.so" "$D/lib/ld-linux.so.3"
-	elif [ -f "$D/lib/ld-2.25.so" ]; then
-		ln -sf "ld-2.25.so" "$D/lib/ld-linux.so.3"
+	elif [ -f "$D/lib/ld-2.31.so" ]; then
+		ln -sf "ld-2.31.so" "$D/lib/ld-linux.so.3"
+	elif [ -f "$D/lib/ld-2.32.so" ]; then
+		ln -sf "ld-2.32.so" "$D/lib/ld-linux.so.3"
+	elif [ -f "$D/lib/ld-2.33.so" ]; then
+		ln -sf "ld-2.33.so" "$D/lib/ld-linux.so.3"
+	elif [ -f "$D/lib/ld-2.34.so" ]; then
+		ln -sf "ld-2.34.so" "$D/lib/ld-linux.so.3"
 	fi
 
 	if [ ! -e "$D${CAMLINK}" ] || [ "/etc/init.d/softcam.None" = "`readlink -f $D${CAMLINK}`" ] || [ "softcam.None" = "`readlink -f $D${CAMLINK}`" ]
