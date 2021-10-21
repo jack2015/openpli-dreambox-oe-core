@@ -7,14 +7,10 @@ IMAGE_INSTALL_remove = "3rd-party-feed-configs"
 IMAGE_INSTALL_append += " \
 	bitratecalc \
 	libcrypto-compat \
-	wget \
 	busybox-cron \
 	"
 
-KERNEL_WIFI_DRIVERS = " \
-	firmware-rtl8712u \
-	kernel-module-r8712u \
-	"
+KERNEL_WIFI_DRIVERS = ""
 
 EXTERNAL_WIFI_DRIVERS = ""
 
@@ -23,15 +19,11 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-language-ru \
 	enigma2-plugin-skins-pli-fullnighthd \
 	enigma2-plugin-extensions-fancontrol2 \
-	\
 	enigma2-plugin-extensions-audiosync \
 	enigma2-plugin-extensions-autobackup \
-	enigma2-plugin-extensions-backupsuite \
 	enigma2-plugin-extensions-cutlisteditor \
 	enigma2-plugin-extensions-cacheflush \
 	enigma2-plugin-extensions-epgimport \
-	enigma2-plugin-extensions-filecommander \
-	enigma2-plugin-extensions-flashexpander \
 	enigma2-plugin-extensions-graphmultiepg \
 	enigma2-plugin-extensions-mediaplayer \
 	enigma2-plugin-extensions-mediascanner \
@@ -41,9 +33,6 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-extensions-pictureplayer \
 	enigma2-plugin-extensions-ppanel \
 	enigma2-plugin-softcams-oscam-dm800se \
-	enigma2-plugin-extensions-openmultiboot \
-	openmultiboot \
-	\
 	enigma2-plugin-systemplugins-cablescan \
 	enigma2-plugin-systemplugins-fastscan \
 	enigma2-plugin-systemplugins-mphelp \
@@ -60,7 +49,6 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-systemplugins-videomode \
 	enigma2-plugin-systemplugins-videotune \
 	enigma2-plugin-systemplugins-wirelesslan \
-	enigma2-plugin-systemplugins-serviceapp \
 	"
 
 rmpy() {

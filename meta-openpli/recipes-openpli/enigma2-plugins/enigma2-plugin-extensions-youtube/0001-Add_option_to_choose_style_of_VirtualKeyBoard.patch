@@ -6,19 +6,39 @@ Subject: [PATCH] Add_option_to_choose_style_of_VirtualKeyBoard
 ---
 
 diff --git a/src/YouTubeSearch.py b/src/YouTubeSearch.py
-index 81e97ff..0d37513 100644
+index fb4b651..d756b70 100644
 --- a/src/YouTubeSearch.py
 +++ b/src/YouTubeSearch.py
-@@ -258,8 +258,16 @@ class YouTubeSearch(Screen, ConfigListScreen):
+@@ -3,6 +3,7 @@ from __future__ import print_function
+ from threading import Thread
+ from json import loads
+ 
++import os
+ from enigma import ePoint
+ from Screens.ChoiceBox import ChoiceBox
+ from Screens.Screen import Screen
+@@ -15,6 +16,7 @@ from Components.Pixmap import Pixmap
+ from Components.Sources.Boolean import Boolean
+ from Components.Sources.List import List
+ from Components.Sources.StaticText import StaticText
++from Tools.Directories import resolveFilename, SCOPE_PLUGINS
+ 
+ from . import _, screenwidth
+ from .compat import compat_quote
+@@ -344,8 +346,20 @@ class YouTubeSearch(Screen, ConfigListScreen):
  
  	def openKeyboard(self):
  		self['config'].getCurrent()[1].help_window.instance.hide()
 -		self.session.openWithCallback(self.keyBoardCallback, YouTubeVirtualKeyBoard,
--			text = self.searchValue.value)
-+		self.VirtualKeyBoard = config.plugins.YouTube.VirtualKeyBoard
+-				text=self.searchValue.value)
++		self.VirtualKeyBoard = config.plugins.YouTube.VirtualKeyBoard.value
 +		if self.VirtualKeyBoard == "YouTube":
-+			self.session.openWithCallback(self.keyBoardCallback, YouTubeVirtualKeyBoard,
-+				text = self.searchValue.value)
++			if os.path.islink("/usr/lib/enigma2/python/Screens/VirtualKeyBoard.py") and os.path.exists(resolveFilename(SCOPE_PLUGINS, "SystemPlugins/NewVirtualKeyBoard")):
++				from Screens.VirtualKeyBoard import VirtualKeyBoard
++				self.session.openWithCallback(self.keyBoardCallback, VirtualKeyBoard, '')
++			else:
++				self.session.openWithCallback(self.keyBoardCallback, YouTubeVirtualKeyBoard,
++					text = self.searchValue.value)
 +		elif self.VirtualKeyBoard == "Image":
 +			from Screens.VirtualKeyBoard import VirtualKeyBoard
 +			self.session.openWithCallback(self.keyBoardCallback, VirtualKeyBoard, '')
@@ -29,10 +49,10 @@ index 81e97ff..0d37513 100644
  	def keyBoardCallback(self, name):
  		config = self['config'].getCurrent()[1]
 diff --git a/src/YouTubeUi.py b/src/YouTubeUi.py
-index 8888915..de06bce 100644
+index cb4898e..da00cf4 100644
 --- a/src/YouTubeUi.py
 +++ b/src/YouTubeUi.py
-@@ -116,6 +116,8 @@ config.plugins.YouTube.onMovieEof = ConfigSelection(default='quit', choices=[
+@@ -74,6 +74,8 @@ config.plugins.YouTube.onMovieEof = ConfigSelection(default='quit', choices=[
  	('playprev', _('Play previous'))])
  config.plugins.YouTube.onMovieStop = ConfigSelection(default='ask', choices=[
  	('ask', _('Ask user')), ('quit', _('Return to list'))])
@@ -40,16 +60,14 @@ index 8888915..de06bce 100644
 +	('YouTube', _('YouTube VirtualKeyBoard')), ('Image', _('Image VirtualKeyBoard'))])
  config.plugins.YouTube.login = ConfigYesNo(default=False)
  config.plugins.YouTube.downloadDir = ConfigDirectory(default=resolveFilename(SCOPE_HDD))
- config.plugins.YouTube.mergeFiles = ConfigYesNo(default=False)
-@@ -1476,6 +1478,9 @@ class YouTubeSetup(ConfigListScreen, Screen):
- 		configlist.append(getConfigListEntry(_('Merge downloaded files:'),
- 			config.plugins.YouTube.mergeFiles,
- 			_('FFmpeg will be used to merge downloaded DASH video and audio files.\nFFmpeg will be installed if necessary.')))
-+		configlist.append(getConfigListEntry(_('Choose VirtualKeyBoard Style:'),
+ config.plugins.YouTube.useDashMP4 = ConfigYesNo(default=True)
+@@ -1515,6 +1517,9 @@ class YouTubeSetup(ConfigListScreen, Screen):
+ 			self.list.append(getConfigListEntry(_('Merge downloaded files:'),
+ 				config.plugins.YouTube.mergeFiles,
+ 				_('FFmpeg will be used to merge downloaded DASH video and audio files.\nFFmpeg will be installed if necessary.')))
++		self.list.append(getConfigListEntry(_('Choose VirtualKeyBoard Style:'),
 +			config.plugins.YouTube.VirtualKeyBoard,
 +			_('You can choose what style of VirtualKeyBoard to use it.\nYouTube OR Image (VirtualKeyBoard).')))
  		for p in plugins.getPlugins(where=PluginDescriptor.WHERE_MENU):
  			# TRANSLATORS: Don't translate this! It is used as a variable, so it must be equal to the translation in the plugin!
  			if p.name == _("ServiceApp"):
--- 
-2.20.1

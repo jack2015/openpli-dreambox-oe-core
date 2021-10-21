@@ -12,10 +12,11 @@ SRC_URI = "git://github.com/Taapat/enigma2-plugin-youtube.git \
 
 S = "${WORKDIR}/git"
 
-inherit gitpkgv distutils-openplugins
+inherit gitpkgv
+PV = "1+git${SRCPV}"
+PKGV = "1+git${GITPKGV}"
 
-PV = "git${SRCPV}"
-PKGV = "git${GITPKGV}"
+inherit distutils-openplugins
 
 RDEPENDS_${PN} = " \
 	python-core \
@@ -26,15 +27,6 @@ RDEPENDS_${PN} = " \
 	python-zlib \
 	python-twisted-web \
 	"
-
-CONFFILES = "${sysconfdir}/enigma2/YouTube.key"
-
-do_install_append() {
-	install -d ${D}${sysconfdir}/enigma2
-	install -m 0644 ${S}/YouTube.key ${D}${sysconfdir}/enigma2/YouTube.key
-}
-
-FILES_${PN} = "${sysconfdir} ${libdir}"
 
 RDEPENDS_{PN}-src = "${PN}"
 FILES_${PN}-src = "${libdir}/enigma2/python/Plugins/Extensions/YouTube/*.py"

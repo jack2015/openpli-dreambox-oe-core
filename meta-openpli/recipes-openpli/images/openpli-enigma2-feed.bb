@@ -95,7 +95,6 @@ ENIGMA2_OPTIONAL = " \
 	enigma2-plugin-extensions-vcs \
 	enigma2-plugin-extensions-xmodem \
 	enigma2-plugin-extensions-youtube \
-	enigma2-plugin-extensions-youtube-dl \
 	enigma2-plugin-extensions-cacheflush \
 	enigma2-plugin-extensions-openwebif \
 	enigma2-plugin-extensions-oscamstatus \

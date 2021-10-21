@@ -10,7 +10,6 @@ IMAGE_INSTALL_append += " \
 	ffmpeg \
 	exteplayer3 \
 	gstplayer \
-	wget \
 	busybox-cron \
 	"
 
@@ -25,10 +24,8 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-font-wqy-microhei \
 	enigma2-plugin-skins-pli-fullnighthd \
 	enigma2-plugin-extensions-fancontrol2 \
-	\
 	enigma2-plugin-extensions-audiosync \
 	enigma2-plugin-extensions-autobackup \
-	enigma2-plugin-extensions-backupsuite \
 	enigma2-plugin-extensions-cutlisteditor \
 	enigma2-plugin-extensions-cacheflush \
 	enigma2-plugin-extensions-epgimport \
@@ -43,9 +40,6 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-extensions-pictureplayer \
 	enigma2-plugin-extensions-ppanel \
 	enigma2-plugin-softcams-oscam-dm800se \
-	enigma2-plugin-extensions-openmultiboot \
-	openmultiboot \
-	\
 	enigma2-plugin-systemplugins-cablescan \
 	enigma2-plugin-systemplugins-fastscan \
 	enigma2-plugin-systemplugins-mphelp \

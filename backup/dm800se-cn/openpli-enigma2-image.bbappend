@@ -20,10 +20,8 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-font-wqy-microhei \
 	enigma2-plugin-skins-pli-fullnighthd \
 	enigma2-plugin-extensions-fancontrol2 \
-	\
 	enigma2-plugin-extensions-audiosync \
 	enigma2-plugin-extensions-autobackup \
-	enigma2-plugin-extensions-backupsuite \
 	enigma2-plugin-extensions-cutlisteditor \
 	enigma2-plugin-extensions-cacheflush \
 	enigma2-plugin-extensions-graphmultiepg \
@@ -35,7 +33,6 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-extensions-pictureplayer \
 	enigma2-plugin-extensions-ppanel \
 	enigma2-plugin-softcams-oscam-dm800se \
-	\
 	enigma2-plugin-systemplugins-cablescan \
 	enigma2-plugin-systemplugins-fastscan \
 	enigma2-plugin-systemplugins-mphelp \
@@ -46,7 +43,6 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-systemplugins-osdpositionsetup \
 	enigma2-plugin-systemplugins-positionersetup \
 	enigma2-plugin-systemplugins-satfinder \
-	enigma2-plugin-systemplugins-systemtime \
 	enigma2-plugin-systemplugins-softwaremanager \
 	enigma2-plugin-systemplugins-videomode \
 	enigma2-plugin-systemplugins-videotune \

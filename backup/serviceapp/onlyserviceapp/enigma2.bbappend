@@ -1,48 +1,6 @@
-#FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+ENIGMA2_BRANCH = "dm800se"
 
-SRC_URI = "git://github.com/jack2015/enigma2-openpli.git;branch=dm800se"
-
-RRECOMMENDS_${PN}_remove = "virtual/enigma2-mediaservice"
-
-PYTHON_RDEPS_append += " \
-	python-mmap \
-	python-six \
-	python-netifaces \
-	"
-
-RDEPENDS_enigma2-plugin-systemplugins-wirelesslan = "wpa-supplicant wireless-tools python-wifi"
-
-RRECOMMENDS_enigma2-plugin-extensions-dvdplayer = "kernel-module-udf"
-RRECOMMENDS_enigma2-plugin-extensions-dvdburn = "kernel-module-pktcdvd"
-RRECOMMENDS_${PN}-build-dependencies = "kernel-module-udf kernel-module-pktcdvd"
-
-RDEPENDS_${PN}-build-dependencies_remove = "iw"
-
-RDEPENDS_${PN}-build-dependencies_append += " \
-	wireless-tools \
-	"
-
-RDEPENDS_${PN}_remove = "openvision-branding"
-
-RDEPENDS_${PN}_append += " \
-	dm800se-branding \
-	"
-
-EXTRA_OECONF = "\
-	--with-libsdl=no --with-boxtype=${MACHINE} \
-	--enable-dependency-tracking \
-	ac_cv_prog_c_openmp=-fopenmp \
-	${@get_crashaddr(d)} \
-	${@bb.utils.contains("MACHINE_FEATURES", "textlcd", "--with-textlcd" , "", d)} \
-	${@bb.utils.contains("MACHINE_FEATURES", "7segment", "--with-7segment" , "", d)} \
-	${@bb.utils.contains("MACHINE_FEATURES", "7seg", "--with-7segment" , "", d)} \
-	BUILD_SYS=${BUILD_SYS} \
-	HOST_SYS=${HOST_SYS} \
-	STAGING_INCDIR=${STAGING_INCDIR} \
-	STAGING_LIBDIR=${STAGING_LIBDIR} \
-	"
-
-do_install_append_dm800se() {
+do_install_append() {
 	find ${D}/usr/share/enigma2/rc_models/ -name '*.png' -exec rm {} \;
 	find ${D}/usr/share/enigma2/rc_models/ -name '*.xml' -exec rm {} \;
 	install -m 0644 ${S}/data/rc_models/dmm.png ${D}/usr/share/enigma2/rc_models/dmm.png
@@ -68,6 +26,7 @@ SUMMARY_enigma2-plugin-language-fa = "Persian"
 SUMMARY_enigma2-plugin-language-fi = "Finnish"
 SUMMARY_enigma2-plugin-language-fr = "French"
 SUMMARY_enigma2-plugin-language-fy = "Frisian"
+SUMMARY_enigma2-plugin-language-gl = "Galicia"
 SUMMARY_enigma2-plugin-language-he = "Hebrew"
 SUMMARY_enigma2-plugin-language-hr = "Croatian"
 SUMMARY_enigma2-plugin-language-hu = "Hungarian"
@@ -76,6 +35,7 @@ SUMMARY_enigma2-plugin-language-is = "Icelandic"
 SUMMARY_enigma2-plugin-language-ku = "Kurdish"
 SUMMARY_enigma2-plugin-language-lt = "Lithuanian"
 SUMMARY_enigma2-plugin-language-lv = "Latvian"
+SUMMARY_enigma2-plugin-language-mk = "Macedonian"
 SUMMARY_enigma2-plugin-language-nb = "Norwegian Bokm"
 SUMMARY_enigma2-plugin-language-nl = "Dutch"
 SUMMARY_enigma2-plugin-language-nn = "Norwegian Nynorsk"
@@ -92,8 +52,4 @@ SUMMARY_enigma2-plugin-language-uk = "Ukrainian"
 SUMMARY_enigma2-plugin-language-vi = "Vietnamese"
 SUMMARY_enigma2-plugin-language-zh-cn = "Chinese-China"
 SUMMARY_enigma2-plugin-language-zh-hk = "Chinese-Hong Kong"
-
 SUMMARY_enigma2-plugin-font-wqy-microhei = "wqy-microhei font supports Chinese EPG"
-PACKAGES =+ "enigma2-plugin-font-wqy-microhei"
-FILES_enigma2-plugin-font-wqy-microhei = "${datadir}/fonts/wqy-microhei.ttc ${datadir}/fonts/fallback.font"
-ALLOW_EMPTY_enigma2-plugin-font-wqy-microhei = "1"
