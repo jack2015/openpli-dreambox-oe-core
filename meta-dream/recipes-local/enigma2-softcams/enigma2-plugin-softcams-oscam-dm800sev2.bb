@@ -1,6 +1,6 @@
 require conf/license/openpli-gplv2.inc
 require oscam-version.inc
-SUMMARY = "Oscam Softcam for DM800se"
+SUMMARY = "Oscam Softcam for DM800sev2"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 PACKAGES = "${PN}"
 
