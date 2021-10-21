@@ -20,14 +20,10 @@ DEPENDS += "libxml2 libxslt"
 
 SRC_URI[sha256sum] = "39b78571b3b30645ac77b95f7c69d1bffc4cf8c3b157c435a34da72e78c82468"
 
-inherit pypi setuptools
+inherit pypi setuptools pkgconfig
 
 # {standard input}: Assembler messages:
 # {standard input}:1488805: Error: branch out of range
-DEBUG_OPTIMIZATION:remove_mips = " -Og"
-DEBUG_OPTIMIZATION:append_mips = " -O"
-BUILD_OPTIMIZATION:remove_mips = " -Og"
-BUILD_OPTIMIZATION:append_mips = " -O"
 DEBUG_OPTIMIZATION:remove_mipsel = " -Og"
 DEBUG_OPTIMIZATION:append_mipsel = " -O"
 BUILD_OPTIMIZATION:remove_mipsel = " -Og"
