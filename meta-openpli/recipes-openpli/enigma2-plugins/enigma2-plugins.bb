@@ -17,7 +17,7 @@ PACKAGES += "\
 	enigma2-plugin-systemplugins-systemtime \
 	"
 RDEPENDS_enigma2-plugin-extensions-mosaic = "aio-grab"
-RDEPENDS_enigma2-plugin-extensions-fancontrol2 = "smartmontools hdparm"
+RDEPENDS_enigma2-plugin-extensions-fancontrol2 = ""
 RDEPENDS_enigma2-plugin-extensions-bonjour = "avahi-daemon"
 
 RRECOMMENDS_enigma2-plugin-systemplugins-blindscan = "virtual/blindscan-dvbs"
@@ -30,7 +30,7 @@ PV = "y-git${SRCPV}"
 PKGV = "y-git${GITPKGV}"
 
 GITHUB_URI ?= "git://github.com"
-SRC_URI = "${GITHUB_URI}/OpenPLi/${BPN}.git"
+SRC_URI = "${GITHUB_URI}/jack2015/${BPN}.git"
 
 EXTRA_OECONF = " \
 	BUILD_SYS=${BUILD_SYS} \

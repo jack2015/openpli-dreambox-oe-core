@@ -1,6 +1,6 @@
 # dreambox.inc
 # We know about rtc
-MACHINE_FEATURES_BACKFILL_CONSIDERED = "rtc"
+MACHINE_FEATURES_BACKFILL_CONSIDERED += "rtc"
 
 OPTIONAL_BSP_PACKAGES += "dreambox-buildimage"
 
@@ -8,12 +8,10 @@ EXTRA_IMAGEDEPENDS += "dreambox-secondstage-${MACHINE}"
 
 MACHINE_ESSENTIAL_EXTRA_RDEPENDS += "dreambox-dvb-modules-${MACHINE}"
 
-KERNEL_MODULE_AUTOLOAD += "xfs"
+# KERNEL_MODULE_AUTOLOAD += "xfs"
 
-MACHINE_EXTRA_RRECOMMENDS = " \
-	gstreamer1.0-plugin-multibox-dvbmediasink \	
-	ntfs-3g \
-	kernel-module-cifs \
+MACHINE_EXTRA_RRECOMMENDS += " \
+	gstreamer1.0-plugin-multibox-dvbmediasink \
 	kernel-module-hmac \
 	kernel-module-md4 \
 	kernel-module-ecb \
@@ -35,7 +33,7 @@ PREFERRED_VERSION_linux-dreambox = "3.2"
 
 KERNEL_IMAGETYPE = "vmlinux"
 KERNEL_OUTPUT = "${KERNEL_IMAGETYPE}"
-KERNEL_CONSOLE = "${@bb.utils.contains('OPENPLI_FEATURES', 'usbconsole', 'ttyS0,115200', 'null', d)}"
+KERNEL_CONSOLE = "ttyS0,115200"
 
 DREAMBOX_BUILDIMAGE = "buildimage --arch ${MACHINE} ${EXTRA_BUILDCMD} \
 	--erase-block-size ${DREAMBOX_ERASE_BLOCK_SIZE} \

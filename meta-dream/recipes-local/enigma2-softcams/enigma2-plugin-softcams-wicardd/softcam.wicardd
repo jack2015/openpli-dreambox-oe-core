@@ -1,0 +1,25 @@
+#!/bin/sh
+case "$1" in
+start)
+	/usr/bin/wicardd -d -c "/etc/tuxbox/config/wicardd.conf" &
+	;;
+stop)
+	killall -9 wicardd
+	;;
+restart|reload)
+	$0 stop
+	sleep 1
+	$0 start
+	;;
+version)
+	echo "1.19"
+	;;
+info)
+	echo "wicardd 1.19"
+	;;
+*)
+	echo "Usage: $0 start|stop|restart"
+	exit 1
+	;;
+esac
+exit 0

@@ -2,6 +2,11 @@ FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
 SRC_URI += " \
 			file://mount_single_uuid.patch \
+			file://defconfig \
+			file://inetd.conf \
+			file://mdev \
+			file://mdev.conf \
+			file://mdev-mount.sh \
 			file://busybox-cron \
 "
 
@@ -24,6 +29,12 @@ INITSCRIPT_NAME:${PN}-cron = "${BPN}-cron"
 FILES:${PN}-cron = "${sysconfdir}/cron ${sysconfdir}/init.d/${BPN}-cron"
 RDEPENDS:${PN}-cron += "${PN}"
 
+# Some packages recommend udev-hwdb to be installed. To prevent them actually
+# installing, just claim we already provide it and conflict with its default
+# provider.
+RPROVIDES:${PN}-mdev += "udev udev-hwdb"
+RCONFLICTS:${PN}-mdev += "eudev eudev-hwdb"
+
 pkg_postinst:${PN}:append () {
 	update-alternatives --install /bin/sh sh /bin/busybox.nosuid 50
 }
@@ -36,5 +47,7 @@ do_install:append() {
 	if grep -q "CONFIG_CRONTAB=y" ${WORKDIR}/defconfig; then
 		install -d ${D}${localstatedir}/spool/cron/crontabs
 	fi
+	install -d ${D}${sysconfdir}/mdev
+	install -m 0755 ${WORKDIR}/mdev-mount.sh ${D}${sysconfdir}/mdev
 	sed -i "/[/][s][h]*$/d" ${D}${sysconfdir}/busybox.links.nosuid
 }
