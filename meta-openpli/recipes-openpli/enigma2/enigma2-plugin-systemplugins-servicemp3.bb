@@ -12,16 +12,17 @@ GST_BASE_RDEPS = "\
 	gstreamer${GST_VERSION}-plugins-base-alsa \
 	gstreamer${GST_VERSION}-plugins-base-app \
 	gstreamer${GST_VERSION}-plugins-base-audioconvert \
-	gstreamer${GST_VERSION}-plugins-base-audiorate \
 	gstreamer${GST_VERSION}-plugins-base-audioresample \
+	gstreamer${GST_VERSION}-plugins-base-audiorate \
+	gstreamer${GST_VERSION}-plugins-base-videoconvert \
+	gstreamer${GST_VERSION}-plugins-base-ivorbisdec \
 	gstreamer${GST_VERSION}-plugins-base-ogg \
 	gstreamer${GST_VERSION}-plugins-base-opus \
 	gstreamer${GST_VERSION}-plugins-base-playback \
-	gstreamer${GST_VERSION}-plugins-base-rawparse \
 	gstreamer${GST_VERSION}-plugins-base-subparse \
 	gstreamer${GST_VERSION}-plugins-base-typefindfunctions \
-	gstreamer${GST_VERSION}-plugins-base-videoconvert \
 	gstreamer${GST_VERSION}-plugins-base-vorbis \
+	gstreamer${GST_VERSION}-plugins-base-rawparse \
 	"
 
 GST_GOOD_RDEPS = "\
@@ -39,9 +40,7 @@ GST_GOOD_RDEPS = "\
 	gstreamer${GST_VERSION}-plugins-good-rtp \
 	gstreamer${GST_VERSION}-plugins-good-rtpmanager \
 	gstreamer${GST_VERSION}-plugins-good-rtsp \
-	gstreamer${GST_VERSION}-plugins-good-soup \
 	gstreamer${GST_VERSION}-plugins-good-udp \
-	gstreamer${GST_VERSION}-plugins-good-vpx \
 	gstreamer${GST_VERSION}-plugins-good-wavparse \
 	gstreamer${GST_VERSION}-plugins-good-wavpack \
 	"
@@ -49,15 +48,16 @@ GST_GOOD_RDEPS = "\
 GST_BAD_RDEPS = "\
 	gstreamer${GST_VERSION}-plugins-bad-autoconvert \
 	gstreamer${GST_VERSION}-plugins-bad-dash \
-	gstreamer${GST_VERSION}-plugins-bad-faad \
-	gstreamer${GST_VERSION}-plugins-bad-hls \
 	gstreamer${GST_VERSION}-plugins-bad-mms \
 	gstreamer${GST_VERSION}-plugins-bad-mpegpsdemux \
 	gstreamer${GST_VERSION}-plugins-bad-mpegtsdemux \
-	gstreamer${GST_VERSION}-plugins-bad-opusparse \
 	gstreamer${GST_VERSION}-plugins-bad-rtmp \
 	gstreamer${GST_VERSION}-plugins-bad-smoothstreaming \
+	gstreamer${GST_VERSION}-plugins-bad-faad \
+	gstreamer${GST_VERSION}-plugins-bad-hls \
+	gstreamer${GST_VERSION}-plugins-bad-opusparse \
 	gstreamer${GST_VERSION}-plugins-bad-videoparsersbad \
+	gstreamer${GST_VERSION}-plugins-bad-neonhttpsrc \
 	"
 
 GST_UGLY_RDEPS = "\
@@ -77,7 +77,7 @@ RDEPENDS:${PN} = "\
 	enigma2 \
 	"
 
-RDEPENDS:${PN} = "\
+RRECOMMENDS:${PN} = "\
 	glib-networking \
 	gstreamer${GST_VERSION}-plugin-subsink \
 	virtual/gstreamer${GST_VERSION}-dvbmediasink \
@@ -87,7 +87,7 @@ RDEPENDS:${PN} = "\
 	${GST_UGLY_RDEPS} \
 	"
 
-SRC_URI = "git://github.com/OpenPLi/servicemp3.git"
+SRC_URI = "git://github.com/openpli/servicemp3.git;branch=master"
 
 S = "${WORKDIR}/git"
 

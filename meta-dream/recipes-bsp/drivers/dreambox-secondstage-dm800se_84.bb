@@ -4,15 +4,13 @@ PROVIDES += "virtual/bootloader"
 PRIORITY = "required"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 DEPENDS = "dreambox-buildimage-native"
-DATE = "${@time.strftime('%Y%m%d',time.gmtime())}"
 
 COMPATIBLE_MACHINE = "^(dm800se)$"
+do_configure[nostamp] = "1"
 INHIBIT_PACKAGE_STRIP = "1"
-INSANE_SKIP:${PN} += "already-stripped"
+INSANE_SKIP:${PN}:append = "already-stripped"
 
 inherit deploy
-
-do_configure[nostamp] = "1"
 
 SRC_URI = "https://jack2015.github.io/files/secondstage-dm800se-84.bin"
 SRC_URI[md5sum] = "79ce5d144684cf0338c3480a409c564b"
@@ -49,14 +47,6 @@ pkg_postinst:${PN}() {
 do_deploy() {
 	install -d ${DEPLOYDIR}
 	install -m 0644 secondstage-${MACHINE}-${PV}.bin ${DEPLOYDIR}/secondstage-${MACHINE}.bin
-}
-
-RDEPENDS:${PN} = ""
-
-pkg_postinst:${PN}() {
-	echo "Due to space limitations, this is now a dummy package!"
-	echo "Nothing will happen when you try to update or reinstall it!"
-	echo "The secondstage bootloader will remain the same!"
 }
 
 addtask deploy before do_package after do_install

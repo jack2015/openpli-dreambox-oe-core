@@ -34,7 +34,7 @@ SRCREV = "${AUTOREV}"
 PV = "git${SRCPV}"
 PKGV = "${GITPKGVTAG}"
 
-SRC_URI = "git://github.com/Billy2011/streamlink-27;protocol=https"
+SRC_URI = "git://github.com/Billy2011/streamlink-27.git"
 
 FILESEXTRAPATHS:prepend := "${THISDIR}/streamlink-27:"
 

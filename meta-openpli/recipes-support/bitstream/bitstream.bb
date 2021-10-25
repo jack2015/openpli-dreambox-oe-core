@@ -7,10 +7,11 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=7decd8ef15ab16ed5436851272b61cf7"
 
 inherit gitpkgv
 
-PV = "1.0+git${SRCPV}"
-PKGV = "1.0+git${GITPKGV}"
+PV = "1.4+git${SRCPV}"
+PKGV = "1.4+git${GITPKGV}"
 
-SRC_URI = "git://code.videolan.org/videolan/bitstream.git;protocol=http"
+SRC_URI = "git://code.videolan.org/videolan/bitstream.git;protocol=https"
+
 S = "${WORKDIR}/git"
 
 inherit autotools-brokensep pkgconfig

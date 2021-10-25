@@ -65,10 +65,10 @@ IMAGE_CMD:ubifs:prepend = " \
 	rm -f ${DEPLOY_DIR_IMAGE}/*.nfi; \
 "
 
-EXTRA_IMAGECMD_jffs2 ?= "-e ${DREAMBOX_ERASE_BLOCK_SIZE} -n -l"
-EXTRA_IMAGECMD_ubifs ?= "-e ${DREAMBOX_ERASE_BLOCK_SIZE} -n -l"
+EXTRA_IMAGECMD:jffs2 ?= "-e ${DREAMBOX_ERASE_BLOCK_SIZE} -n -l"
+EXTRA_IMAGECMD:ubifs ?= "-e ${DREAMBOX_ERASE_BLOCK_SIZE} -n -l"
 
-do_image_jffs2[depends] += "dreambox-buildimage-native:do_populate_sysroot"
-do_image_ubifs[depends] += "dreambox-buildimage-native:do_populate_sysroot"
+do_image_jffs2[depends] += "mtd-utils-native:do_populate_sysroot dreambox-buildimage-native:do_populate_sysroot"
+do_image_ubifs[depends] += "mtd-utils-native:do_populate_sysroot dreambox-buildimage-native:do_populate_sysroot"
 
 IMAGE_TYPES += "jffs2 ubifs"

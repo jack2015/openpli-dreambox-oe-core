@@ -1,20 +1,11 @@
 ENIGMA2_BRANCH:dm800se = "dm800se"
+ENIGMA2_BRANCH:dm800sev2 = "dm800se"
+ENIGMA2_BRANCH:dm900 = "develop"
+ENIGMA2_BRANCH:dm920 = "develop"
 
 RDEPENDS:${PN} += "${MACHINE}-branding"
 
 RRECOMMENDS:${PN}:remove = "enigma2-plugin-skins-pli-hd"
-
-SRC_URI = " git://github.com/jack2015/enigma2-openpli.git;branch=${ENIGMA2_BRANCH} \
-			file://01-use-mallinfo2.patch \
-			file://02-fix-build-gcc11.patch \
-			file://03-get-rid-of-register-keyword.patch \
-			file://04-restore-last-update-date-time.patch \
-			file://05-fix-wrong-driver-date.patch \
-			file://06-add-skin_display_dm8000.patch \
-			file://07-revert-kill-the-pinguin.patch \
-			file://08-fix-crash-about-screen.patch \
-			file://screensaverpicture.png \
-			"
 
 do_install:append() {
 	find ${D}/usr/share/enigma2/rc_models/ -name '*.png' -exec rm {} \;

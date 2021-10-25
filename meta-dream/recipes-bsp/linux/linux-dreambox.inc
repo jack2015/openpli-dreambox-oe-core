@@ -13,6 +13,7 @@ PACKAGES_DYNAMIC = "kernel-*"
 KERNEL_BUILTIN_MODULES = "kernel-module-block2mtd"
 KERNEL_BUILTIN_MODULES:dm8000 = "kernel-module-stv0299"
 KERNEL_BUILTIN_MODULES:dm800se = "kernel-module-stv0299"
+KERNEL_BUILTIN_MODULES:dm800sev2 = "kernel-module-stv0299"
 
 # By default, kernel.bbclass modifies package names to allow multiple kernels
 # to be installed in parallel. We revert this change and rprovide the versioned
@@ -23,7 +24,7 @@ RPROVIDES:${KERNEL_PACKAGE_NAME}-base = "${KERNEL_PACKAGE_NAME}-${KERNEL_VERSION
 RPROVIDES:${KERNEL_PACKAGE_NAME}-image = "${KERNEL_PACKAGE_NAME}-image-${KERNEL_VERSION} ${KERNEL_BUILTIN_MODULES}"
 
 USB_ROOT = "/dev/sdb2"
-USB_ROOT_dm8000 = "/dev/sdf2"
+USB_ROOT:dm8000 = "/dev/sdf2"
 
 do_install:append() {
         ${STRIP} ${D}/${KERNEL_IMAGEDEST}/${KERNEL_IMAGETYPE}-${KERNEL_VERSION}
@@ -36,7 +37,7 @@ do_install:append() {
 
 # Set FILES for vmlinux package, so that kernel-image gets those files.
 FILES:${KERNEL_PACKAGE_NAME}-vmlinux = "boot/vmlinux-3.2-${MACHINE}.gz"
-ALLOW_EMPTY_kernel-vmlinux = "1"
+ALLOW_EMPTY:${KERNEL_PACKAGE_NAME}-vmlinux = "1"
 KERNEL_OUTPUT_DIR = "."
 FILES:${KERNEL_PACKAGE_NAME}-image += "\
 	/${KERNEL_IMAGEDEST}/autoexec*.bat \
@@ -93,7 +94,7 @@ USB_CMDLINE = "root=${USB_ROOT} rootdelay=10 rw ${CMDLINE_CONSOLE}"
 LOCALVERSION = "-${MACHINE}"
 
 
-do_configure_prepend() {
+do_configure:prepend() {
 
         echo "" > ${S}/.config
 

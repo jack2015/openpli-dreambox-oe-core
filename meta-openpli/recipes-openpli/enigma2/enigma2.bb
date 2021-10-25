@@ -17,8 +17,8 @@ DEPENDS = " \
 	"
 
 # SoftcamSetup, SkinSelector and Systemtime is integrated now
-RREPLACES:${PN} = "enigma2-plugin-pli-softcamsetup enigma2-plugin-systemplugins-skinselector enigma2-plugin-systemplugins-systemtime"
-RCONFLICTS:${PN} = "enigma2-plugin-pli-softcamsetup enigma2-plugin-systemplugins-skinselector enigma2-plugin-systemplugins-systemtime"
+RREPLACES:${PN} = "enigma2-plugin-pli-softcamsetup enigma2-plugin-systemplugins-skinselector"
+RCONFLICTS:${PN} = "enigma2-plugin-pli-softcamsetup enigma2-plugin-systemplugins-skinselector"
 
 RDEPENDS:${PN} = " \
 	alsa-conf \
@@ -59,7 +59,6 @@ PYTHON_RDEPS = " \
 	python-xml \
 	python-zlib \
 	python-zopeinterface \
-	python-youtube-dl \
 	"
 
 # DVD and iso playback is integrated, we need the libraries
@@ -104,19 +103,11 @@ inherit gitpkgv pythonnative
 PV = "2.7+git${SRCPV}"
 PKGV = "2.7+git${GITPKGV}"
 
-ENIGMA2_BRANCH ?= "develop"
-GITHUB_URI ?= "git://github.com"
-
-SRC_URI = " ${GITHUB_URI}/OpenPLi/enigma2.git;branch=${ENIGMA2_BRANCH} \
+SRC_URI = " git://github.com/jack2015/enigma2-openpli.git;branch=${ENIGMA2_BRANCH} \
 			file://01-use-mallinfo2.patch \
 			file://02-fix-build-gcc11.patch \
 			file://03-get-rid-of-register-keyword.patch \
 			file://04-restore-last-update-date-time.patch \
-			file://05-fix-wrong-driver-date.patch \
-			file://06-add-skin_display_dm8000.patch \
-			file://07-revert-kill-the-pinguin.patch \
-			file://08-fix-crash-about-screen.patch \
-			file://screensaverpicture.png \
 			"
 
 LDFLAGS:prepend = " -lxml2 "
@@ -174,6 +165,7 @@ FILES:${PN}-src += "\
 	${libdir}/enigma2/python/NavigationInstance.py \
 	${libdir}/enigma2/python/RecordTimer.py \
 	${libdir}/enigma2/python/ServiceReference.py \
+	${libdir}/enigma2/python/BoxBrandingTest.py \
 	${libdir}/enigma2/python/SleepTimer.py \
 	${libdir}/enigma2/python/skin.py \
 	${libdir}/enigma2/python/timer.py \
@@ -184,10 +176,6 @@ FILES:${PN}-src += "\
 	${libdir}/enigma2/python/*/*/*/*/*.py \
 	${libdir}/enigma2/python/*/*/*/*/*/*.py \
 	"
-
-do_install:prepend() {
-	mv ${WORKDIR}/screensaverpicture.png ${B}/data/skin_default/screensaverpicture.png
-}
 
 do_install:append() {
 	install -d ${D}${datadir}/keymaps

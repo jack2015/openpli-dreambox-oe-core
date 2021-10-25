@@ -16,15 +16,15 @@ LICENSE:libavutil = "${@bb.utils.contains('PACKAGECONFIG', 'gpl', 'GPLv2+', 'LGP
 LICENSE:libpostproc = "GPLv2+"
 LICENSE:libswresample = "${@bb.utils.contains('PACKAGECONFIG', 'gpl', 'GPLv2+', 'LGPLv2.1+', d)}"
 LICENSE:libswscale = "${@bb.utils.contains('PACKAGECONFIG', 'gpl', 'GPLv2+', 'LGPLv2.1+', d)}"
-LICENSE:FLAGS = "commercial"
+LICENSE_FLAGS = "commercial"
 
 LIC_FILES_CHKSUM = "file://COPYING.GPLv2;md5=b234ee4d69f5fce4486a80fdaf4a4263 \
                     file://COPYING.GPLv3;md5=d32239bcb673463ab874e80d47fae504 \
                     file://COPYING.LGPLv2.1;md5=bd7a443320af8c812e4c18d1b79df004 \
                     file://COPYING.LGPLv3;md5=e6a600fd5e1d9cbde2d983680233ad02"
 
-PV = "4.4.1+git${SRCPV}"
-PKGV = "4.4.1+git${GITPKGV}"
+PV = "4.4.1"
+PKGV = "4.4.1"
 
 SRC_URI = " \
 		git://github.com/FFmpeg/FFmpeg.git;branch=release/4.4 \
@@ -36,9 +36,9 @@ SRC_URI = " \
 "
 
 # Build fails when thumb is enabled: https://bugzilla.yoctoproject.org/show_bug.cgi?id=7717
-ARM_INSTRUCTION_SET_armv4 = "arm"
-ARM_INSTRUCTION_SET_armv5 = "arm"
-ARM_INSTRUCTION_SET_armv6 = "arm"
+ARM_INSTRUCTION_SET:armv4 = "arm"
+ARM_INSTRUCTION_SET:armv5 = "arm"
+ARM_INSTRUCTION_SET:armv6 = "arm"
 
 # Should be API compatible with libav (which was a fork of ffmpeg)
 # libpostproc was previously packaged from a separate recipe
@@ -140,6 +140,7 @@ EXTRA_OECONF = " \
 "
 
 EXTRA_OECONF:append:linux-gnux32 = " --disable-asm"
+
 # gold crashes on x86, another solution is to --disable-asm but thats more hacky
 # ld.gold: internal error in relocate_section, at ../../gold/i386.cc:3684
 
@@ -159,15 +160,15 @@ PACKAGES =+ "libavcodec \
              libswresample \
              libswscale"
 
-FILES_libavcodec = "${libdir}/libavcodec${SOLIBS}"
-FILES_libavdevice = "${libdir}/libavdevice${SOLIBS}"
-FILES_libavfilter = "${libdir}/libavfilter${SOLIBS}"
-FILES_libavformat = "${libdir}/libavformat${SOLIBS}"
-FILES_libavresample = "${libdir}/libavresample${SOLIBS}"
-FILES_libavutil = "${libdir}/libavutil${SOLIBS}"
-FILES_libpostproc = "${libdir}/libpostproc${SOLIBS}"
-FILES_libswresample = "${libdir}/libswresample${SOLIBS}"
-FILES_libswscale = "${libdir}/libswscale${SOLIBS}"
+FILES:libavcodec = "${libdir}/libavcodec${SOLIBS}"
+FILES:libavdevice = "${libdir}/libavdevice${SOLIBS}"
+FILES:libavfilter = "${libdir}/libavfilter${SOLIBS}"
+FILES:libavformat = "${libdir}/libavformat${SOLIBS}"
+FILES:libavresample = "${libdir}/libavresample${SOLIBS}"
+FILES:libavutil = "${libdir}/libavutil${SOLIBS}"
+FILES:libpostproc = "${libdir}/libpostproc${SOLIBS}"
+FILES:libswresample = "${libdir}/libswresample${SOLIBS}"
+FILES:libswscale = "${libdir}/libswscale${SOLIBS}"
 
 # ffmpeg disables PIC on some platforms (e.g. x86-32)
 INSANE_SKIP:${MLPREFIX}libavcodec = "textrel"

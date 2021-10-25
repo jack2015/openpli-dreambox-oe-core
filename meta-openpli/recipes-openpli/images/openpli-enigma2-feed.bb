@@ -34,7 +34,6 @@ OPTIONAL_PACKAGES += " \
 	grep \
 	gstplayer \
 	hddtemp \
-	hdparm \
 	htop \
 	inadyn-mt \
 	inetutils \
@@ -48,8 +47,6 @@ OPTIONAL_PACKAGES += " \
 	mc \
 	mediainfo \
 	minisatip \
-	mt7601u \
-	mt7610u \
 	mtd-utils \
 	mtools \
 	nano \
@@ -75,12 +72,6 @@ OPTIONAL_PACKAGES += " \
 	python-requests \
 	python-youtube-dl \
 	rsync \
-	rt3573 \
-	rt5572 \
-	rtl8723a \
-	rtl8723bs \
-	rtl8814au \
-	rtl8822bu \
 	rtl-sdr \
 	rtorrent \
 	sabnzbd \
@@ -103,7 +94,6 @@ OPTIONAL_PACKAGES += " \
 	ushare \
 	v4l-utils \
 	vim \
-	wget \
 	wscan \
 	xfsprogs \
 	yafc \
@@ -117,49 +107,80 @@ OPTIONAL_BSP_ENIGMA2_PACKAGES ?= ""
 ENIGMA2_OPTIONAL = " \
 	channelsettings-enigma2-meta \
 	dvb-usb-drivers-meta \
+	network-usb-drivers-meta \
 	enigma2-plugin-drivers-usbserial \
+	enigma2-plugin-drivers-exfat \
+	enigma2-plugin-drivers-ntfs-3g \
+	${@bb.utils.contains_any("MACHINE", "dm800se dm800sev2", " \
+	enigma2-plugin-softcams-cccam-v209 \
+	enigma2-plugin-softcams-cccam-v221 \
+	enigma2-plugin-softcams-cccam-v230 \
+	enigma2-plugin-softcams-cccam-v232 \
+	enigma2-plugin-softcams-cccam-v238 \
+	enigma2-plugin-softcams-mgcamd-v135a \
+	enigma2-plugin-softcams-mgcamd-v145c \
+	", "", d)} \
+	${@bb.utils.contains_any("MACHINE", "dm900 dm920", " \
+	enigma2-plugin-softcams-cccam-v232-arm \
+	enigma2-plugin-softcams-cccam-v238-arm \
+	enigma2-plugin-softcams-mgcamd-v135a-arm \
+	", "", d)} \
+	enigma2-plugin-extensions-keyadder \
+	enigma2-plugin-extensions-weathermsn \
+	enigma2-plugin-extensions-weatherplugin \
 	enigma2-plugin-extensions-backupsuite \
 	enigma2-plugin-extensions-blurayplayer \
-	enigma2-plugin-extensions-dlnabrowser \
-	enigma2-plugin-extensions-dlnaserver \
+	enigma2-plugin-extensions-vpnmanager \
 	enigma2-plugin-extensions-e2iplayer \
 	enigma2-plugin-extensions-epgimport \
 	enigma2-plugin-extensions-filecommander \
 	enigma2-plugin-extensions-fontinfo \
+	enigma2-plugin-extensions-flashexpander \
 	enigma2-plugin-extensions-historyzapselector \
-	enigma2-plugin-extensions-jedimakerxtream \
-	enigma2-plugin-extensions-lcd4linux \
 	enigma2-plugin-extensions-managerautofs \
 	enigma2-plugin-extensions-modifyplifullhd \
 	enigma2-plugin-extensions-moviemanager \
+	enigma2-plugin-systemplugins-mountmanager \
 	enigma2-plugin-extensions-openmultiboot \
 	enigma2-plugin-extensions-refreshbouquet \
 	enigma2-plugin-extensions-subssupport \
+	enigma2-plugin-systemplugins-signalfinder \
+	enigma2-plugin-extensions-managerautofs \
+	enigma2-plugin-extensions-xstreamity \
 	enigma2-plugin-extensions-tmbd \
 	enigma2-plugin-extensions-vcs \
 	enigma2-plugin-extensions-xmodem \
-	enigma2-plugin-extensions-xstreamity \
 	enigma2-plugin-extensions-youtube \
-	enigma2-plugin-security-firewall \
-	enigma2-plugin-skins-octetfhd \
-	enigma2-plugin-skins-pd1loi-hd-night \
+	enigma2-plugin-extensions-cacheflush \
+	enigma2-plugin-extensions-openwebif \
+	enigma2-plugin-extensions-oscamstatus \
+	enigma2-plugin-softcams-oscam \
+	${@bb.utils.contains_any("MACHINE", "dm900 dm920", "enigma2-plugin-softcams-wicardd", "", d)} \
 	enigma2-plugin-skins-pli-hd \
-	enigma2-plugin-skins-pli-hd-fullnight \
+	enigma2-plugin-skins-pli-hd1 \
+	enigma2-plugin-skins-pli-hd2 \
+	enigma2-plugin-skins-pli-fullnighthd \
+	enigma2-plugin-skins-pli-fullhd \
+	enigma2-plugin-skins-mx-hq7 \
+	enigma2-plugin-skins-mx-hq9w \
+	enigma2-plugin-skins-mx-hq10 \
+	enigma2-plugin-skins-mx-titaniumc \
+	enigma2-plugin-skins-mx-black \
 	enigma2-plugin-skins-simple-gray-hd \
+	enigma2-plugin-skins-metropolishd \
+	enigma2-plugin-security-firewall \
 	enigma2-plugin-systemplugins-crossepg \
 	enigma2-plugin-systemplugins-extnumberzap \
-	enigma2-plugin-systemplugins-extrafancontrol \
 	enigma2-plugin-systemplugins-hrtunerproxy \
-	enigma2-plugin-systemplugins-misplslcnscan \
-	enigma2-plugin-systemplugins-mountmanager \
 	enigma2-plugin-systemplugins-newvirtualkeyboard \
-	enigma2-plugin-systemplugins-serviceapp \
 	enigma2-plugin-systemplugins-signalfinder \
+	enigma2-plugin-systemplugins-mountmanager \
 	enigma2-plugin-systemplugins-terrestrialscan \
+	enigma2-plugin-systemplugins-misplslcnscan \
+	enigma2-plugin-systemplugins-serviceapp \
+	enigma2-plugin-systemplugins-exteplayer3 \
+	enigma2-plugin-systemplugins-servicemp3 \
 	enigma2-plugins \
-	meta-enigma2-dvdburn \
-	picons-enigma2-meta \
-	softcams-enigma2-meta \
 	packagegroup-openplugins \
 	${OPTIONAL_BSP_ENIGMA2_PACKAGES} \
 	"

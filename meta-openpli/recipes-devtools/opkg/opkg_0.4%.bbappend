@@ -1,7 +1,7 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
 SRC_URI += "file://opkg.conf \
-			file://modprobe \
+	file://modprobe \
 "
 
 do_install:prepend() {

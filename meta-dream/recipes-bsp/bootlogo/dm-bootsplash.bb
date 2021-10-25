@@ -69,4 +69,4 @@ pkg_postrm:${PN}() {
 	fi
 }
 
-FILES_${PN} = "/boot"
+FILES:${PN} = "/boot"
