@@ -42,8 +42,7 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-extensions-ppanel \
 	enigma2-plugin-extensions-youtube \
 	enigma2-plugin-extensions-e2iplayer \
-	${@bb.utils.contains("MACHINE", "dm900", "enigma2-plugin-softcams-oscam-dm900", "", d)} \
-	${@bb.utils.contains("MACHINE", "dm920", "enigma2-plugin-softcams-oscam-dm920", "", d)} \
+	enigma2-plugin-softcams-oscam \
 	\
 	enigma2-plugin-systemplugins-cablescan \
 	enigma2-plugin-systemplugins-fastscan \

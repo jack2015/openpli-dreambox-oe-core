@@ -7,7 +7,7 @@ DEPENDS = "libgcrypt"
 PV = "0.11.0+git${SRCPV}"
 PKGV = "0.11.0+git${GITPKGV}"
 
-SRC_URI = "git://github.com/jack2015/libaacs.git"
+SRC_URI = "git://code.videolan.org/videolan/libaacs.git;protocol=https"
 
 S = "${WORKDIR}/git"
 

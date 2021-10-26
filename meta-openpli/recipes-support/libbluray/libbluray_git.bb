@@ -6,7 +6,7 @@ LIC_FILES_CHKSUM="file://COPYING;md5=435ed639f84d4585d93824e7da3d85da"
 
 DEPENDS = "libxml2"
 
-SRC_URI = "gitsm://github.com/jack2015/libbluray.git"
+SRC_URI = "gitsm://code.videolan.org/videolan/libbluray.git;protocol=https"
 
 inherit gitpkgv setuptools autotools-brokensep pkgconfig
 
