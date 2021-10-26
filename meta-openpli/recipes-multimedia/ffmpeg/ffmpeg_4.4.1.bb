@@ -39,6 +39,9 @@ PROVIDES = "libav libpostproc"
 
 DEPENDS = "nasm-native"
 
+PV = "4.4.1"
+PKGV = "4.4.1"
+
 S = "${WORKDIR}/git"
 
 inherit autotools pkgconfig

@@ -1,11 +1,11 @@
 #!/bin/sh
+
 case "$1" in
 start)
-	ulimit -s 1024
-	exec start-stop-daemon -S -x /usr/bin/mgcamd135
+	/usr/bin/oscam -b -c /etc/tuxbox/config/
 	;;
 stop)
-	exec start-stop-daemon -K -R 2 -x /usr/bin/mgcamd135
+	killall -9 oscam 2> /dev/null
 	;;
 restart|reload)
 	$0 stop
@@ -13,10 +13,10 @@ restart|reload)
 	$0 start
 	;;
 version)
-	echo "1.35a"
+	echo "1.2"
 	;;
 info)
-	echo "mgcamd 1.35a"
+	echo "oscam 1.2"
 	;;
 *)
 	echo "Usage: $0 start|stop|restart"

@@ -40,7 +40,6 @@ GST_GOOD_RDEPS = "\
 	gstreamer${GST_VERSION}-plugins-good-rtp \
 	gstreamer${GST_VERSION}-plugins-good-rtpmanager \
 	gstreamer${GST_VERSION}-plugins-good-rtsp \
-	gstreamer${GST_VERSION}-plugins-good-soup \
 	gstreamer${GST_VERSION}-plugins-good-udp \
 	gstreamer${GST_VERSION}-plugins-good-wavparse \
 	gstreamer${GST_VERSION}-plugins-good-wavpack \
@@ -58,6 +57,7 @@ GST_BAD_RDEPS = "\
 	gstreamer${GST_VERSION}-plugins-bad-hls \
 	gstreamer${GST_VERSION}-plugins-bad-opusparse \
 	gstreamer${GST_VERSION}-plugins-bad-videoparsersbad \
+	gstreamer${GST_VERSION}-plugins-bad-neonhttpsrc \
 	"
 
 GST_UGLY_RDEPS = "\
