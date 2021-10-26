@@ -38,68 +38,86 @@ list=($list) #00ff2525
 box=$(dialog --stdout --clear --colors --menu "Build Dreambox Image" 22 70 10 ${list[@]})
     case $box in
     1)
-    echo "($box) Select DM800se chinese language"
     machinespecific="dm800se-cn"
     ;;
     2)
-    echo "($box) Select DM800se english language"
     machinespecific="dm800se-en"
     ;;
     3)
-    echo "($box) Select DM800sev2 english language"
     machinespecific="dm800sev2-en"
     ;;
     4)
-    echo "($box) Select DM900 CLONE"
     machinespecific="dm900-clone"
     ;;
     5)
-    echo "($box) Select DM900 ORIGINAL"
     machinespecific="dm900-original"
     ;;
     6)
-    echo "($box) Select DM920"
     machinespecific="dm920"
     ;;
     *) clear && exit ;;
     esac
 
+clear
+## Menu Select build type ##
+TYPE_1="image"
+TYPE_2="feed"
+list=
+for i in $(seq 1 2); do
+    p="TYPE_$i"
+    list="$list $i ${!p} "
+done
+list=($list)
+build=$(dialog --stdout --clear --colors --menu "Select build type" 12 60 10 ${list[@]})
+    case $build in
+    1)
+    echostr="Compiling $machinespecific image, please wait ..."
+    MAKETYPE="image"
+    ;;
+    2)
+    echostr="Compiling $machinespecific image and feed, please wait ..."
+    MAKETYPE="feed"
+    ;;
+    *) clear && exit ;;
+    esac
+
+clear
 if [ "$machinespecific" = "dm800se-cn" ]; then
 	cp -pf $def_path/dm800se/defconfig $def_path/defconfig
 	cp -pf backup/dm800se-cn/* meta-dream/recipes-local/images/
-	echo "Compiling $machinespecific image, please wait ..."
-	MACHINE=dm800se make image
+	echo "$echostr"
+	MACHINE=dm800se make ${MAKETYPE}
 elif [ "$machinespecific" = "dm800se-en" ]; then
 	cp -pf $def_path/dm800se/defconfig $def_path/defconfig
 	cp -pf backup/dm800se-en/* meta-dream/recipes-local/images/
-	echo "Compiling $machinespecific image, please wait ..."
-	MACHINE=dm800se make image
+	echo "$echostr"
+	MACHINE=dm800se make ${MAKETYPE}
 elif [ "$machinespecific" = "dm8000" ]; then
 	cp -pf $def_path/dm8000/defconfig $def_path/defconfig
-	echo "Compiling $machinespecific image, please wait ..."
-	MACHINE=dm8000 make image
+	echo "$echostr"
+	MACHINE=dm8000 make ${MAKETYPE}
 elif [ "$machinespecific" = "dm900-clone" ]; then
         cp -pf $def_path2/dm900/defconfig $def_path2/defconfig
 	cp -pf backup/dm900-clone/* meta-dream/recipes-bsp/drivers/
 	cp -pf backup/dm9x0/* meta-dream/recipes-local/images/
-	echo "Compiling $machinespecific image, please wait ..."
-        MACHINE=dm900 make image
+	echo "$echostr"
+        MACHINE=dm900 make ${MAKETYPE}
 elif [ "$machinespecific" = "dm900-original" ]; then
         cp -pf $def_path2/dm900/defconfig $def_path2/defconfig
 	cp -pf backup/dm900-original/* meta-dream/recipes-bsp/drivers/
 	cp -pf backup/dm9x0/* meta-dream/recipes-local/images/
-	echo "Compiling $machinespecific image, please wait ..."
-        MACHINE=dm900 make image
+	echo "$echostr"
+        MACHINE=dm900 make ${MAKETYPE}
 elif [ "$machinespecific" = "dm920" ]; then
         cp -pf $def_path2/dm920/defconfig $def_path2/defconfig
 	cp -pf backup/dm9x0/* meta-dream/recipes-local/images/
-	echo "Compiling $machinespecific image, please wait ..."
-        MACHINE=dm920 make image
+	echo "$echostr"
+        MACHINE=dm920 make ${MAKETYPE}
 elif [ "$machinespecific" = "dm800sev2-en" ]; then
         cp -pf $def_path/dm800sev2/defconfig $def_path/defconfig
 	cp -pf backup/dm800sev2-en/* meta-dream/recipes-local/images/
-	echo "Compiling $machinespecific image, please wait ..."
-        MACHINE=dm800sev2 make image
+	echo "$echostr"
+        MACHINE=dm800sev2 make ${MAKETYPE}
 else
 	echo "Please enter a correct choice"
 fi
