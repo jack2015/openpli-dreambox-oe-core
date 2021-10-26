@@ -138,10 +138,7 @@ ENIGMA2_OPTIONAL = " \
 	enigma2-plugin-extensions-cacheflush \
 	enigma2-plugin-extensions-openwebif \
 	enigma2-plugin-extensions-oscamstatus \
-	${@bb.utils.contains("MACHINE", "dm800se", "enigma2-plugin-softcams-oscam-dm800se", "", d)} \
-	${@bb.utils.contains("MACHINE", "dm800sev2", "enigma2-plugin-softcams-oscam-dm800sev2", "", d)} \
-	${@bb.utils.contains("MACHINE", "dm900", "enigma2-plugin-softcams-oscam-dm900", "", d)} \
-	${@bb.utils.contains("MACHINE", "dm920", "enigma2-plugin-softcams-oscam-dm920", "", d)} \
+	enigma2-plugin-softcams-oscam \
 	${@bb.utils.contains_any("MACHINE", "dm900 dm920", "enigma2-plugin-softcams-wicardd", "", d)} \
 	enigma2-plugin-skins-pli-hd \
 	enigma2-plugin-skins-pli-hd1 \

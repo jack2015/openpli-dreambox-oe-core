@@ -13,7 +13,7 @@ inherit gitpkgv autotools-brokensep
 PV = "3.4+git${SRCPV}"
 PKGV = "3.4+git${GITPKGV}"
 
-SRC_URI = "git://github.com/jack2015/dvblast.git"
+SRC_URI = "git://code.videolan.org/videolan/dvblast.git;protocol=https"
 
 S = "${WORKDIR}/git"
 

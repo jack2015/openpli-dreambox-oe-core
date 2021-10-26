@@ -39,6 +39,7 @@ MACHINE_EXTRA_RRECOMMENDS += "\
     kernel-module-exportfs \
     kernel-module-snd-oss \
     kernel-module-snd-pcm-oss \
+    ${@bb.utils.contains('MACHINE_FEATURES', 'v3d', 'libvc5dream', '',d)} \
     "
 
 MACHINE_ESSENTIAL_EXTRA_RDEPENDS += "\
