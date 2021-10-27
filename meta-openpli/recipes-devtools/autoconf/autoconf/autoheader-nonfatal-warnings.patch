@@ -1,0 +1,26 @@
+From e3503faf51051f9a6baa9bcd8329ae71ef533ba2 Mon Sep 17 00:00:00 2001
+From: atvcaptain <captain@web.de>
+Date: Tue, 10 Jun 2014 09:54:20 +0200
+Subject: [PATCH] add patch autoheader-nonfatal-warnings.patch
+
+Upstream-Status: Pending
+
+---
+ bin/autoheader.in | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/bin/autoheader.in b/bin/autoheader.in
+index 1cbf509..02c79a3 100644
+--- a/bin/autoheader.in
++++ b/bin/autoheader.in
+@@ -309,8 +309,8 @@ $out->close;
+ 	  $suggest_ac_define = 0;
+ 	}
+     }
+-  exit 1
+-    if keys %symbol;
++#  exit 1
++#    if keys %symbol;
+ }
+ 
+ update_file ("$tmp/config.hin", "$config_h_in", $force);
