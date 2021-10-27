@@ -38,14 +38,14 @@ PLUGINPATH = "${libdir}/enigma2/python/Plugins/Extensions/OpenWebif"
 # Just a quick hack to "compile" it
 # cheetah-compile -R --nobackup --iext=.tmpl ${S}/plugin
 do_compile() {
-	cheetah-compile -R --nobackup ${S}/plugin
-	python -O -m compileall -d ${PLUGINPATH} ${S}/plugin
+    cheetah-compile -R --nobackup ${S}/plugin
+    python2 -O -m compileall -d ${PLUGINPATH} ${S}/plugin
 }
 
 do_install:append() {
-	install -d ${D}${PLUGINPATH}
-	cp -r ${S}/plugin/* ${D}${PLUGINPATH}
-	chmod a+rX ${D}${PLUGINPATH}
+    install -d ${D}${PLUGINPATH}
+    cp -r ${S}/plugin/* ${D}${PLUGINPATH}
+    chmod a+rX ${D}${PLUGINPATH}
 }
 
 python do_cleanup () {

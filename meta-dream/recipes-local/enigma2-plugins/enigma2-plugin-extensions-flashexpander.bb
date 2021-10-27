@@ -18,11 +18,11 @@ FILES:${PN} = "/usr/"
 S = "${WORKDIR}/git"
 
 do_compile() {
-	python2 -O -m compileall ${S}/usr/lib/enigma2/python/Plugins/Extensions/Flashexpander/*.py
+    python2 -O -m compileall ${S}/usr/lib/enigma2/python/Plugins/Extensions/Flashexpander/*.py
 }
 
 do_install() {
-	install -d ${D}/usr
-	cp -r ${S}/usr/* ${D}/usr/
-	rm -rf ${D}/usr/lib/enigma2/python/Plugins/Extensions/Flashexpander/*.py
+    install -d ${D}/usr
+    cp -r ${S}/usr/* ${D}/usr/
+    rm -rf ${D}/usr/lib/enigma2/python/Plugins/Extensions/Flashexpander/*.py
 }

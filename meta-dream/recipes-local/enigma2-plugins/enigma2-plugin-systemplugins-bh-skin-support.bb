@@ -16,14 +16,14 @@ FILES:${PN} = "/usr/"
 S = "${WORKDIR}/git"
 
 do_compile() {
-	python2 -O -m compileall ${S}/
+    python2 -O -m compileall ${S}/
 }
 
 do_install() {
-	install -d ${D}/${libdir}/enigma2/python/Components/Converter
-	install -d ${D}/${libdir}/enigma2/python/Components/Renderer
-	cp ${S}/BhAnalogic.pyo ${D}/${libdir}/enigma2/python/Components/Converter/
-	cp ${S}/Bhclock.pyo ${D}/${libdir}/enigma2/python/Components/Renderer/
+    install -d ${D}/${libdir}/enigma2/python/Components/Converter
+    install -d ${D}/${libdir}/enigma2/python/Components/Renderer
+    cp ${S}/BhAnalogic.pyo ${D}/${libdir}/enigma2/python/Components/Converter/
+    cp ${S}/Bhclock.pyo ${D}/${libdir}/enigma2/python/Components/Renderer/
 }
 
 pkg_preinst:${PN}() {

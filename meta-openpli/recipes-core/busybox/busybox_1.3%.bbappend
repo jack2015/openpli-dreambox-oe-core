@@ -20,7 +20,9 @@ INITSCRIPT_NAME:${PN}-inetd = "inetd.${BPN}"
 CONFFILES:${PN}-inetd = "${sysconfdir}/inetd.conf"
 FILES:${PN}-inetd = "${sysconfdir}/init.d/inetd.${BPN} ${sysconfdir}/inetd.conf"
 RDEPENDS:${PN}-inetd += "${PN}"
-
+PROVIDES += "virtual/inetd"
+RPROVIDES:${PN}-inetd += "virtual/inetd"
+RCONFLICTS:${PN}-inetd += "xinetd"
 RRECOMMENDS:${PN} += "${PN}-inetd"
 
 PACKAGES =+ "${PN}-cron"
@@ -34,6 +36,12 @@ RDEPENDS:${PN}-cron += "${PN}"
 # provider.
 RPROVIDES:${PN}-mdev += "udev udev-hwdb"
 RCONFLICTS:${PN}-mdev += "eudev eudev-hwdb"
+
+# Use busybox instead of wget.
+PROVIDES += "wget"
+RPROVIDES:${PN} += "wget"
+RCONFLICTS:${PN} = "wget"
+RREPLACES:${PN} = "wget"
 
 pkg_postinst:${PN}:append () {
 	update-alternatives --install /bin/sh sh /bin/busybox.nosuid 50

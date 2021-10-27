@@ -20,7 +20,7 @@ S = "${WORKDIR}/git"
 FILES:${PN} = "${libdir}/enigma2/python/Components/Converter/bitratecalc.so"
 
 do_install:append() {
-	install -d ${D}${libdir}/enigma2/python/Components/Converter/
-	mv -f ${D}${libdir}/bitratecalc.so ${D}${libdir}/enigma2/python/Components/Converter/bitratecalc.so
-	chmod 0755 ${D}${libdir}/enigma2/python/Components/Converter/bitratecalc.so
+    install -d ${D}${libdir}/enigma2/python/Components/Converter/
+    mv -f ${D}${libdir}/bitratecalc.so ${D}${libdir}/enigma2/python/Components/Converter/bitratecalc.so
+    chmod 0755 ${D}${libdir}/enigma2/python/Components/Converter/bitratecalc.so
 }

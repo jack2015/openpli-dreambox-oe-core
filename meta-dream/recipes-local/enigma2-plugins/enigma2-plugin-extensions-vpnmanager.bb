@@ -18,24 +18,24 @@ FILES:${PN} = "/usr/"
 S = "${WORKDIR}/git"
 
 do_compile() {
-	python2 -O -m compileall ${S}/
+    python2 -O -m compileall ${S}/
 }
 
 do_install() {
-	install -d ${D}${libdir}/enigma2/python/Plugins/Extensions
-	cp -rf ${S}${libdir}/enigma2/python/Plugins/Extensions/* ${D}${libdir}/enigma2/python/Plugins/Extensions
+    install -d ${D}${libdir}/enigma2/python/Plugins/Extensions
+    cp -rf ${S}${libdir}/enigma2/python/Plugins/Extensions/* ${D}${libdir}/enigma2/python/Plugins/Extensions
 }
 
 pkg_preinst:${PN}() {
-	[[ -d $D/etc/openvpn ]] || mkdir $D/etc/openvpn
+    [[ -d $D/etc/openvpn ]] || mkdir $D/etc/openvpn
 }
 
 pkg_prerm:${PN}() {
-	$D/etc/init.d/openvpn stop
+    $D/etc/init.d/openvpn stop
 }
 
 pkg_postrm:${PN}() {
-	update-rc.d -f openvpn remove
+    update-rc.d -f openvpn remove
 }
 
 python populate_packages:prepend() {

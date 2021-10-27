@@ -32,8 +32,8 @@ EXTRA_OECONF = "\
 	STAGING_LIBDIR=${STAGING_LIBDIR} \
 "
 CONFFILES:${PN} = " \
-    /usr/lib/enigma2/python/Plugins/Extensions/YahooWeather/Config/Location_id \
-    /usr/lib/enigma2/python/Plugins/Extensions/YahooWeather/Config/Region_id "
+	/usr/lib/enigma2/python/Plugins/Extensions/YahooWeather/Config/Location_id \
+	/usr/lib/enigma2/python/Plugins/Extensions/YahooWeather/Config/Region_id "
 
 pkg_postinst:${PN}() {
 #!/bin/sh 
