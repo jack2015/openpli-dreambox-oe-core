@@ -28,7 +28,4 @@ EXTRA_OEMESON = " \
     -Dexamples=disabled \
 "
 
-CFLAGS:append = " -Wno-deprecated-declarations"
-TARGET_CFLAGS:append:sh4 = " -std=gnu99"
-
 PACKAGES_DYNAMIC = "^${PN}-.*"

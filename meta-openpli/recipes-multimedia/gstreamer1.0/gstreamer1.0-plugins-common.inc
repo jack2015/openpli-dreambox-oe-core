@@ -16,7 +16,7 @@ inherit pkgconfig
 # This value is used in the PACKAGECONFIG values for each plugin set recipe.
 # By modifying it, Orc can be enabled/disabled in all of these recipes at once.
 GSTREAMER_ORC ?= "orc"
-
+GSTREAMER_ORC:mips = ""
 PACKAGECONFIG[orc] = "-Dorc=enabled,-Dorc=disabled,orc orc-native"
 
 # TODO: put this in a gettext.bbclass patch (with variables to allow for
@@ -40,9 +40,6 @@ EXTRA_OEMESON += " \
 
 GIR_MESON_ENABLE_FLAG = "enabled"
 GIR_MESON_DISABLE_FLAG = "disabled"
-
-CFLAGS:append = " -Wno-deprecated-declarations"
-CFLAGS:append:sh4 = " -std=gnu99"
 
 # Dynamically generate packages for all enabled plugins
 PACKAGES_DYNAMIC = "^${PN}-.*"

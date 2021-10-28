@@ -14,13 +14,6 @@ SRC_URI = "git://gitlab.freedesktop.org/gstreamer/gst-libav;protocol=https;branc
 
 inherit pkgconfig
 
-EXTRA_OEMESON = "-Ddoc=disabled"
-
-CFLAGS += "-Wno-implicit-function-declaration -Wno-stringop-overflow"
-
-CFLAGS:remove:sh4 = "-Wno-stringop-overflow"
-CFLAGS:append:sh4 = " -std=gnu99"
-
 FILES:${PN} += "${libdir}/gstreamer-1.0/*.so"
 FILES:${PN}-dev += "${libdir}/gstreamer-1.0/*.la"
 FILES:${PN}-staticdev += "${libdir}/gstreamer-1.0/*.a"

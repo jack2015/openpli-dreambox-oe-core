@@ -29,7 +29,7 @@ PACKAGECONFIG ??= " \
     ${PACKAGECONFIG_GL} \
     ${@bb.utils.filter('DISTRO_FEATURES', 'alsa x11', d)} \
     jpeg ogg pango png theora vorbis \
-    cdparanoia gio opus tremor \
+    cdparanoia opus tremor \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'wayland egl', '', d)} \
 "
 
@@ -42,7 +42,6 @@ X11DISABLEOPTS = "-Dx11=disabled -Dxvideo=disabled -Dxshm=disabled"
 
 PACKAGECONFIG[alsa]         = "-Dalsa=enabled,-Dalsa=disabled,alsa-lib"
 PACKAGECONFIG[cdparanoia]   = "-Dcdparanoia=enabled,-Dcdparanoia=disabled,cdparanoia"
-PACKAGECONFIG[gio]          = "-Dgio=enabled,-Dgio=disabled,glib-2.0"
 PACKAGECONFIG[jpeg]         = "-Dgl-jpeg=enabled,-Dgl-jpeg=disabled,jpeg"
 PACKAGECONFIG[ogg]          = "-Dogg=enabled,-Dogg=disabled,libogg"
 PACKAGECONFIG[opus]         = "-Dopus=enabled,-Dopus=disabled,libopus"
@@ -65,15 +64,9 @@ PACKAGECONFIG[egl]          = ",,virtual/egl"
 PACKAGECONFIG[gbm]          = ",,virtual/libgbm libgudev libdrm"
 PACKAGECONFIG[wayland]      = ",,wayland-native wayland wayland-protocols libdrm"
 PACKAGECONFIG[dispmanx]     = ",,virtual/libomxil"
+PACKAGECONFIG[viv-fb]       = ",,virtual/libgles2 virtual/libg2d"
 
-OPENGL_WINSYS:append = "${@bb.utils.contains('PACKAGECONFIG', 'x11', ' x11', '', d)}"
-OPENGL_WINSYS:append = "${@bb.utils.contains('PACKAGECONFIG', 'gbm', ' gbm', '', d)}"
-OPENGL_WINSYS:append = "${@bb.utils.contains('PACKAGECONFIG', 'wayland', ' wayland', '', d)}"
-OPENGL_WINSYS:append = "${@bb.utils.contains('PACKAGECONFIG', 'dispmanx', ' dispmanx', '', d)}"
-OPENGL_WINSYS:append = "${@bb.utils.contains('PACKAGECONFIG', 'egl', ' egl', '', d)}"
-
-FILES:${PN}-dev += "${libdir}/gstreamer-1.0/include/gst/gl/gstglconfig.h"
-FILES:${MLPREFIX}libgsttag-1.0 += "${datadir}/gst-plugins-base/1.0/license-translations.dict"
+OPENGL_WINSYS = "${@bb.utils.filter('PACKAGECONFIG', 'x11 gbm wayland dispmanx egl viv-fb', d)}"
 
 EXTRA_OEMESON += " \
     -Ddoc=disabled \
@@ -83,11 +76,8 @@ EXTRA_OEMESON += " \
     ${@get_opengl_cmdline_list('gl_winsys', d.getVar('OPENGL_WINSYS'), d)} \
 "
 
-# files installed by both gstreamer1.0-plugins-base and kodi
-do_install:append() {
-        rm -f ${D}${includedir}/KHR/khrplatform.h
-        rm -f ${D}${includedir}/GL/glext.h
-}
+FILES:${PN}-dev += "${libdir}/gstreamer-1.0/include/gst/gl/gstglconfig.h"
+FILES:${MLPREFIX}libgsttag-1.0 += "${datadir}/gst-plugins-base/1.0/license-translations.dict"
 
 def get_opengl_cmdline_list(switch_name, options, d):
     selected_options = []

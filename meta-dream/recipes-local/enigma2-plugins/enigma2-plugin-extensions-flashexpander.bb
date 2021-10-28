@@ -1,11 +1,9 @@
 SUMMARY = "Expand your flash using an USB stick or an NFS share"
-DESCRIPTION = "Expand your flash using an USB stick or an NFS share"
 MAINTAINER = "Openpli Developers"
 require conf/license/openpli-gplv2.inc
-PACKAGE_ARCH = "${MACHINE_ARCH}"
 PACKAGES = "${PN}"
 
-inherit gitpkgv pythonnative pkgconfig
+inherit gitpkgv allarch
 
 SRCREV = "${AUTOREV}"
 PV = "1.0+git${SRCPV}"
@@ -18,11 +16,13 @@ FILES:${PN} = "/usr/"
 S = "${WORKDIR}/git"
 
 do_compile() {
-    python2 -O -m compileall ${S}/usr/lib/enigma2/python/Plugins/Extensions/Flashexpander/*.py
+    python2 -O -m compileall ${S}
 }
 
 do_install() {
     install -d ${D}/usr
-    cp -r ${S}/usr/* ${D}/usr/
-    rm -rf ${D}/usr/lib/enigma2/python/Plugins/Extensions/Flashexpander/*.py
+    cp -rf ${S}/usr/* ${D}/usr/
+    find ${D}/ -name '*.py' -exec rm {} \;
+    find ${D}/ -name '*.po' -exec rm {} \;
+    find ${D}/ -name '*.sh' -exec chmod a+x {} \;
 }

@@ -1,5 +1,6 @@
 SRC_URI = "git://github.com/jack2015/enigma2-plugin-mountmanager.git;branch=master"
 do_install:append() {
-    rm -f ${D}${libdir}/enigma2/python/Plugins/SystemPlugins/MountManager/*.py
-    chmod 0755 ${D}${libdir}/enigma2/python/Plugins/SystemPlugins/MountManager/*.sh
+    find ${D}/ -name '*.py' -exec rm {} \;
+    find ${D}/ -name '*.po' -exec rm {} \;
+    find ${D}/ -name '*.sh' -exec chmod a+x {} \;
 }
