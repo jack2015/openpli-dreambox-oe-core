@@ -6,7 +6,6 @@ Thanks to OpenPLi.
 
 In comparison to OpenPLi this repository has:<br>
 -Submodules bitbake, openembedded-core and meta-openembedded from honister branch,<br>
-&nbsp;with git snapshot of October 2, 2021.<br>
 -GCC 11.2.0<br>
 -Glibc 2.34<br>
 -GStreamer 1.18.5<br>

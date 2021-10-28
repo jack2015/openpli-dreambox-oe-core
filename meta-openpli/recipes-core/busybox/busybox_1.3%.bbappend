@@ -37,11 +37,8 @@ RDEPENDS:${PN}-cron += "${PN}"
 RPROVIDES:${PN}-mdev += "udev udev-hwdb"
 RCONFLICTS:${PN}-mdev += "eudev eudev-hwdb"
 
-# Use busybox instead of wget.
-PROVIDES += "wget"
-RPROVIDES:${PN} += "wget"
-RCONFLICTS:${PN} = "wget"
-RREPLACES:${PN} = "wget"
+RPROVIDES:${PN}-wget += "wget"
+RCONFLICTS:${PN}-wget = "wget"
 
 pkg_postinst:${PN}:append () {
 	update-alternatives --install /bin/sh sh /bin/busybox.nosuid 50
