@@ -55,7 +55,7 @@ PV = "4.4.1"
 inherit autotools pkgconfig gitpkgv
 
 PACKAGECONFIG ??= "avdevice avfilter avcodec avformat swresample swscale postproc avresample \
-                   alsa bzlib gpl libass libbluray libfreetype librtmp libv4l2 libvorbis \
+                   alsa bzlib gpl libass libbluray libdav1d libfreetype librtmp libv4l2 libvorbis \
                    lzma mp3lame openjpeg openssl pic pthreads shared theora vpx x264 x265 zlib \
                    ${@bb.utils.contains('AVAILTUNES', 'mips32r2', 'mips32r2', '', d)} \
                    ${@bb.utils.contains('DISTRO_FEATURES', 'x11', 'xv xcb', '', d)} \
@@ -74,6 +74,7 @@ PACKAGECONFIG[bzlib] = "--enable-bzlib,--disable-bzlib,bzip2"
 PACKAGECONFIG[gpl] = "--enable-gpl,--disable-gpl"
 PACKAGECONFIG[libass] = "--enable-libass,--disable-libass,libass"
 PACKAGECONFIG[libbluray] = "--enable-libbluray --enable-protocol=bluray,--disable-libbluray,libbluray"
+PACKAGECONFIG[libdav1d] = "--enable-libdav1d,--disable-libdav1d,libdav1d"
 PACKAGECONFIG[libfreetype] = "--enable-libfreetype,--disable-libfreetype,freetype"
 PACKAGECONFIG[librtmp] = "--enable-librtmp,--disable-librtmp,librtmp rtmpdump"
 PACKAGECONFIG[libv4l2] = "--enable-libv4l2,--disable-libv4l2,v4l-utils"
