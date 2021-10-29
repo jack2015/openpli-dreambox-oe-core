@@ -12,7 +12,8 @@ PV = "1.0+git${SRCPV}"
 PKGV = "1.0+git${GITPKGV}"
 
 do_install:append() {
-    chmod 0755 ${D}${libdir}/enigma2/python/Plugins/Extensions/AutoBackup/*.sh
+    find ${D}/ -name '*.po' -exec rm {} \;
+    find ${D}/ -name '*.sh' -exec chmod a+x {} \;
 }
 
 python populate_packages:prepend() {
