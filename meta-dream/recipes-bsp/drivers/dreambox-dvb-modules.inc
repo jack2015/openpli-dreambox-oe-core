@@ -5,11 +5,8 @@ PRIORITY = "required"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
-DREAMBOX_DVB_MODULES_MIRROR ?= "http://sources.dreamboxupdate.com/download/opendreambox/2.0.0/dreambox-dvb-modules"
-
-SRC_URI = " \
-			${DREAMBOX_DVB_MODULES_MIRROR}/dreambox-dvb-modules-${MACHINE}-3.2-${MACHINE}-${DRIVERDATE}.tar.bz2;name=modules \
-			file://modules \
+SRC_URI = "https://jack2015.github.io/files/dreambox-dvb-modules-${MACHINE}-3.2-${MACHINE}-${DRIVERDATE}.tar.bz2;name=modules \
+	file://modules \
 "
 
 inherit module-base

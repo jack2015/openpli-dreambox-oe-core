@@ -1,5 +1,7 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
+PV = "4.4.1"
+
 DEPENDS += "libxml2"
 
 PACKAGECONFIG_append = " libass libbluray libfreetype librtmp libvorbis \
