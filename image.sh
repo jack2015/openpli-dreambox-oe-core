@@ -80,7 +80,7 @@ build=$(dialog --stdout --clear --colors --menu "Select build type" 12 60 10 ${l
     ;;
     *) clear && exit ;;
     esac
-
+# ./update.sh
 clear
 if [ "$machinespecific" = "dm800se-cn" ]; then
 	cp -pf $def_path/dm800se/defconfig $def_path/defconfig
