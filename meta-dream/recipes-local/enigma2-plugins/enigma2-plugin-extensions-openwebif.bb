@@ -1,5 +1,4 @@
 SUMMARY = "Control your receiver with a browser"
-DESCRIPTION = "Control your receiver with a browser"
 MAINTAINER = "Openpli Developers"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://README;md5=26abba37d1c2fcbf96a087ceb8e1db86"
@@ -16,7 +15,6 @@ RDEPENDS:${PN} = "\
 	python-json \
 	python-misc \
 	python-numbers \
-	python-pprint \
 	python-pyopenssl \
 	python-shell \
 	python-six \
@@ -35,11 +33,9 @@ S="${WORKDIR}/git"
 
 PLUGINPATH = "${libdir}/enigma2/python/Plugins/Extensions/OpenWebif"
 
-# Just a quick hack to "compile" it
-# cheetah-compile -R --nobackup --iext=.tmpl ${S}/plugin
 do_compile() {
     cheetah-compile -R --nobackup ${S}/plugin
-    python2 -O -m compileall -d ${PLUGINPATH} ${S}/plugin
+    python2 -O -m compileall ${S}
 }
 
 do_install:append() {
