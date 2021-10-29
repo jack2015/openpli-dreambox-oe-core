@@ -1,6 +1,7 @@
 IMAGE_INSTALL_remove = "distro-feed-configs"
 IMAGE_INSTALL_remove = "hdparm"
 IMAGE_INSTALL_remove = "3rd-party-feed-configs"
+IMAGE_INSTALL_remove = "settings-autorestore"
 
 #dm800se-en
 
@@ -82,16 +83,16 @@ upxall() {
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/blindscan || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/bsdcat || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/dbus-daemon || true
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/chage || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/enigma2 || true
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/gpasswd || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/mpg123 || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/ntfs-3g || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/openssl || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/vpxdec || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/vpxenc || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/wget.wget || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/sdparm || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/alsactl || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/avahi-daemon || true
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/dropbearmulti || true
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/ethtool || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/exportfs || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/groupadd || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/groupdel || true
@@ -100,14 +101,13 @@ upxall() {
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/parted || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/rpc.mountd || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/rpc.statd || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/wpa_supplicant || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/ethtool || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/dropbearmulti || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/ubiformat || true
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/sm-notify || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/useradd || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/userdel || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/usermod || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/vsftpd || true
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/wpa_cli || true
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/wpa_supplicant || true
 }
 
 rootfs_myworks() {
