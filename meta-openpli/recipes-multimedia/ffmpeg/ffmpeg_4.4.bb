@@ -136,6 +136,53 @@ EXTRA_OECONF:append:mips = " --extra-libs=-latomic --disable-mips32r5 --disable-
 EXTRA_OECONF:append:riscv32 = " --extra-libs=-latomic"
 EXTRA_OECONF:append:armv5 = " --extra-libs=-latomic"
 
+# gold crashes on x86, another solution is to --disable-asm but thats more hacky
+# ld.gold: internal error in relocate_section, at ../../gold/i386.cc:3684
+
+LDFLAGS:append:x86 = "${@bb.utils.contains('DISTRO_FEATURES', 'ld-is-gold', ' -fuse-ld=bfd ', '', d)}"
+
+EXTRA_OEMAKE = "V=1"
+
+do_configure() {
+    ${S}/configure ${EXTRA_OECONF}
+}
+
+# patch out build host paths for reproducibility
+do_compile:prepend:class-target() {
+        sed -i -e "s,${WORKDIR},,g" ${B}/config.h
+}
+
+PACKAGES =+ "libavcodec \
+             libavdevice \
+             libavfilter \
+             libavformat \
+             libavresample \
+             libavutil \
+             libpostproc \
+             libswresample \
+             libswscale"
+
+FILES:libavcodec = "${libdir}/libavcodec${SOLIBS}"
+FILES:libavdevice = "${libdir}/libavdevice${SOLIBS}"
+FILES:libavfilter = "${libdir}/libavfilter${SOLIBS}"
+FILES:libavformat = "${libdir}/libavformat${SOLIBS}"
+FILES:libavresample = "${libdir}/libavresample${SOLIBS}"
+FILES:libavutil = "${libdir}/libavutil${SOLIBS}"
+FILES:libpostproc = "${libdir}/libpostproc${SOLIBS}"
+FILES:libswresample = "${libdir}/libswresample${SOLIBS}"
+FILES:libswscale = "${libdir}/libswscale${SOLIBS}"
+
+# ffmpeg disables PIC on some platforms (e.g. x86-32)
+INSANE_SKIP:${MLPREFIX}libavcodec = "textrel"
+INSANE_SKIP:${MLPREFIX}libavdevice = "textrel"
+INSANE_SKIP:${MLPREFIX}libavfilter = "textrel"
+INSANE_SKIP:${MLPREFIX}libavformat = "textrel"
+INSANE_SKIP:${MLPREFIX}libavutil = "textrel"
+INSANE_SKIP:${MLPREFIX}libavresample = "textrel"
+INSANE_SKIP:${MLPREFIX}libswscale = "textrel"
+INSANE_SKIP:${MLPREFIX}libswresample = "textrel"
+INSANE_SKIP:${MLPREFIX}libpostproc = "textrel"
+
 MIPSFPU = "${@bb.utils.contains('TARGET_FPU', 'soft', '--disable-mipsfpu', '--enable-mipsfpu', d)}"
 
 EXTRA_FFCONF = " \
@@ -431,50 +478,3 @@ EXTRA_FFCONF = " \
 	${@bb.utils.contains("TARGET_ARCH", "arm", "--enable-armv6 --enable-armv6t2 --enable-vfp --enable-neon", "", d)} \
 	${@bb.utils.contains("TUNE_FEATURES", "aarch64", "--enable-armv8 --enable-vfp --enable-neon", "", d)} \
 "
-
-# gold crashes on x86, another solution is to --disable-asm but thats more hacky
-# ld.gold: internal error in relocate_section, at ../../gold/i386.cc:3684
-
-LDFLAGS:append:x86 = "${@bb.utils.contains('DISTRO_FEATURES', 'ld-is-gold', ' -fuse-ld=bfd ', '', d)}"
-
-EXTRA_OEMAKE = "V=1"
-
-do_configure() {
-    ${S}/configure ${EXTRA_OECONF}
-}
-
-# patch out build host paths for reproducibility
-do_compile:prepend:class-target() {
-        sed -i -e "s,${WORKDIR},,g" ${B}/config.h
-}
-
-PACKAGES =+ "libavcodec \
-             libavdevice \
-             libavfilter \
-             libavformat \
-             libavresample \
-             libavutil \
-             libpostproc \
-             libswresample \
-             libswscale"
-
-FILES:libavcodec = "${libdir}/libavcodec${SOLIBS}"
-FILES:libavdevice = "${libdir}/libavdevice${SOLIBS}"
-FILES:libavfilter = "${libdir}/libavfilter${SOLIBS}"
-FILES:libavformat = "${libdir}/libavformat${SOLIBS}"
-FILES:libavresample = "${libdir}/libavresample${SOLIBS}"
-FILES:libavutil = "${libdir}/libavutil${SOLIBS}"
-FILES:libpostproc = "${libdir}/libpostproc${SOLIBS}"
-FILES:libswresample = "${libdir}/libswresample${SOLIBS}"
-FILES:libswscale = "${libdir}/libswscale${SOLIBS}"
-
-# ffmpeg disables PIC on some platforms (e.g. x86-32)
-INSANE_SKIP:${MLPREFIX}libavcodec = "textrel"
-INSANE_SKIP:${MLPREFIX}libavdevice = "textrel"
-INSANE_SKIP:${MLPREFIX}libavfilter = "textrel"
-INSANE_SKIP:${MLPREFIX}libavformat = "textrel"
-INSANE_SKIP:${MLPREFIX}libavutil = "textrel"
-INSANE_SKIP:${MLPREFIX}libavresample = "textrel"
-INSANE_SKIP:${MLPREFIX}libswscale = "textrel"
-INSANE_SKIP:${MLPREFIX}libswresample = "textrel"
-INSANE_SKIP:${MLPREFIX}libpostproc = "textrel"
