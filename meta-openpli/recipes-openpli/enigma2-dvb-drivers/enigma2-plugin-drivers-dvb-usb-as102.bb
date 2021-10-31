@@ -1,4 +1,4 @@
-DESCRIPTION = "USB DVB driver for AS102 chipset"
+SUMMARY = "USB DVB driver for AS102 chipset"
 
 require dvb-usb-drivers-meta.inc
 

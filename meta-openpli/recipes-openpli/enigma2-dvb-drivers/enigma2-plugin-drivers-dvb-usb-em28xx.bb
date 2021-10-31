@@ -1,4 +1,4 @@
-DESCRIPTION = "USB DVB driver for EM28xx chipset"
+SUMMARY = "USB DVB driver for EM28xx chipset"
 
 require dvb-usb-drivers-meta.inc
 

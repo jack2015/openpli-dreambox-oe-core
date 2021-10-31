@@ -1,4 +1,4 @@
-DESCRIPTION = "USB DVB driver for pctv452e chipsets"
+SUMMARY = "USB DVB driver for pctv452e chipsets"
 
 require dvb-usb-drivers-meta.inc
 

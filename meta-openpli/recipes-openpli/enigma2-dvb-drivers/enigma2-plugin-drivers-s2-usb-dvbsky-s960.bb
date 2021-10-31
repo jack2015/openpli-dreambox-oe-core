@@ -1,4 +1,4 @@
-DESCRIPTION = "USB dvbsky driver for S960"
+SUMMARY = "USB dvbsky driver for S960"
 
 require dvb-usb-drivers-meta.inc
 

@@ -1,4 +1,4 @@
-DESCRIPTION = "USB geniatech driver for T230"
+SUMMARY = "USB geniatech driver for T230"
 
 require dvb-usb-drivers-meta.inc
 

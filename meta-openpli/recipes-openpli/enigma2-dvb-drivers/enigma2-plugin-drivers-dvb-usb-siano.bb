@@ -1,4 +1,4 @@
-DESCRIPTION = "USB DVB driver for Siano chipset"
+SUMMARY = "USB DVB driver for Siano chipset"
 
 require dvb-usb-drivers-meta.inc
 

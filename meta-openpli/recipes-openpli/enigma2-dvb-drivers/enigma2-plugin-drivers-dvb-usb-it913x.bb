@@ -1,4 +1,4 @@
-DESCRIPTION = "USB DVB driver for it913x chipsets"
+SUMMARY = "USB DVB driver for it913x chipsets"
 
 require dvb-usb-drivers-meta.inc
 

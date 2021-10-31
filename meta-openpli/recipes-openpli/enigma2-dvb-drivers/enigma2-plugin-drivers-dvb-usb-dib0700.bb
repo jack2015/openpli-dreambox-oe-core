@@ -1,4 +1,4 @@
-DESCRIPTION = "USB DVB driver for dib0700 chipset"
+SUMMARY = "USB DVB driver for dib0700 chipset"
 
 require dvb-usb-drivers-meta.inc
 
