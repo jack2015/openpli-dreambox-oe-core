@@ -49,6 +49,8 @@ MACHINE_ESSENTIAL_EXTRA_RDEPENDS += "\
     flash-nrf52 \
     "
 
+KERNEL_MODULE_AUTOLOAD += "xfs"
+
 DISTRO_FEATURES:remove = "directfb gtk-directfb"
     
 MACHINE_FEATURES += "dreambox alsa usbhost 3dtv switchoff blindscan-dvbs"
