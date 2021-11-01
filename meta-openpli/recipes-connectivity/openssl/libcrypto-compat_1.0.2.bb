@@ -1,7 +1,7 @@
 SUMMARY = "Compatibility for packages that link to older libcrypto or libssl"
 require conf/license/license-gplv2.inc
 INHIBIT_PACKAGE_STRIP = "1"
-INSANE_SKIP:${PN} += "already-stripped"
+INSANE_SKIP:${PN}:append = " already-stripped"
 S = "${WORKDIR}"
 
 SRC_URI = " \
@@ -28,4 +28,5 @@ do_install () {
 
 FILES:${PN} = "${libdir}"
 
-RPROVIDES:${PN} += "libcrypto.so.1.0.2 libssl.so.1.0.2 libcrypto.so.1.0.0 libssl.so.1.0.0 libcrypto.so.0.9.8 libssl.so.0.9.8 libcrypto.so.0.9.7 libssl.so.0.9.7 libcrypto1.0.2 libssl1.0.2 libcrypto1.0.0 libssl1.0.0 libcrypto0.9.8 libssl0.9.8 libcrypto0.9.7 libssl0.9.7"
+RPROVIDES:${PN} += "libcrypto.so.1.0.2 libssl.so.1.0.2 libcrypto.so.1.0.0 libssl.so.1.0.0 libcrypto.so.0.9.8 libssl.so.0.9.8 libcrypto.so.0.9.7 \
+	libssl.so.0.9.7 libcrypto1.0.2 libssl1.0.2 libcrypto1.0.0 libssl1.0.0 libcrypto0.9.8 libssl0.9.8 libcrypto0.9.7 libssl0.9.7"
