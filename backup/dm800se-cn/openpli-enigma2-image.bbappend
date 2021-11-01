@@ -6,7 +6,6 @@ IMAGE_INSTALL:remove = "settings-autorestore"
 
 IMAGE_INSTALL += " \
 	bitratecalc \
-	libcrypto-compat \
 	busybox-cron \
 	"
 

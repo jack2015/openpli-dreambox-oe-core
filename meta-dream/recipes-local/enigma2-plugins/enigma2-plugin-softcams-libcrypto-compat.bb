@@ -1,7 +1,7 @@
-SUMMARY = "Add support for exfat filesystem"
+SUMMARY = "Compatibility packages that link to older libcrypto and libssl"
 require conf/license/license-gplv2.inc
 
-RDEPENDS:${PN} = "fuse-exfat"
+RRECOMMENDS:${PN} = "libcrypto-compat"
 
 PV = "1.0"
 PR = "r0"

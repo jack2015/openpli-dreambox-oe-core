@@ -7,7 +7,7 @@ IMAGE_INSTALL:remove = "settings-autorestore"
 #dm800sev2-en(big)
 
 IMAGE_INSTALL:append = " \
-	libcrypto-compat \
+	enigma2-plugin-softcams-libcrypto-compat \
 	bitratecalc \
 	ffmpeg \
 	exteplayer3 \

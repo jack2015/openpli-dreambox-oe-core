@@ -9,7 +9,7 @@ IMAGE_INSTALL:remove = "settings-autorestore"
 IMAGE_INSTALL += " \
 	bitratecalc \
 	ofgwrite \
-	libcrypto-compat \
+	enigma2-plugin-softcams-libcrypto-compat \
 	busybox-cron \
 	ffmpeg \
 	exteplayer3 \
