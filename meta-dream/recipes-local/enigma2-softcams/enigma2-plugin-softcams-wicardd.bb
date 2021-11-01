@@ -4,8 +4,8 @@ PACKAGE_ARCH = "${DEFAULTTUNE}"
 
 INHIBIT_PACKAGE_STRIP = "1"
 INSANE_SKIP:${PN}:append = " already-stripped"
-DEPENDS += "libcrypto-compat virtual/crypt"
-RDEPENDS:${PN} += "libcrypto-compat libxcrypt-compat"
+DEPENDS += "enigma2-plugin-softcams-libcrypto-compat virtual/crypt"
+RDEPENDS:${PN} += "enigma2-plugin-softcams-libcrypto-compat libxcrypt-compat"
 
 S = "${WORKDIR}"
 PV = "1.19"

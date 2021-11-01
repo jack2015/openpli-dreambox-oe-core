@@ -5,8 +5,8 @@ PACKAGES = "${PN}"
 
 INHIBIT_PACKAGE_STRIP = "1"
 INSANE_SKIP:${PN} += "already-stripped"
-DEPENDS += "libcrypto-compat virtual/crypt zlib"
-RDEPENDS:${PN} += "libcrypto-compat libxcrypt-compat zlib"
+DEPENDS += "enigma2-plugin-softcams-libcrypto-compat virtual/crypt zlib"
+RDEPENDS:${PN} += "enigma2-plugin-softcams-libcrypto-compat libxcrypt-compat zlib"
 
 PV = "1.35a"
 
