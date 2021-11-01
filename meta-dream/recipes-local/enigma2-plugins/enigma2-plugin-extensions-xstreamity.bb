@@ -1,6 +1,7 @@
 SUMMARY = "IPTV Xtream Codes playlists player by KiddaC"
 HOMEPAGE = "https://www.linuxsat-support.com"
 MAINTAINER = "kiddac"
+PRIORITY = "optional"
 require conf/license/license-gplv2.inc
 
 RDEPENDS:${PN} = "python-argparse python-image python-imaging python-lzma python-multiprocessing python-requests"
@@ -8,10 +9,10 @@ RDEPENDS:${PN} = "python-argparse python-image python-imaging python-lzma python
 inherit gitpkgv allarch
 
 SRCREV = "${AUTOREV}"
-PV = "2.30+git${SRCPV}"
-PKGV = "2.30+git${GITPKGV}"
+PV = "3.33+git${SRCPV}"
+PKGV = "3.33+git${GITPKGV}"
 
-SRC_URI = "git://github.com/kiddac/XStreamity.git;protocol=git"
+SRC_URI = "git://github.com/kiddac/XStreamity.git"
 
 S = "${WORKDIR}/git"
 FILES:${PN} = "/usr/"

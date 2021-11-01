@@ -1,5 +1,5 @@
 DEPENDS:remove = "gnutls"
-DEPENDS += "openssl"
+DEPENDS:append = "openssl"
 
 PROVIDES =+ " librtmp librtmp1"
 

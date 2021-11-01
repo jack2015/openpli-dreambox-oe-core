@@ -31,5 +31,5 @@ pkg_postinst:${PN}() {
 }
 
 pkg_prerm:${PN}() {
-	rm -f ${bindir}/gstplayer_gst-1.0
+	rm -f $D${bindir}/gstplayer_gst-1.0
 }
