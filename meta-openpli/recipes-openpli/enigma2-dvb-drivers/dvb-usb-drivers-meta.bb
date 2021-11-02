@@ -24,6 +24,7 @@ DEPENDS = "\
 	enigma2-plugin-drivers-dvb-usb-siano \
 	enigma2-plugin-drivers-dvb-usb-tbs \
 	enigma2-plugin-drivers-dvb-usb-technisat-skystar \
+	enigma2-plugin-drivers-dvb-usb-a867 \
 	"
 
 PV = "1.1"

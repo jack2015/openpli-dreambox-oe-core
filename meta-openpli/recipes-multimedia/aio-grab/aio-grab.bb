@@ -1,20 +1,20 @@
-DESCRIPTION="AiO screenshot grabber"
+SUMMARY = "AiO screenshot grabber"
 MAINTAINER = "PLi team"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=751419260aa954499f7abaabaa882bbe"
 
 DEPENDS = "jpeg libpng zlib"
 
-inherit gitpkgv
+inherit gitpkgv autotools pkgconfig
 
 PV = "1.0+git${SRCPV}"
 PKGV = "1.0+git${GITPKGV}"
 
-GITHUB_URI ?= "git://github.com"
-SRC_URI = "${GITHUB_URI}/OpenPLi/${BPN}.git"
+SRC_URI = "git://github.com/OpenPLi/aio-grab.git"
+SRC_URI:dm900 = "git://github.com/oe-alliance/aio-grab.git"
+SRC_URI:dm920 = "git://github.com/oe-alliance/aio-grab.git"
+SRC_URI:sh4 = "git://github.com/oe-alliance/aio-grab.git"
 
 S = "${WORKDIR}/git"
-
-inherit autotools pkgconfig
 
 EXTRA_OECONF = "ac_cv_prog_c_openmp=-fopenmp"
