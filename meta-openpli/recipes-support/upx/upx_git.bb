@@ -15,8 +15,8 @@ SRCREV_lzmasdk = "426fe82d122e2cf140a86751055ee523378fe2ef"
 SRCREV_FORMAT = "upx"
 
 SRC_URI = " \
-	git://github.com/upx/upx.git;name=upx \
-	git://github.com/upx/upx-lzma-sdk.git;name=lzmasdk;destsuffix=git/src/lzma-sdk \
+	git://github.com/upx/upx.git;protocol=${GIT_PROTOCOL};name=upx \
+	git://github.com/upx/upx-lzma-sdk.git;protocol=${GIT_PROTOCOL};name=lzmasdk;destsuffix=git/src/lzma-sdk \
 	http://www.oberhumer.com/opensource/ucl/download/ucl-1.03.tar.gz;subdir=git;name=ucl \
 	file://ucl_configure_fix.patch;patch=1 \
 	file://fix-build-with-gcc8.patch \

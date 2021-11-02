@@ -103,7 +103,7 @@ inherit gitpkgv pythonnative
 PV = "2.7+git${SRCPV}"
 PKGV = "2.7+git${GITPKGV}"
 
-SRC_URI = " git://github.com/jack2015/enigma2-openpli.git;branch=${ENIGMA2_BRANCH} \
+SRC_URI = " git://github.com/jack2015/enigma2-openpli.git;protocol=${GIT_PROTOCOL};branch=${ENIGMA2_BRANCH} \
 			file://01-use-mallinfo2.patch \
 			file://02-fix-build-gcc11.patch \
 			file://03-get-rid-of-register-keyword.patch \

@@ -15,7 +15,7 @@ SRCREV = "${AUTOREV}"
 PV = "git${SRCPV}"
 PKGV = "${GITPKGVTAG}"
 
-SRC_URI = "git://github.com/ytdl-org/youtube-dl.git;branch=master"
+SRC_URI = "git://github.com/ytdl-org/youtube-dl.git;protocol=${GIT_PROTOCOL};branch=master"
 
 S = "${WORKDIR}/git"
 

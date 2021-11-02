@@ -30,7 +30,7 @@ PV = "y-git${SRCPV}"
 PKGV = "y-git${GITPKGV}"
 
 GITHUB_URI ?= "git://github.com"
-SRC_URI = "${GITHUB_URI}/jack2015/${BPN}.git"
+SRC_URI = "${GITHUB_URI}/jack2015/${BPN}.git;protocol=${GIT_PROTOCOL}"
 
 EXTRA_OECONF = " \
 	BUILD_SYS=${BUILD_SYS} \

@@ -2,7 +2,7 @@ SUMMARY = "periodicaly flushing cache"
 MAINTAINER = "Openvix Developers"
 require conf/license/openpli-gplv2.inc
 
-SRC_URI = "git://github.com/jack2015/e2openplugin-CacheFlush.git"
+SRC_URI = "git://github.com/jack2015/e2openplugin-CacheFlush.git;protocol=${GIT_PROTOCOL}"
 
 inherit gitpkgv distutils-openplugins gettext
 

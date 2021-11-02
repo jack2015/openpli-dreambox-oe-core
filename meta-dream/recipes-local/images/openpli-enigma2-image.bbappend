@@ -9,7 +9,6 @@ IMAGE_INSTALL:remove = "settings-autorestore"
 IMAGE_INSTALL += " \
 	bitratecalc \
 	ofgwrite \
-	libcrypto-compat \
 	busybox-cron \
 	ffmpeg \
 	exteplayer3 \
@@ -20,6 +19,8 @@ KERNEL_WIFI_DRIVERS = ""
 EXTERNAL_WIFI_DRIVERS = ""
 
 ENIGMA2_PLUGINS = " \
+	enigma2-plugin-drivers-ntfs-3g \
+	enigma2-plugin-softcams-libcrypto-compat \
 	enigma2-plugin-language-en \
 	enigma2-plugin-language-zh-cn \
 	enigma2-plugin-language-ru \

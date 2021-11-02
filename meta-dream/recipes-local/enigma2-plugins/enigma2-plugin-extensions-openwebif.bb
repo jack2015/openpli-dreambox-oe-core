@@ -24,10 +24,11 @@ RDEPENDS:${PN} = "\
 
 inherit gitpkgv distutils-openplugins gettext
 
-PV = "git${SRCPV}"
-PKGV = "git${GITPKGV}"
+PV = "1.4.9+git${SRCPV}"
+PKGV = "1.4.9+git${GITPKGV}"
 
-SRC_URI = "git://github.com/E2OpenPlugins/e2openplugin-OpenWebif.git;protocol=git;branch=master"
+SRC_URI = "git://github.com/E2OpenPlugins/e2openplugin-OpenWebif.git;protocol=${GIT_PROTOCOL};branch=master \
+	file://dm800sev2.png"
 
 S="${WORKDIR}/git"
 
@@ -42,6 +43,7 @@ do_install:append() {
     install -d ${D}${PLUGINPATH}
     cp -r ${S}/plugin/* ${D}${PLUGINPATH}
     chmod a+rX ${D}${PLUGINPATH}
+    install -m 0644 ${WORKDIR}/dm800sev2.png ${D}${PLUGINPATH}/public/images/boxes/
 }
 
 python do_cleanup () {
@@ -59,7 +61,7 @@ python do_cleanup () {
         target_remote = 'dmm1.png'
         target_keymap = 'dmm1.html'
     if mybox_name == 'dm800sev2':
-        target_box = 'dm800se.png'
+        target_box = 'dm800sev2.png'
         target_remote = 'dmm1.png'
         target_keymap = 'dmm1.html'
     if mybox_name == 'dm900':
@@ -77,8 +79,6 @@ python do_cleanup () {
         for name in files:
             if target_box != name and name != 'unknown.png' and exception != name:
                 os.remove(os.path.join(root, name))
-        if mybox_name == 'dm800sev2':
-            os.system('cd '+ root +' ; cp -pf dm800se.png dm800sev2.png ; chmod -R a+rX dm800sev2.png')
 
     for root, dirs, files in os.walk(images + 'remotes', topdown=False):
         for name in files:

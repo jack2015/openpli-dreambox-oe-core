@@ -10,7 +10,7 @@ DEPENDS = "python"
 PV = "1.0+git${SRCPV}"
 PKGV = "1.0+git${GITPKGV}"
 
-SRC_URI = "git://github.com/oe-alliance/TerrestrialScan.git;protocol=git"
+SRC_URI = "git://github.com/oe-alliance/TerrestrialScan.git;protocol=${GIT_PROTOCOL}"
 
 EXTRA_OECONF = " \
     BUILD_SYS=${BUILD_SYS} \

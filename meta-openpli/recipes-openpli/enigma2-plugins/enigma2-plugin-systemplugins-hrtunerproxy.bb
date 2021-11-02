@@ -9,7 +9,7 @@ inherit gitpkgv distutils-openplugins
 PV = "git${SRCPV}"
 PKGV = "${GITPKGVTAG}"
 
-SRC_URI = "git://github.com/OpenViX/HRTunerProxy.git;protocol=git"
+SRC_URI = "git://github.com/OpenViX/HRTunerProxy.git;protocol=${GIT_PROTOCOL}"
 
 S = "${WORKDIR}/git"
 

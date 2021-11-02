@@ -8,7 +8,7 @@ SRCREV = "${AUTOREV}"
 PV = "6.0.5+git${SRCPV}"
 PKGV = "6.0.5+git${GITPKGV}"
 
-SRC_URI = "git://github.com/MCelliotG/GlamourAuraFHD-skin.git"
+SRC_URI = "git://github.com/MCelliotG/GlamourAuraFHD-skin.git;protocol=${GIT_PROTOCOL}"
 
 FILES:${PN} = "/usr"
 
