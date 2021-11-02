@@ -8,7 +8,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=751419260aa954499f7abaabaa882bbe"
 PROVIDES += "librtmp librtmp1"
 RPROVIDES_${PN} += "librtmp librtmp1"
 
-DEPENDS = "gnutls zlib openssl"
+DEPENDS = "zlib openssl"
 
 SRCREV = "f1b83c10d8beb43fcc70a6e88cf4325499f25857"
 SRC_URI = " \
@@ -24,7 +24,7 @@ inherit autotools-brokensep
 
 EXTRA_OEMAKE = " \
     CC='${CC}' LD='${LD} ${STAGING_LIBDIR}' XCFLAGS='${CFLAGS}' XLDFLAGS='${LDFLAGS}' \
-    SYS=posix INC=-I=/usr/include DESTDIR=${D} CRYPTO=GNUTLS \
+    SYS=posix INC=-I=/usr/include DESTDIR=${D} CRYPTO=OPENSSL \
     prefix=${prefix} libdir=${libdir} incdir=${includedir}/librtmp bindir=${bindir} mandir=${mandir}"
 
 INSANE_SKIP_${PN} += "ldflags"
