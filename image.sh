@@ -3,14 +3,14 @@
 gcc --version | sed -nr '/Ubuntu [0-9]+/ s/.*Ubuntu +([0-9]+).*/\1/p' > /tmp/vision-gcc-version
 VISIONGCCVERSION=`cat /tmp/vision-gcc-version`
 if [ "${VISIONGCCVERSION}" != '11' ]; then
-	echo -e "${RED}GCC version is wrong!"
-	echo -e "It means you need to choose version 11 of GCC!"
-	sudo update-alternatives --config gcc
-	gcc --version | sed -nr '/Ubuntu [0-9]+/ s/.*Ubuntu +([0-9]+).*/\1/p' > /tmp/vision-gcc-version
-	VISIONGCCVERSION=`cat /tmp/vision-gcc-version`
-	echo -e "Done, now GCC version is: ${VISIONGCCVERSION} ${NC}"
-	echo -e ""
-	exit 0
+    echo -e "${RED}GCC version is wrong!"
+    echo -e "It means you need to choose version 11 of GCC!"
+    sudo update-alternatives --config gcc
+    gcc --version | sed -nr '/Ubuntu [0-9]+/ s/.*Ubuntu +([0-9]+).*/\1/p' > /tmp/vision-gcc-version
+    VISIONGCCVERSION=`cat /tmp/vision-gcc-version`
+    echo -e "Done, now GCC version is: ${VISIONGCCVERSION} ${NC}"
+    echo -e ""
+    exit 0
 fi
 
 SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
@@ -84,51 +84,51 @@ build=$(dialog --stdout --clear --colors --menu "Select build type" 12 60 10 ${l
     ;;
     *) clear && exit ;;
     esac
-# ./update.sh
+
 clear
 if [ "$machinespecific" = "dm800se-cn" ]; then
-	cp -pf $def_path/dm800se/defconfig $def_path/defconfig
-	cp -pf backup/dm800se-cn/* meta-dream/recipes-local/images/
-	echo "$echostr"
-	MACHINE=dm800se make ${MAKETYPE}
+    cp -pf $def_path/dm800se/defconfig $def_path/defconfig
+    cp -pf backup/dm800se-cn/* meta-dream/recipes-local/images/
+    echo "$echostr"
+    MACHINE=dm800se make ${MAKETYPE}
 elif [ "$machinespecific" = "dm800se-en" ]; then
-	cp -pf $def_path/dm800se/defconfig $def_path/defconfig
-	cp -pf backup/dm800se-en/* meta-dream/recipes-local/images/
-	echo "$echostr"
-	MACHINE=dm800se make ${MAKETYPE}
+    cp -pf $def_path/dm800se/defconfig $def_path/defconfig
+    cp -pf backup/dm800se-en/* meta-dream/recipes-local/images/
+    echo "$echostr"
+    MACHINE=dm800se make ${MAKETYPE}
 elif [ "$machinespecific" = "dm8000" ]; then
-	cp -pf $def_path/dm8000/defconfig $def_path/defconfig
-	echo "$echostr"
-	MACHINE=dm8000 make ${MAKETYPE}
+    cp -pf $def_path/dm8000/defconfig $def_path/defconfig
+    echo "$echostr"
+    MACHINE=dm8000 make ${MAKETYPE}
 elif [ "$machinespecific" = "dm900-clone" ]; then
-        cp -pf $def_path2/dm900/defconfig $def_path2/defconfig
-	cp -pf backup/dm900-clone/* meta-dream/recipes-bsp/drivers/
-	cp -pf backup/dm9x0/* meta-dream/recipes-local/images/
-	echo "$echostr"
-        MACHINE=dm900 make ${MAKETYPE}
+    cp -pf $def_path2/dm900/defconfig $def_path2/defconfig
+    cp -pf backup/dm900-clone/* meta-dream/recipes-bsp/drivers/
+    cp -pf backup/dm9x0/* meta-dream/recipes-local/images/
+    echo "$echostr"
+    MACHINE=dm900 make ${MAKETYPE}
 elif [ "$machinespecific" = "dm900-original" ]; then
-        cp -pf $def_path2/dm900/defconfig $def_path2/defconfig
-	cp -pf backup/dm900-original/* meta-dream/recipes-bsp/drivers/
-	cp -pf backup/dm9x0/* meta-dream/recipes-local/images/
-	echo "$echostr"
-        MACHINE=dm900 make ${MAKETYPE}
+    cp -pf $def_path2/dm900/defconfig $def_path2/defconfig
+    cp -pf backup/dm900-original/* meta-dream/recipes-bsp/drivers/
+    cp -pf backup/dm9x0/* meta-dream/recipes-local/images/
+    echo "$echostr"
+    MACHINE=dm900 make ${MAKETYPE}
 elif [ "$machinespecific" = "dm920" ]; then
-        cp -pf $def_path2/dm920/defconfig $def_path2/defconfig
-	cp -pf backup/dm9x0/* meta-dream/recipes-local/images/
-	echo "$echostr"
-        MACHINE=dm920 make ${MAKETYPE}
+    cp -pf $def_path2/dm920/defconfig $def_path2/defconfig
+    cp -pf backup/dm9x0/* meta-dream/recipes-local/images/
+    echo "$echostr"
+    MACHINE=dm920 make ${MAKETYPE}
 elif [ "$machinespecific" = "dm800sev2-en-clone" ]; then
-        cp -pf $def_path/dm800sev2/defconfig $def_path/defconfig
-        cp -pf backup/dm800sev2-en/openpli-enigma2-image.bbappend meta-dream/recipes-local/images/
-        cp -pf backup/dm800sev2-en/clone/* meta-dream/recipes-bsp/drivers/
-        echo "$echostr"
-        MACHINE=dm800sev2 make ${MAKETYPE}
+    cp -pf $def_path/dm800sev2/defconfig $def_path/defconfig
+    cp -pf backup/dm800sev2-en/openpli-enigma2-image.bbappend meta-dream/recipes-local/images/
+    cp -pf backup/dm800sev2-en/clone/* meta-dream/recipes-bsp/drivers/
+    echo "$echostr"
+    MACHINE=dm800sev2 make ${MAKETYPE}
 elif [ "$machinespecific" = "dm800sev2-en-original" ]; then
-        cp -pf $def_path/dm800sev2/defconfig $def_path/defconfig
-        cp -pf backup/dm800sev2-en/openpli-enigma2-image.bbappend meta-dream/recipes-local/images/
-        cp -pf backup/dm800sev2-en/original/* meta-dream/recipes-bsp/drivers/
-        echo "$echostr"
-        MACHINE=dm800sev2 make ${MAKETYPE}
+    cp -pf $def_path/dm800sev2/defconfig $def_path/defconfig
+    cp -pf backup/dm800sev2-en/openpli-enigma2-image.bbappend meta-dream/recipes-local/images/
+    cp -pf backup/dm800sev2-en/original/* meta-dream/recipes-bsp/drivers/
+    echo "$echostr"
+    MACHINE=dm800sev2 make ${MAKETYPE}
 else
-	echo "Please enter a correct choice"
+    echo "Please enter a correct choice"
 fi
