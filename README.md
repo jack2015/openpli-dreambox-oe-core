@@ -1,6 +1,6 @@
 Build environment based on OpenPLi-homebuild(develop branch).
 
-https://github.com/OpenPLi/openpli-oe-core/commits/develop
+https://github.com/OpenPLi/openpli-oe-core/commits/develop <br>
 https://github.com/Hains
 
 Thanks to OpenPLi & Hains.
