@@ -25,12 +25,13 @@ clear
 ## Menu Select Boxes ##
 BOX_1="dm800se-cn"
 BOX_2="dm800se-en"
-BOX_3="dm800sev2-en"
+BOX_3="dm800sev2-en-clone"
 BOX_4="dm900-clone"
 BOX_5="dm900-original"
 BOX_6="dm920"
+BOX_7="dm800sev2-en-original"
 list=
-for i in $(seq 1 6); do
+for i in $(seq 1 7); do
     p="BOX_$i"
     list="$list $i ${!p} "
 done
@@ -44,7 +45,7 @@ box=$(dialog --stdout --clear --colors --menu "Build Dreambox Image" 22 70 10 ${
     machinespecific="dm800se-en"
     ;;
     3)
-    machinespecific="dm800sev2-en"
+    machinespecific="dm800sev2-en-clone"
     ;;
     4)
     machinespecific="dm900-clone"
@@ -54,6 +55,9 @@ box=$(dialog --stdout --clear --colors --menu "Build Dreambox Image" 22 70 10 ${
     ;;
     6)
     machinespecific="dm920"
+    ;;
+    7)
+    machinespecific="dm800sev2-en-original"
     ;;
     *) clear && exit ;;
     esac
@@ -113,9 +117,16 @@ elif [ "$machinespecific" = "dm920" ]; then
 	cp -pf backup/dm9x0/* meta-dream/recipes-local/images/
 	echo "$echostr"
         MACHINE=dm920 make ${MAKETYPE}
-elif [ "$machinespecific" = "dm800sev2-en" ]; then
+elif [ "$machinespecific" = "dm800sev2-en-clone" ]; then
         cp -pf $def_path/dm800sev2/defconfig $def_path/defconfig
-	cp -pf backup/dm800sev2-en/* meta-dream/recipes-local/images/
+	cp -pf backup/dm800sev2-en/openpli-enigma2-image.bbappend meta-dream/recipes-local/images/
+	cp -pf backup/dm800sev2-en/clone/* meta-dream/recipes-bsp/drivers/
+	echo "$echostr"
+        MACHINE=dm800sev2 make ${MAKETYPE}
+elif [ "$machinespecific" = "dm800sev2-en-original" ]; then
+        cp -pf $def_path/dm800sev2/defconfig $def_path/defconfig
+	cp -pf backup/dm800sev2-en/openpli-enigma2-image.bbappend meta-dream/recipes-local/images/
+	cp -pf backup/dm800sev2-en/original/* meta-dream/recipes-bsp/drivers/
 	echo "$echostr"
         MACHINE=dm800sev2 make ${MAKETYPE}
 else
