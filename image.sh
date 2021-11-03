@@ -119,15 +119,15 @@ elif [ "$machinespecific" = "dm920" ]; then
         MACHINE=dm920 make ${MAKETYPE}
 elif [ "$machinespecific" = "dm800sev2-en-clone" ]; then
         cp -pf $def_path/dm800sev2/defconfig $def_path/defconfig
-	cp -pf backup/dm800sev2-en/openpli-enigma2-image.bbappend meta-dream/recipes-local/images/
-	cp -pf backup/dm800sev2-en/clone/* meta-dream/recipes-bsp/drivers/
-	echo "$echostr"
+        cp -pf backup/dm800sev2-en/openpli-enigma2-image.bbappend meta-dream/recipes-local/images/
+        cp -pf backup/dm800sev2-en/clone/* meta-dream/recipes-bsp/drivers/
+        echo "$echostr"
         MACHINE=dm800sev2 make ${MAKETYPE}
 elif [ "$machinespecific" = "dm800sev2-en-original" ]; then
         cp -pf $def_path/dm800sev2/defconfig $def_path/defconfig
-	cp -pf backup/dm800sev2-en/openpli-enigma2-image.bbappend meta-dream/recipes-local/images/
-	cp -pf backup/dm800sev2-en/original/* meta-dream/recipes-bsp/drivers/
-	echo "$echostr"
+        cp -pf backup/dm800sev2-en/openpli-enigma2-image.bbappend meta-dream/recipes-local/images/
+        cp -pf backup/dm800sev2-en/original/* meta-dream/recipes-bsp/drivers/
+        echo "$echostr"
         MACHINE=dm800sev2 make ${MAKETYPE}
 else
 	echo "Please enter a correct choice"
