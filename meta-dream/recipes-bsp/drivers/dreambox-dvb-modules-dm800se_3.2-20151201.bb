@@ -7,7 +7,7 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 COMPATIBLE_MACHINE = "^(dm800se)$"
 DRIVERDATE = "20151201"
 INHIBIT_PACKAGE_STRIP = "1"
-INSANE_SKIP:${PN}:append = "already-stripped"
+INSANE_SKIP:${PN}:append = " already-stripped"
 
 
 SRC_URI = " https://jack2015.github.io/files/dreambox-dvb-modules-dm800se-3.2-dm800se-20151201.tar.bz2;name=modules \

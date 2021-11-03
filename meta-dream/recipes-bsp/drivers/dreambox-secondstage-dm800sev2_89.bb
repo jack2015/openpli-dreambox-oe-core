@@ -8,7 +8,7 @@ DEPENDS = "dreambox-buildimage-native"
 COMPATIBLE_MACHINE = "^(dm800sev2)$"
 do_configure[nostamp] = "1"
 INHIBIT_PACKAGE_STRIP = "1"
-INSANE_SKIP:${PN}:append = "already-stripped"
+INSANE_SKIP:${PN}:append = " already-stripped"
 
 inherit deploy
 
