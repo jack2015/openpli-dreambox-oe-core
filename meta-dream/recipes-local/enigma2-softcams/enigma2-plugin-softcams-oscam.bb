@@ -1,6 +1,6 @@
+SUMMARY = "Oscam Softcam for ${MACHINE}"
 require conf/license/openpli-gplv2.inc
 require oscam-version.inc
-SUMMARY = "Oscam Softcam for ${MACHINE}"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 PACKAGES = "${PN}"
 CAMNAME = "oscam"
@@ -40,7 +40,7 @@ do_install() {
     upx --best --ultra-brute ${B}/${CAMNAME}
     install -m 0755 ${B}/${CAMNAME} ${D}${bindir}
     install -d ${D}/etc/init.d
-    install -m 0755 ${WORKDIR}/softcam.${CAMNAME} ${D}/etc/init.d/softcam.${CAMNAME}
+    install -m 0755 ${WORKDIR}/softcam.${CAMNAME} ${D}/etc/init.d
 }
 
 CONFFILES = "/etc/tuxbox/config/oscam.conf"
