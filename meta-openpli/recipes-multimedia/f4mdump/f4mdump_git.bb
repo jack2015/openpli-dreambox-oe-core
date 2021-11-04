@@ -1,4 +1,5 @@
-DESCRIPTION = "Simple F4M/HDS (Adobe HTTP Dynamic Streaming) dumper. Intended to be used by IPTVPlayer plugin: https://gitorious.org/iptv-pl-dla-openpli, http://iptvplayer.vline.pl."
+SUMMARY = "Simple F4M/HDS (Adobe HTTP Dynamic Streaming) dumper. "
+DESCRIPTION = "Simple F4M/HDS (Adobe HTTP Dynamic Streaming) dumper. "
 MAINTAINER = "samsamsam"
 
 DEPENDS = "openssl zlib"
@@ -11,9 +12,8 @@ PV = "1.0+git${SRCPV}"
 PKGV = "1.0+git${GITPKGV}"
 PR = "r0"
 
-SRC_URI = " git://gitlab.com/f4mdump/f4mdump.git;protocol=https \
-			file://fix-build-openssl110.patch \
-"
+SRC_URI = "git://github.com/jack2015/f4mdump.git;protocol=${GIT_PROTOCOL} \
+	file://fix-build-openssl110.patch"
 
 S = "${WORKDIR}/git"
 
