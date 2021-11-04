@@ -1,8 +1,9 @@
 Build environment based on OpenPLi-homebuild(develop branch).
 
-https://github.com/OpenPLi/openpli-oe-core/commits/develop
+https://github.com/OpenPLi/openpli-oe-core/commits/develop <br>
+https://github.com/Hains
 
-Thanks to OpenPLi.
+Thanks to OpenPLi & Hains.
 
 In comparison to OpenPLi this repository has:<br>
 -Submodules bitbake, openembedded-core and meta-openembedded from honister branch,<br>
@@ -11,4 +12,4 @@ In comparison to OpenPLi this repository has:<br>
 -GStreamer 1.18.5<br>
 -Python 2.7.18<br>
 -OpenSSL 1.1.1l<br>
--Busybox 1.34.0
+-Busybox 1.34.1
