@@ -1,12 +1,8 @@
 !/backup/
-/bitbake/
 /build/
 /meta-dream/recipes-local/images/
 /meta-dream/recipes-local/drivers/
-/meta-openembedded/
 !/meta-openpli/
-/meta-python2/
-/openembedded-core/
 /sources/
 *.swp
 /.deps/
