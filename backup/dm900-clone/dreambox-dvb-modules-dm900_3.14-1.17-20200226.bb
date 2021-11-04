@@ -1,7 +1,7 @@
 KV = "3.14-1.17"
 DRIVERDATE = "20200226"
 
-require dreambox-dvb-modules-dm9x0.inc
+require ../meta-dream/recipes-bsp/drivers/dreambox-dvb-modules-dm9x0.inc
 
 OLDDRIVERDATE = "20190830"
 SRC_URI[dm900.md5sum] = "5136e1c8c29ce53885ab40fd4f07aa8c"

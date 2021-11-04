@@ -111,7 +111,7 @@ ENIGMA2_OPTIONAL = " \
 	enigma2-plugin-drivers-usbserial \
 	enigma2-plugin-drivers-exfat \
 	enigma2-plugin-drivers-ntfs-3g \
-	${@bb.utils.contains_any("MACHINE", "dm800se dm800sev2", " \
+	${@bb.utils.contains("TARGET_ARCH", "mipsel", " \
 	enigma2-plugin-softcams-cccam-v209 \
 	enigma2-plugin-softcams-cccam-v221 \
 	enigma2-plugin-softcams-cccam-v230 \
@@ -120,7 +120,7 @@ ENIGMA2_OPTIONAL = " \
 	enigma2-plugin-softcams-mgcamd-v135a \
 	enigma2-plugin-softcams-mgcamd-v145c \
 	", "", d)} \
-	${@bb.utils.contains_any("MACHINE", "dm900 dm920", " \
+	${@bb.utils.contains("TARGET_ARCH", "arm", " \
 	enigma2-plugin-softcams-cccam-v232-arm \
 	enigma2-plugin-softcams-cccam-v238-arm \
 	enigma2-plugin-softcams-mgcamd-v135a-arm \
@@ -140,11 +140,9 @@ ENIGMA2_OPTIONAL = " \
 	enigma2-plugin-extensions-managerautofs \
 	enigma2-plugin-extensions-modifyplifullhd \
 	enigma2-plugin-extensions-moviemanager \
-	enigma2-plugin-systemplugins-mountmanager \
 	enigma2-plugin-extensions-openmultiboot \
 	enigma2-plugin-extensions-refreshbouquet \
 	enigma2-plugin-extensions-subssupport \
-	enigma2-plugin-systemplugins-signalfinder \
 	enigma2-plugin-extensions-managerautofs \
 	enigma2-plugin-extensions-xstreamity \
 	enigma2-plugin-extensions-tmbd \
@@ -155,7 +153,7 @@ ENIGMA2_OPTIONAL = " \
 	enigma2-plugin-extensions-openwebif \
 	enigma2-plugin-extensions-oscamstatus \
 	enigma2-plugin-softcams-oscam \
-	${@bb.utils.contains_any("MACHINE", "dm900 dm920", "enigma2-plugin-softcams-wicardd", "", d)} \
+	${@bb.utils.contains("TARGET_ARCH", "arm", "enigma2-plugin-softcams-wicardd", "", d)} \
 	enigma2-plugin-skins-pli-hd \
 	enigma2-plugin-skins-pli-hd1 \
 	enigma2-plugin-skins-pli-hd2 \
@@ -180,6 +178,8 @@ ENIGMA2_OPTIONAL = " \
 	enigma2-plugin-systemplugins-serviceapp \
 	enigma2-plugin-systemplugins-exteplayer3 \
 	enigma2-plugin-systemplugins-servicemp3 \
+	enigma2-plugin-systemplugins-signalfinder \
+	enigma2-plugin-systemplugins-mountmanager \
 	enigma2-plugins \
 	packagegroup-openplugins \
 	${OPTIONAL_BSP_ENIGMA2_PACKAGES} \
