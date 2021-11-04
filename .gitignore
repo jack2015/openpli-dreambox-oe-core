@@ -7,7 +7,7 @@
 !/meta-openpli/
 /meta-python2/
 /openembedded-core/
-/sources
+/sources/
 *.swp
 /.deps/
 site.conf
