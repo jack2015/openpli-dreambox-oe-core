@@ -95,6 +95,16 @@ clear
 ########## HACK ###########
 rm -f $def_path/defconfig
 rm -f $def_path2/defconfig
+
+if [ ! -d meta-dream/recipes-local/images/ ]
+then
+    mkdir meta-dream/recipes-local/images/
+fi
+
+if [ ! -d meta-dream/recipes-local/drivers/ ]
+then
+    mkdir meta-dream/recipes-local/drivers/
+fi
 ###########################
 
 if [ "$machinespecific" = "dm800se-cn" ]; then
