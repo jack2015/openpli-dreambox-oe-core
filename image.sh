@@ -91,55 +91,52 @@ build=$(dialog --stdout --clear --colors --menu "Select build type" 12 60 10 ${l
     esac
 
 clear
+
+########## HACK ###########
+rm -f $def_path/defconfig
+rm -f $def_path2/defconfig
+###########################
+
 if [ "$machinespecific" = "dm800se-cn" ]; then
-    cp -pf $def_path/dm800se/defconfig $def_path/defconfig
-    cp -pf backup/dm800se-cn/* meta-dream/recipes-local/images/
-    cp -pf backup/dm800se-en/clone/* meta-dream/recipes-local/drivers/
+    cp -f backup/dm800se-cn/*.bbappend meta-dream/recipes-local/images/
+    cp -f backup/dm800se-en/clone/* meta-dream/recipes-local/drivers/
     echo "$echostr"
     MACHINE=dm800se make ${MAKETYPE}
 elif [ "$machinespecific" = "dm800se-en-clone" ]; then
-    cp -pf $def_path/dm800se/defconfig $def_path/defconfig
-    cp -pf backup/dm800se-en/openpli-enigma2-image.bbappend meta-dream/recipes-local/images/
-    cp -pf backup/dm800se-en/clone/* meta-dream/recipes-local/drivers/
+    cp -f backup/dm800se-en/*.bbappend meta-dream/recipes-local/images/
+    cp -f backup/dm800se-en/clone/* meta-dream/recipes-local/drivers/
     echo "$echostr"
     MACHINE=dm800se make ${MAKETYPE}
 elif [ "$machinespecific" = "dm800se-en-original" ]; then
-    cp -pf $def_path/dm800se/defconfig $def_path/defconfig
-    cp -pf backup/dm800se-en/openpli-enigma2-image.bbappend meta-dream/recipes-local/images/
-    cp -pf backup/dm800se-en/original/* meta-dream/recipes-local/drivers/
+    cp -f backup/dm800se-en/*.bbappend meta-dream/recipes-local/images/
+    cp -f backup/dm800se-en/original/* meta-dream/recipes-local/drivers/
     echo "$echostr"
     MACHINE=dm800se make ${MAKETYPE}
 elif [ "$machinespecific" = "dm8000" ]; then
-    cp -pf $def_path/dm8000/defconfig $def_path/defconfig
     echo "$echostr"
     MACHINE=dm8000 make ${MAKETYPE}
 elif [ "$machinespecific" = "dm900-clone" ]; then
-    cp -pf $def_path2/dm900/defconfig $def_path2/defconfig
-    cp -pf backup/dm900-clone/* meta-dream/recipes-local/drivers/
-    cp -pf backup/dm9x0/* meta-dream/recipes-local/images/
+    cp -f backup/dm9x0/*.bbappend meta-dream/recipes-local/images/
+    cp -f backup/dm900-clone/* meta-dream/recipes-local/drivers/
     echo "$echostr"
     MACHINE=dm900 make ${MAKETYPE}
 elif [ "$machinespecific" = "dm900-original" ]; then
-    cp -pf $def_path2/dm900/defconfig $def_path2/defconfig
-    cp -pf backup/dm900-original/* meta-dream/recipes-local/drivers/
-    cp -pf backup/dm9x0/* meta-dream/recipes-local/images/
+    cp -f backup/dm9x0/*.bbappend meta-dream/recipes-local/images/
+    cp -f backup/dm900-original/* meta-dream/recipes-local/drivers/
     echo "$echostr"
     MACHINE=dm900 make ${MAKETYPE}
 elif [ "$machinespecific" = "dm920" ]; then
-    cp -pf $def_path2/dm920/defconfig $def_path2/defconfig
-    cp -pf backup/dm9x0/* meta-dream/recipes-local/images/
+    cp -f backup/dm9x0/*.bbappend meta-dream/recipes-local/images/
     echo "$echostr"
     MACHINE=dm920 make ${MAKETYPE}
 elif [ "$machinespecific" = "dm800sev2-en-clone" ]; then
-    cp -pf $def_path/dm800sev2/defconfig $def_path/defconfig
-    cp -pf backup/dm800sev2-en/openpli-enigma2-image.bbappend meta-dream/recipes-local/images/
-    cp -pf backup/dm800sev2-en/clone/* meta-dream/recipes-local/drivers/
+    cp -f backup/dm800sev2-en/*.bbappend meta-dream/recipes-local/images/
+    cp -f backup/dm800sev2-en/clone/* meta-dream/recipes-local/drivers/
     echo "$echostr"
     MACHINE=dm800sev2 make ${MAKETYPE}
 elif [ "$machinespecific" = "dm800sev2-en-original" ]; then
-    cp -pf $def_path/dm800sev2/defconfig $def_path/defconfig
-    cp -pf backup/dm800sev2-en/openpli-enigma2-image.bbappend meta-dream/recipes-local/images/
-    cp -pf backup/dm800sev2-en/original/* meta-dream/recipes-local/drivers/
+    cp -f backup/dm800sev2-en/*.bbappend meta-dream/recipes-local/images/
+    cp -f backup/dm800sev2-en/original/* meta-dream/recipes-local/drivers/
     echo "$echostr"
     MACHINE=dm800sev2 make ${MAKETYPE}
 else

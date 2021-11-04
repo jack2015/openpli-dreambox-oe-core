@@ -1,11 +1,8 @@
 !/backup/
 /bitbake/
 /build/
-!/meta-dream/
 /meta-dream/recipes-local/images/
 /meta-dream/recipes-local/drivers/
-/meta-dream/recipes-bsp/linux/linux-dreambox-3.14/defconfig
-/meta-dream/recipes-bsp/linux/linux-dreambox-3.2/defconfig
 /meta-openembedded/
 !/meta-openpli/
 /meta-python2/
