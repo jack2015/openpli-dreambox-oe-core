@@ -133,9 +133,12 @@ BITBAKE_ENV_HASH := $(call hash, \
 
 $(TOPDIR)/env.source: $(DEPDIR)/.env.source.$(BITBAKE_ENV_HASH)
 	@echo 'Generating $@'
-	@echo 'export BB_ENV_EXTRAWHITE="MACHINE"' > $@
+	@echo 'export BB_ENV_EXTRAWHITE="MACHINE DISTRO BB_SRCREV_POLICY"' > $@
 	@echo 'export MACHINE' >> $@
 	@echo 'export PATH=$(CURDIR)/openembedded-core/scripts:$(CURDIR)/bitbake/bin:$${PATH}' >> $@
+	@echo 'if [[ $$DISTRO = "local" ]]; then' >> $@
+	@echo '    export BB_SRCREV_POLICY="cache"' >> $@
+	@echo 'fi' >> $@
 
 OPENPLI_CONF_HASH := $(call hash, \
 	'OPENPLI_CONF_VERSION = "2"' \

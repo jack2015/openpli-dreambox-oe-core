@@ -71,8 +71,9 @@ clear
 ## Menu Select build type ##
 TYPE_1="image"
 TYPE_2="feed"
+TYPE_3="image_with_good_network"
 list=
-for i in $(seq 1 2); do
+for i in $(seq 1 3); do
     p="TYPE_$i"
     list="$list $i ${!p} "
 done
@@ -82,10 +83,17 @@ build=$(dialog --stdout --clear --colors --menu "Select build type" 12 60 10 ${l
     1)
     echostr="Compiling $machinespecific image, please wait ..."
     MAKETYPE="image"
+    DISTROSTR="local"
     ;;
     2)
     echostr="Compiling $machinespecific image and feed, please wait ..."
     MAKETYPE="feed"
+    DISTROSTR="local"
+    ;;
+    3)
+    echostr="Compiling $machinespecific image with good network, please wait ..."
+    MAKETYPE="image"
+    DISTROSTR="network"
     ;;
     *) clear && exit ;;
     esac
@@ -106,49 +114,48 @@ then
     mkdir meta-dream/recipes-local/drivers/
 fi
 ###########################
-
 if [ "$machinespecific" = "dm800se-cn" ]; then
     cp -f backup/dm800se-cn/*.bbappend meta-dream/recipes-local/images/
     cp -f backup/dm800se-en/clone/* meta-dream/recipes-local/drivers/
     echo "$echostr"
-    MACHINE=dm800se make ${MAKETYPE}
+    MACHINE=dm800se DISTRO=${DISTROSTR} make ${MAKETYPE}
 elif [ "$machinespecific" = "dm800se-en-clone" ]; then
     cp -f backup/dm800se-en/*.bbappend meta-dream/recipes-local/images/
     cp -f backup/dm800se-en/clone/* meta-dream/recipes-local/drivers/
     echo "$echostr"
-    MACHINE=dm800se make ${MAKETYPE}
+    MACHINE=dm800se DISTRO=${DISTROSTR} make ${MAKETYPE}
 elif [ "$machinespecific" = "dm800se-en-original" ]; then
     cp -f backup/dm800se-en/*.bbappend meta-dream/recipes-local/images/
     cp -f backup/dm800se-en/original/* meta-dream/recipes-local/drivers/
     echo "$echostr"
-    MACHINE=dm800se make ${MAKETYPE}
+    MACHINE=dm800se DISTRO=${DISTROSTR} make ${MAKETYPE}
 elif [ "$machinespecific" = "dm8000" ]; then
     echo "$echostr"
-    MACHINE=dm8000 make ${MAKETYPE}
+    MACHINE=dm8000 DISTRO=${DISTROSTR} make ${MAKETYPE}
 elif [ "$machinespecific" = "dm900-clone" ]; then
     cp -f backup/dm9x0/*.bbappend meta-dream/recipes-local/images/
     cp -f backup/dm900-clone/* meta-dream/recipes-local/drivers/
     echo "$echostr"
-    MACHINE=dm900 make ${MAKETYPE}
+    MACHINE=dm900 DISTRO=${DISTROSTR} make ${MAKETYPE}
 elif [ "$machinespecific" = "dm900-original" ]; then
     cp -f backup/dm9x0/*.bbappend meta-dream/recipes-local/images/
     cp -f backup/dm900-original/* meta-dream/recipes-local/drivers/
     echo "$echostr"
-    MACHINE=dm900 make ${MAKETYPE}
+    MACHINE=dm900 DISTRO=${DISTROSTR} make ${MAKETYPE}
 elif [ "$machinespecific" = "dm920" ]; then
     cp -f backup/dm9x0/*.bbappend meta-dream/recipes-local/images/
     echo "$echostr"
-    MACHINE=dm920 make ${MAKETYPE}
+    MACHINE=dm920 DISTRO=${DISTROSTR} make ${MAKETYPE}
 elif [ "$machinespecific" = "dm800sev2-en-clone" ]; then
     cp -f backup/dm800sev2-en/*.bbappend meta-dream/recipes-local/images/
     cp -f backup/dm800sev2-en/clone/* meta-dream/recipes-local/drivers/
     echo "$echostr"
-    MACHINE=dm800sev2 make ${MAKETYPE}
+    MACHINE=dm800sev2 DISTRO=${DISTROSTR} make ${MAKETYPE}
 elif [ "$machinespecific" = "dm800sev2-en-original" ]; then
     cp -f backup/dm800sev2-en/*.bbappend meta-dream/recipes-local/images/
     cp -f backup/dm800sev2-en/original/* meta-dream/recipes-local/drivers/
     echo "$echostr"
-    MACHINE=dm800sev2 make ${MAKETYPE}
+    MACHINE=dm800sev2 DISTRO=${DISTROSTR} make ${MAKETYPE}
 else
     echo "Please enter a correct choice"
 fi
