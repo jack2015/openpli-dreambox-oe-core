@@ -1,4 +1,4 @@
-SRC_URI = "git://github.com/jack2015/pli-openmultibootmanager.git;protocol=${GIT_PROTOCOL}"
+SRC_URI = "git://gitlab.com/jack2015/pli-openmultibootmanager.git;protocol=https;branch=master"
 do_install:append() {
     rm -rf ${D}/usr/lib/enigma2/python/Plugins/Extensions/OpenMultiboot/*.py
     rm -rf ${D}/usr/lib/enigma2/python/Plugins/Extensions/OpenMultiboot/open-multiboot-branding-helper.pyo
