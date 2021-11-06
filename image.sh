@@ -72,8 +72,9 @@ clear
 TYPE_1="image"
 TYPE_2="feed"
 TYPE_3="image_with_good_network"
+TYPE_4="feed_with_good_network"
 list=
-for i in $(seq 1 3); do
+for i in $(seq 1 4); do
     p="TYPE_$i"
     list="$list $i ${!p} "
 done
@@ -93,6 +94,11 @@ build=$(dialog --stdout --clear --colors --menu "Select build type" 12 60 10 ${l
     3)
     echostr="Compiling $machinespecific image with good network, please wait ..."
     MAKETYPE="image"
+    DISTROSTR="network"
+    ;;
+    4)
+    echostr="Compiling $machinespecific image and feed with good network, please wait ..."
+    MAKETYPE="feed"
     DISTROSTR="network"
     ;;
     *) clear && exit ;;
