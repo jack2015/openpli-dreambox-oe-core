@@ -1,4 +1,4 @@
-SUMMARY = "WiFi devices for Realtek 8188fu chipsets."
+SUMMARY = "WiFi devices for Realtek RTL8188FU/RTL8188FTV chipsets."
 inherit allarch
 
 require conf/license/license-gplv2.inc
