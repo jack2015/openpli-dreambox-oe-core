@@ -94,13 +94,15 @@ python do_cleanup () {
 addtask do_cleanup after do_populate_sysroot before do_package
 
 FILES:${PN} = "${PLUGINPATH}"
-PACKAGES =+ "${PN}-themes ${PN}-webtv ${PN}-vxg"
+PACKAGES =+ "${PN}-terminal ${PN}-themes ${PN}-webtv ${PN}-vxg"
 FILES:${PN}-themes = "${libdir}/enigma2/python/Plugins/Extensions/OpenWebif/public/themes"
 FILES:${PN}-webtv = "${libdir}/enigma2/python/Plugins/Extensions/OpenWebif/public/webtv"
 FILES:${PN}-vxg = "${libdir}/enigma2/python/Plugins/Extensions/OpenWebif/public/vxg"
+RDEPENDS:${PN}-terminal = "${PN} shellinabox"
 RDEPENDS:${PN}-themes = "${PN}"
 RDEPENDS:${PN}-webtv = "${PN}"
 RDEPENDS:${PN}-vxg = "${PN}"
+ALLOW_EMPTY:${PN}-terminal = "1"
 ALLOW_EMPTY:${PN}-themes = "1"
 ALLOW_EMPTY:${PN}-webtv = "1"
 ALLOW_EMPTY:${PN}-vxg = "1"
