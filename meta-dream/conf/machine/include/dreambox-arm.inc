@@ -51,7 +51,7 @@ MACHINE_ESSENTIAL_EXTRA_RDEPENDS += "\
 
 KERNEL_MODULE_AUTOLOAD += "xfs"
 
-DISTRO_FEATURES:remove = "directfb gtk-directfb"
+# DISTRO_FEATURES:remove = "directfb gtk-directfb"
     
 MACHINE_FEATURES += "dreambox alsa usbhost 3dtv switchoff blindscan-dvbs"
 # Add "dreambox" override for recipes
@@ -63,6 +63,8 @@ PREFERRED_PROVIDER_virtual/blindscan-dvbc = "dreambox-blindscan-utils"
 PREFERRED_PROVIDER_virtual/libgl ?= "mesa-gl"
 PREFERRED_PROVIDER_virtual/mesa ?= "mesa-gl"
 PREFERRED_VERSION_linux-dreambox = "3.14"
+PREFERRED_PROVIDER_jpeg ?= "libjpeg-turbo"
+PREFERRED_PROVIDER_jpeg-native ?= "libjpeg-turbo-native"
 
 TARGET_ARCH = "arm"
 DEFAULTTUNE = "cortexa15hf-neon-vfpv4"
