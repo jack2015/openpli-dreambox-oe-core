@@ -29,6 +29,7 @@ require conf/machine/include/arm/armv7a/tune-cortexa15.inc
 MACHINE_EXTRA_RRECOMMENDS += "\
     gstreamer1.0-plugin-multibox-dvbmediasink \
     gstreamer1.0-libav \
+    kernel-module-bluetooth \
     kernel-module-cifs \
     kernel-module-autofs4 \
     kernel-module-hmac \
@@ -49,7 +50,7 @@ MACHINE_ESSENTIAL_EXTRA_RDEPENDS += "\
     flash-nrf52 \
     "
 
-KERNEL_MODULE_AUTOLOAD += "xfs"
+KERNEL_MODULE_AUTOLOAD += "xfs bluetooth"
 
 # DISTRO_FEATURES:remove = "directfb gtk-directfb"
     
