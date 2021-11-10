@@ -37,9 +37,6 @@ RDEPENDS:${PN}-cron += "${PN}"
 RPROVIDES:${PN}-mdev += "udev udev-hwdb"
 RCONFLICTS:${PN}-mdev += "eudev eudev-hwdb"
 
-RPROVIDES:${PN}-wget += "wget"
-RCONFLICTS:${PN}-wget = "wget"
-
 pkg_postinst:${PN}:append () {
 	update-alternatives --install /bin/sh sh /bin/busybox.nosuid 50
 }
