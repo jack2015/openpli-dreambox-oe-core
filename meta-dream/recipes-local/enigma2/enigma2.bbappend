@@ -1,7 +1,9 @@
+ENIGMA2_BRANCH = "develop"
 ENIGMA2_BRANCH:dm800se = "dm800se"
 ENIGMA2_BRANCH:dm800sev2 = "dm800se"
 ENIGMA2_BRANCH:dm900 = "develop"
 ENIGMA2_BRANCH:dm920 = "develop"
+ENIGMA2_BRANCH:dm820 = "develop"
 
 RDEPENDS:${PN} += "${MACHINE}-branding"
 
