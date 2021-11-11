@@ -76,6 +76,10 @@ python do_cleanup () {
         target_box = 'dm820.png'
         target_remote = 'dmm2.png'
         target_keymap = 'dmm2.html'
+    if mybox_name == 'dm520':
+        target_box = 'dm520.png'
+        target_remote = 'dmm2.png'
+        target_keymap = 'dmm2.html'
     if mybox_name == 'dm7080':
         target_box = 'dm7080.png'
         target_remote = 'dmm2.png'
