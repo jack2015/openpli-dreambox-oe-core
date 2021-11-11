@@ -41,9 +41,9 @@ do_compile() {
 
 do_install:append() {
     install -d ${D}${PLUGINPATH}
-    cp -r ${S}/plugin/* ${D}${PLUGINPATH}
+    cp -rf ${S}/plugin/* ${D}${PLUGINPATH}
+    cp -f ${WORKDIR}/dm800sev2.png ${D}${PLUGINPATH}/public/images/boxes/
     chmod a+rX ${D}${PLUGINPATH}
-    install -m 0644 ${WORKDIR}/dm800sev2.png ${D}${PLUGINPATH}/public/images/boxes/
 }
 
 python do_cleanup () {

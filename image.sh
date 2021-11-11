@@ -20,6 +20,7 @@ rm -f build/bitbake.lock
 
 def_path="${SCRIPTPATH}/meta-dream/recipes-bsp/linux/linux-dreambox-3.2"
 def_path2="${SCRIPTPATH}/meta-dream/recipes-bsp/linux/linux-dreambox-3.14"
+def_path3="${SCRIPTPATH}/meta-dream/recipes-bsp/linux/linux-dreambox-3.4"
 
 clear
 ## Menu Select Boxes ##
@@ -32,10 +33,11 @@ BOX_6="dm900-clone"
 BOX_7="dm900-original"
 BOX_8="dm920"
 BOX_9="dm820"
-BOX_10="dm520"
+BOX_10="dm520-original"
+BOX_11="dm520-clone"
 
 list=
-for i in $(seq 1 10); do
+for i in $(seq 1 11); do
     p="BOX_$i"
     list="$list $i ${!p} "
 done
@@ -70,7 +72,10 @@ box=$(dialog --stdout --clear --colors --menu "Build Dreambox Image" 22 70 10 ${
     machinespecific="dm820"
     ;;
     10)
-    machinespecific="dm520"
+    machinespecific="dm520-original"
+    ;;
+    11)
+    machinespecific="dm520-clone"
     ;;
     *) clear && exit ;;
     esac
@@ -117,6 +122,7 @@ clear
 ########## HACK ###########
 rm -f $def_path/defconfig
 rm -f $def_path2/defconfig
+rm -f $def_path3/defconfig
 
 if [ ! -d meta-dream/recipes-local/images/ ]
 then
@@ -174,8 +180,14 @@ elif [ "$machinespecific" = "dm820" ]; then
     cp -f backup/dm820/*.bbappend meta-dream/recipes-local/images/
     echo "$echostr"
     MACHINE=dm820 DISTRO=${DISTROSTR} make ${MAKETYPE}
-elif [ "$machinespecific" = "dm520" ]; then
+elif [ "$machinespecific" = "dm520-original" ]; then
     cp -f backup/dm520/*.bbappend meta-dream/recipes-local/images/
+    cp -f backup/dm520/original/* meta-dream/recipes-local/drivers/
+    echo "$echostr"
+    MACHINE=dm520 DISTRO=${DISTROSTR} make ${MAKETYPE}
+elif [ "$machinespecific" = "dm520-clone" ]; then
+    cp -f backup/dm520/*.bbappend meta-dream/recipes-local/images/
+    cp -f backup/dm520/clone/* meta-dream/recipes-local/drivers/
     echo "$echostr"
     MACHINE=dm520 DISTRO=${DISTROSTR} make ${MAKETYPE}
 else

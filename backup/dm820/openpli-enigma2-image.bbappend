@@ -23,9 +23,10 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-language-en \
 	enigma2-plugin-language-zh-cn \
 	enigma2-plugin-language-ru \
+	enigma2-plugin-language-de \
+	enigma2-plugin-language-it \
 	enigma2-plugin-font-wqy-microhei \
 	enigma2-plugin-skins-pli-fullnighthd \
-	enigma2-plugin-extensions-fancontrol2 \
 	enigma2-plugin-extensions-audiosync \
 	enigma2-plugin-extensions-autobackup \
 	enigma2-plugin-extensions-cutlisteditor \
@@ -38,12 +39,17 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-extensions-mediascanner \
 	enigma2-plugin-extensions-moviecut \
 	enigma2-plugin-extensions-openwebif \
+	enigma2-plugin-extensions-openwebif-terminal \
+	enigma2-plugin-extensions-openwebif-themes \
+	enigma2-plugin-extensions-openwebif-webtv \
+	enigma2-plugin-extensions-openwebif-vxg \
 	enigma2-plugin-extensions-oscamstatus \
 	enigma2-plugin-extensions-pictureplayer \
 	enigma2-plugin-extensions-ppanel \
 	enigma2-plugin-softcams-oscam \
 	enigma2-plugin-extensions-openmultiboot \
 	openmultiboot \
+	enigma2-plugin-extensions-fancontrol2 \
 	\
 	enigma2-plugin-systemplugins-cablescan \
 	enigma2-plugin-systemplugins-fastscan \
@@ -61,6 +67,16 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-systemplugins-videotune \
 	enigma2-plugin-systemplugins-wirelesslan \
 	enigma2-plugin-systemplugins-serviceapp \
+	\
+	enigma2-plugin-skins-pli-hd \
+	enigma2-plugin-skins-pli-hd1 \
+	enigma2-plugin-skins-pli-hd2 \
+	enigma2-plugin-skins-pli-fullhd \
+	enigma2-plugin-skins-mx-hq7 \
+	enigma2-plugin-skins-mx-hq9w \
+	enigma2-plugin-skins-mx-hq10 \
+	enigma2-plugin-skins-mx-titaniumc \
+	enigma2-plugin-skins-mx-black \
 	"
 
 rmpy() {

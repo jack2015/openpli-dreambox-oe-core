@@ -23,7 +23,7 @@ DEPENDS = "\
     enigma2-plugin-drivers-network-usb-r8188eu \
     enigma2-plugin-drivers-network-usb-rtl8188fu \
     enigma2-plugin-drivers-network-usb-r8712u \
-    enigma2-plugin-drivers-network-usb-rtl8189es \
+    ${@bb.utils.contains_any("MACHINE", "dm520 dm820", "", "enigma2-plugin-drivers-network-usb-rtl8189es", d)} \
     enigma2-plugin-drivers-network-usb-rtl8192eu \
     enigma2-plugin-drivers-network-usb-rtl8192cu \
     enigma2-plugin-drivers-network-usb-rtl8192fu \
@@ -32,7 +32,5 @@ DEPENDS = "\
     enigma2-plugin-drivers-network-usb-rtl8187 \
     enigma2-plugin-drivers-network-usb-rtl8821cu \
     enigma2-plugin-drivers-network-usb-rt3070 \
-    ${@bb.utils.contains_any("MACHINE", "dm900 dm920", " \
-    enigma2-plugin-drivers-network-usb-rtl8812au \
-    ", "", d)} \
+    ${@bb.utils.contains_any("MACHINE", "dm900 dm920", "enigma2-plugin-drivers-network-usb-rtl8812au", "", d)} \
     "
