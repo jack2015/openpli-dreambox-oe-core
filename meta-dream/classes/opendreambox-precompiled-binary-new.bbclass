@@ -30,4 +30,5 @@ do_install() {
 
 INHIBIT_PACKAGE_STRIP = "1"
 INHIBIT_SYSROOT_STRIP = "1"
-INSANE_SKIP:${PN} += "already-stripped"
+
+INSANE_SKIP:${PN}:append = " already-stripped"

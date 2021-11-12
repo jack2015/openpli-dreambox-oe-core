@@ -3,8 +3,10 @@ HOMEPAGE = "http://dreamboxupdate.com/"
 LICENSE = "CLOSED"
 DEPENDS = "libmnl xz"
 SRCREV = "1cd69394b3702a06cadfce078289dd351a07b152"
-SRCREV:dm820 = "650568ea2f64fb86e40bcfec82de05d1c4e9226b"
-SRCREV:dm7080 = "650568ea2f64fb86e40bcfec82de05d1c4e9226b"
+SRCREV:dm820 = "${SRCREV:dm7080}"
+SRCREV:dm7080 = "ed7dd69f2d24c040b2a4ebfbeeb63135132abde7"
+SRCREV:dreamone = "${SRCREV:dm7080}"
+SRCREV:dreamtwo = "${SRCREV:dm7080}"
 
 SRC_URI:append = ";branch=${BRANCH}"
 
@@ -19,9 +21,11 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 RDEPENDS:${PN} = "dreambox-dvb-modules-${MACHINE}-lcd"
 
 BRANCH = "master"
-BRANCH:dm820 = "dm7080"
+BRANCH:dm820 = "${BRANCH:dm7080}"
 BRANCH:dm7080 = "dm7080"
+BRANCH:dreamone = "${BRANCH:dm7080}"
+BRANCH:dreamtwo = "${BRANCH:dm7080}"
 
-COMPATIBLE_MACHINE = "^(dm820|dm7080)$"
+COMPATIBLE_MACHINE = "^(dm820|dm7080|dreamone|dreamtwo)$"
 
 INITSCRIPT_NAME = "${BPN}"
