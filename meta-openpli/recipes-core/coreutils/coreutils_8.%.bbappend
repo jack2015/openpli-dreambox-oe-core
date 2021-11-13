@@ -5,5 +5,5 @@ FILES:${PN}-realpath = "${bindir}/realpath.${PN}"
 
 RRECOMMENDS:${PN}:append:class-target = "${PN}-realpath"
 
-ALTERNATIVE:${PN}:remove = "realpath"
+# ALTERNATIVE:${PN}:remove = "realpath"
 ALTERNATIVE:${PN}-realpath = "realpath"
