@@ -3,8 +3,6 @@ HOMEPAGE = "http://dreamboxupdate.com/"
 LICENSE = "CLOSED"
 DEPENDS = "coreutils-native udev"
 
-PR = "r1"
-
 inherit pkgconfig update-rc.d
 
 SRC_URI_append = ";branch=${BRANCH}"
@@ -13,25 +11,101 @@ do_install() {
     oe_runmake install DESTDIR=${D}
 }
 
-PACKAGES =+ "flash-scripts"
+PACKAGES =+ "flash-scripts ${PN}-autoflashd ${PN}-fbscaled"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
-RDEPENDS_${PN} = " \
-    flash-scripts \
-    gpgv \
-    pigz \
-    util-linux-mount \
+EMMCRDEPENDS_recovery = " \
     e2fsprogs-mke2fs \
     gptfdisk \
 "
 
-RDEPENDS_flash-scripts = " \
-    coreutils-realpath \
+EMMCRDEPENDS_flash-scripts = " \
     util-linux-sfdisk \
 "
 
-FILES_flash-scripts = " \
+NANDRDEPENDS_recovery = " \
+    mtd-utils-ubifs \
+"
+
+NANDRDEPENDS_flash-scripts = " \
+    mtd-utils \
+"
+
+FASTBOOTRDEPENDS_flash-scripts = " \
+    fastboot \
+    mkbootblob \
+"
+
+RDEPENDS_${PN} = "\
+    ${PN}-autoflashd \
+    flash-scripts \
+    gpgv \
+    pigz \
+    util-linux-blkid \
+    util-linux-mount \
+"
+
+RDEPENDS_${PN}_dm820 = "\
+    ${EMMCRDEPENDS_recovery} \
+"
+
+RDEPENDS_${PN}_dm7080 = "\
+    ${EMMCRDEPENDS_recovery} \
+"
+
+RDEPENDS_${PN}_dm900 = "\
+    ${EMMCRDEPENDS_recovery} \
+"
+
+RDEPENDS_${PN}_dm920 = "\
+    ${EMMCRDEPENDS_recovery} \
+"
+
+RDEPENDS_${PN}_dm520 = "\
+    ${NANDRDEPENDS_recovery} \
+"
+
+RDEPENDS_flash-scripts = "\
+    coreutils-realpath \
+"
+
+RDEPENDS_flash-scripts_dm820 = "\
+    ${EMMCRDEPENDS_flash-scripts} \
+    mkbootblob \
+    fastboot10 \
+"
+
+RDEPENDS_flash-scripts_dm7080 = "\
+    ${EMMCRDEPENDS_flash-scripts} \
+    ${FASTBOOTRDEPENDS_flash-scripts} \
+"
+
+RDEPENDS_flash-scripts_dm900 = "\
+    ${EMMCRDEPENDS_flash-scripts} \
+"
+
+RDEPENDS_flash-scripts_dm920 = "\
+    ${EMMCRDEPENDS_flash-scripts} \
+"
+
+RDEPENDS_flash-scripts_dm520 = "\
+    ${NANDRDEPENDS_flash-scripts} \
+"
+
+#RRECOMMENDS_flash-scripts = "dreambox-dvb-modules-stb-core"
+
+FILES_${PN}-autoflashd = "\
+    ${sysconfdir}/init.d/autoflashd \
+    ${sbindir}/autoflashd \
+"
+
+FILES_${PN}-fbscaled = "\
+    ${sysconfdir}/init.d/fbscaled \
+    ${sbindir}/fbscaled \
+"
+
+FILES_flash-scripts = "\
     ${sbindir}/flash-fsbl \
     ${sbindir}/flash-rescue \
     ${sbindir}/flash-kernel \
@@ -40,8 +114,12 @@ FILES_flash-scripts = " \
     ${sbindir}/readspi \
     ${sbindir}/select-boot-source \
     ${sbindir}/to-the-rescue \
+    ${sbindir}/update-autoexec \
     ${sbindir}/update-rescue \
     ${sbindir}/writespi \
 "
 
-INITSCRIPT_NAME = "autoflashd"
+INITSCRIPT_PACKAGES = "${PN}-autoflashd ${PN}-fbscaled"
+INITSCRIPT_NAME = ""
+INITSCRIPT_NAME_${PN}-autoflashd = "autoflashd"
+INITSCRIPT_NAME_${PN}-fbscaled = "fbscaled"
