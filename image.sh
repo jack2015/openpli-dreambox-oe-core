@@ -25,12 +25,14 @@ def_path3="${SCRIPTPATH}/meta-dream/recipes-bsp/linux/linux-dreambox-3.4"
 clear
 ## Menu Select Boxes ##
 BOX_1="dm800se-cn"
-BOX_2="dm800se-en"
-BOX_3="dm900"
-BOX_4="dm920"
+BOX_2="dm800se-en-clone"
+BOX_3="dm800se-en-original"
+BOX_4="dm900-clone"
+BOX_5="dm900-original"
+BOX_6="dm920"
 
 list=
-for i in $(seq 1 4); do
+for i in $(seq 1 6); do
     p="BOX_$i"
     list="$list $i ${!p} "
 done
@@ -41,12 +43,18 @@ box=$(dialog --stdout --clear --colors --menu "Build Dreambox Image" 22 70 10 ${
     machinespecific="dm800se-cn"
     ;;
     2)
-    machinespecific="dm800se-en"
+    machinespecific="dm800se-en-clone"
     ;;
     3)
-    machinespecific="dm900"
+    machinespecific="dm800se-en-original"
     ;;
     4)
+    machinespecific="dm900-clone"
+    ;;
+    5)
+    machinespecific="dm900-original"
+    ;;
+    6)
     machinespecific="dm920"
     ;;
     *) clear && exit ;;
