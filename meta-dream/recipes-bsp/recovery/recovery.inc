@@ -3,6 +3,8 @@ HOMEPAGE = "http://dreamboxupdate.com/"
 LICENSE = "CLOSED"
 DEPENDS = "coreutils-native udev"
 
+PR = "r1"
+
 inherit pkgconfig update-rc.d
 
 SRC_URI_append = ";branch=${BRANCH}"
@@ -46,23 +48,23 @@ RDEPENDS_${PN} = "\
     util-linux-mount \
 "
 
-RDEPENDS_${PN}_dm820 = "\
+RDEPENDS_${PN}_append_dm820 = "\
     ${EMMCRDEPENDS_recovery} \
 "
 
-RDEPENDS_${PN}_dm7080 = "\
+RDEPENDS_${PN}_append_dm7080 = "\
     ${EMMCRDEPENDS_recovery} \
 "
 
-RDEPENDS_${PN}_dm900 = "\
+RDEPENDS_${PN}_append_dm900 = "\
     ${EMMCRDEPENDS_recovery} \
 "
 
-RDEPENDS_${PN}_dm920 = "\
+RDEPENDS_${PN}_append_dm920 = "\
     ${EMMCRDEPENDS_recovery} \
 "
 
-RDEPENDS_${PN}_dm520 = "\
+RDEPENDS_${PN}_append_dm520 = "\
     ${NANDRDEPENDS_recovery} \
 "
 
@@ -70,38 +72,37 @@ RDEPENDS_flash-scripts = "\
     coreutils-realpath \
 "
 
-RDEPENDS_flash-scripts_dm820 = "\
-    ${EMMCRDEPENDS_flash-scripts} \
-    mkbootblob \
-    fastboot10 \
-"
-
-RDEPENDS_flash-scripts_dm7080 = "\
+RDEPENDS_flash-scripts_append_dm820 = "\
     ${EMMCRDEPENDS_flash-scripts} \
     ${FASTBOOTRDEPENDS_flash-scripts} \
 "
 
-RDEPENDS_flash-scripts_dm900 = "\
+RDEPENDS_flash-scripts_append_dm7080 = "\
+    ${EMMCRDEPENDS_flash-scripts} \
+    ${FASTBOOTRDEPENDS_flash-scripts} \
+"
+
+RDEPENDS_flash-scripts_append_dm900 = "\
     ${EMMCRDEPENDS_flash-scripts} \
 "
 
-RDEPENDS_flash-scripts_dm920 = "\
+RDEPENDS_flash-scripts_append_dm920 = "\
     ${EMMCRDEPENDS_flash-scripts} \
 "
 
-RDEPENDS_flash-scripts_dm520 = "\
+RDEPENDS_flash-scripts_append_dm520 = "\
     ${NANDRDEPENDS_flash-scripts} \
 "
 
 #RRECOMMENDS_flash-scripts = "dreambox-dvb-modules-stb-core"
 
 FILES_${PN}-autoflashd = "\
-    ${sysconfdir}/init.d/autoflashd \
+    ${INIT_D_DIR}/autoflashd \
     ${sbindir}/autoflashd \
 "
 
 FILES_${PN}-fbscaled = "\
-    ${sysconfdir}/init.d/fbscaled \
+    ${INIT_D_DIR}/fbscaled \
     ${sbindir}/fbscaled \
 "
 
