@@ -6,8 +6,6 @@ OPTIONAL_BSP_PACKAGES += "dreambox-buildimage"
 
 EXTRA_IMAGEDEPENDS += "dreambox-secondstage-${MACHINE}"
 
-MACHINE_ESSENTIAL_EXTRA_RDEPENDS += "dreambox-dvb-modules-${MACHINE}"
-
 # KERNEL_MODULE_AUTOLOAD += "xfs"
 
 MACHINE_EXTRA_RRECOMMENDS += " \
@@ -18,6 +16,12 @@ MACHINE_EXTRA_RRECOMMENDS += " \
 	kernel-module-ecb \
 	dreambox-boot-progress \
 	"
+
+MACHINE_ESSENTIAL_EXTRA_RDEPENDS += " \
+	dreambox-dvb-modules-${MACHINE} \
+	kernel-module-stv0299 \
+	"
+
 GST_VERSION = "1.0"
 	
 MACHINE_FEATURES += "alsa usbhost dreambox"

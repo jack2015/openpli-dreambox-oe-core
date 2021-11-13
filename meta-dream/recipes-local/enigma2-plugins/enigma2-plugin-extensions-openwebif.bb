@@ -5,6 +5,8 @@ LIC_FILES_CHKSUM = "file://README;md5=26abba37d1c2fcbf96a087ceb8e1db86"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
+FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
+
 DEPENDS = "python-cheetah-native"
 
 RDEPENDS:${PN} = "\
@@ -23,6 +25,8 @@ RDEPENDS:${PN} = "\
 	"
 
 inherit gitpkgv distutils-openplugins gettext
+
+DISTUTILS_INSTALL_ARGS = "--root=${D} --install-lib=${libdir}/enigma2/python/Plugins"
 
 PV = "1.4.9+git${SRCPV}"
 PKGV = "1.4.9+git${GITPKGV}"
@@ -56,6 +60,10 @@ python do_cleanup () {
 
     mybox_name = d.getVar('MACHINE', True)
 
+    if mybox_name == 'dm500hd':
+        target_box = 'dm500hd.png'
+        target_remote = 'dmm1.png'
+        target_keymap = 'dmm1.html'
     if mybox_name == 'dm800se':
         target_box = 'dm800se.png'
         target_remote = 'dmm1.png'

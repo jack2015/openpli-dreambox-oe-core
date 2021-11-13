@@ -3,6 +3,8 @@ IMAGE_INSTALL:remove = "hdparm"
 IMAGE_INSTALL:remove = "3rd-party-feed-configs"
 IMAGE_INSTALL:remove = "settings-autorestore"
 
+#dm500hd
+
 IMAGE_INSTALL += " \
 	bitratecalc \
 	busybox-cron \
@@ -149,8 +151,8 @@ rootfs_myworks() {
 	rm -f ${IMAGE_ROOTFS}/usr/share/enigma2/PLi-FullHD/picon_default.png || true
 	rm -f ${IMAGE_ROOTFS}/usr/share/enigma2/PLi-FullNightHD/picon_default.png || true
 	rm -f ${IMAGE_ROOTFS}/usr/lib/locale/locale-archive || true
-	cp -rf ${THISDIR}/files/dm800se-en/usr ${IMAGE_ROOTFS}/ || true
-	cp -rf ${THISDIR}/files/dm800se-en/etc ${IMAGE_ROOTFS}/ || true
+	cp -rf ${THISDIR}/files/dm500hd/usr ${IMAGE_ROOTFS}/ || true
+	cp -rf ${THISDIR}/files/dm500hd/etc ${IMAGE_ROOTFS}/ || true
 	upxall || true
 }
 
