@@ -1,4 +1,5 @@
 SUMMARY = "Nexus driver"
+require conf/license/openpli-gplv2.inc
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 

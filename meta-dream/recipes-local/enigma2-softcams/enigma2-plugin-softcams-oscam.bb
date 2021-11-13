@@ -11,7 +11,6 @@ INSANE_SKIP_${PN} += "already-stripped"
 
 inherit cmake gitpkgv
 
-SRCREV = "${AUTOREV}"
 SRC_URI = "git://github.com/jack2015/oscam-patched.git;branch=master"
 
 S = "${WORKDIR}/git"

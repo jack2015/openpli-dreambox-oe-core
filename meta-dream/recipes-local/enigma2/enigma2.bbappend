@@ -1,5 +1,6 @@
 ENIGMA2_BRANCH = "develop"
 ENIGMA2_BRANCH_dm800se = "dm800se"
+ENIGMA2_BRANCH_dm800sev2 = "dm800se"
 
 do_install_append() {
 	find ${D}/usr/share/enigma2/rc_models/ -name '*.png' -exec rm {} \;
