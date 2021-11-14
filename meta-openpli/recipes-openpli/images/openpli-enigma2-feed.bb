@@ -58,18 +58,25 @@ ENIGMA2_OPTIONAL = " \
 	channelsettings-enigma2-meta \
 	dvb-usb-drivers-meta \
 	network-usb-drivers-meta \
-	enigma2-pliplugins \
 	enigma2-plugin-drivers-usbserial \
 	enigma2-plugin-drivers-exfat \
 	enigma2-plugin-drivers-ntfs-3g \
-	enigma2-plugin-softcams-cccam-v230 \
-	enigma2-plugin-softcams-cccam-v232 \
+	${@bb.utils.contains("TARGET_ARCH", "mipsel", " \
 	enigma2-plugin-softcams-cccam-v209 \
 	enigma2-plugin-softcams-cccam-v221 \
+	enigma2-plugin-softcams-cccam-v230 \
+	enigma2-plugin-softcams-cccam-v232 \
 	enigma2-plugin-softcams-cccam-v238 \
-	enigma2-plugin-softcams-wicardd \
 	enigma2-plugin-softcams-mgcamd-v135a \
 	enigma2-plugin-softcams-mgcamd-v145c \
+	enigma2-plugin-softcams-wicardd-mipsel \
+	", "", d)} \
+	${@bb.utils.contains("TARGET_ARCH", "arm", " \
+	enigma2-plugin-softcams-cccam-v232-arm \
+	enigma2-plugin-softcams-cccam-v238-arm \
+	enigma2-plugin-softcams-mgcamd-v135a-arm \
+	enigma2-plugin-softcams-wicardd-arm \
+	", "", d)} \
 	enigma2-plugin-extensions-keyadder \
 	enigma2-plugin-extensions-weathermsn \
 	enigma2-plugin-extensions-weatherplugin \
@@ -98,7 +105,7 @@ ENIGMA2_OPTIONAL = " \
 	enigma2-plugin-extensions-cacheflush \
 	enigma2-plugin-extensions-openwebif \
 	enigma2-plugin-extensions-oscamstatus \
-	enigma2-plugin-softcams-oscam-dm800se \
+	enigma2-plugin-softcams-oscam \
 	enigma2-plugin-skins-pli-hd \
 	enigma2-plugin-skins-pli-hd1 \
 	enigma2-plugin-skins-pli-hd2 \

@@ -4,6 +4,9 @@ inherit packagegroup
 require conf/license/license-gplv2.inc
 
 DEPENDS = "\
+    enigma2-plugin-drivers-network-usb-asix \
+    enigma2-plugin-drivers-network-usb-ath9k-htc \
+    enigma2-plugin-drivers-network-usb-smsc75xx \
     enigma2-plugin-drivers-network-usb-carl9170 \
     enigma2-plugin-drivers-network-usb-rt2500 \
     enigma2-plugin-drivers-network-usb-rt2800 \
@@ -21,9 +24,10 @@ DEPENDS = "\
     enigma2-plugin-drivers-network-usb-rtl8189es \
     enigma2-plugin-drivers-network-usb-rtl8192eu \
     enigma2-plugin-drivers-network-usb-rtl8192cu \
+    enigma2-plugin-drivers-network-usb-rtl8192fu \
     enigma2-plugin-drivers-network-usb-rtl8822bu \
-    enigma2-plugin-drivers-network-usb-ath9k-htc \
     enigma2-plugin-drivers-network-usb-rtl8187 \
     enigma2-plugin-drivers-network-usb-rtl8821cu \
     enigma2-plugin-drivers-network-usb-rt3070 \
+    ${@bb.utils.contains_any("MACHINE", "dm900 dm920", "enigma2-plugin-drivers-network-usb-rtl8812au", "", d)} \
     "

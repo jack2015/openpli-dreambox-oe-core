@@ -1,6 +1,6 @@
+SUMMARY = "Oscam Softcam for ${MACHINE}"
 require conf/license/openpli-gplv2.inc
 require oscam-version.inc
-SUMMARY = "Oscam Softcam for ${MACHINE}"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 PACKAGES = "${PN}"
 CAMNAME = "oscam"
