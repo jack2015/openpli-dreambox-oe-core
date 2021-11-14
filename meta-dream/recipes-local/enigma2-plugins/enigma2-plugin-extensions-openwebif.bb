@@ -2,11 +2,7 @@ SUMMARY = "Control your receiver with a browser"
 MAINTAINER = "Openpli Developers"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://README;md5=26abba37d1c2fcbf96a087ceb8e1db86"
-
 PACKAGE_ARCH = "${MACHINE_ARCH}"
-
-FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
-
 DEPENDS = "python-cheetah-native"
 
 RDEPENDS:${PN} = "\
@@ -26,10 +22,8 @@ RDEPENDS:${PN} = "\
 
 inherit gitpkgv distutils-openplugins gettext
 
-DISTUTILS_INSTALL_ARGS = "--root=${D} --install-lib=${libdir}/enigma2/python/Plugins"
-
-PV = "1.4.9+git${SRCPV}"
-PKGV = "1.4.9+git${GITPKGV}"
+PV = "git${SRCPV}"
+PKGV = "git${GITPKGV}"
 
 SRC_URI = "git://github.com/E2OpenPlugins/e2openplugin-OpenWebif.git;protocol=${GIT_PROTOCOL};branch=master \
 	file://dm800sev2.png"
