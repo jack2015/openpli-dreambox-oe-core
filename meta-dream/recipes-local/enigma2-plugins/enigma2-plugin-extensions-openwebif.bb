@@ -29,7 +29,8 @@ inherit gitpkgv distutils-openplugins gettext
 PV = "git${SRCPV}"
 PKGV = "git${GITPKGV}"
 
-SRC_URI = "git://github.com/E2OpenPlugins/e2openplugin-OpenWebif.git;protocol=git;branch=master"
+SRC_URI = "git://github.com/E2OpenPlugins/e2openplugin-OpenWebif.git;protocol=git;branch=master \
+	file://dm800sev2.png"
 
 S="${WORKDIR}/git"
 
@@ -58,12 +59,16 @@ python do_cleanup () {
 
     mybox_name = d.getVar('MACHINE', True)
 
+    if mybox_name == 'dm500hd':
+        target_box = 'dm500hd.png'
+        target_remote = 'dmm1.png'
+        target_keymap = 'dmm1.html'
     if mybox_name == 'dm800se':
         target_box = 'dm800se.png'
         target_remote = 'dmm1.png'
         target_keymap = 'dmm1.html'
     if mybox_name == 'dm800sev2':
-        target_box = 'dm800se.png'
+        target_box = 'dm800sev2.png'
         target_remote = 'dmm1.png'
         target_keymap = 'dmm1.html'
     if mybox_name == 'dm900':
@@ -72,6 +77,18 @@ python do_cleanup () {
         target_keymap = 'dmm2.html'
     if mybox_name == 'dm920':
         target_box = 'dm920.png'
+        target_remote = 'dmm2.png'
+        target_keymap = 'dmm2.html'
+    if mybox_name == 'dm820':
+        target_box = 'dm820.png'
+        target_remote = 'dmm2.png'
+        target_keymap = 'dmm2.html'
+    if mybox_name == 'dm520':
+        target_box = 'dm520.png'
+        target_remote = 'dmm2.png'
+        target_keymap = 'dmm2.html'
+    if mybox_name == 'dm7080':
+        target_box = 'dm7080.png'
         target_remote = 'dmm2.png'
         target_keymap = 'dmm2.html'
 

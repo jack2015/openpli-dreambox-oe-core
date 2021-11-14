@@ -4,7 +4,6 @@ PROVIDES += "virtual/bootloader"
 PRIORITY = "required"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 DEPENDS = "dreambox-buildimage-native"
-PR = "r20"
 
 COMPATIBLE_MACHINE = "dm8000"
 

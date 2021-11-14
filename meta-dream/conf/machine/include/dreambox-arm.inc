@@ -81,6 +81,8 @@ DREAMBOX_IMAGE_SIZE ??= "1024"
 
 IMAGE_FSTYPES =+ "tar.bz2"
 IMAGEDIR = "${MACHINE}"
+IMAGEVERSION := "${DISTRO_NAME}-${DISTRO_VERSION}-${DATE}"
+IMAGEVERSION[vardepsexclude] = "DATE"
 
 IMAGE_CMD_tar_prepend = "\
     mkdir -p ${IMAGE_ROOTFS}/tmp; \

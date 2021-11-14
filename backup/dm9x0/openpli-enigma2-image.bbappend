@@ -1,7 +1,7 @@
-IMAGE_INSTALL:remove = "distro-feed-configs"
-IMAGE_INSTALL:remove = "hdparm"
-IMAGE_INSTALL:remove = "3rd-party-feed-configs"
-IMAGE_INSTALL:remove = "settings-autorestore"
+IMAGE_INSTALL_remove = "distro-feed-configs"
+IMAGE_INSTALL_remove = "hdparm"
+IMAGE_INSTALL_remove = "3rd-party-feed-configs"
+IMAGE_INSTALL_remove = "settings-autorestore"
 
 #dm9x0
 

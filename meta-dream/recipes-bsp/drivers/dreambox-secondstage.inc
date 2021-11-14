@@ -1,10 +1,10 @@
 SUMMARY = "Dreambox second stage bootloader"
 require conf/license/openpli-gplv2.inc
 PROVIDES += "virtual/bootloader"
+SECTION = "base"
 PRIORITY = "required"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 DEPENDS = "dreambox-buildimage-native"
-DATE = "${@time.strftime('%Y%m%d',time.gmtime())}"
 
 inherit deploy
 

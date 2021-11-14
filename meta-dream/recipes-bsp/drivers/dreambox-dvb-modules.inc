@@ -1,6 +1,6 @@
 SUMMARY = "Hardware drivers for Dreambox"
 SECTION = "base"
-LICENSE = "CLOSED"
+require conf/license/openpli-gplv2.inc
 DEPENDS += "virtual/kernel"
 PRIORITY = "required"
 

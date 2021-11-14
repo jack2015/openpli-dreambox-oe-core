@@ -30,9 +30,10 @@ BOX_3="dm800se-en-original"
 BOX_4="dm900-clone"
 BOX_5="dm900-original"
 BOX_6="dm920"
+BOX_7="dm500hd"
 
 list=
-for i in $(seq 1 6); do
+for i in $(seq 1 7); do
     p="BOX_$i"
     list="$list $i ${!p} "
 done
@@ -56,6 +57,9 @@ box=$(dialog --stdout --clear --colors --menu "Build Dreambox Image" 22 70 10 ${
     ;;
     6)
     machinespecific="dm920"
+    ;;
+    7)
+    machinespecific="dm500hd"
     ;;
     *) clear && exit ;;
     esac
@@ -130,6 +134,10 @@ elif [ "$machinespecific" = "dm920" ]; then
     cp -f backup/dm9x0/*.bbappend meta-dream/recipes-local/images/
     echo "$echostr"
     MACHINE=dm920 make ${MAKETYPE}
+elif [ "$machinespecific" = "dm500hd" ]; then
+    cp -f backup/dm500hd/*.bbappend meta-dream/recipes-local/images/
+    echo "$echostr"
+    MACHINE=dm500hd make ${MAKETYPE}
 else
 	echo "Please enter a correct choice"
 fi
