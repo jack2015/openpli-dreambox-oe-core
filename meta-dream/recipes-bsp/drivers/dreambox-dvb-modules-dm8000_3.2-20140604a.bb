@@ -1,9 +1,8 @@
 SUMMARY = "Hardware drivers for Dreambox"
+require conf/license/openpli-gplv2.inc
 SECTION = "base"
-LICENSE = "CLOSED"
 DEPENDS += "virtual/kernel"
 PRIORITY = "required"
-PR = "r7.0"
 
 COMPATIBLE_MACHINE = "dm8000"
 
@@ -31,6 +30,9 @@ do_install() {
 }
 
 PACKAGES = "${PN}"
+
+INHIBIT_PACKAGE_STRIP = "1"
+INSANE_SKIP:${PN}:append = " already-stripped"
 
 RDEPENDS:${PN} += "dreambox-secondstage-${MACHINE} kernel-${DM_LOCALVERSION}"
 

@@ -58,6 +58,10 @@ python do_cleanup () {
         target_box = 'dm500hd.png'
         target_remote = 'dmm1.png'
         target_keymap = 'dmm1.html'
+    if mybox_name == 'dm8000':
+        target_box = 'dm8000.png'
+        target_remote = 'dmm1.png'
+        target_keymap = 'dmm1.html'
     if mybox_name == 'dm800se':
         target_box = 'dm800se.png'
         target_remote = 'dmm1.png'
@@ -66,6 +70,10 @@ python do_cleanup () {
         target_box = 'dm800sev2.png'
         target_remote = 'dmm1.png'
         target_keymap = 'dmm1.html'
+    if mybox_name == 'dm500hdv2':
+        target_box = 'dm500hdv2.png'
+        target_remote = 'dmm2.png'
+        target_keymap = 'dmm2.html'
     if mybox_name == 'dm900':
         target_box = 'dm900.png'
         target_remote = 'dmm2.png'
@@ -82,8 +90,20 @@ python do_cleanup () {
         target_box = 'dm520.png'
         target_remote = 'dmm2.png'
         target_keymap = 'dmm2.html'
+    if mybox_name == 'dm525':
+        target_box = 'dm525.png'
+        target_remote = 'dmm2.png'
+        target_keymap = 'dmm2.html'
     if mybox_name == 'dm7080':
         target_box = 'dm7080.png'
+        target_remote = 'dmm2.png'
+        target_keymap = 'dmm2.html'
+    if mybox_name == 'dm7020hd':
+        target_box = 'dm7020hd.png'
+        target_remote = 'dmm2.png'
+        target_keymap = 'dmm2.html'
+    if mybox_name == 'dm7020hdv2':
+        target_box = 'dm7020hdv2.png'
         target_remote = 'dmm2.png'
         target_keymap = 'dmm2.html'
 

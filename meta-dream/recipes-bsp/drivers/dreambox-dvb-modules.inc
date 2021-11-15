@@ -4,6 +4,9 @@ LICENSE = "CLOSED"
 DEPENDS += "virtual/kernel"
 PRIORITY = "required"
 
+INHIBIT_PACKAGE_STRIP = "1"
+INSANE_SKIP:${PN}:append = " already-stripped"
+
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 DREAMBOX_DVB_MODULES_MIRROR ?= "http://sources.dreamboxupdate.com/download/opendreambox/2.0.0/dreambox-dvb-modules"
