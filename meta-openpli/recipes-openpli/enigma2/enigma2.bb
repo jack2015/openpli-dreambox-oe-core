@@ -137,13 +137,14 @@ EXTRA_OEMAKE = "\
 	ENIGMA2_BRANCH=${ENIGMA2_BRANCH} \
 	"
 
-PACKAGES += "${PN}-meta ${PN}-build-dependencies enigma2-fonts"
-PKGV:enigma2-fonts = "2020.10.17"
-FILES:enigma2-fonts = "${datadir}/fonts"
+PACKAGES += "${PN}-meta ${PN}-build-dependencies"
 FILES:${PN} += "${datadir}/keymaps"
 FILES:${PN}-meta = "${datadir}/meta"
-PACKAGES =+ "enigma2-plugin-font-wqy-microhei"
+PACKAGES =+ "enigma2-plugin-font-wqy-microhei enigma2-fonts"
 FILES:enigma2-plugin-font-wqy-microhei = "${datadir}/fonts/wqy-microhei.ttc ${datadir}/fonts/fallback.font"
+ALLOW_EMPTY:enigma2-plugin-font-wqy-microhei = "1"
+PKGV:enigma2-fonts = "2020.10.17"
+FILES:enigma2-fonts = "${datadir}/fonts"
 
 # some plugins contain so's, their stripped symbols should not end up in the enigma2 package
 FILES:${PN}-dbg += "\
