@@ -1,13 +1,6 @@
 ENIGMA2_BRANCH = "develop"
 ENIGMA2_BRANCH:dm800se = "dm800se"
 ENIGMA2_BRANCH:dm800sev2 = "dm800se"
-ENIGMA2_BRANCH:dm900 = "develop"
-ENIGMA2_BRANCH:dm920 = "develop"
-ENIGMA2_BRANCH:dm820 = "develop"
-
-RDEPENDS:${PN} += "${MACHINE}-branding"
-
-RRECOMMENDS:${PN}:remove = "enigma2-plugin-skins-pli-hd"
 
 do_install:append() {
 	find ${D}/usr/share/enigma2/rc_models/ -name '*.png' -exec rm {} \;
@@ -17,14 +10,6 @@ do_install:append() {
 	install -m 0644 ${S}/data/rc_models/dmm.xml ${D}/usr/share/enigma2/rc_models/dmm.xml
 	install -m 0644 ${S}/data/rc_models/dmmadv.xml ${D}/usr/share/enigma2/rc_models/dmmadv.xml
 }
-
-python populate_packages:prepend() {
-    enigma2_podir = bb.data.expand('${datadir}/enigma2/po', d)
-    do_split_packages(d, enigma2_podir, '^(\w+)/[a-zA-Z0-9_/]+.*$', 'enigma2-plugin-language-%s', '%s', recursive=True, match_path=True, prepend=True, extra_depends="enigma2")
-}
-
-PACKAGES =+ "enigma2-plugin-font-wqy-microhei"
-FILES:enigma2-plugin-font-wqy-microhei = "${datadir}/fonts/wqy-microhei.ttc ${datadir}/fonts/fallback.font"
 
 SUMMARY:enigma2-plugin-language-en = "British English"
 SUMMARY:enigma2-plugin-language-ru = "Russian"

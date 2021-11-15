@@ -25,11 +25,11 @@ RDEPENDS:${PN} = " \
 	enigma2-fonts \
 	ethtool \
 	glibc-gconv-iso8859-15 \
+	${MACHINE}-branding \
 	${PYTHON_RDEPS} \
 	"
 
 RRECOMMENDS:${PN} = " \
-	enigma2-plugin-skins-pli-hd \
 	hotplug-e2-helper \
 	glibc-gconv-utf-16 \
 	python-sendfile \
@@ -113,11 +113,7 @@ LDFLAGS:prepend = " -lxml2 "
 
 S = "${WORKDIR}/git"
 
-PACKAGES += "${PN}-meta ${PN}-build-dependencies enigma2-fonts"
-
 inherit autotools pkgconfig
-
-PKGV_enigma2-fonts = "2020.10.17"
 
 def get_crashaddr(d):
     if d.getVar('CRASHADDR', True):
@@ -141,11 +137,13 @@ EXTRA_OEMAKE = "\
 	ENIGMA2_BRANCH=${ENIGMA2_BRANCH} \
 	"
 
+PACKAGES += "${PN}-meta ${PN}-build-dependencies enigma2-fonts"
+PKGV:enigma2-fonts = "2020.10.17"
 FILES:enigma2-fonts = "${datadir}/fonts"
-
 FILES:${PN} += "${datadir}/keymaps"
-
 FILES:${PN}-meta = "${datadir}/meta"
+PACKAGES =+ "enigma2-plugin-font-wqy-microhei"
+FILES:enigma2-plugin-font-wqy-microhei = "${datadir}/fonts/wqy-microhei.ttc ${datadir}/fonts/fallback.font"
 
 # some plugins contain so's, their stripped symbols should not end up in the enigma2 package
 FILES:${PN}-dbg += "\
@@ -188,4 +186,6 @@ python populate_packages:prepend() {
     do_split_packages(d, enigma2_plugindir, '^(\w+/\w+)/.*\.la$', 'enigma2-plugin-%s-dev', '%s (development)', recursive=True, match_path=True, prepend=True, extra_depends='')
     do_split_packages(d, enigma2_plugindir, '^(\w+/\w+)/.*\.a$', 'enigma2-plugin-%s-staticdev', '%s (static development)', recursive=True, match_path=True, prepend=True, extra_depends='')
     do_split_packages(d, enigma2_plugindir, '^(\w+/\w+)/(.*/)?\.debug/.*$', 'enigma2-plugin-%s-dbg', '%s (debug)', recursive=True, match_path=True, prepend=True, extra_depends='')
+    enigma2_podir = bb.data.expand('${datadir}/enigma2/po', d)
+    do_split_packages(d, enigma2_podir, '^(\w+)/[a-zA-Z0-9_/]+.*$', 'enigma2-plugin-language-%s', '%s', recursive=True, match_path=True, prepend=True, extra_depends="enigma2")
 }
