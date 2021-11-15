@@ -126,6 +126,12 @@ update:
 
 .PHONY: all image init initialize update usage
 
+MACHINESIMS = $(MACHINESIM)
+export MACHINESIMS
+
+DISTRONET = $(DISTRONETS)
+export DISTRONET
+
 BITBAKE_ENV_HASH := $(call hash, \
 	'BITBAKE_ENV_VERSION = "0"' \
 	'CURDIR = "$(CURDIR)"' \
@@ -133,10 +139,11 @@ BITBAKE_ENV_HASH := $(call hash, \
 
 $(TOPDIR)/env.source: $(DEPDIR)/.env.source.$(BITBAKE_ENV_HASH)
 	@echo 'Generating $@'
-	@echo 'export BB_ENV_EXTRAWHITE="MACHINE DISTRO BB_SRCREV_POLICY"' > $@
+	@echo 'export BB_ENV_EXTRAWHITE="MACHINE MACHINESIMS DISTRONET BB_SRCREV_POLICY"' > $@
 	@echo 'export MACHINE' >> $@
+	@echo 'export MACHINESIMS' >> $@
 	@echo 'export PATH=$(CURDIR)/openembedded-core/scripts:$(CURDIR)/bitbake/bin:$${PATH}' >> $@
-	@echo 'if [[ $$DISTRO = "local" ]]; then' >> $@
+	@echo 'if [[ $$DISTRONET = "local" ]]; then' >> $@
 	@echo '    export BB_SRCREV_POLICY="cache"' >> $@
 	@echo 'fi' >> $@
 
