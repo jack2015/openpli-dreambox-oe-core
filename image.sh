@@ -42,24 +42,31 @@ box=$(dialog --stdout --clear --colors --menu "Build Dreambox Image" 22 70 10 ${
     case $box in
     1)
     machinespecific="dm800se-cn"
+    boxsim="clone"
     ;;
     2)
     machinespecific="dm800se-en-clone"
+    boxsim="clone"
     ;;
     3)
     machinespecific="dm800se-en-original"
+    boxsim="original"
     ;;
     4)
     machinespecific="dm900-clone"
+    boxsim="clone"
     ;;
     5)
     machinespecific="dm900-original"
+    boxsim="original"
     ;;
     6)
     machinespecific="dm920"
+    boxsim="original"
     ;;
     7)
     machinespecific="dm500hd"
+    boxsim="original"
     ;;
     *) clear && exit ;;
     esac
@@ -109,35 +116,35 @@ if [ "$machinespecific" = "dm800se-cn" ]; then
     cp -f backup/dm800se-cn/*.bbappend meta-dream/recipes-local/images/
     cp -f backup/dm800se-en/clone/* meta-dream/recipes-local/drivers/
     echo "$echostr"
-    MACHINE=dm800se make ${MAKETYPE}
+    MACHINE=dm800se MACHINESIM=${boxsim} make ${MAKETYPE}
 elif [ "$machinespecific" = "dm800se-en-clone" ]; then
     cp -f backup/dm800se-en/*.bbappend meta-dream/recipes-local/images/
     cp -f backup/dm800se-en/clone/* meta-dream/recipes-local/drivers/
     echo "$echostr"
-    MACHINE=dm800se make ${MAKETYPE}
+    MACHINE=dm800se MACHINESIM=${boxsim} make ${MAKETYPE}
 elif [ "$machinespecific" = "dm800se-en-original" ]; then
     cp -f backup/dm800se-en/*.bbappend meta-dream/recipes-local/images/
     cp -f backup/dm800se-en/original/* meta-dream/recipes-local/drivers/
     echo "$echostr"
-    MACHINE=dm800se make ${MAKETYPE}
+    MACHINE=dm800se MACHINESIM=${boxsim} make ${MAKETYPE}
 elif [ "$machinespecific" = "dm900-clone" ]; then
     cp -f backup/dm9x0/*.bbappend meta-dream/recipes-local/images/
     cp -f backup/dm900-clone/* meta-dream/recipes-local/drivers/
     echo "$echostr"
-    MACHINE=dm900 make ${MAKETYPE}
+    MACHINE=dm900 MACHINESIM=${boxsim} make ${MAKETYPE}
 elif [ "$machinespecific" = "dm900-original" ]; then
     cp -f backup/dm9x0/*.bbappend meta-dream/recipes-local/images/
     cp -f backup/dm900-original/* meta-dream/recipes-local/drivers/
     echo "$echostr"
-    MACHINE=dm900 make ${MAKETYPE}
+    MACHINE=dm900 MACHINESIM=${boxsim} make ${MAKETYPE}
 elif [ "$machinespecific" = "dm920" ]; then
     cp -f backup/dm9x0/*.bbappend meta-dream/recipes-local/images/
     echo "$echostr"
-    MACHINE=dm920 make ${MAKETYPE}
+    MACHINE=dm920 MACHINESIM=${boxsim} make ${MAKETYPE}
 elif [ "$machinespecific" = "dm500hd" ]; then
     cp -f backup/dm500hd/*.bbappend meta-dream/recipes-local/images/
     echo "$echostr"
-    MACHINE=dm500hd make ${MAKETYPE}
+    MACHINE=dm500hd MACHINESIM=${boxsim} make ${MAKETYPE}
 else
 	echo "Please enter a correct choice"
 fi

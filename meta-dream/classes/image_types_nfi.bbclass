@@ -15,9 +15,9 @@ IMAGE_CMD_jffs2_prepend = " \
 		--boot-partition ${DREAMBOX_PART0_SIZE}:${DEPLOY_DIR_IMAGE}/secondstage-${MACHINE}.bin \
 		--data-partition ${DREAMBOX_PART1_SIZE}:${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.boot.jffs2 \
 		--data-partition ${DREAMBOX_PART2_SIZE}:${IMGDEPLOYDIR}/${IMAGE_NAME}${IMAGE_NAME_SUFFIX}.jffs2 \
-		> ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}${DMTYPE}.nfi; \
+		> ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.nfi; \
 	rm -f ${DEPLOY_DIR_IMAGE}/*.zip; \
-	zip -j ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}${DMTYPE}_nfi.zip ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}${DMTYPE}.nfi; \
+	zip -j ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}_${MACHINESIMS}_${DATE}.zip ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.nfi; \
 	rm -f ${DEPLOY_DIR_IMAGE}/*.nfi; \
 "
 
@@ -59,9 +59,9 @@ IMAGE_CMD_ubifs_prepend = " \
 		--boot-partition ${DREAMBOX_PART0_SIZE}:${DEPLOY_DIR_IMAGE}/secondstage-${MACHINE}.bin \
 		--data-partition ${DREAMBOX_PART1_SIZE}:${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.boot.jffs2 \
 		--data-partition ${DREAMBOX_PART2_SIZE}:${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}${IMAGE_NAME_SUFFIX}.ubi \
-		> ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}${DMTYPE}.nfi; \
+		> ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.nfi; \
 	rm -f ${DEPLOY_DIR_IMAGE}/*.zip; \
-	zip -j ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}${DMTYPE}_nfi.zip ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}${DMTYPE}.nfi; \
+	zip -j ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}_${MACHINESIMS}_${DATE}.zip ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.nfi; \
 	rm -f ${DEPLOY_DIR_IMAGE}/*.nfi; \
 "
 

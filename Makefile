@@ -128,6 +128,9 @@ update:
 
 .PHONY: all image init initialize update usage
 
+MACHINESIMS = $(MACHINESIM)
+export MACHINESIMS
+
 BITBAKE_ENV_HASH := $(call hash, \
 	'BITBAKE_ENV_VERSION = "0"' \
 	'CURDIR = "$(CURDIR)"' \
@@ -135,8 +138,9 @@ BITBAKE_ENV_HASH := $(call hash, \
 
 $(TOPDIR)/env.source: $(DEPDIR)/.env.source.$(BITBAKE_ENV_HASH)
 	@echo 'Generating $@'
-	@echo 'export BB_ENV_EXTRAWHITE="MACHINE"' > $@
+	@echo 'export BB_ENV_EXTRAWHITE="MACHINE MACHINESIMS"' > $@
 	@echo 'export MACHINE' >> $@
+	@echo 'export MACHINESIMS' >> $@
 	@echo 'export PATH=$(CURDIR)/openembedded-core/scripts:$(CURDIR)/bitbake/bin:$${PATH}' >> $@
 	@echo 'export BUILDDIR=$(BUILD_DIR)' >> $@
 
