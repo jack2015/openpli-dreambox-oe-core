@@ -4,6 +4,7 @@ UBI_VOLNAME = "rootfs"
 UBINIZE_VOLSIZE ?= "0"
 UBINIZE_DATAVOLSIZE ?= "0"
 UBINIZE_DATAVOL ?= "0"
+EXTRA_BUILDCMD ?= ""
 
 IMAGE_CMD:jffs2 = " \
 	rm -f ${DEPLOY_DIR_IMAGE}/*.jffs2; \
