@@ -1,12 +1,14 @@
 inherit image_types
 
 IMAGEDIR = "${MACHINE}"
-IMAGEVERSION := "OPENPLI-${DISTRO_VERSION}-${MACHINE}-${DATE}"
+IMAGEVERSION := "OPENPLI-${DISTRO_VERSION}-${MACHINE}-${MACHINESIMS}-${DATE}"
 IMAGEVERSION[vardepsexclude] = "DATE"
+
+IMAGE_CMD_tar = "${IMAGE_CMD_TAR} --sort=name --format=gnu --numeric-owner -cf ${IMGDEPLOYDIR}/${IMAGE_NAME}${IMAGE_NAME_SUFFIX}.tar -C ${IMAGE_ROOTFS} . || [ $? -eq 1 ]"
 
 CONVERSION_CMD_bz2 = " \
     rm -f ${DEPLOY_DIR_IMAGE}/*.zip; \
-    pbzip2 -f -k ${IMAGE_NAME}${IMAGE_NAME_SUFFIX}.${type}; \
+    bzip2 -f -k ${IMAGE_NAME}${IMAGE_NAME_SUFFIX}.${type}; \
     mkdir -p ${IMAGEDIR}; \
     cp ${DEPLOY_DIR_IMAGE}/zImage ${IMAGEDIR}/${KERNEL_FILE}; \
     echo "${IMAGEVERSION}" > ${IMAGEDIR}/imageversion; \
