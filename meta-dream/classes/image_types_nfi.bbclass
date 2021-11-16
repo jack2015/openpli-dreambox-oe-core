@@ -1,4 +1,12 @@
-IMAGE_CMD:jffs2:prepend = " \
+inherit image_types
+
+UBI_VOLNAME = "rootfs"
+UBINIZE_VOLSIZE ?= "0"
+UBINIZE_DATAVOLSIZE ?= "0"
+UBINIZE_DATAVOL ?= "0"
+
+IMAGE_CMD:jffs2 = " \
+	rm -f ${DEPLOY_DIR_IMAGE}/*.jffs2; \
 	mkfs.jffs2 \
 		--root=${IMAGE_ROOTFS}/boot \
 		--compression-mode=none \
@@ -21,7 +29,8 @@ IMAGE_CMD:jffs2:prepend = " \
 	rm -f ${DEPLOY_DIR_IMAGE}/*.nfi; \
 "
 
-IMAGE_CMD:ubifs:prepend = " \
+IMAGE_CMD:ubifs = " \
+	rm -f ${DEPLOY_DIR_IMAGE}/*.jffs2; \
 	mkfs.jffs2 \
 		--root=${IMAGE_ROOTFS}/boot \
 		--compression-mode=none \
@@ -70,5 +79,3 @@ EXTRA_IMAGECMD:ubifs ?= "-e ${DREAMBOX_ERASE_BLOCK_SIZE} -n -l"
 
 do_image_jffs2[depends] += "mtd-utils-native:do_populate_sysroot dreambox-buildimage-native:do_populate_sysroot"
 do_image_ubifs[depends] += "mtd-utils-native:do_populate_sysroot dreambox-buildimage-native:do_populate_sysroot"
-
-IMAGE_TYPES += "jffs2 ubifs"
