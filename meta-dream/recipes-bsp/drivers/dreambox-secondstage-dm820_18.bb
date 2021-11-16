@@ -1,6 +1,6 @@
 SUMMARY = "Dreambox second stage bootloader DM820"
 SECTION = "base"
-LICENSE = "CLOSED"
+require conf/license/openpli-gplv2.inc
 PROVIDES += "virtual/bootloader"
 PRIORITY = "required"
 PACKAGE_ARCH = "${MACHINE_ARCH}"

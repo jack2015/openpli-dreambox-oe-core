@@ -165,7 +165,7 @@ ENIGMA2_OPTIONAL = " \
 	enigma2-plugin-skins-mx-hq10 \
 	enigma2-plugin-skins-mx-titaniumc \
 	enigma2-plugin-skins-mx-black \
-	enigma2-plugin-skins-simple-gray-hd \
+	enigma2-plugin-skins-simple-gray \
 	enigma2-plugin-skins-metropolishd \
 	enigma2-plugin-security-firewall \
 	enigma2-plugin-systemplugins-crossepg \

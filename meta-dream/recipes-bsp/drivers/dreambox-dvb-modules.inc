@@ -1,6 +1,6 @@
 SUMMARY = "Hardware drivers for Dreambox"
 SECTION = "base"
-LICENSE = "CLOSED"
+require conf/license/openpli-gplv2.inc
 DEPENDS += "virtual/kernel"
 PRIORITY = "required"
 
@@ -12,8 +12,8 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 DREAMBOX_DVB_MODULES_MIRROR ?= "http://sources.dreamboxupdate.com/download/opendreambox/2.0.0/dreambox-dvb-modules"
 
 SRC_URI = " \
-			${DREAMBOX_DVB_MODULES_MIRROR}/dreambox-dvb-modules-${MACHINE}-3.2-${MACHINE}-${DRIVERDATE}.tar.bz2;name=modules \
-			file://modules \
+	${DREAMBOX_DVB_MODULES_MIRROR}/dreambox-dvb-modules-${MACHINE}-3.2-${MACHINE}-${DRIVERDATE}.tar.bz2;name=modules \
+	file://modules \
 "
 
 inherit module-base

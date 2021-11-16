@@ -37,10 +37,11 @@ BOX_10="dm520-original"
 BOX_11="dm520-clone"
 BOX_12="dm500hd-original"
 BOX_13="dm500hd-clone"
-BOX_14="dm8000"
+BOX_14="dm8000-original"
+BOX_15="dm500hdv2-original"
 
 list=
-for i in $(seq 1 14); do
+for i in $(seq 1 15); do
     p="BOX_$i"
     list="$list $i ${!p} "
 done
@@ -100,7 +101,11 @@ box=$(dialog --stdout --clear --colors --menu "Build Dreambox Image" 22 70 10 ${
     boxsim="clone"
     ;;
     14)
-    machinespecific="dm8000"
+    machinespecific="dm8000-original"
+    boxsim="original"
+    ;;
+    15)
+    machinespecific="dm500hdv2-original"
     boxsim="original"
     ;;
     *) clear && exit ;;
@@ -175,7 +180,7 @@ elif [ "$machinespecific" = "dm800se-en-original" ]; then
     cp -f backup/dm800se-en/original/* meta-dream/recipes-local/drivers/
     echo "$echostr"
     MACHINE=dm800se DISTRONETS=${DISTROSTR} MACHINESIM=${boxsim} make ${MAKETYPE}
-elif [ "$machinespecific" = "dm8000" ]; then
+elif [ "$machinespecific" = "dm8000-original" ]; then
     cp -f backup/dm8000/*.bbappend meta-dream/recipes-local/images/
     echo "$echostr"
     MACHINE=dm8000 DISTRONETS=${DISTROSTR} MACHINESIM=${boxsim} make ${MAKETYPE}
@@ -227,6 +232,10 @@ elif [ "$machinespecific" = "dm500hd-clone" ]; then
     cp -f backup/dm500hd/clone/* meta-dream/recipes-local/drivers/
     echo "$echostr"
     MACHINE=dm500hd DISTRONETS=${DISTROSTR} MACHINESIM=${boxsim} make ${MAKETYPE}
+elif [ "$machinespecific" = "dm500hdv2-original" ]; then
+    cp -f backup/dm500hdv2/*.bbappend meta-dream/recipes-local/images/
+    echo "$echostr"
+    MACHINE=dm500hdv2 DISTRONETS=${DISTROSTR} MACHINESIM=${boxsim} make ${MAKETYPE}
 else
     echo "Please enter a correct choice"
 fi

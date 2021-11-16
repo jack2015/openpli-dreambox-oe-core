@@ -22,8 +22,8 @@ RDEPENDS:${PN} = "\
 
 inherit gitpkgv distutils-openplugins gettext
 
-PV = "git${SRCPV}"
-PKGV = "git${GITPKGV}"
+PV = "149+git${SRCPV}"
+PKGV = "149+git${GITPKGV}"
 
 SRC_URI = "git://github.com/E2OpenPlugins/e2openplugin-OpenWebif.git;protocol=${GIT_PROTOCOL};branch=master \
 	file://dm800sev2.png"

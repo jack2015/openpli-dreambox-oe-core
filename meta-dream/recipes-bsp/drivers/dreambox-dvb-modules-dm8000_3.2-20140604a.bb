@@ -9,8 +9,8 @@ COMPATIBLE_MACHINE = "dm8000"
 DREAMBOX_DVB_MODULES_MIRROR ?= "http://sources.dreamboxupdate.com/download/opendreambox/2.0.0/dreambox-dvb-modules"
 
 SRC_URI = " \
-			${DREAMBOX_DVB_MODULES_MIRROR}/dreambox-dvb-modules-${MACHINE}-${DM_LOCALVERSION}-${DRIVERDATE}.tar.bz2;name=modules \
-			file://modules \
+	${DREAMBOX_DVB_MODULES_MIRROR}/dreambox-dvb-modules-${MACHINE}-${DM_LOCALVERSION}-${DRIVERDATE}.tar.bz2;name=modules \
+	file://modules \
 "
 
 SRC_URI[modules.md5sum] = "ed55fd9ef298cd582e1f08322c8d9649"

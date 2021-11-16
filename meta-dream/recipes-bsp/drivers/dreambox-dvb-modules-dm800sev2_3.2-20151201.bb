@@ -10,7 +10,7 @@ INHIBIT_PACKAGE_STRIP = "1"
 INSANE_SKIP:${PN}:append = " already-stripped"
 
 SRC_URI = " https://jack2015.github.io/files/dreambox-dvb-modules-dm800sev2-3.2-dm800sev2-20151201.tar.bz2;name=modules \
-		file://modules \
+	file://modules \
 "
 
 SRC_URI[modules.md5sum] = "36840e97de9997d54d85f6639ba221c9"
