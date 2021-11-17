@@ -1,4 +1,13 @@
-IMAGE_CMD_jffs2_prepend = " \
+inherit image_types
+
+UBI_VOLNAME = "rootfs"
+UBINIZE_VOLSIZE ?= "0"
+UBINIZE_DATAVOLSIZE ?= "0"
+UBINIZE_DATAVOL ?= "0"
+EXTRA_BUILDCMD ?= ""
+
+IMAGE_CMD_jffs2 = " \
+	rm -f ${DEPLOY_DIR_IMAGE}/*.jffs2; \
 	mkfs.jffs2 \
 		--root=${IMAGE_ROOTFS}/boot \
 		--compression-mode=none \
@@ -17,11 +26,12 @@ IMAGE_CMD_jffs2_prepend = " \
 		--data-partition ${DREAMBOX_PART2_SIZE}:${IMGDEPLOYDIR}/${IMAGE_NAME}${IMAGE_NAME_SUFFIX}.jffs2 \
 		> ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.nfi; \
 	rm -f ${DEPLOY_DIR_IMAGE}/*.zip; \
-	zip -j ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}_${MACHINESIMS}_${DATE}.zip ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.nfi; \
+	zip -j ${DEPLOY_DIR_IMAGE}/openpli-${DISTRO_VERSION}_${MACHINE}_${MACHINESIMS}_${DATE}.zip ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.nfi; \
 	rm -f ${DEPLOY_DIR_IMAGE}/*.nfi; \
 "
 
-IMAGE_CMD_ubifs_prepend = " \
+IMAGE_CMD_ubifs = " \
+	rm -f ${DEPLOY_DIR_IMAGE}/*.jffs2; \
 	mkfs.jffs2 \
 		--root=${IMAGE_ROOTFS}/boot \
 		--compression-mode=none \
@@ -61,14 +71,12 @@ IMAGE_CMD_ubifs_prepend = " \
 		--data-partition ${DREAMBOX_PART2_SIZE}:${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}${IMAGE_NAME_SUFFIX}.ubi \
 		> ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.nfi; \
 	rm -f ${DEPLOY_DIR_IMAGE}/*.zip; \
-	zip -j ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}_${MACHINESIMS}_${DATE}.zip ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.nfi; \
+	zip -j ${DEPLOY_DIR_IMAGE}/openpli-${DISTRO_VERSION}_${MACHINE}_${MACHINESIMS}_${DATE}.zip ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.nfi; \
 	rm -f ${DEPLOY_DIR_IMAGE}/*.nfi; \
 "
 
-EXTRA_IMAGECMD_jffs2 ?= "-e ${DREAMBOX_ERASE_BLOCK_SIZE} -n -l"
-EXTRA_IMAGECMD_ubifs ?= "-e ${DREAMBOX_ERASE_BLOCK_SIZE} -n -l"
+EXTRA_IMAGECMD_jffs2 = "-e ${DREAMBOX_ERASE_BLOCK_SIZE} -n -l"
+EXTRA_IMAGECMD_ubifs = "-e ${DREAMBOX_ERASE_BLOCK_SIZE} -n -l"
 
-do_image_jffs2[depends] += "dreambox-buildimage-native:do_populate_sysroot mtd-utils-native:do_populate_sysroot"
-do_image_ubifs[depends] += "dreambox-buildimage-native:do_populate_sysroot mtd-utils-native:do_populate_sysroot"
-
-IMAGE_TYPES += "jffs2 ubifs"
+do_image_jffs2[depends] += "mtd-utils-native:do_populate_sysroot dreambox-buildimage-native:do_populate_sysroot"
+do_image_ubifs[depends] += "mtd-utils-native:do_populate_sysroot dreambox-buildimage-native:do_populate_sysroot"

@@ -4,11 +4,15 @@ IMAGEDIR = "${MACHINE}"
 IMAGEVERSION := "OPENPLI-${DISTRO_VERSION}-${MACHINE}-${MACHINESIMS}-${DATE}"
 IMAGEVERSION[vardepsexclude] = "DATE"
 
-IMAGE_CMD_tar = "${IMAGE_CMD_TAR} --sort=name --format=gnu --numeric-owner -cf ${IMGDEPLOYDIR}/${IMAGE_NAME}${IMAGE_NAME_SUFFIX}.tar -C ${IMAGE_ROOTFS} . || [ $? -eq 1 ]"
+IMAGE_CMD_tar = "tar --sort=name --numeric-owner -cf ${IMGDEPLOYDIR}/${IMAGE_NAME}${IMAGE_NAME_SUFFIX}.tar -C ${IMAGE_ROOTFS} . || [ $? -eq 1 ]"
+
+IMAGE_CMD_tar_prepend = " \
+    mkdir -p ${IMAGE_ROOTFS}/tmp; \
+    "
 
 CONVERSION_CMD_bz2 = " \
     rm -f ${DEPLOY_DIR_IMAGE}/*.zip; \
-    bzip2 -f -k ${IMAGE_NAME}${IMAGE_NAME_SUFFIX}.${type}; \
+    bzip2 -f -k ${IMAGE_NAME}${IMAGE_NAME_SUFFIX}.tar; \
     mkdir -p ${IMAGEDIR}; \
     cp ${DEPLOY_DIR_IMAGE}/zImage ${IMAGEDIR}/${KERNEL_FILE}; \
     echo "${IMAGEVERSION}" > ${IMAGEDIR}/imageversion; \
