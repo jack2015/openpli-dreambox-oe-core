@@ -2,17 +2,14 @@ DESCRIPTION = "Multi boot loader manager for enigma2 box"
 HOMEPAGE = "https://github.com/Dima73/pli-openmultibootmanager"
 LICENSE = "PD"
 LIC_FILES_CHKSUM = "file://COPYING;md5=b234ee4d69f5fce4486a80fdaf4a4263"
+
+RDEPENDS:${PN} = "python-subprocess mtd-utils mtd-utils-ubifs kernel-module-nandsim openmultiboot"
+inherit gitpkgv distutils-openplugins
+PV = "1.0+git${SRCPV}"
+PKGV = "1.0+git${GITPKGV}"
+
 SRC_URI = "git://github.com/Dima73/pli-openmultibootmanager.git;protocol=${GIT_PROTOCOL}"
 S = "${WORKDIR}/git"
-
-inherit gitpkgv
-
-PV = "1+git${SRCPV}"
-PKGV = "1+git${GITPKGV}"
-
-inherit distutils-openplugins
-
-RRECOMMENDS:${PN} = "python-subprocess mtd-utils mtd-utils-ubifs kernel-module-nandsim openmultiboot"
 
 pkg_preinst:${PN}() {
 #!/bin/sh

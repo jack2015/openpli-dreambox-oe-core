@@ -37,6 +37,8 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-extensions-oscamstatus \
 	enigma2-plugin-extensions-pictureplayer \
 	enigma2-plugin-extensions-ppanel \
+	enigma2-plugin-extensions-openmultiboot \
+	openmultiboot \
 	enigma2-plugin-softcams-oscam \
 	enigma2-plugin-systemplugins-cablescan \
 	enigma2-plugin-systemplugins-fastscan \
