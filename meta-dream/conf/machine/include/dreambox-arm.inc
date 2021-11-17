@@ -75,6 +75,5 @@ MACHINE_FEATURES_BACKFILL_CONSIDERED = "rtc gobject-introspection-data"
 
 DREAMBOX_IMAGE_SIZE ??= "1024"
 
-IMAGE_FSTYPES =+ "tar.bz2"
-
+IMAGE_FSTYPES = "tar.bz2"
 IMAGE_CLASSES += "image_types_tarbz2"
