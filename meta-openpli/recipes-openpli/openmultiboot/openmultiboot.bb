@@ -6,14 +6,14 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=b234ee4d69f5fce4486a80fdaf4a4263"
 
 inherit gitpkgv
 
-PV = "1.0+git${SRCPV}"
-PKGV = "1.0+git${GITPKGV}"
+PV = "1.1+git${SRCPV}"
+PKGV = "1.1+git${GITPKGV}"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
-DEPENDS = "freetype"
+DEPENDS = "freetype json-c"
 
-SRC_URI = "git://github.com/oe-alliance/openmultiboot.git;protocol=${GIT_PROTOCOL}"
+SRC_URI = "git://github.com/oe-alliance/openmultiboot.git;protocol=${GIT_PROTOCOL};branch=master"
 
 inherit autotools-brokensep pkgconfig
 
@@ -22,7 +22,9 @@ S = "${WORKDIR}/git"
 EXTRA_OEMAKE = " \
     'CFLAGS=${CFLAGS} \
     -I=${includedir}/freetype2 \
-    -DOMB_DREAMBOX \
+    ${@bb.utils.contains("MACHINE_FEATURES", "singlecore", "-DOMB_DEFAULT_TIMER=10" , "-DOMB_DEFAULT_TIMER=5", d)} \
+    ${@bb.utils.contains("MACHINE_FEATURES", "ombv1", "-DOMB_DREAMBOX", "", d)} \
+    ${@bb.utils.contains("MACHINE_FEATURES", "ombv2", "-DOMB_MMCBLK", "", d)} \
     -DOMB_KERNEL_MTD=\"/dev/${MTD_KERNEL}\"' \
     'LDFLAGS= -lfreetype ${LDFLAGS}' \
     "
