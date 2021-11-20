@@ -13,7 +13,7 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 DEPENDS = "freetype"
 
-SRC_URI = "git://github.com/oe-alliance/openmultiboot.git;protocol=git"
+SRC_URI = "git://github.com/oe-alliance/openmultiboot.git;protocol=git;branch=master"
 
 inherit autotools-brokensep pkgconfig
 
@@ -22,8 +22,9 @@ S = "${WORKDIR}/git"
 EXTRA_OEMAKE = " \
     'CFLAGS=${CFLAGS} \
     -I=${includedir}/freetype2 \
-    -DOMB_DREAMBOX \
-    -DOMB_FLASH_JFFS2 \
+    ${@bb.utils.contains("MACHINE_FEATURES", "singlecore", "-DOMB_DEFAULT_TIMER=10" , "-DOMB_DEFAULT_TIMER=5", d)} \
+    ${@bb.utils.contains("MACHINE_FEATURES", "ombv1", "-DOMB_DREAMBOX", "", d)} \
+    ${@bb.utils.contains("MACHINE_FEATURES", "ombv2", "-DOMB_MMCBLK", "", d)} \
     -DOMB_KERNEL_MTD=\"/dev/${MTD_KERNEL}\"' \
     'LDFLAGS= -lfreetype ${LDFLAGS}' \
     "
