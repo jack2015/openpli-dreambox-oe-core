@@ -4,7 +4,7 @@ PRIORITY = "optional"
 LICENSE = "PD"
 LIC_FILES_CHKSUM = "file://README.md;md5=f084bf390249474bef1b8817e83757fa"
 
-SRC_URI = "git://bitbucket.org/majortom/blindscan-s2.git;protocol=https \
+SRC_URI = "git://gitlab.com/jack2015/blindscan-s2.git;protocol=https \
 	file://support-enigma2.patch"
 
 inherit gitpkgv
