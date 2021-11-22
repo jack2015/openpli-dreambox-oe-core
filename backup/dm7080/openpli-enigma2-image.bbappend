@@ -3,7 +3,7 @@ IMAGE_INSTALL:remove = "hdparm"
 IMAGE_INSTALL:remove = "3rd-party-feed-configs"
 IMAGE_INSTALL:remove = "settings-autorestore"
 
-#dm820
+#dm7080
 
 IMAGE_INSTALL:append = " \
 	bitratecalc \

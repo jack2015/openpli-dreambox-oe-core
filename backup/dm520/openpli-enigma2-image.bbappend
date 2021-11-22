@@ -53,7 +53,6 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-softcams-oscam \
 	enigma2-plugin-extensions-openmultiboot \
 	openmultiboot \
-	\
 	enigma2-plugin-systemplugins-cablescan \
 	enigma2-plugin-systemplugins-fastscan \
 	enigma2-plugin-systemplugins-mphelp \
@@ -70,7 +69,6 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-systemplugins-videotune \
 	enigma2-plugin-systemplugins-wirelesslan \
 	enigma2-plugin-systemplugins-serviceapp \
-	\
 	enigma2-plugin-skins-pli-hd \
 	enigma2-plugin-skins-pli-hd1 \
 	enigma2-plugin-skins-pli-hd2 \
