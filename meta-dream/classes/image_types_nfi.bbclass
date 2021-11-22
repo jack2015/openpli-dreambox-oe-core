@@ -5,6 +5,7 @@ UBINIZE_VOLSIZE ?= "0"
 UBINIZE_DATAVOLSIZE ?= "0"
 UBINIZE_DATAVOL ?= "0"
 EXTRA_BUILDCMD ?= ""
+PDATE = "${@time.strftime('%Y%m%d',time.gmtime())}"
 
 IMAGE_CMD:jffs2 = " \
 	rm -f ${DEPLOY_DIR_IMAGE}/*.jffs2; \
@@ -26,7 +27,7 @@ IMAGE_CMD:jffs2 = " \
 		--data-partition ${DREAMBOX_PART2_SIZE}:${IMGDEPLOYDIR}/${IMAGE_NAME}${IMAGE_NAME_SUFFIX}.jffs2 \
 		> ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.nfi; \
 	rm -f ${DEPLOY_DIR_IMAGE}/*.zip; \
-	zip -j ${DEPLOY_DIR_IMAGE}/openpli-${DISTRO_VERSION}_${MACHINE}_${MACHINESIMS}_${DATE}.zip ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.nfi; \
+	zip -j ${DEPLOY_DIR_IMAGE}/openpli-${DISTRO_VERSION}_${MACHINE}_${MACHINESIMS}_${PDATE}.zip ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.nfi; \
 	rm -f ${DEPLOY_DIR_IMAGE}/*.nfi; \
 "
 
@@ -71,7 +72,7 @@ IMAGE_CMD:ubifs = " \
 		--data-partition ${DREAMBOX_PART2_SIZE}:${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}${IMAGE_NAME_SUFFIX}.ubi \
 		> ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.nfi; \
 	rm -f ${DEPLOY_DIR_IMAGE}/*.zip; \
-	zip -j ${DEPLOY_DIR_IMAGE}/openpli-${DISTRO_VERSION}_${MACHINE}_${MACHINESIMS}_${DATE}.zip ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.nfi; \
+	zip -j ${DEPLOY_DIR_IMAGE}/openpli-${DISTRO_VERSION}_${MACHINE}_${MACHINESIMS}_${PDATE}.zip ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.nfi; \
 	rm -f ${DEPLOY_DIR_IMAGE}/*.nfi; \
 "
 
