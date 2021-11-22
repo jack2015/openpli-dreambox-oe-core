@@ -16,7 +16,7 @@ CONVERSION_CMD:bz2 = " \
     mkdir -p ${IMAGEDIR}; \
     cp ${DEPLOY_DIR_IMAGE}/zImage ${IMAGEDIR}/${KERNEL_FILE}; \
     echo "${IMAGEVERSION}" > ${IMAGEDIR}/imageversion; \
-    mv ${IMAGE_NAME}${IMAGE_NAME_SUFFIX}.tar.bz2 ${IMAGEDIR}/rootfs.tar.bz2; \
+    cp ${IMAGE_NAME}${IMAGE_NAME_SUFFIX}.tar.bz2 ${IMAGEDIR}/rootfs.tar.bz2; \
     zip openpli-${DISTRO_VERSION}_${MACHINE}_${MACHINESIMS}_${DATE}.zip ${IMAGEDIR}/*; \
     rm -f *.manifest; \
     rm -rf ${IMAGEDIR}; \
