@@ -21,7 +21,7 @@ SRC_URI += " \
 	file://nfidump_mipsel_2.0.0 \
 	"
 
-FILES:${PN}:append = " /usr/sbin"
+FILES:${PN}:append = " /usr/sbin /sbin"
 NFINAME:dm7020hd = "nfidump_mipsel_1.0.0"
 NFINAME:dm7020hdv2 = "nfidump_mipsel_1.0.0"
 NFINAME:dm8000 = "nfidump_mipsel_1.0.0"
@@ -40,9 +40,12 @@ do_install:append() {
     rm -rf ${D}/usr/lib/enigma2/python/Plugins/Extensions/OpenMultiboot/*.py
     rm -rf ${D}/usr/lib/enigma2/python/Plugins/Extensions/OpenMultiboot/open-multiboot-branding-helper.pyo
     cp ${S}/src/open-multiboot-branding-helper.py ${D}/usr/lib/enigma2/python/Plugins/Extensions/OpenMultiboot/open-multiboot-branding-helper.py
+    chmod 0755 ${D}/usr/lib/enigma2/python/Plugins/Extensions/OpenMultiboot/open-multiboot-branding-helper.py
     chmod 0755 ${D}/usr/lib/enigma2/python/Plugins/Extensions/OpenMultiboot/install-nandsim.sh
+    install -d ${D}/sbin
+    cp ${S}/src/open-multiboot-branding-helper.py ${D}/sbin
+    chmod 0755 ${D}/sbin/open-multiboot-branding-helper.py
     install -d ${D}/usr/sbin
-    cp ${S}/src/open-multiboot-branding-helper.py ${D}/usr/sbin
 }
 
 do_install:append:mipsel() {
