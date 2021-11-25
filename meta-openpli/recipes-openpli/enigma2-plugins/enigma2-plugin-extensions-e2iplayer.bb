@@ -16,7 +16,9 @@ inherit gitpkgv
 PV = "1+git${SRCPV}"
 PKGV = "1+git${GITPKGV}"
 
-inherit allarch distutils-openplugins
+inherit allarch distutils-openplugins gettext
+
+DEPENDS = "gettext-native python"
 
 RDEPENDS:${PN} = " \
 	cmdwrapper \

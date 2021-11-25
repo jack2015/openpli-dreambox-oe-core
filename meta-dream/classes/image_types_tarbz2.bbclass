@@ -1,8 +1,8 @@
 inherit image_types
 
 IMAGEDIR = "${MACHINE}"
-PDATE = "${@time.strftime('%Y%m%d',time.gmtime())}"
-IMAGEVERSION := "OPENPLI-${DISTRO_VERSION}-${MACHINE}-${MACHINESIMS}-${PDATE}"
+IMAGEVERSION = "openpli-${DISTRO_VERSION}-${MACHINE}-${MACHINESIMS}-${DATE}"
+IMAGEVERSION[vardepsexclude] += "DATE"
 
 IMAGE_CMD:tar = "tar --sort=name --numeric-owner -cf ${IMGDEPLOYDIR}/${IMAGE_NAME}${IMAGE_NAME_SUFFIX}.tar -C ${IMAGE_ROOTFS} . || [ $? -eq 1 ]"
 
@@ -17,7 +17,7 @@ CONVERSION_CMD:bz2 = " \
     cp ${DEPLOY_DIR_IMAGE}/zImage ${IMAGEDIR}/${KERNEL_FILE}; \
     echo "${IMAGEVERSION}" > ${IMAGEDIR}/imageversion; \
     cp ${IMAGE_NAME}${IMAGE_NAME_SUFFIX}.tar.bz2 ${IMAGEDIR}/rootfs.tar.bz2; \
-    zip openpli-${DISTRO_VERSION}_${MACHINE}_${MACHINESIMS}_${PDATE}.zip ${IMAGEDIR}/*; \
+    zip ${IMAGEVERSION}.zip ${IMAGEDIR}/*; \
     rm -f *.manifest; \
     rm -rf ${IMAGEDIR}; \
     "

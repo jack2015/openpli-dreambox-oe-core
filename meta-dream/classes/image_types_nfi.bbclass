@@ -5,7 +5,8 @@ UBINIZE_VOLSIZE ?= "0"
 UBINIZE_DATAVOLSIZE ?= "0"
 UBINIZE_DATAVOL ?= "0"
 EXTRA_BUILDCMD ?= ""
-PDATE = "${@time.strftime('%Y%m%d',time.gmtime())}"
+PDATE = "${DATE}"
+PDATE[vardepsexclude] += "DATE"
 
 IMAGE_CMD:jffs2 = " \
 	rm -f ${DEPLOY_DIR_IMAGE}/*.jffs2; \
