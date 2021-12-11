@@ -64,16 +64,16 @@ EXTRA_OECONF = " \
     --with-dvi="False" \
     --with-svideo="False" \
     --with-hdmi-in-hd="False" \
-    --with-hdmi-in-fhd="False" \
+    --with-hdmi-in-fhd="True" \
     --with-wol="False" \
-    --with-ci="False" \
+    --with-ci="True" \
     --with-blindscanbinary="" \
     --with-socfamily="bcm7435" \
     --with-vfd-symbol="False" \
     --with-rctype="" \
     --with-rcname="" \
     --with-rcidnum="" \
-    --with-fhdskin="False" \
+    --with-fhdskin="True" \
     "
 
 FILES:${PN} = "${libdir}/enigma2/python/*.so"
