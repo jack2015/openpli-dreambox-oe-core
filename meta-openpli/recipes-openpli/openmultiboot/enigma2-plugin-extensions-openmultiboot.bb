@@ -37,14 +37,9 @@ NFINAME:dm7080 = "nfidump_mipsel_2.0.0"
 S = "${WORKDIR}/git"
 
 do_install:append() {
-    rm -rf ${D}/usr/lib/enigma2/python/Plugins/Extensions/OpenMultiboot/*.py
-    rm -rf ${D}/usr/lib/enigma2/python/Plugins/Extensions/OpenMultiboot/open-multiboot-branding-helper.pyo
-    cp ${S}/src/open-multiboot-branding-helper.py ${D}/usr/lib/enigma2/python/Plugins/Extensions/OpenMultiboot/open-multiboot-branding-helper.py
-    chmod 0755 ${D}/usr/lib/enigma2/python/Plugins/Extensions/OpenMultiboot/open-multiboot-branding-helper.py
-    chmod 0755 ${D}/usr/lib/enigma2/python/Plugins/Extensions/OpenMultiboot/install-nandsim.sh
+    find ${D}/ -name '*.sh' -exec chmod a+x {} \;
     install -d ${D}/sbin
     cp ${S}/src/open-multiboot-branding-helper.py ${D}/sbin
-    chmod 0755 ${D}/sbin/open-multiboot-branding-helper.py
     install -d ${D}/usr/sbin
 }
 

@@ -1,5 +1,14 @@
 #!/bin/sh
 
+python --version 2>> /tmp/python-version
+python --version > /tmp/python-version
+if grep -qs -i 'Python 3' cat /tmp/python-version ; then
+    echo -e "${RED}Python version is wrong!"
+    echo -e "It means you need to choose Python2!"
+    sudo update-alternatives --config python
+    exit 0
+fi
+
 gcc --version | sed -nr '/Ubuntu [0-9]+/ s/.*Ubuntu +([0-9]+).*/\1/p' > /tmp/vision-gcc-version
 VISIONGCCVERSION=`cat /tmp/vision-gcc-version`
 if [ "${VISIONGCCVERSION}" != '11' ]; then

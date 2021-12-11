@@ -37,10 +37,17 @@ do_install() {
     install -d ${D}${sysconfdir}/tuxbox/config
     install -m 0644 ${WORKDIR}/oscam.conf ${D}${sysconfdir}/tuxbox/config
     install -d ${D}${bindir}
-    upx --best --ultra-brute ${B}/${CAMNAME}
     install -m 0755 ${B}/${CAMNAME} ${D}${bindir}
     install -d ${D}/etc/init.d
     install -m 0755 ${WORKDIR}/softcam.${CAMNAME} ${D}/etc/init.d
+}
+
+do_install:append:dm800se() {
+    upx --best --ultra-brute ${D}/usr/bin/oscam
+}
+
+do_install:append:dm500hd() {
+    upx --best --ultra-brute ${D}/usr/bin/oscam
 }
 
 CONFFILES = "/etc/tuxbox/config/oscam.conf"

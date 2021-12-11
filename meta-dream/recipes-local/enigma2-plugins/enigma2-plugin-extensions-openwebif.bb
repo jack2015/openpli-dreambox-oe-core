@@ -20,10 +20,10 @@ RDEPENDS:${PN} = "\
 	python-unixadmin \
 	"
 
-inherit gitpkgv distutils-openplugins gettext
+inherit gittag distutils-openplugins gettext
 
-PV = "149+git${SRCPV}"
-PKGV = "149+git${GITPKGV}"
+PV = "git${SRCPV}"
+PKGV = "${GITPKGVTAG}"
 
 SRC_URI = "git://github.com/E2OpenPlugins/e2openplugin-OpenWebif.git;protocol=${GIT_PROTOCOL};branch=master \
 	file://dm800sev2.png"
