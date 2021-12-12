@@ -37,6 +37,8 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-extensions-cutlisteditor \
 	enigma2-plugin-extensions-cacheflush \
 	enigma2-plugin-extensions-epgimport \
+	enigma2-plugin-extensions-filecommander \
+	enigma2-plugin-extensions-foreca \
 	enigma2-plugin-extensions-graphmultiepg \
 	enigma2-plugin-extensions-mediaplayer \
 	enigma2-plugin-extensions-mediascanner \
@@ -50,6 +52,7 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-softcams-oscam \
 	enigma2-plugin-extensions-openmultiboot \
 	openmultiboot \
+	enigma2-plugin-systemplugins-autobouquetsmaker \
 	enigma2-plugin-systemplugins-cablescan \
 	enigma2-plugin-systemplugins-fastscan \
 	enigma2-plugin-systemplugins-mphelp \
