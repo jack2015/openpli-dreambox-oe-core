@@ -1,7 +1,7 @@
 SUMMARY = "Control your receiver with a browser"
 MAINTAINER = "Openpli Developers"
-LICENSE = "GPLv2"
-LIC_FILES_CHKSUM = "file://README;md5=26abba37d1c2fcbf96a087ceb8e1db86"
+require conf/license/license-gplv2.inc
+
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 DEPENDS = "python-cheetah-native"
 
@@ -22,8 +22,13 @@ RDEPENDS:${PN} = "\
 
 inherit gittag distutils-openplugins gettext
 
+SRCREV = "${AUTOREV}"
 PV = "git${SRCPV}"
 PKGV = "${GITPKGVTAG}"
+
+SRCREV:dm800se = "502a24d9e8c5e8a3fa324aff633332e29929e20b"
+PV:dm800se = "1.3.9+git${SRCPV}"
+PKGV:dm800se = "1.3.9+git${GITPKGV}"
 
 SRC_URI = "git://github.com/E2OpenPlugins/e2openplugin-OpenWebif.git;protocol=${GIT_PROTOCOL};branch=master \
 	file://dm800sev2.png"

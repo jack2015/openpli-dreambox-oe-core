@@ -77,6 +77,7 @@ IMAGE_INSTALL += " \
 	enigma2 \
 	libavahi-client \
 	ntpdate \
+	cifs-utils \
 	settings-autorestore \
 	tuxbox-common \
 	${ENIGMA2_PLUGINS} \

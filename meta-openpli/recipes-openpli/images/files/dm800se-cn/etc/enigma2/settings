@@ -7,7 +7,6 @@ config.misc.hotkey.blue=Infobar/showExtensionSelection
 config.misc.hotkey.green=Module/Screens.PluginBrowser/PluginBrowser
 config.misc.hotkey.red=Plugins/Extensions/OscamStatus/1
 config.misc.hotkey.yellow=Infobar/audioSelection
-config.misc.hotkey.text=Setup/subtitlesetup
 config.misc.languageselected=true
 config.osd.language=zh_CN
 config.plugins.CacheFlush.enable=true
