@@ -10,10 +10,16 @@ inherit autotools pkgconfig gitpkgv
 
 GITHUB_URI ?= "git://github.com"
 SRC_URI = "${GITHUB_URI}/OpenPLi/tuxtxt.git;protocol=${GIT_PROTOCOL} \
+	file://0002-Use-separate-transparency-for-menu-and-teletext.patch \
 	${@bb.utils.contains('DISTRO_FEATURES', 'tuxtxtfhd', 'file://tuxtxt_FHD.patch', '', d)} \
 	${@bb.utils.contains('DISTRO_FEATURES', 'tuxtxtfhd', ' \
 	file://tuxtxt.ttf \
 	file://tuxtxt_nonbold.ttf \
+	file://EXP_MODE \
+	file://TTF_FHD \
+	file://TTF_HD \
+	file://TTF_SD \
+	file://X11_SD \
 	', '', d)} \
 "
 
@@ -33,11 +39,6 @@ do_configure:prepend() {
     touch ${S}/README
     touch ${S}/AUTHORS
     touch ${S}/ChangeLog
-    if ${@bb.utils.contains('DISTRO_FEATURES', 'tuxtxtfhd', 'true', 'false', d)}; then
-        sed 's/UseTTF 0/UseTTF 1/g' -i ${S}/data/tuxtxt2.conf
-        sed 's/TTFWidthFactor16 28/TTFWidthFactor16 29/g' -i ${S}/data/tuxtxt2.conf
-        sed 's/TTFHeightFactor16 16/TTFHeightFactor16 14/g' -i ${S}/data/tuxtxt2.conf
-    fi
 }
 
 do_install:append() {
@@ -49,6 +50,11 @@ do_install:append() {
         rm -f ${D}/usr/share/fonts/tuxtxt_nonbold.ttf
         cp -f ${WORKDIR}/tuxtxt.ttf ${D}/usr/share/fonts/tuxtxt.ttf
         cp -f ${WORKDIR}/tuxtxt_nonbold.ttf ${D}/usr/share/fonts/tuxtxt_nonbold.ttf
+        cp -f ${WORKDIR}/EXP_MODE ${D}${sysconfdir}/tuxtxt
+        cp -f ${WORKDIR}/TTF_FHD ${D}${sysconfdir}/tuxtxt
+        cp -f ${WORKDIR}/TTF_HD ${D}${sysconfdir}/tuxtxt
+        cp -f ${WORKDIR}/TTF_SD ${D}${sysconfdir}/tuxtxt
+        cp -f ${WORKDIR}/X11_SD ${D}${sysconfdir}/tuxtxt
     fi
 }
 
