@@ -31,6 +31,10 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-language-uk \
 	enigma2-plugin-font-wqy-microhei \
 	enigma2-plugin-skins-pli-fullnighthd \
+	enigma2-plugin-skins-pli-fullhd \
+	enigma2-plugin-skins-pli-hd \
+	enigma2-plugin-skins-pli-hd1 \
+	enigma2-plugin-skins-pli-hd2 \
 	enigma2-plugin-extensions-audiosync \
 	enigma2-plugin-extensions-autobackup \
 	enigma2-plugin-extensions-backupsuite \
