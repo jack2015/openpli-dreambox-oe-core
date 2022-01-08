@@ -10,6 +10,8 @@ PDATE[vardepsexclude] += "DATE"
 
 IMAGE_CMD:jffs2 = " \
 	rm -f ${DEPLOY_DIR_IMAGE}/*.jffs2; \
+	rm -f ${DEPLOY_DIR_IMAGE}/*.json; \
+	rm -f ${DEPLOY_DIR_IMAGE}/*.manifest; \
 	mkfs.jffs2 \
 		--root=${IMAGE_ROOTFS}/boot \
 		--compression-mode=none \
@@ -35,6 +37,10 @@ IMAGE_CMD:jffs2 = " \
 
 IMAGE_CMD:ubifs = " \
 	rm -f ${DEPLOY_DIR_IMAGE}/*.jffs2; \
+	rm -f ${DEPLOY_DIR_IMAGE}/*.json; \
+	rm -f ${DEPLOY_DIR_IMAGE}/*.manifest; \
+	rm -f ${DEPLOY_DIR_IMAGE}/*.ubi; \
+	rm -f ${DEPLOY_DIR_IMAGE}/*.ubifs; \
 	mkfs.jffs2 \
 		--root=${IMAGE_ROOTFS}/boot \
 		--compression-mode=none \
