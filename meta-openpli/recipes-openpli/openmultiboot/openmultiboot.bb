@@ -32,6 +32,8 @@ MTD_KERNEL:dm7020hd = "mtd2"
 MTD_KERNEL:dm7020hdv2 = "mtd2"
 MTD_KERNEL:dm7080 = "mtd2"
 MTD_KERNEL:dm8000 = "mtd2"
+MTD_KERNEL:dm900 = "mmcblk0p1"
+MTD_KERNEL:dm920 = "mmcblk0p1"
 
 EXTRA_OEMAKE = " \
     'CFLAGS=${CFLAGS} \
