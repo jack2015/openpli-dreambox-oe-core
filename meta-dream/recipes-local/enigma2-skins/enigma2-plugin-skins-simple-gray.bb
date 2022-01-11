@@ -8,7 +8,7 @@ inherit gitpkgv allarch pythonnative
 PV = "1.0+git${SRCPV}"
 PKGV = "1.0+git${GITPKGV}"
 
-SRC_URI = "git://github.com/Taapat/skin-SimpleGray.git;protocol=${GIT_PROTOCOL}"
+SRC_URI = "git://gitlab.com/jack2015/skin-SimpleGray.git;protocol=https"
 
 FILES:${PN} = "/usr"
 

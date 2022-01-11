@@ -14,8 +14,7 @@ DESCRIPTION:font-valis-enigma = "Valis enigma font"
 PACKAGES = "${PN} font-valis-enigma"
 PROVIDES += "font-valis-enigma"
 
-GITHUB_URI ?= "git://github.com"
-SRC_URI = "${GITHUB_URI}/OpenPLi/${BPN}.git;protocol=${GIT_PROTOCOL}"
+SRC_URI = "git://gitlab.com/jack2015/enigma2-plugin-skins-magic.git;protocol=https"
 
 FILES:${PN} = "${datadir}/enigma2/Magic"
 FILES:font-valis-enigma = "${datadir}/fonts/valis_enigma.ttf"

@@ -4,7 +4,7 @@ require conf/license/openpli-gplv2.inc
 
 inherit module
 SRCREV = "${AUTOREV}"
-SRC_URI = "git://github.com/atvcaptain/LINUX_BT_USB_DRIVER.git;protocol=${GIT_PROTOCOL};branch=main"
+SRC_URI = "git://gitlab.com/jack2015/LINUX_BT_USB_DRIVER.git;protocol=https;branch=main"
 
 S = "${WORKDIR}/git"
 

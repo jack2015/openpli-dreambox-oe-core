@@ -1,1 +1,1 @@
-SRC_URI = "git://github.com/OpenELEC/libsquish.git;protocol=${GIT_PROTOCOL}"
+SRC_URI = "git://gitlab.com/jack2015/libsquish.git;protocol=https"

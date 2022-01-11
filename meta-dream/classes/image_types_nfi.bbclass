@@ -17,7 +17,6 @@ IMAGE_CMD:jffs2 = " \
 		--compression-mode=none \
 		--output=${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.boot.jffs2 \
 		${EXTRA_IMAGECMD}; \
-	printf '/dev/mtdblock2       /boot                jffs2      ro                    0  0\n' >> ${IMAGE_ROOTFS}/etc/fstab; \
 	rm -rf ${IMAGE_ROOTFS}/boot/*; \
 	mkfs.jffs2 \
 		--root=${IMAGE_ROOTFS} \
@@ -46,7 +45,6 @@ IMAGE_CMD:ubifs = " \
 		--compression-mode=none \
 		--output=${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.boot.jffs2 \
 		${EXTRA_IMAGECMD}; \
-	printf '/dev/mtdblock2       /boot                jffs2      ro                    0  0\n' >> ${IMAGE_ROOTFS}/etc/fstab; \
 	rm -rf ${IMAGE_ROOTFS}/boot/*; \
 	echo \[root\] > ubinize.cfg; \
 	echo mode=ubi >> ubinize.cfg; \

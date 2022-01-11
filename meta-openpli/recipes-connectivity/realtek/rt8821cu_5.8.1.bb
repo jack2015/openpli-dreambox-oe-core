@@ -8,7 +8,7 @@ DEPENDS ="bc-native"
 
 inherit module
 SRCREV = "${AUTOREV}"
-SRC_URI = "git://github.com/atvcaptain/RTL8821CU_driver_v5.8.1.git;protocol=${GIT_PROTOCOL};branch=master \
+SRC_URI = "git://gitlab.com/jack2015/rtl8821cu.git;protocol=https;branch=master \
     file://add-5.15-support.patch \
 "
 

@@ -8,7 +8,7 @@ inherit gitpkgv allarch
 PV = "0.1+git${SRCPV}"
 PKGV = "0.1+git${GITPKGV}"
 
-SRC_URI = " git://github.com/littlesat/PLi-HD-FullNight.git;protocol=${GIT_PROTOCOL} \
+SRC_URI = " git://gitlab.com/jack2015/PLi-HD-FullNight.git;protocol=https \
 			file://01-split-eventname-and-full-description.patch \
 "
 

@@ -5,7 +5,7 @@ LIC_FILES_CHKSUM = "file://ifcfg-wlan0;md5=a84acae65af4b2d44d5035aa9f63cd85"
 
 DEPENDS ="bc-native"
 
-SRC_URI = "git://github.com/edision-open/RTL8723DS_WiFi_linux.git;protocol=${GIT_PROTOCOL}"
+SRC_URI = "git://gitlab.com/jack2015/rtl8723ds.git;protocol=https;branch=master"
 
 SRCREV = "94eef3f7cb762b7309824be6cd2b6af75ac80bbd"
 

@@ -3,7 +3,7 @@ HOMEPAGE = "https://www.realtek.com/"
 require conf/license/openpli-gplv2.inc
 
 SRCREV = "${AUTOREV}"
-SRC_URI = "git://github.com/atvcaptain/linux-firmware.git;protocol=${GIT_PROTOCOL};branch=main"
+SRC_URI = "git://gitlab.com/jack2015/8821cu.git;protocol=https;branch=main"
 
 S = "${WORKDIR}/git"
 

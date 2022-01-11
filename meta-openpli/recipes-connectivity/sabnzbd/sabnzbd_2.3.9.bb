@@ -16,7 +16,7 @@ RRECOMMENDS:${PN} = "par2cmdline unrar"
 
 SRCREV = "8f21533e76d64a3bc26643394d5e98dc01ece63e"
 
-SRC_URI = "git://github.com/sabnzbd/sabnzbd.git;protocol=${GIT_PROTOCOL} \
+SRC_URI = "git://gitlab.com/jack2015/sabnzbd.git;protocol=https;branch=master \
     file://sabnzbd \
     file://sabnzbd.conf \
     file://init-functions \

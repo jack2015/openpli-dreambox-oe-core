@@ -11,7 +11,7 @@ PV = "1.0+git${SRCPV}"
 PKGV = "1.0+git${GITPKGV}"
 PR = "r0"
 
-SRC_URI = "git://github.com/selsta/hlsdl.git;protocol=${GIT_PROTOCOL}"
+SRC_URI = "git://gitlab.com/jack2015/hlsdl.git;protocol=https"
 
 S = "${WORKDIR}/git"
 

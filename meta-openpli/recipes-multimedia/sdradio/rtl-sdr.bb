@@ -10,7 +10,7 @@ PV = "1.0+git${SRCPV}"
 PKGV = "1.0+git${GITPKGV}"
 PR = "r1"
  
-SRC_URI = " git://github.com/osmocom/rtl-sdr.git;protocol=${GIT_PROTOCOL};branch=master"
+SRC_URI = " git://gitlab.com/jack2015/rtl-sdr.git;protocol=https;branch=master"
 
 SRCREV = "${AUTOREV}"
  

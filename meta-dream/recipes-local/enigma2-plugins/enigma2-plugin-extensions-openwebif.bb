@@ -26,12 +26,12 @@ SRCREV = "${AUTOREV}"
 
 PV = "git${SRCPV}"
 PKGV = "${GITPKGVTAG}"
-SRC_URI = "git://github.com/E2OpenPlugins/e2openplugin-OpenWebif.git;protocol=${GIT_PROTOCOL};branch=master \
+SRC_URI = "git://gitlab.com/jack2015/e2openplugin-OpenWebif.git;protocol=https;branch=master \
 	file://dm800sev2.png"
 
 PV:dm800se = "1.3.9+git${SRCPV}"
 PKGV:dm800se = "1.3.9+git${GITPKGV}"
-SRC_URI:dm800se = "git://github.com/E2OpenPlugins/e2openplugin-OpenWebif.git;protocol=${GIT_PROTOCOL};branch=NoSix \
+SRC_URI:dm800se = "git://gitlab.com/jack2015/e2openplugin-OpenWebif.git;protocol=https;branch=NoSix \
 	file://dm800sev2.png"
 
 S="${WORKDIR}/git"

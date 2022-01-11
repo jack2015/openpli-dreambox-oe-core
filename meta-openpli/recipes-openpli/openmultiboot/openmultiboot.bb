@@ -13,7 +13,7 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 DEPENDS = "freetype"
 
-SRC_URI = "git://github.com/oe-alliance/openmultiboot.git;protocol=${GIT_PROTOCOL};branch=master"
+SRC_URI = "git://gitlab.com/jack2015/openmultiboot.git;protocol=https;branch=master"
 
 inherit autotools-brokensep pkgconfig
 

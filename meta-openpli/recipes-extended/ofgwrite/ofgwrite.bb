@@ -10,7 +10,7 @@ inherit gitpkgv
 PKGV = "4.x+git${GITPKGV}"
 PV = "4.x+git${SRCPV}"
 
-SRC_URI = "git://github.com/oe-alliance/ofgwrite.git;protocol=https \
+SRC_URI = "git://gitlab.com/jack2015/ofgwrite.git;protocol=https \
     file://fix-build-with-fno-common.patch \
 "
 

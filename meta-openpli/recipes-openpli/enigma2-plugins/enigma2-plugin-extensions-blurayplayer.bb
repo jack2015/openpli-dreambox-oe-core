@@ -10,9 +10,8 @@ DEPENDS = "libbluray libudfread"
 inherit gitpkgv
 PV = "1+git${SRCPV}"
 PKGV = "1+git${GITPKGV}"
-BRANCH = "openpli"
 
-SRC_URI = "git://github.com/Taapat/enigma2-plugin-blurayplayer.git;protocol=${GIT_PROTOCOL};branch=${BRANCH}"
+SRC_URI = "git://gitlab.com/jack2015/enigma2-plugin-blurayplayer.git;protocol=https;branch=openpli"
 
 S = "${WORKDIR}/git"
 

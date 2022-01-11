@@ -13,14 +13,13 @@ LIC_FILES_CHKSUM = "\
 
 inherit gitpkgv
 
-AUTOBOUQUETS_BRANCH ?= "release"
 PV = "2.2+git${SRCPV}"
 PKGV = "2.2+git${GITPKGV}"
 PR = "r0"
 
 INSANE_SKIP:${PN} += "already-stripped ldflags"
 
-SRC_URI="git://github.com/LraiZer/AutoBouquets.git;branch=${AUTOBOUQUETS_BRANCH};protocol=${GIT_PROTOCOL}"
+SRC_URI="git://gitlab.com/jack2015/AutoBouquets.git;protocol=https;branch=release"
 
 S = "${WORKDIR}/git"
 

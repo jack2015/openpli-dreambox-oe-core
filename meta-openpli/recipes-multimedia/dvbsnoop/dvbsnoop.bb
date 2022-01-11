@@ -10,7 +10,7 @@ inherit gitpkgv
 PV = "1.4.55"
 PKGV = "git${GITPKGV}"
 
-SRC_URI = "git://github.com/OpenVisionE2/dvbsnoop.git;protocol=${GIT_PROTOCOL}"
+SRC_URI = "git://gitlab.com/jack2015/dvbsnoop.git;protocol=https"
 
 S = "${WORKDIR}/git"
 

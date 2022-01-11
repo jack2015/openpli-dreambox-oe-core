@@ -9,8 +9,7 @@ inherit gitpkgv
 PV = "1.0+git${SRCPV}"
 PKGV = "1.0+git${GITPKGV}"
 
-GITHUB_URI ?= "git://github.com"
-SRC_URI = "${GITHUB_URI}/OpenPLi/${BPN}.git;protocol=${GIT_PROTOCOL}"
+SRC_URI = "git://gitlab.com/jack2015/enigma2-plugin-extensions-epgimport.git;protocol=https"
 
 S = "${WORKDIR}/git/src"
 

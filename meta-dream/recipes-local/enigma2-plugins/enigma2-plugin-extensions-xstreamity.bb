@@ -12,7 +12,7 @@ SRCREV = "${AUTOREV}"
 PV = "3.33+git${SRCPV}"
 PKGV = "3.33+git${GITPKGV}"
 
-SRC_URI = "git://github.com/kiddac/XStreamity.git;protocol=${GIT_PROTOCOL}"
+SRC_URI = "git://gitlab.com/jack2015/XStreamity.git;protocol=https"
 
 S = "${WORKDIR}/git"
 FILES:${PN} = "/usr/"
