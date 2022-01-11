@@ -1,0 +1,13 @@
+diff --git a/src/omb_main.c b/src/omb_main.c
+index 4a8eefb..bb60a02 100644
+--- a/src/omb_main.c
++++ b/src/omb_main.c
+@@ -256,7 +256,7 @@ int main(int argc, char *argv[])
+ 			nextboot = omb_utils_read(OMB_SETTINGS_NEXTBOOT);
+ 			if (nextboot) {
+ 				omb_menu_set_selected(nextboot);
+-				omb_utils_remove_nextboot();
++//				omb_utils_remove_nextboot();
+ 				item = omb_menu_get_selected();
+ 				omb_utils_update_background(item);
+ 				free(nextboot);
