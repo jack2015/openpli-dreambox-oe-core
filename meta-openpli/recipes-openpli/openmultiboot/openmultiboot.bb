@@ -13,9 +13,7 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 DEPENDS = "freetype"
 
-SRC_URI = "git://gitlab.com/jack2015/openmultiboot.git;protocol=https;branch=master \
-	file://dont-delete-nextboot.patch \
-"
+SRC_URI = "git://gitlab.com/jack2015/openmultiboot.git;protocol=https;branch=master"
 
 inherit autotools-brokensep pkgconfig
 
