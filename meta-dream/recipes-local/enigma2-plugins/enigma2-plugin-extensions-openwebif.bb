@@ -7,6 +7,7 @@ DEPENDS = "python-cheetah-native"
 
 RDEPENDS:${PN} = "\
 	aio-grab \
+	python-pprint \
 	python-cheetah \
 	python-compression\
 	python-ipaddress\
@@ -21,6 +22,8 @@ RDEPENDS:${PN} = "\
 	"
 
 inherit gittag distutils-openplugins gettext
+
+DISTUTILS_INSTALL_ARGS = "--root=${D} --install-lib=${libdir}/enigma2/python/Plugins"
 
 SRCREV = "${AUTOREV}"
 
