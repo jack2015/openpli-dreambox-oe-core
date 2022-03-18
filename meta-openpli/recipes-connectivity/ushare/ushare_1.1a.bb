@@ -42,3 +42,4 @@ do_install:append() {
 }
 
 INSANE_SKIP:${PN} += "already-stripped"
+PACKAGE_NO_LOCALE = "1"
