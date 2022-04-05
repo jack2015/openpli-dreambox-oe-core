@@ -4,7 +4,7 @@ DESCRIPTION = "The project extension [-27] indicates that this project continues
 HOMEPAGE = "https://billy2011.github.io/streamlink-27"
 SECTION = "devel/python"
 LICENSE = "BSD-2-Clause"
-LIC_FILES_CHKSUM = "file://LICENSE;md5=7c0be52291b7252b878da806d185b1d1"
+LIC_FILES_CHKSUM = "file://LICENSE;md5=68840183c9e610b678d72969d3944db9"
 
 RDEPENDS:${PN} = "python-core \
     python-backports-functools-lru-cache \
