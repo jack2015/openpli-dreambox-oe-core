@@ -31,7 +31,6 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-language-uk \
 	enigma2-plugin-font-wqy-microhei \
 	enigma2-plugin-skins-pli-fullnighthd \
-	enigma2-plugin-extensions-fancontrol2 \
 	enigma2-plugin-extensions-audiosync \
 	enigma2-plugin-extensions-autobackup \
 	enigma2-plugin-extensions-cutlisteditor \
@@ -92,8 +91,8 @@ rootfs_myworks() {
 	rm -f ${IMAGE_ROOTFS}/usr/share/enigma2/PLi-HD/picon_default.png
 	rm -f ${IMAGE_ROOTFS}/usr/share/enigma2/PLi-FullHD/picon_default.png
 	rm -f ${IMAGE_ROOTFS}/usr/share/enigma2/PLi-FullNightHD/picon_default.png
-	cp -rf ${THISDIR}/files/dm800sev2-en/usr ${IMAGE_ROOTFS}/
-	cp -rf ${THISDIR}/files/dm800sev2-en/etc ${IMAGE_ROOTFS}/
+	cp -rf ${THISDIR}/files/dm7020hd/usr ${IMAGE_ROOTFS}/
+	cp -rf ${THISDIR}/files/dm7020hd/etc ${IMAGE_ROOTFS}/
 }
 
 ROOTFS_POSTPROCESS_COMMAND += "rootfs_myworks; "

@@ -14,6 +14,8 @@ KERNEL_BUILTIN_MODULES = "kernel-module-block2mtd"
 KERNEL_BUILTIN_MODULES:dm8000 = "kernel-module-stv0299"
 KERNEL_BUILTIN_MODULES:dm800se = "kernel-module-stv0299"
 KERNEL_BUILTIN_MODULES:dm800sev2 = "kernel-module-stv0299"
+KERNEL_BUILTIN_MODULES:dm7020hd = "kernel-module-fuse kernel-module-stv0299"
+KERNEL_BUILTIN_MODULES:dm7020hdv2 = "kernel-module-fuse kernel-module-stv0299"
 
 # By default, kernel.bbclass modifies package names to allow multiple kernels
 # to be installed in parallel. We revert this change and rprovide the versioned
