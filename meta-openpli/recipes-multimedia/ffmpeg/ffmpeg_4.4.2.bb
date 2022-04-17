@@ -50,7 +50,7 @@ PROVIDES = "libav libpostproc"
 
 DEPENDS = "nasm-native libxml2"
 
-PV = "4.4.1"
+PV = "4.4.2"
 
 inherit autotools pkgconfig gitpkgv
 
