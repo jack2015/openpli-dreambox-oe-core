@@ -1,9 +1,7 @@
 DESCRIPTION = "Driver for Realtek USB wireless devices"
 HOMEPAGE = "http://www.realtek.com/"
 SECTION = "kernel/modules"
-LICENSE = "GPLv2"
-
-LIC_FILES_CHKSUM = "file://COPYING;md5=d7810fab7487fb0aad327b76f1be7cd7"
+require conf/license/license-gplv2.inc
 
 inherit module machine_kernel_pr
 
