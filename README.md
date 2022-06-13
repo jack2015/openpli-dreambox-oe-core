@@ -14,6 +14,12 @@ In comparison to OpenPLi this repository has:<br>
 -OpenSSL 1.1.1l<br>
 -Busybox 1.34.1<br>
 
+Tested with Ubuntu 18.04.06<br><br>
+Dependencies:
+```
+sudo apt install autoconf automake bison bzip2 cvs diffstat flex g++ gawk gcc gettext git git-lfs gzip help2man ncurses-bin lib32ncurses-dev libc6-dev libtool make texinfo patch perl pkg-config subversion tar texi2html zlib1g-dev chrpath libxml2-utils lz4 xsltproc libglib2.0-dev python-setuptools libc6-i386 genromfs guile-2.2-libs quilt zstd
+```
+
 Build image step & step:<br>
 git clone git@github.com:jack2015/openpli-dreambox-oe-core.git<br>
 cd openpli-dreambox-oe-core<br>
