@@ -12,4 +12,10 @@ In comparison to OpenPLi this repository has:<br>
 -GStreamer 1.18.6<br>
 -Python 2.7.18<br>
 -OpenSSL 1.1.1l<br>
--Busybox 1.34.1
+-Busybox 1.34.1<br>
+
+Build image step & step:<br>
+git clone git@github.com:jack2015/openpli-dreambox-oe-core.git<br>
+cd openpli-dreambox-oe-core<br>
+make update<br>
+./image.sh
