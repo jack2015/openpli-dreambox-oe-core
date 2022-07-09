@@ -79,7 +79,7 @@ IMAGE_CMD:ubifs = " \
 		--data-partition ${DREAMBOX_PART2_SIZE}:${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}${IMAGE_NAME_SUFFIX}.ubi \
 		> ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.nfi; \
 	rm -f ${DEPLOY_DIR_IMAGE}/*.zip; \
-	zip -j ${DEPLOY_DIR_IMAGE}/openpli-${DISTRO_VERSION}_${MACHINE}_${MACHINESIMS}_${PDATE}.zip ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.nfi; \
+	zip -j ${DEPLOY_DIR_IMAGE}/openpli-${DISTRO_VERSION}_${MACHINE}${DMTYPE}_${MACHINESIMS}_${PDATE}.zip ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.nfi; \
 	rm -f ${DEPLOY_DIR_IMAGE}/*.nfi; \
 "
 

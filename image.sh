@@ -50,9 +50,10 @@ BOX_14="dm8000-original"
 BOX_15="dm500hdv2-original"
 BOX_16="dm7080"
 BOX_17="dm7020hd"
+BOX_18="dm7020hdv2"
 
 list=
-for i in $(seq 1 17); do
+for i in $(seq 1 18); do
     p="BOX_$i"
     list="$list $i ${!p} "
 done
@@ -125,6 +126,10 @@ box=$(dialog --stdout --clear --colors --menu "Build Dreambox Image" 22 70 10 ${
     ;;
     17)
     machinespecific="dm7020hd"
+    boxsim="original"
+    ;;
+    18)
+    machinespecific="dm7020hdv2"
     boxsim="original"
     ;;
     *) clear && exit ;;
@@ -263,6 +268,10 @@ elif [ "$machinespecific" = "dm7020hd" ]; then
     cp -f backup/dm7020hd/*.bbappend meta-dream/recipes-local/images/
     echo "$echostr"
     MACHINE=dm7020hd DISTRONETS=${DISTROSTR} MACHINESIM=${boxsim} make ${MAKETYPE}
+elif [ "$machinespecific" = "dm7020hdv2" ]; then
+    cp -f backup/dm7020hd/*.bbappend meta-dream/recipes-local/images/
+    echo "$echostr"
+    MACHINE=dm7020hdv2 DISTRONETS=${DISTROSTR} MACHINESIM=${boxsim} make ${MAKETYPE}
 else
     echo "Please enter a correct choice"
 fi

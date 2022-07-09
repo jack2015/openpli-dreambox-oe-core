@@ -9,7 +9,7 @@ PLUGINPATH = "${libdir}/enigma2/python/Plugins/Extensions/${MODULE}"
 
 # Just a quick hack to "compile" it
 do_compile() {
-	python -O -m compileall -d ${PLUGINPATH} ${S}/plugin
+	python2 -O -m compileall -d ${PLUGINPATH} ${S}/plugin
 }
 
 do_install() {

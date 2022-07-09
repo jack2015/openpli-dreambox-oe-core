@@ -102,11 +102,11 @@ initialize: init
 init: $(BBLAYERS) $(CONFFILES)
 
 image: init
-	@echo 'Building image for $(MACHINE)'
+	@echo 'Building image for $(MACHINE)$(DMTYPE)'
 	@. $(TOPDIR)/env.source && cd $(TOPDIR) && bitbake openpli-enigma2-image
 
 feed: init
-	@echo 'Building feed for $(MACHINE)'
+	@echo 'Building feed for $(MACHINE)$(DMTYPE)'
 	@. $(TOPDIR)/env.source && cd $(TOPDIR) && bitbake openpli-enigma2-feed
 
 update:
@@ -139,8 +139,9 @@ BITBAKE_ENV_HASH := $(call hash, \
 
 $(TOPDIR)/env.source: $(DEPDIR)/.env.source.$(BITBAKE_ENV_HASH)
 	@echo 'Generating $@'
-	@echo 'export BB_ENV_EXTRAWHITE="MACHINE MACHINESIMS DISTRONET BB_SRCREV_POLICY"' > $@
+	@echo 'export BB_ENV_EXTRAWHITE="MACHINE DMTYPE MACHINESIMS DISTRONET BB_SRCREV_POLICY"' > $@
 	@echo 'export MACHINE' >> $@
+	@echo 'export DMTYPE' >> $@
 	@echo 'export MACHINESIMS' >> $@
 	@echo 'export PATH=$(CURDIR)/openembedded-core/scripts:$(CURDIR)/bitbake/bin:$${PATH}' >> $@
 	@echo 'if [[ $$DISTRONET = "local" ]]; then' >> $@
@@ -210,3 +211,9 @@ $(CONFDEPS):
 	@test -d $(@D) || mkdir -p $(@D)
 	@$(RM) $(basename $@).*
 	@touch $@
+
+ifeq ($(MACHINE),dm7020hdv2)
+MACHINE=dm7020hd
+DMTYPE=v2
+endif
+export DMTYPE
