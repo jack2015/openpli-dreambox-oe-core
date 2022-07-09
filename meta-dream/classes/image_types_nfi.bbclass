@@ -77,9 +77,9 @@ IMAGE_CMD:ubifs = " \
 		--boot-partition ${DREAMBOX_PART0_SIZE}:${DEPLOY_DIR_IMAGE}/secondstage-${MACHINE}.bin \
 		--data-partition ${DREAMBOX_PART1_SIZE}:${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.boot.jffs2 \
 		--data-partition ${DREAMBOX_PART2_SIZE}:${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}${IMAGE_NAME_SUFFIX}.ubi \
-		> ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.nfi; \
+		> ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}${DMTYPE}.nfi; \
 	rm -f ${DEPLOY_DIR_IMAGE}/*.zip; \
-	zip -j ${DEPLOY_DIR_IMAGE}/openpli-${DISTRO_VERSION}_${MACHINE}${DMTYPE}_${MACHINESIMS}_${PDATE}.zip ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.nfi; \
+	zip -j ${DEPLOY_DIR_IMAGE}/openpli-${DISTRO_VERSION}_${MACHINE}${DMTYPE}_${MACHINESIMS}_${PDATE}.zip ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}${DMTYPE}.nfi; \
 	rm -f ${DEPLOY_DIR_IMAGE}/*.nfi; \
 "
 
