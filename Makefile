@@ -139,7 +139,7 @@ BITBAKE_ENV_HASH := $(call hash, \
 
 $(TOPDIR)/env.source: $(DEPDIR)/.env.source.$(BITBAKE_ENV_HASH)
 	@echo 'Generating $@'
-	@echo 'export BB_ENV_EXTRAWHITE="MACHINE DMTYPE MACHINESIMS DISTRONET BB_SRCREV_POLICY"' > $@
+	@echo 'export BB_ENV_PASSTHROUGH_ADDITIONS="MACHINE DMTYPE MACHINESIMS DISTRONET BB_SRCREV_POLICY"' > $@
 	@echo 'export MACHINE' >> $@
 	@echo 'export DMTYPE' >> $@
 	@echo 'export MACHINESIMS' >> $@

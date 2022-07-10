@@ -2,7 +2,7 @@ inherit python-dir
 
 RDEPENDS:{PN}-src = "${PN}"
 
-SSTATE_DUPWHITELIST += "${STAGING_LIBDIR}/python2.7/site-packages/tests/__init__.py ${STAGING_LIBDIR}/python2.7/site-packages/tests/__init__.pyo"
+SSTATE_ALLOW_OVERLAP_FILES += "${STAGING_LIBDIR}/python2.7/site-packages/tests/__init__.py ${STAGING_LIBDIR}/python2.7/site-packages/tests/__init__.pyo"
 
 FILES:${PN}-src = " \
     ${PYTHON_SITEPACKAGES_DIR}/*.py \

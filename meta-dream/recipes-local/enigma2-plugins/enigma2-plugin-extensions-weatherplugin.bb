@@ -1,6 +1,6 @@
 SUMMARY = "Five Days Weather Plugin & Skin Component"
 DESCRIPTION = "WeatherPlugin by Dr.Best modified by RAED"
-LICENSE = "GPLv3"
+LICENSE = "GPL-3.0-only"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=1ebbd3e34237af26da5dc08a4e440464"
 
 inherit gitpkgv distutils-openplugins gettext pythonnative

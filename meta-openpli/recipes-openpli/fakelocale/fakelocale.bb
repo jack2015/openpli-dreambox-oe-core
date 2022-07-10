@@ -1,5 +1,5 @@
 SUMMARY = "LC_TIME locale support"
-LICENSE = "GPLv3"
+LICENSE = "GPL-3.0-only"
 SECTION = "base"
 PRIORITY = "required"
 MAINTAINER = "OpenPli team"

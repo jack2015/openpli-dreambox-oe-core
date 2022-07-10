@@ -2,7 +2,7 @@ DESCRIPTION = "yEnc module for Python"
 SECTION = "devel/python"
 DEPENDS = "python"
 PRIORITY = "optional"
-LICENSE = "GPLv2+"
+LICENSE = "GPL-2.0-or-later"
 
 FILESEXTRAPATHS:prepend := "${THISDIR}/python-yenc:"
 

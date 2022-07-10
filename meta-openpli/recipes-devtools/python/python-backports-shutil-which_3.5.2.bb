@@ -1,5 +1,5 @@
 SUMMARY = "Backport of shutil.which from Python 3.3"
-LICENSE = "PSF | MIT"
+LICENSE = "PSF-2.0 | MIT"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=80c6f0d772065347b8590c8024419b97"
 
 inherit pypi setuptools

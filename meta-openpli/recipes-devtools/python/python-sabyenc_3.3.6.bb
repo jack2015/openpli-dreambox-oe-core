@@ -2,7 +2,7 @@ DESCRIPTION = "Python yEnc package optimized for use within SABnzbd"
 SECTION = "devel/python"
 DEPENDS = "python"
 PRIORITY = "optional"
-LICENSE = "LGPL-3.0"
+LICENSE = "LGPL-3.0-only"
 LIC_FILES_CHKSUM = "file://PKG-INFO;md5=8b13430ed095d383d6be025495aa8257"
 
 
