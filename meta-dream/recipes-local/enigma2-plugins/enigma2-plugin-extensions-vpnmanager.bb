@@ -11,7 +11,7 @@ PV = "1.1.4+git${SRCPV}"
 PKGV = "1.1.4+git${GITPKGV}"
 
 SRCREV = "${AUTOREV}"
-SRC_URI = "git://gitlab.com/jack2015/vpnmanager.git;protocol=https"
+SRC_URI = "git://gitlab.com/jack2015/vpnmanager.git;protocol=https;branch=master"
 
 FILES:${PN} = "/usr/"
 

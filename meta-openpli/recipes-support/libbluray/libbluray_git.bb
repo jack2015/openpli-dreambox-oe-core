@@ -8,7 +8,7 @@ DEPENDS = "libaacs libdca libdvdcss libxml2"
 RDEPENDS:${PN} = "libaacs libdca libdvdcss"
 
 # make the origin overridable from OE config, for local mirroring
-SRC_ORIGIN ?= "gitsm://code.videolan.org/videolan/libbluray.git;protocol=https"
+SRC_ORIGIN ?= "gitsm://code.videolan.org/videolan/libbluray.git;protocol=https;branch=master"
 SRC_URI := "${SRC_ORIGIN} "
 
 inherit gitpkgv setuptools autotools-brokensep pkgconfig

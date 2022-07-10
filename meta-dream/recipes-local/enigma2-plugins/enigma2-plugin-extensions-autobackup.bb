@@ -2,7 +2,7 @@ SUMMARY = "Backup settings and restore them automatically"
 DESCRIPTION = "Can create daily backups. Backups created will be restored automaticaly after a new flash."
 require conf/license/openpli-gplv2.inc
 
-SRC_URI = "git://gitlab.com/jack2015/e2openplugin-AutoBackup.git;protocol=https"
+SRC_URI = "git://gitlab.com/jack2015/e2openplugin-AutoBackup.git;protocol=https;branch=master"
 
 inherit gitpkgv distutils-openplugins gettext
 
