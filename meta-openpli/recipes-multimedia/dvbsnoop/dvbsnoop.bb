@@ -10,7 +10,7 @@ inherit gitpkgv
 PV = "1.4.55"
 PKGV = "git${GITPKGV}"
 
-SRC_URI = "git://gitlab.com/jack2015/dvbsnoop.git;protocol=https"
+SRC_URI = "git://gitlab.com/jack2015/dvbsnoop.git;protocol=https;branch=master"
 
 S = "${WORKDIR}/git"
 

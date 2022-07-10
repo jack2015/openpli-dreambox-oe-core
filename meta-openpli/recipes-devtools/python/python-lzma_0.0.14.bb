@@ -1,7 +1,7 @@
 SUMMARY  = "Backport of Python 3.3's 'lzma' module for XZ/LZMA compressed files"
 HOMEPAGE = "https://github.com/peterjc/backports.lzma"
 
-LICENSE = "BSD"
+LICENSE = "BSD-3-Clause"
 LIC_FILES_CHKSUM = "file://PKG-INFO;md5=33789ba23611cb59ce83140837f87508"
 
 DEPENDS = "xz"

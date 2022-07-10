@@ -8,7 +8,7 @@ DEPENDS = "libpng freetype zlib"
 
 inherit gitpkgv autotools pkgconfig
 
-SRC_URI = "git://gitlab.com/jack2015/tuxtxt.git;protocol=https \
+SRC_URI = "git://gitlab.com/jack2015/tuxtxt.git;protocol=https;branch=master \
 	file://tuxtxt_getPressedKey.patch \
 	file://0001-fix-secfault-w-use-wrong-line_length.patch \
 	${@bb.utils.contains('DISTRO_FEATURES', 'tuxtxtfhd', 'file://libtuxtxt_FHD.patch', '', d)} \
