@@ -1,0 +1,11 @@
+diff --git a/src/_cffi_src/openssl/crypto.py b/src/_cffi_src/openssl/crypto.py
+index 1a6dbbc..863e3dd 100644
+--- a/src/_cffi_src/openssl/crypto.py
++++ b/src/_cffi_src/openssl/crypto.py
+@@ -26,7 +26,6 @@ static const int OPENSSL_DIR;
+ """
+ 
+ FUNCTIONS = """
+-int CRYPTO_mem_ctrl(int);
+ 
+ void OPENSSL_cleanup(void);

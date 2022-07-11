@@ -88,3 +88,5 @@ EXTRA_IMAGECMD:ubifs = "-e ${DREAMBOX_ERASE_BLOCK_SIZE} -n -l"
 
 do_image_jffs2[depends] += "mtd-utils-native:do_populate_sysroot dreambox-buildimage-native:do_populate_sysroot"
 do_image_ubifs[depends] += "mtd-utils-native:do_populate_sysroot dreambox-buildimage-native:do_populate_sysroot"
+
+REPRODUCIBLE_TIMESTAMP_ROOTFS = "${@time.strftime('%s')}"

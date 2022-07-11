@@ -1,0 +1,53 @@
+diff --git a/src/_cffi_src/openssl/err.py b/src/_cffi_src/openssl/err.py
+index 8cfeaf5..8d838d4 100644
+--- a/src/_cffi_src/openssl/err.py
++++ b/src/_cffi_src/openssl/err.py
+@@ -40,7 +40,6 @@ void ERR_clear_error(void);
+ void ERR_put_error(int, int, int, const char *, int);
+ 
+ int ERR_GET_LIB(unsigned long);
+-int ERR_GET_FUNC(unsigned long);
+ int ERR_GET_REASON(unsigned long);
+ 
+ """
+diff --git a/src/cryptography/hazmat/bindings/openssl/binding.py b/src/cryptography/hazmat/bindings/openssl/binding.py
+index 0193c78..02e6932 100644
+--- a/src/cryptography/hazmat/bindings/openssl/binding.py
++++ b/src/cryptography/hazmat/bindings/openssl/binding.py
+@@ -23,7 +23,6 @@ class _OpenSSLError(object):
+     def __init__(self, code, lib, func, reason):
+         self._code = code
+         self._lib = lib
+-        self._func = func
+         self._reason = reason
+ 
+     def _lib_reason_match(self, lib, reason):
+@@ -31,7 +30,6 @@ class _OpenSSLError(object):
+ 
+     code = utils.read_only_property("_code")
+     lib = utils.read_only_property("_lib")
+-    func = utils.read_only_property("_func")
+     reason = utils.read_only_property("_reason")
+ 
+ 
+@@ -43,10 +41,9 @@ def _consume_errors(lib):
+             break
+ 
+         err_lib = lib.ERR_GET_LIB(code)
+-        err_func = lib.ERR_GET_FUNC(code)
+         err_reason = lib.ERR_GET_REASON(code)
+ 
+-        errors.append(_OpenSSLError(code, err_lib, err_func, err_reason))
++        errors.append(_OpenSSLError(code, err_lib, err_reason))
+ 
+     return errors
+ 
+@@ -63,7 +63,7 @@ def _openssl_assert(lib, ok):
+ 
+             errors_with_text.append(
+                 _OpenSSLErrorWithText(
+-                    err.code, err.lib, err.func, err.reason, err_text_reason
++                    err.code, err.lib, err.reason, err_text_reason
+                 )
+             )
+ 
