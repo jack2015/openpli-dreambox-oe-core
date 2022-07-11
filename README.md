@@ -6,7 +6,7 @@ https://github.com/Hains
 Thanks to OpenPLi & Hains.
 
 In comparison to OpenPLi this repository has:<br>
--Submodules bitbake, openembedded-core and meta-openembedded from honister branch,<br>
+-Submodules bitbake, openembedded-core and meta-openembedded from kirkstone branch,<br>
 -GCC 11.3.0<br>
 -Glibc 2.35<br>
 -GStreamer 1.18.6<br>
