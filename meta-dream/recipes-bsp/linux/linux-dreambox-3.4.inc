@@ -44,3 +44,5 @@ pkg_postinst:${KERNEL_PACKAGE_NAME}-image () {
 }
 pkg_postrm:${KERNEL_PACKAGE_NAME}-image () {
 }
+
+INSANE_SKIP:${PN} += "installed-vs-shipped"

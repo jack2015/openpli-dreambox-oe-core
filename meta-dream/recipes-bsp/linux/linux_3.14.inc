@@ -87,3 +87,5 @@ PACKAGES =+ "kernel-headers"
 FILES:kernel-headers = "${exec_prefix}/src/linux*"
 
 KERNEL_MODULE_AUTOLOAD += "nfsd"
+
+INSANE_SKIP:${PN} += "installed-vs-shipped"
