@@ -8,6 +8,8 @@ DEPENDS = "dreambox-buildimage-native"
 
 inherit deploy
 
+INSANE_SKIP:${PN} = "empty-dirs"
+
 do_configure[nostamp] = "1"
 
 SRC_URI = "http://sources.dreamboxupdate.com/download/7020/secondstage-${MACHINE}-${PV}.bin"

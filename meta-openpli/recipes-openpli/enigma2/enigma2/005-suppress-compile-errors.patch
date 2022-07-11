@@ -1,8 +1,8 @@
 diff --git a/configure.ac b/configure.ac
-index b103be425..e3df16227 100644
+index ac7ef84d1..6f047fad1 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -259,7 +259,7 @@ CXXFLAGS="$CXXFLAGS -Wall -Wextra -Werror \
+@@ -278,7 +278,7 @@ CXXFLAGS="$CXXFLAGS -Wall -Wextra -Werror \
  	-Wimplicit-fallthrough=5 -Wduplicated-branches -Wtrampolines \
  	-Wdangling-else -Wshift-overflow=2 -Wswitch \
  	-Wunused-but-set-parameter -Wunused-const-variable=1 -Wuninitialized \
