@@ -56,6 +56,7 @@ OPTIONAL_PACKAGES += " \
 	openresolv \
 	openssh \
 	openvpn \
+	easy-rsa \
 	parted \
 	picocom \
 	ppp \
