@@ -1,0 +1,18 @@
+--- a/src/ts_setup.c
++++ b/src/ts_setup.c
+@@ -78,6 +78,7 @@ static char *scan_devices(void)
+ 		if (fd < 0)
+ 			continue;
+ 
++#ifdef EVIOCGPROP
+ 		if ((ioctl(fd, EVIOCGPROP(sizeof(propbit)), propbit) < 0) ||
+ 			!(propbit[BIT_WORD(INPUT_PROP_DIRECT)] &
+ 				  BIT_MASK(INPUT_PROP_DIRECT))) {
+@@ -96,6 +97,7 @@ static char *scan_devices(void)
+ 				i);
+ 			break;
+ 		}
++#endif
+ 	}
+ 
+ 	for (i = 0; i < ndev; ++i)
