@@ -34,7 +34,7 @@ PACKAGES = "${PN}"
 INHIBIT_PACKAGE_STRIP = "1"
 INSANE_SKIP:${PN}:append = " already-stripped"
 
-RDEPENDS:${PN} += "dreambox-secondstage-${MACHINE} kernel-${DM_LOCALVERSION}"
+RDEPENDS:${PN} += "dreambox-secondstage-${MACHINE} kernel-${DM_LOCALVERSION} kernel-vmlinux"
 
 # We don't use KERNEL_VERSION in this recipe, because the
 # precompiled modules depend on a specific version.

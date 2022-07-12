@@ -33,5 +33,5 @@ do_install() {
 
 PACKAGES = "${PN}"
 FILESEXTRAPATHS:prepend := "${THISDIR}/dreambox-dvb-modules:"
-RDEPENDS:${PN} += "kernel-module-stv0299 dreambox-secondstage-${MACHINE} kernel-${DM_LOCALVERSION}"
+RDEPENDS:${PN} += "kernel-module-stv0299 dreambox-secondstage-${MACHINE} kernel-${DM_LOCALVERSION} kernel-vmlinux"
 FILES:${PN} += "${sysconfdir}/modules-load.d/${PN}.conf /lib/modules/${DM_LOCALVERSION}/extra"
