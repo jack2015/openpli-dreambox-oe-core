@@ -24,14 +24,14 @@ inherit pypi setuptools pkgconfig
 
 # {standard input}: Assembler messages:
 # {standard input}:1488805: Error: branch out of range
-DEBUG_OPTIMIZATION:remove_mipsel = " -Og"
-DEBUG_OPTIMIZATION:append_mipsel = " -O"
-BUILD_OPTIMIZATION:remove_mipsel = " -Og"
-BUILD_OPTIMIZATION:append_mipsel = " -O"
+DEBUG_OPTIMIZATION:remove:mipsel = " -Og"
+DEBUG_OPTIMIZATION:append:mipsel = " -O"
+BUILD_OPTIMIZATION:remove:mipsel = " -Og"
+BUILD_OPTIMIZATION:append:mipsel = " -O"
 
 BBCLASSEXTEND = "native nativesdk"
 
-RDEPENDS_${PN} += "libxml2 libxslt ${PYTHON_PN}-compression"
+RDEPENDS:${PN} += "libxml2 libxslt ${PYTHON_PN}-compression"
 
 CLEANBROKEN = "1"
 

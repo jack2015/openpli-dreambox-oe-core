@@ -57,13 +57,13 @@ python(){
                 if value.endswith('.py'):
                     d.appendVar('FILES:' + pypackage, ' ' + value + 'o')
 
-        d.setVar('RDEPENDS_' + pypackage, '')
+        d.setVar('RDEPENDS:' + pypackage, '')
         for value in python_manifest[key]['rdepends']:
             # Make it work with or without $PN
             if '${PN}' in value:
                 value=value.split('-')[1]
-            d.appendVar('RDEPENDS_' + pypackage, ' ' + pn + '-' + value)
-        d.setVar('SUMMARY_' + pypackage, python_manifest[key]['summary'])
+            d.appendVar('RDEPENDS:' + pypackage, ' ' + pn + '-' + value)
+        d.setVar('SUMMARY:' + pypackage, python_manifest[key]['summary'])
 
     # We need to ensure staticdev packages match for files first so we sort in reverse
     newpackages.sort(reverse=True)
