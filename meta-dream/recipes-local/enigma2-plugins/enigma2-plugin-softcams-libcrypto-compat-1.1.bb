@@ -1,7 +1,7 @@
-SUMMARY = "Compatibility packages that link to older libcrypto and libssl"
+SUMMARY = "Compatibility packages that link to older libcrypto and libssl =1.1"
 require conf/license/license-gplv2.inc
 
-RRECOMMENDS:${PN} = "libcrypto-compat"
+RRECOMMENDS:${PN} = "libcrypto-compat-1.1"
 
 PV = "1.0"
 PR = "r0"

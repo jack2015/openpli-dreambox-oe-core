@@ -19,7 +19,8 @@ EXTERNAL_WIFI_DRIVERS = ""
 
 ENIGMA2_PLUGINS = " \
 	enigma2-plugin-drivers-ntfs-3g \
-	enigma2-plugin-softcams-libcrypto-compat \
+	enigma2-plugin-softcams-libcrypto-compat-1.0.2 \
+	enigma2-plugin-softcams-libcrypto-compat-1.1 \
 	enigma2-plugin-language-zh-cn \
 	enigma2-plugin-language-de \
 	enigma2-plugin-language-en \

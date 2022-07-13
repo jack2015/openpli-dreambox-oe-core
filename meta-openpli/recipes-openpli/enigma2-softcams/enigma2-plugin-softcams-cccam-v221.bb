@@ -1,5 +1,5 @@
 require conf/license/openpli-gplv2.inc
-SUMMARY = "CCcam Softcam for DM800se Ver2.2.1"
+SUMMARY = "CCcam Softcam for mipsel Ver2.2.1"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 INHIBIT_PACKAGE_STRIP = "1"

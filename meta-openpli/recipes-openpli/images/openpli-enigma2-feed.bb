@@ -104,6 +104,8 @@ OPTIONAL_PACKAGES += " \
 
 OPTIONAL_BSP_ENIGMA2_PACKAGES ?= ""
 ENIGMA2_OPTIONAL = " \
+	enigma2-plugin-softcams-libcrypto-compat-1.0.2 \
+	enigma2-plugin-softcams-libcrypto-compat-1.1 \
 	${@bb.utils.contains_any("MACHINE", "dm900 dm920", "enigma2-display-skins", "", d)} \
 	${@bb.utils.contains("MACHINE_FEATURES", "grautec", "enigma2-plugin-extensions-grautec", "", d)} \
 	channelsettings-enigma2-meta \

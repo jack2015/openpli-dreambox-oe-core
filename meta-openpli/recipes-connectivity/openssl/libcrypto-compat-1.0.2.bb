@@ -1,7 +1,11 @@
-SUMMARY = "Compatibility for packages that link to older libcrypto or libssl"
+SUMMARY = "Compatibility for packages that link to older libcrypto or libssl 1.0.2"
 require conf/license/license-gplv2.inc
 INHIBIT_PACKAGE_STRIP = "1"
 INSANE_SKIP:${PN}:append = " already-stripped"
+PV = "1.0"
+PR = "r0"
+FILESEXTRAPATHS:prepend := "${THISDIR}/libcrypto-compat:"
+
 S = "${WORKDIR}"
 
 SRC_URI = " \
