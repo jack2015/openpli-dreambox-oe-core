@@ -29,6 +29,7 @@ SRCREV = "${AUTOREV}"
 
 PV = "git${SRCPV}"
 PKGV = "${GITPKGVTAG}"
+PR = "r8"
 SRC_URI = "git://gitlab.com/jack2015/e2openplugin-OpenWebif.git;protocol=https;branch=master \
 	file://dm800sev2.png"
 
