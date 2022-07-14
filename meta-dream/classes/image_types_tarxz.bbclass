@@ -18,3 +18,5 @@ CONVERSION_CMD:xz = " \
     rm -f ./*.manifest; \
     rm -f ./imageversion; \
     "
+
+REPRODUCIBLE_TIMESTAMP_ROOTFS = "${@time.strftime('%s')}"

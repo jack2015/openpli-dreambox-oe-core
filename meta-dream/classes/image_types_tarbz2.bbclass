@@ -23,3 +23,5 @@ CONVERSION_CMD:bz2 = " \
     rm -f *.manifest; \
     rm -rf ${IMAGEDIR}; \
     "
+
+REPRODUCIBLE_TIMESTAMP_ROOTFS = "${@time.strftime('%s')}"
