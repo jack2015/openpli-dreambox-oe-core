@@ -11,6 +11,7 @@ BCMNUMBER = "bcm7439"
 inherit module-base
 
 INHIBIT_PACKAGE_STRIP = "1"
+INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
 INHIBIT_SYSROOT_STRIP = "1"
 
 INSANE_SKIP:${PN} += "already-stripped"

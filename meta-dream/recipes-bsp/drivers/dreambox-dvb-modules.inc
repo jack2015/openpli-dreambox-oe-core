@@ -5,6 +5,7 @@ DEPENDS += "virtual/kernel"
 PRIORITY = "required"
 
 INHIBIT_PACKAGE_STRIP = "1"
+INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
 INSANE_SKIP:${PN}:append = " already-stripped"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
