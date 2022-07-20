@@ -43,6 +43,5 @@ KERNEL_OUTPUT_DIR = "."
 KERNEL_CONSOLE = "${@bb.utils.contains('MACHINE_FEATURES', 'usbconsole', 'ttyS0,115200', 'null', d)}"
 
 DREAMBOX_BUILDIMAGE = "buildimage --arch ${MACHINE} ${EXTRA_BUILDCMD} \
-	--erase-block-size ${DREAMBOX_ERASE_BLOCK_SIZE} \
-	--flash-size ${DREAMBOX_FLASH_SIZE} \
-	--sector-size ${DREAMBOX_SECTOR_SIZE}"
+    --erase-block-size ${DREAMBOX_ERASE_BLOCK_SIZE} \
+    --sector-size ${DREAMBOX_SECTOR_SIZE}"
