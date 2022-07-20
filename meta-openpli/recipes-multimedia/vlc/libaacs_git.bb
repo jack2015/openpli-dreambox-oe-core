@@ -8,7 +8,7 @@ PV = "0.11.0+git${SRCPV}"
 PKGV = "0.11.0+git${GITPKGV}"
 
 # make the origin overridable from OE config, for local mirroring
-SRC_ORIGIN ?= "git://code.videolan.org/videolan/libaacs.git;protocol=https"
+SRC_ORIGIN ?= "git://code.videolan.org/videolan/libaacs.git;protocol=https;branch=master"
 SRC_URI := "\
     ${SRC_ORIGIN} \
     file://libgcrypt-gpg-error-use-pkgconfig.patch \

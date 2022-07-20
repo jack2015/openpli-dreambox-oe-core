@@ -16,7 +16,7 @@ PR[vardepsexclude] += "DATE"
 
 do_configure[nostamp] = "1"
 
-SRC_URI="git://gitlab.com/jack2015/branding-module.git;protocol=https"
+SRC_URI="git://gitlab.com/jack2015/branding-module.git;protocol=https;branch=master"
 
 S = "${WORKDIR}/git"
 

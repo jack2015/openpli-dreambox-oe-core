@@ -9,7 +9,7 @@ PV = "2.1+git${SRCPV}"
 PKGV = "2.1+git${GITPKGV}"
 SRCREV = "${AUTOREV}"
 
-SRC_URI = "git://gitlab.com/jack2015/WeatherPlugin2.git;protocol=https"
+SRC_URI = "git://gitlab.com/jack2015/WeatherPlugin2.git;protocol=https;branch=master"
 
 FILES:${PN} = "${libdir}"
 

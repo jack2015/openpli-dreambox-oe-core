@@ -8,7 +8,7 @@ DEPENDS = "freetype libtuxtxt"
 
 inherit autotools pkgconfig gitpkgv
 
-SRC_URI = "git://gitlab.com/jack2015/tuxtxt.git;protocol=https \
+SRC_URI = "git://gitlab.com/jack2015/tuxtxt.git;protocol=https;branch=master \
 	file://0002-Use-separate-transparency-for-menu-and-teletext.patch \
 	${@bb.utils.contains('DISTRO_FEATURES', 'tuxtxtfhd', 'file://tuxtxt_FHD.patch', '', d)} \
 	${@bb.utils.contains('DISTRO_FEATURES', 'tuxtxtfhd', ' \

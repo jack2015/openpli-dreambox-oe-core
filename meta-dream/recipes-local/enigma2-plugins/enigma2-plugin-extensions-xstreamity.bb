@@ -13,7 +13,7 @@ PV = "3.58+git${SRCPV}"
 PKGV = "3.58+git${GITPKGV}"
 PR = "r0"
 
-SRC_URI = "git://gitlab.com/jack2015/XStreamity.git;protocol=https"
+SRC_URI = "git://gitlab.com/jack2015/XStreamity.git;protocol=https;branch=master"
 
 S = "${WORKDIR}/git"
 FILES:${PN} = "/usr/"
