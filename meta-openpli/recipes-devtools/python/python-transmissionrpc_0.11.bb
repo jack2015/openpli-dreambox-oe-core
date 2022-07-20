@@ -4,7 +4,7 @@ SECTION = "devel/python"
 PRIORITY = "optional"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://PKG-INFO;md5=584bf581d06c2ed41ccd154e1b06c5ab"
-RDEPENDS_${PN} = "python-simplejson"
+RDEPENDS:${PN} = "python-simplejson"
 
 SRC_URI = "https://files.pythonhosted.org/packages/f5/f8/96a979b669a7219cb4299ea5512e1678ba7f59d91bd8a952c51405131768/transmissionrpc-${PV}.tar.gz"
 
