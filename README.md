@@ -11,7 +11,7 @@ In comparison to OpenPLi this repository has:<br>
 -Glibc 2.35<br>
 -GStreamer 1.18.6<br>
 -Python 2.7.18<br>
--OpenSSL 3.0.4<br>
+-OpenSSL 3.0.5<br>
 -Busybox 1.35.0<br>
 
 ******************************************************
