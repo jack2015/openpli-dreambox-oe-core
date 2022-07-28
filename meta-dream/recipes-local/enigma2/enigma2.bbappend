@@ -2,6 +2,27 @@ ENIGMA2_BRANCH = "develop"
 ENIGMA2_BRANCH:dm800se = "dm800se"
 ENIGMA2_BRANCH:dm800sev2 = "dm800se"
 
+SRC_URI = " git://gitee.com/jackgee2021/enigma2-openpli.git;protocol=https;branch=${ENIGMA2_BRANCH} \
+	file://001-use-mallinfo2.patch \
+	file://002-fix-build-gcc11.patch \
+	file://003-get-rid-of-register-keyword.patch \
+	file://005-suppress-compile-errors.patch \
+	"
+
+SRC_URI:dm800se = " git://gitee.com/jackgee2021/enigma2-openpli.git;protocol=https;branch=${ENIGMA2_BRANCH} \
+	file://001-use-mallinfo2.patch \
+	file://002-fix-build-gcc11.patch \
+	file://003-get-rid-of-register-keyword.patch \
+	file://004-suppress-compile-errors.patch \
+	"
+
+SRC_URI:dm800sev2 = " git://gitee.com/jackgee2021/enigma2-openpli.git;protocol=https;branch=${ENIGMA2_BRANCH} \
+	file://001-use-mallinfo2.patch \
+	file://002-fix-build-gcc11.patch \
+	file://003-get-rid-of-register-keyword.patch \
+	file://004-suppress-compile-errors.patch \
+	"
+
 do_install:append() {
 	find ${D}/usr/share/enigma2/rc_models/ -name '*.png' -exec rm {} \;
 	find ${D}/usr/share/enigma2/rc_models/ -name '*.xml' -exec rm {} \;

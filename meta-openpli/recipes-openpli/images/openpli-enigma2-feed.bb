@@ -120,12 +120,14 @@ ENIGMA2_OPTIONAL = " \
 	enigma2-plugin-softcams-cccam-v230 \
 	enigma2-plugin-softcams-cccam-v232 \
 	enigma2-plugin-softcams-cccam-v238 \
+	enigma2-plugin-softcams-cccam-v239 \
 	enigma2-plugin-softcams-mgcamd-v135a \
 	enigma2-plugin-softcams-mgcamd-v145c \
 	", "", d)} \
 	${@bb.utils.contains("TARGET_ARCH", "arm", " \
 	enigma2-plugin-softcams-cccam-v232-arm \
 	enigma2-plugin-softcams-cccam-v238-arm \
+	enigma2-plugin-softcams-cccam-v239-arm \
 	enigma2-plugin-softcams-mgcamd-v135a-arm \
 	", "", d)} \
 	enigma2-plugin-extensions-keyadder \

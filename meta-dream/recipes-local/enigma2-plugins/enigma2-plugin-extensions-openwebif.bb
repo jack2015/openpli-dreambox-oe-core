@@ -25,13 +25,18 @@ inherit gittag distutils-openplugins gettext
 
 DISTUTILS_INSTALL_ARGS = "--root=${D} --install-lib=${libdir}/enigma2/python/Plugins"
 
-SRCREV = "${AUTOREV}"
+#ver 1.5.2
+SRCREV = "750dee9e557cc8ef053eabb7da5ff827b3f609a4"
 
 PV = "git${SRCPV}"
 PKGV = "${GITPKGVTAG}"
 PR = "r8"
 SRC_URI = "git://gitlab.com/jack2015/e2openplugin-OpenWebif.git;protocol=https;branch=master \
 	file://dm800sev2.png"
+
+#ver 1.3.9
+SRCREV:dm800se = "fcf12a42d446022a90b7617a297ba676fc6cfcfe"
+SRCREV:dm500hd = "fcf12a42d446022a90b7617a297ba676fc6cfcfe"
 
 PV:dm800se = "1.3.9+git${SRCPV}"
 PKGV:dm800se = "1.3.9+git${GITPKGV}"
