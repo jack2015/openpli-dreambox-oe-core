@@ -2,10 +2,10 @@
 case "$1" in
 start)
 	ulimit -s 1024
-	exec start-stop-daemon -S -x /usr/bin/CCcam238
+	exec start-stop-daemon -S -x /usr/bin/CCcam239
 	;;
 stop)
-	exec start-stop-daemon -K -R 2 -x /usr/bin/CCcam238
+	exec start-stop-daemon -K -R 2 -x /usr/bin/CCcam239
 	;;
 restart|reload)
 	$0 stop
@@ -13,10 +13,10 @@ restart|reload)
 	$0 start
 	;;
 version)
-	echo "2.3.8"
+	echo "2.3.9"
 	;;
 info)
-	echo "CCcam 2.3.8"
+	echo "CCcam 2.3.9"
 	;;
 *)
 	echo "Usage: $0 start|stop|restart"
