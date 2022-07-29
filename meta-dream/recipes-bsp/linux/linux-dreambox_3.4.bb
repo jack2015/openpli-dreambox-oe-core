@@ -24,6 +24,7 @@ SRC_URI = " \
     file://0002-cp1emu-do-not-use-bools-for-arithmetic.patch \
     file://0003-makefile-silence-packed-not-aligned-warn.patch \
     file://0004-fcrypt-fix-bitoperation-for-gcc.patch \
+    file://fix-never-be-null_outside-array-bounds-gcc-12.patch \
 "
 
 SRC_URI[kernel.md5sum] = "967f72983655e2479f951195953e8480"
