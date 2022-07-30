@@ -10,7 +10,7 @@ inherit gitpkgv
 PKGV = "4.x+git${GITPKGV}"
 PV = "4.x+git${SRCPV}"
 
-SRC_URI = "git://gitlab.com/jack2015/ofgwrite.git;protocol=https;branch=master"
+SRC_URI = "git://gitee.com/jackgee2021/ofgwrite.git;protocol=https;branch=master"
 
 inherit autotools-brokensep pkgconfig
 
