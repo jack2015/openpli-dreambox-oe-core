@@ -11,9 +11,11 @@ rm -f build/bitbake.lock
 rm -f build/bitbake.sock
 clear
 
-python --version 2>> /tmp/python-version
-python --version > /tmp/python-version
-if grep -qs -i 'Python 3' cat /tmp/python-version ; then
+python --version 2>&1 | awk '{print $2}' > /tmp/python-version
+
+if grep -qs -i '2.7' cat /tmp/python-version ; then
+    echo 'Your python version is ok'
+else
     echo -e "${RED}Python version is wrong!"
     echo -e "It means you need to choose Python2!"
     sudo update-alternatives --config python
