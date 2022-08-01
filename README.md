@@ -40,7 +40,7 @@ sudo dpkg-reconfigure dash
 ```
 
 Build image step & step:<br>
-git clone git@github.com:jack2015/openpli-dreambox-oe-core.git<br>
+git clone https://github.com/jack2015/openpli-dreambox-oe-core.git<br>
 cd openpli-dreambox-oe-core<br>
 make update<br>
 ./image.sh
