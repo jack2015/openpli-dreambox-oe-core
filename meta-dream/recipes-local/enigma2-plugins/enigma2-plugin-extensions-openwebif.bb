@@ -30,17 +30,17 @@ SRCREV = "${AUTOREV}"
 PV = "git${SRCPV}"
 PKGV = "${GITPKGVTAG}"
 PR = "r8"
-SRC_URI = "git://gitlab.com/jack2015/e2openplugin-OpenWebif.git;protocol=https;branch=master \
+SRC_URI = "git://gitee.com/jackgee2021/e2openplugin-OpenWebif.git;protocol=https;branch=master \
 	file://dm800sev2.png"
 
 PV:dm800se = "1.3.9+git${SRCPV}"
 PKGV:dm800se = "1.3.9+git${GITPKGV}"
-SRC_URI:dm800se = "git://gitlab.com/jack2015/e2openplugin-OpenWebif.git;protocol=https;branch=NoSix \
+SRC_URI:dm800se = "git://gitee.com/jackgee2021/e2openplugin-OpenWebif.git;protocol=https;branch=NoSix \
 	file://dm800sev2.png"
 
 PV:dm500hd = "1.3.9+git${SRCPV}"
 PKGV:dm500hd = "1.3.9+git${GITPKGV}"
-SRC_URI:dm500hd = "git://gitlab.com/jack2015/e2openplugin-OpenWebif.git;protocol=https;branch=NoSix \
+SRC_URI:dm500hd = "git://gitee.com/jackgee2021/e2openplugin-OpenWebif.git;protocol=https;branch=NoSix \
 	file://dm800sev2.png"
 
 S="${WORKDIR}/git"

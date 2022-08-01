@@ -1,5 +1,16 @@
 #!/bin/sh
 
+##############################
+# Packages required:  dialog #
+##############################
+
+CHECK=`which dialog`
+[ ! $CHECK = /usr/bin/dialog ] && sudo apt install -y dialog
+echo -e "" 
+rm -f build/bitbake.lock
+rm -f build/bitbake.sock
+clear
+
 python --version 2>> /tmp/python-version
 python --version > /tmp/python-version
 if grep -qs -i 'Python 3' cat /tmp/python-version ; then
