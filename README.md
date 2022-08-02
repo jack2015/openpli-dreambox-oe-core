@@ -43,7 +43,16 @@ sudo dpkg-reconfigure dash
 ↳ Select "NO" when asked "Install dash as /bin/sh?"
 ```
 
-4. Build image step & step:
+4. Install gcc11:
+```
+sudo apt-get install software-properties-common
+sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+sudo apt-get -q update
+sudo apt-get install gcc-11 g++-11
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 100 --slave /usr/bin/g++ g++ /usr/bin/g++-11 --slave /usr/bin/gcov gcov /usr/bin/gcov-11
+```
+
+5. Build image step & step:
 ```
 git clone https://github.com/jack2015/openpli-dreambox-oe-core.git
 cd openpli-dreambox-oe-core
