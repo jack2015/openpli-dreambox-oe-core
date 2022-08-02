@@ -4,7 +4,7 @@ LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=c9e255efa454e0155c1fd758df7dcaf3"
 
 S = "${WORKDIR}/git"
-SRC_URI = " git://gitlab.com/jack2015/dvbapp.git;protocol=https;branch=vuplus_experimental \
+SRC_URI = " git://gitee.com/jackgee2021/dvbapp.git;protocol=https;branch=vuplus_experimental \
 	file://enigma2-plugin-systemplugins-dlnabrowser_20130723.patch \
 "
 

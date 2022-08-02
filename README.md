@@ -20,23 +20,28 @@ Tested with Ubuntu 22.04<br><br>
 
 1. Dependencies:
 ```
-sudo apt install dialog upx-ucl autoconf automake bison bzip2 cvs diffstat flex g++ gawk gcc gettext git git-lfs gzip help2man ncurses-bin lib32ncurses-dev libc6-dev libtool make texinfo patch perl pkg-config subversion tar texi2html zlib1g-dev chrpath libxml2-utils lz4 xsltproc libglib2.0-dev python-setuptools libc6-i386 genromfs guile-2.2-libs quilt zstd
+sudo apt install dialog upx-ucl autoconf automake bison bzip2 cvs diffstat 
+flex g++ gawk gcc gettext git git-lfs gzip help2man ncurses-bin lib32ncurses-dev 
+libc6-dev libtool make texinfo patch perl pkg-config subversion tar texi2html 
+zlib1g-dev chrpath libxml2-utils lz4 xsltproc libglib2.0-dev python-setuptools 
+libc6-i386 genromfs guile-2.2-libs quilt zstd
+
 ```
 
 2. Set python2 as preferred provider for python
 ```
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 1
-
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 2
-
 sudo update-alternatives --config python
 ↳ Select python2
+
 ```
 
 3. Set your shell to /bin/bash
 ```
 sudo dpkg-reconfigure dash
 ↳ Select "NO" when asked "Install dash as /bin/sh?"
+
 ```
 
 Build image step & step:<br>
