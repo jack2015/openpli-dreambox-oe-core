@@ -103,27 +103,6 @@ inherit gitpkgv pythonnative
 PV = "2.7+git${SRCPV}"
 PKGV = "2.7+git${GITPKGV}"
 
-SRC_URI = " git://gitlab.com/jack2015/enigma2-openpli.git;protocol=https;branch=${ENIGMA2_BRANCH} \
-	file://001-use-mallinfo2.patch \
-	file://002-fix-build-gcc11.patch \
-	file://003-get-rid-of-register-keyword.patch \
-	file://005-suppress-compile-errors.patch \
-	"
-
-SRC_URI:dm800se = " git://gitlab.com/jack2015/enigma2-openpli.git;protocol=https;branch=${ENIGMA2_BRANCH} \
-	file://001-use-mallinfo2.patch \
-	file://002-fix-build-gcc11.patch \
-	file://003-get-rid-of-register-keyword.patch \
-	file://004-suppress-compile-errors.patch \
-	"
-
-SRC_URI:dm800sev2 = " git://gitlab.com/jack2015/enigma2-openpli.git;protocol=https;branch=${ENIGMA2_BRANCH} \
-	file://001-use-mallinfo2.patch \
-	file://002-fix-build-gcc11.patch \
-	file://003-get-rid-of-register-keyword.patch \
-	file://004-suppress-compile-errors.patch \
-	"
-
 LDFLAGS:prepend = " -lxml2 "
 
 S = "${WORKDIR}/git"

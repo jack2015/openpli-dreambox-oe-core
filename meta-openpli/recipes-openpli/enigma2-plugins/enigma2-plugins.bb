@@ -29,7 +29,7 @@ inherit gitpkgv pythonnative pkgconfig
 PV = "y-git${SRCPV}"
 PKGV = "y-git${GITPKGV}"
 
-SRC_URI = "git://gitlab.com/jack2015/enigma2-plugins.git;protocol=https;branch=master"
+SRC_URI = "git://gitee.com/jackgee2021/enigma2-plugins.git;protocol=https;branch=master"
 
 EXTRA_OECONF = " \
 	BUILD_SYS=${BUILD_SYS} \
