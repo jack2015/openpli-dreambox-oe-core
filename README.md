@@ -1,22 +1,23 @@
 Build environment based on OpenPLi-homebuild(develop branch).
 
-https://github.com/OpenPLi/openpli-oe-core/commits/develop <br>
+https://github.com/OpenPLi/openpli-oe-core/commits/develop
 https://github.com/Hains
 
 Thanks to OpenPLi & Hains.
 
-In comparison to OpenPLi this repository has:<br>
--Submodules bitbake, openembedded-core and meta-openembedded from kirkstone branch,<br>
--GCC 11.3.0<br>
--Glibc 2.35<br>
--GStreamer 1.18.6<br>
--Python 2.7.18<br>
--OpenSSL 3.0.5<br>
--Busybox 1.35.0<br>
+In comparison to OpenPLi this repository has:
+-Submodules bitbake, openembedded-core and meta-openembedded from kirkstone branch,
+-GCC 11.3.0
+-Glibc 2.35
+-GStreamer 1.18.6
+-Python 2.7.18
+-OpenSSL 3.0.5
+-Busybox 1.35.0
 
 ******************************************************
 
-Tested with Ubuntu 18.04.06<br><br>
+Tested with Ubuntu 18.04.06
+
 1. Dependencies:
 ```
 sudo apt install dialog upx-ucl autoconf automake bison bzip2 cvs diffstat 
@@ -32,9 +33,7 @@ sudo apt-get install software-properties-common
 sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
 sudo apt-get -q update
 sudo apt-get install gcc-11 g++-11
-sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 100 \
---slave /usr/bin/g++ g++ /usr/bin/g++-11 \
---slave /usr/bin/gcov gcov /usr/bin/gcov-11
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 100 --slave /usr/bin/g++ g++ /usr/bin/g++-11 --slave /usr/bin/gcov gcov /usr/bin/gcov-11
 ```
 
 3. Set python2 as preferred provider for python:
