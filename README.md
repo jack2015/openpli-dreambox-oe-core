@@ -28,7 +28,7 @@ libc6-i386 genromfs guile-2.2-libs quilt zstd
 
 ```
 
-2. Set python2 as preferred provider for python
+2. Set python2 as preferred provider for python:
 ```
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 1
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 2
@@ -37,15 +37,16 @@ sudo update-alternatives --config python
 
 ```
 
-3. Set your shell to /bin/bash
+3. Set your shell to /bin/bash:
 ```
 sudo dpkg-reconfigure dash
 ↳ Select "NO" when asked "Install dash as /bin/sh?"
-
 ```
 
-Build image step & step:<br>
+4. Build image step & step:
+```
 git clone https://github.com/jack2015/openpli-dreambox-oe-core.git<br>
 cd openpli-dreambox-oe-core<br>
 make update<br>
 ./image.sh
+```
