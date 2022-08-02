@@ -10,8 +10,8 @@ RDEPENDS:${PN} = "ffmpeg"
 inherit gitpkgv
 
 SRCREV = "2063d983e9c0181270da847995e8dd90590432ee"
-PV = "1.0+gitr${SRCPV}"
-PKGV = "1.0+gitr${GITPKGV}"
+PV = "1.0+git${SRCPV}"
+PKGV = "1.0+git${GITPKGV}"
 
 SRC_URI = "git://gitee.com/jackgee2021/exteplayer3.git;protocol=https;branch=master"
 
