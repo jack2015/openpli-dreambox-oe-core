@@ -26,7 +26,8 @@ EXTRA_OECONF = "\
 	"
 
 do_install:append() {
-	rm ${D}${libdir}/enigma2/python/Plugins/SystemPlugins/ServiceApp/*.pyc
+	find ${D}/ -name '*.pyc' -exec rm {} \;
+	find ${D}/ -name '*.sh' -exec chmod a+x {} \;
 }
 
 FILES:${PN} = "\
