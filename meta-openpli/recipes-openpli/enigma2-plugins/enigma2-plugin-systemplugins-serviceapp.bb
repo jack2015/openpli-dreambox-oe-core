@@ -9,14 +9,14 @@ DEPENDS = "enigma2 uchardet openssl"
 RDEPENDS:${PN} = "enigma2 uchardet openssl python-json"
 RRECOMMENDS:${PN} = "exteplayer3 gstplayer"
 
-SRC_URI = "git://gitlab.com/jack2015/serviceapp.git;protocol=https;branch=develop"
+SRC_URI = "git://gitee.com/jackgee2021/serviceapp.git;protocol=https;branch=develop"
 
 S = "${WORKDIR}/git"
 
 inherit autotools gitpkgv pythonnative pkgconfig gettext
 
-PV = "git${SRCPV}"
-PKGV = "git${GITPKGV}"
+PV = "1.0+git${SRCPV}"
+PKGV = "1.0+git${GITPKGV}"
 
 EXTRA_OECONF = "\
 	BUILD_SYS=${BUILD_SYS} \
