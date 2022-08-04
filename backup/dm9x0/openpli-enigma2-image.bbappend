@@ -55,7 +55,6 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-extensions-openwebif-themes \
 	enigma2-plugin-extensions-oscamstatus \
 	enigma2-plugin-extensions-pictureplayer \
-	enigma2-plugin-extensions-ppanel \
 	enigma2-plugin-extensions-youtube \
 	enigma2-plugin-extensions-e2iplayer \
 	enigma2-plugin-softcams-oscam \
