@@ -132,6 +132,9 @@ export MACHINESIMS
 DISTRONET = $(DISTRONETS)
 export DISTRONET
 
+CODEWEBSITE = $(CODEWEB)
+export CODEWEBSITE
+
 BITBAKE_ENV_HASH := $(call hash, \
 	'BITBAKE_ENV_VERSION = "0"' \
 	'CURDIR = "$(CURDIR)"' \
@@ -139,10 +142,11 @@ BITBAKE_ENV_HASH := $(call hash, \
 
 $(TOPDIR)/env.source: $(DEPDIR)/.env.source.$(BITBAKE_ENV_HASH)
 	@echo 'Generating $@'
-	@echo 'export BB_ENV_PASSTHROUGH_ADDITIONS="MACHINE DMTYPE MACHINESIMS DISTRONET BB_SRCREV_POLICY"' > $@
+	@echo 'export BB_ENV_PASSTHROUGH_ADDITIONS="MACHINE DMTYPE MACHINESIMS DISTRONET CODEWEBSITE BB_SRCREV_POLICY"' > $@
 	@echo 'export MACHINE' >> $@
 	@echo 'export DMTYPE' >> $@
 	@echo 'export MACHINESIMS' >> $@
+	@echo 'export CODEWEBSITE' >> $@
 	@echo 'export PATH=$(CURDIR)/openembedded-core/scripts:$(CURDIR)/bitbake/bin:$${PATH}' >> $@
 	@echo 'if [[ $$DISTRONET = "local" ]]; then' >> $@
 	@echo '    export BB_SRCREV_POLICY="cache"' >> $@
