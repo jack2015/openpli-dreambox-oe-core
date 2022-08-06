@@ -4,7 +4,9 @@ MAINTAINER = "Open Vision Developers"
 AUTHOR = "Pedro Newbie <pedro.newbie@gmail.com>"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=84dcc94da3adb52b53ae4fa38fe49e5d"
 
-SRC_URI = "git://gitee.com/jackgee2021/BackupSuite-PLi.git;protocol=https;branch=master"
+GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
+
+SRC_URI = "${GIT_SITE}/BackupSuite-PLi.git;protocol=https;branch=master"
 
 # don't inherit allarch, it can't work with arch-dependent RDEPENDS
 inherit gitpkgv distutils-openplugins gettext

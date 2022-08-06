@@ -23,7 +23,9 @@ LIC_FILES_CHKSUM = "file://COPYING.GPLv2;md5=b234ee4d69f5fce4486a80fdaf4a4263 \
                     file://COPYING.LGPLv2.1;md5=bd7a443320af8c812e4c18d1b79df004 \
                     file://COPYING.LGPLv3;md5=e6a600fd5e1d9cbde2d983680233ad02"
 
-SRC_URI = "git://gitee.com/jackgee2021/FFmpeg.git;protocol=https;branch=release/4.4 \
+GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
+
+SRC_URI = "${GIT_SITE}/FFmpeg.git;protocol=https;branch=release/4.4 \
            file://0001-libavutil-include-assembly-with-full-path-from-sourc.patch \
            file://0002-fix-mpegts.patch \
            file://0003-allow-to-choose-rtmp-impl-at-runtime.patch \
