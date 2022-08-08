@@ -162,9 +162,11 @@ codes=$(dialog --stdout --clear --colors --menu "Select build code source" 12 60
     case $codes in
     1)
     codesource="gitlab"
+    codesource2="gitlab"
     ;;
     2)
     codesource=""
+    codesource2="gitee"
     ;;
     *) clear && exit ;;
     esac
@@ -184,22 +186,22 @@ list=($list)
 build=$(dialog --stdout --clear --colors --menu "Select build type" 12 60 10 ${list[@]})
     case $build in
     1)
-    echostr="Compiling $machinespecific image with $codesource, please wait ..."
+    echostr="Compiling $machinespecific image with $codesource2, please wait ..."
     MAKETYPE="image"
     DISTROSTR="local"
     ;;
     2)
-    echostr="Compiling $machinespecific image and feed with $codesource, please wait ..."
+    echostr="Compiling $machinespecific image and feed with $codesource2, please wait ..."
     MAKETYPE="feed"
     DISTROSTR="local"
     ;;
     3)
-    echostr="Compiling $machinespecific image with good network with $codesource, please wait ..."
+    echostr="Compiling $machinespecific image with good network with $codesource2, please wait ..."
     MAKETYPE="image"
     DISTROSTR="network"
     ;;
     4)
-    echostr="Compiling $machinespecific image and feed with good network with $codesource, please wait ..."
+    echostr="Compiling $machinespecific image and feed with good network with $codesource2, please wait ..."
     MAKETYPE="feed"
     DISTROSTR="network"
     ;;
