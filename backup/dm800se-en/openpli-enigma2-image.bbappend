@@ -8,6 +8,8 @@ IMAGE_INSTALL += " \
 	busybox-cron \
 	"
 
+DEPENDS += " upx-native"
+
 KERNEL_WIFI_DRIVERS = ""
 
 EXTERNAL_WIFI_DRIVERS = ""
