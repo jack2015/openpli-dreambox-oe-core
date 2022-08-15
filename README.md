@@ -8,7 +8,7 @@ Thanks to OpenPLi & Hains.
 In comparison to OpenPLi this repository has:<br>
 -Submodules bitbake, openembedded-core and meta-openembedded from master branch,<br>
 -GCC 12.1.0<br>
--Glibc 2.35<br>
+-Glibc 2.36<br>
 -GStreamer 1.18.6<br>
 -Python 2.7.18<br>
 -OpenSSL 3.0.5<br>
