@@ -2,10 +2,6 @@ ENIGMA2_BRANCH = "develop"
 ENIGMA2_BRANCH:dm800se = "dm800se"
 ENIGMA2_BRANCH:dm800sev2 = "dm800se"
 
-PYTHON_RDEPS:append = " \
-	python-netifaces \
-	"
-
 GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
 
 SRC_URI = "${GIT_SITE}/enigma2-openpli.git;protocol=https;branch=${ENIGMA2_BRANCH} \

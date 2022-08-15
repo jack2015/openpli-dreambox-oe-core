@@ -3,6 +3,8 @@ IMAGE_INSTALL:remove = "hdparm"
 IMAGE_INSTALL:remove = "3rd-party-feed-configs"
 IMAGE_INSTALL:remove = "settings-autorestore"
 
+DEPENDS += " upx-native"
+
 IMAGE_INSTALL += " \
 	bitratecalc \
 	busybox-cron \
