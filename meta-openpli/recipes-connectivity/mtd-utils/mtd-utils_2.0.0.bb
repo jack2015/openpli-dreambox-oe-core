@@ -21,6 +21,7 @@ SRC_URI = "git://git.infradead.org/mtd-utils.git;protocol=git;branch=master \
            file://mkfs.ubifs-allow-output-file-creation-on-different-device.patch \
            file://no_deatach_check.patch \
            file://0001-nanddump-Truncate-empty-blocks-FF-from-dump.patch \
+           file://0001-tests-Remove-unused-linux-fs.h-header-from-includes.patch \
 "
 
 S = "${WORKDIR}/git"
