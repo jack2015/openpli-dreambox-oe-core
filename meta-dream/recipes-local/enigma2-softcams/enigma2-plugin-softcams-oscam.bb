@@ -4,7 +4,7 @@ require oscam-version.inc
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 PACKAGES = "${PN}"
 CAMNAME = "oscam"
-DEPENDS = "libusb openssl"
+DEPENDS = "libusb openssl upx-native"
 
 inherit cmake gitpkgv
 
