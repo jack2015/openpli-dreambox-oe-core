@@ -16,7 +16,7 @@ In comparison to OpenPLi this repository has:<br>
 
 ******************************************************
 
-Tested with Ubuntu 18.04.06
+Tested with Ubuntu 18.04.06 & 22.04
 
 1. Dependencies:
 ```
