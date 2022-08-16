@@ -3,7 +3,7 @@ DESCRIPTION = "Shell In A Box implements a web server that can export arbitrary 
 HOMEPAGE = "https://github.com/shellinabox/shellinabox"
 LICENSE = "GPLv2"
 require conf/license/license-gplv2.inc
-DEPENDS = "zlib"
+DEPENDS = "zlib upx-native"
 
 SRCREV = "${AUTOREV}"
 PV = "2.21+git${SRCPV}"
