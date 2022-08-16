@@ -21,10 +21,10 @@ Tested with Ubuntu 18.04.06<br><br>
 
 1. Dependencies:
 ```
-sudo apt install dialog autoconf automake bison bzip2 cvs diffstat 
-flex g++ gawk gcc gettext git git-lfs gzip help2man ncurses-bin lib32ncurses-dev 
-libc6-dev libtool make texinfo patch perl pkg-config subversion tar texi2html 
-zlib1g-dev chrpath libxml2-utils lz4 xsltproc libglib2.0-dev python-setuptools 
+sudo apt install dialog autoconf automake bison bzip2 cvs diffstat \
+flex g++ gawk gcc gettext git git-lfs gzip help2man ncurses-bin lib32ncurses-dev \
+libc6-dev libtool make texinfo patch perl pkg-config subversion tar texi2html \
+zlib1g-dev chrpath libxml2-utils lz4 xsltproc libglib2.0-dev python-setuptools \
 libc6-i386 genromfs guile-2.2-libs quilt zstd
 
 ```
