@@ -3,7 +3,7 @@ IMAGE_INSTALL:remove = "hdparm"
 IMAGE_INSTALL:remove = "3rd-party-feed-configs"
 IMAGE_INSTALL:remove = "settings-autorestore"
 
-#dm500hd
+DEPENDS += " upx-native"
 
 IMAGE_INSTALL += " \
 	bitratecalc \
@@ -38,7 +38,6 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-extensions-moviecut \
 	enigma2-plugin-extensions-oscamstatus \
 	enigma2-plugin-extensions-pictureplayer \
-	enigma2-plugin-extensions-ppanel \
 	enigma2-plugin-extensions-openmultiboot \
 	openmultiboot \
 	enigma2-plugin-softcams-oscam \
