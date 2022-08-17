@@ -44,22 +44,22 @@ FILES:${PN}-base += " \
 			"
 
 CONFFILES:${PN}-base += " \
-						${sysconfdir}/samba/smb.user.conf \
-						${sysconfdir}/samba/shares/share.template \
-						"
+			${sysconfdir}/samba/smb.user.conf \
+			${sysconfdir}/samba/shares/share.template \
+			"
 
 # move smbpass config files to samba-common
 FILES:${BPN}-common += " \
-						${sysconfdir}/pam.d/samba \
-						${sysconfdir}/samba/private/users.map \
-						${sysconfdir}/samba/private/smbpasswd \
-						"
+			${sysconfdir}/pam.d/samba \
+			${sysconfdir}/samba/private/users.map \
+			${sysconfdir}/samba/private/smbpasswd \
+			"
 
 CONFFILES:${BPN}-common += " \
-						${sysconfdir}/pam.d/samba \
-						${sysconfdir}/samba/private/users.map \
-						${sysconfdir}/samba/private/smbpasswd \
-						"
+			${sysconfdir}/pam.d/samba \
+			${sysconfdir}/samba/private/users.map \
+			${sysconfdir}/samba/private/smbpasswd \
+			"
 
 RPROVIDES:${PN} += "pam-pluginsmbpass"
 RRECOMMENDS:${PN}-base+= "wsdd pam-pluginsmbpass"
@@ -128,15 +128,15 @@ INITSCRIPT_PARAMS:${PN}-base = "defaults"
 PACKAGES:remove = "libnetapi"
 
 # move all libraries from samba to libsamba-base to fix circular dependencies
-FILES:lib${PN}-base += "\
-					${libdir}/*.so.* \
-					${libdir}/samba/*.so \
-					${libdir}/samba/*.so.* \
-					"
+FILES:lib${PN}-base += " \
+			${libdir}/*.so.* \
+			${libdir}/samba/*.so \
+			${libdir}/samba/*.so.* \
+			"
 
 # move some libraries from libsamba-base to libwbclient to fix circular dependencies
 FILES:libwbclient ="${libdir}/libwbclient.so.* \
-					${libdir}/samba/libwinbind-client.so \
-					${libdir}/samba/libwinbind-client-samba4.so \
-					${libdir}/samba/libreplace-samba4.so \
-					"
+			${libdir}/samba/libwinbind-client.so \
+			${libdir}/samba/libwinbind-client-samba4.so \
+			${libdir}/samba/libreplace-samba4.so \
+			"
