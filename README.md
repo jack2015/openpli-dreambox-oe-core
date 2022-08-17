@@ -13,7 +13,7 @@ In comparison to OpenPLi this repository has:<br>
 -Python 2.7.18<br>
 -OpenSSL 3.0.5<br>
 -Busybox 1.35.0<br>
--Linux OS Kernel 3.2.102
+-Linux OS 3.2/3.4/3.14
 
 ******************************************************
 
