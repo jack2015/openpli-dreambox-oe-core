@@ -11,7 +11,7 @@ PV = "4.x+git${SRCPV}"
 PKGV = "4.x+git${GITPKGV}"
 SRCREV = "${AUTOREV}"
 
-SRC_URI = "git://github.com/oe-alliance/ofgwrite.git"
+SRC_URI = "git://gitee.com/jackgee2021/ofgwrite.git;branch=master;protocol=https"
 
 S = "${WORKDIR}/git"
 EXTRA_OEMAKE=""

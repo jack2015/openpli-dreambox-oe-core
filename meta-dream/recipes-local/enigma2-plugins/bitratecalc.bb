@@ -13,7 +13,7 @@ PV = "2.0+git${SRCPV}"
 PKGV = "2.0+git${GITPKGV}"
 SRCREV = "${AUTOREV}"
 
-SRC_URI = "git://github.com/jack2015/bitratecalc.git"
+SRC_URI = "git://gitee.com/jackgee2021/bitratecalc.git;branch=master;protocol=https"
 
 S = "${WORKDIR}/git"
 

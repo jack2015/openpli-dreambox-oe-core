@@ -10,7 +10,7 @@ DEPENDS = "enigma2 uchardet openssl"
 RDEPENDS_${PN} = "enigma2 uchardet openssl python-json"
 RRECOMMENDS_${PN} = "exteplayer3 gstplayer"
 
-SRC_URI = "git://github.com/mx3L/serviceapp.git;branch=master"
+SRC_URI = "git://gitee.com/jackgee2021/serviceapp.git;branch=develop;protocol=https"
 
 S = "${WORKDIR}/git"
 

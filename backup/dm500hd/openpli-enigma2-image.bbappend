@@ -3,7 +3,7 @@ IMAGE_INSTALL_remove = "hdparm"
 IMAGE_INSTALL_remove = "3rd-party-feed-configs"
 IMAGE_INSTALL_remove = "settings-autorestore"
 
-#dm500hd
+DEPENDS += " upx-native"
 
 IMAGE_INSTALL += " \
 	bitratecalc \

@@ -29,7 +29,7 @@ inherit gitpkgv distutils-openplugins gettext
 PV = "git${SRCPV}"
 PKGV = "git${GITPKGV}"
 
-SRC_URI = "git://github.com/E2OpenPlugins/e2openplugin-OpenWebif.git;protocol=git;branch=master \
+SRC_URI = "git://gitee.com/jackgee2021/e2openplugin-OpenWebif.git;protocol=https;branch=master \
 	file://dm800sev2.png"
 
 S="${WORKDIR}/git"

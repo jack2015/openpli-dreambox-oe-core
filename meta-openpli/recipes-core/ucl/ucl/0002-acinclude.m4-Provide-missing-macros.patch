@@ -1,75 +1,37 @@
-diff -Naur a/ucl-1.03/acc/acc_defs.h b/ucl-1.03/acc/acc_defs.h
---- a/ucl-1.03/acc/acc_defs.h	2017-08-29 15:36:08.849042097 +0200
-+++ b/ucl-1.03/acc/acc_defs.h	2017-08-29 15:42:29.268282576 +0200
-@@ -87,6 +87,9 @@
- 
- /* This can be put into a header file but may get ignored by some compilers. */
- #if !defined(ACC_COMPILE_TIME_ASSERT_HEADER)
-+# define ACC_COMPILE_TIME_ASSERT_HEADER(e) _Static_assert(e, #e);
-+#endif
-+#if !defined(ACC_COMPILE_TIME_ASSERT_HEADER)
- #  if (ACC_CC_AZTECC || ACC_CC_ZORTECHC)
- #    define ACC_COMPILE_TIME_ASSERT_HEADER(e)  extern int __acc_cta[1-!(e)];
- #  elif (ACC_CC_DMC || ACC_CC_SYMANTECC)
-@@ -100,6 +103,9 @@
- 
- /* This must appear within a function body. */
- #if !defined(ACC_COMPILE_TIME_ASSERT)
-+# define ACC_COMPILE_TIME_ASSERT(e) _Static_assert(e, #e);
-+#endif
-+#if !defined(ACC_COMPILE_TIME_ASSERT)
- #  if (ACC_CC_AZTECC)
- #    define ACC_COMPILE_TIME_ASSERT(e)  {typedef int __acc_cta_t[1-!(e)];}
- #  elif (ACC_CC_DMC || ACC_CC_PACIFICC || ACC_CC_SYMANTECC || ACC_CC_ZORTECHC)
+From cab9f6b11793149a3f968552be7d351e59e62a92 Mon Sep 17 00:00:00 2001
+From: Andrei Gherzan <andrei@resin.io>
+Date: Fri, 6 May 2016 01:01:26 +0200
+Subject: [PATCH 2/2] acinclude.m4: Provide missing macros
 
-diff -Naur a/ucl-1.03/configure.ac b/ucl-1.03/configure.ac
---- a/ucl-1.03/configure.ac	2017-08-29 15:36:08.848042119 +0200
-+++ b/ucl-1.03/configure.ac	2017-08-29 15:37:27.135243113 +0200
-@@ -47,8 +47,10 @@
- AC_CANONICAL_TARGET
- AM_MAINTAINER_MODE
- 
-+AC_CONFIG_MACRO_DIR([m4])
-+
- if test -z "$ac_abs_top_srcdir"; then
--    _AC_SRCPATHS(.)
-+    _AC_SRCDIRS(.)
- fi
- if test -r .Conf.settings1; then
-     . ./.Conf.settings1
-diff -Naur a/ucl-1.03/examples/Makefile.am b/ucl-1.03/examples/Makefile.am
---- a/ucl-1.03/examples/Makefile.am	2004-07-20 01:01:47.000000000 +0200
-+++ b/ucl-1.03/examples/Makefile.am	2017-08-29 15:38:35.341670077 +0200
-@@ -3,7 +3,7 @@
- # Copyright (C) 1996-2004 Markus F.X.J. Oberhumer
- #
- 
--INCLUDES = -I$(top_srcdir)/include -I$(top_srcdir)
-+AM_CPPFLAGS = -I$(top_srcdir)/include -I$(top_srcdir)
- 
- noinst_PROGRAMS = simple uclpack
- 
-diff -Naur a/ucl-1.03/m4/acc1.m4 b/ucl-1.03/m4/acc1.m4
---- a/ucl-1.03/m4/acc1.m4	1970-01-01 01:00:00.000000000 +0100
-+++ b/ucl-1.03/m4/acc1.m4	2017-08-29 15:35:07.632411306 +0200
-@@ -0,0 +1,97 @@
-+# serial 1
-+
+Upstream-Status: Pending
+
+Signed-off-by: Andrei Gherzan <andrei@resin.io>
+---
+ acinclude.m4 | 361 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 361 insertions(+)
+ create mode 100644 acinclude.m4
+
+diff --git a/acinclude.m4 b/acinclude.m4
+new file mode 100644
+index 0000000..f7d6d16
+--- /dev/null
++++ b/acinclude.m4
+@@ -0,0 +1,361 @@
 +# /***********************************************************************
 +# // standard ACC macros
 +# ************************************************************************/
 +
 +AC_DEFUN([mfx_ACC_CHECK_ENDIAN], [
-+AC_C_BIGENDIAN([AC_DEFINE(ACC_ENDIAN_BIG_ENDIAN,1,[Define to 1 if your machine is big endian.])],[AC_DEFINE(ACC_ENDIAN_LITTLE_ENDIAN,1,[Define to 1 if your machine is little endian.])])
++AC_C_BIGENDIAN([AC_DEFINE(ACC_ABI_BIG_ENDIAN,1,[Define to 1 if your machine is big endian.])],[AC_DEFINE(ACC_ABI_LITTLE_ENDIAN,1,[Define to 1 if your machine is little endian.])])
 +])#
 +
 +AC_DEFUN([mfx_ACC_CHECK_HEADERS], [
 +AC_HEADER_TIME
-+AC_CHECK_HEADERS([assert.h ctype.h dirent.h errno.h fcntl.h limits.h malloc.h memory.h setjmp.h signal.h stdarg.h stddef.h stdint.h stdio.h stdlib.h string.h strings.h time.h unistd.h utime.h sys/stat.h sys/time.h sys/types.h])
++AC_CHECK_HEADERS([assert.h ctype.h dirent.h errno.h fcntl.h float.h limits.h malloc.h memory.h setjmp.h signal.h stdarg.h stddef.h stdint.h stdio.h stdlib.h string.h strings.h time.h unistd.h utime.h sys/mman.h sys/resource.h sys/stat.h sys/time.h sys/types.h sys/wait.h])
 +])#
 +
 +AC_DEFUN([mfx_ACC_CHECK_FUNCS], [
-+AC_CHECK_FUNCS(access alloca atexit atoi atol chmod chown ctime difftime fstat gettimeofday gmtime localtime longjmp lstat memcmp memcpy memmove memset mktime qsort raise setjmp signal snprintf strcasecmp strchr strdup strerror strftime stricmp strncasecmp strnicmp strrchr strstr time umask utime vsnprintf)
++AC_CHECK_FUNCS(access alloca atexit atoi atol chmod chown clock_getcpuclockid clock_getres clock_gettime ctime difftime fstat getenv getpagesize getrusage gettimeofday gmtime isatty localtime longjmp lstat memcmp memcpy memmove memset mkdir mktime mmap mprotect munmap qsort raise rmdir setjmp signal snprintf strcasecmp strchr strdup strerror strftime stricmp strncasecmp strnicmp strrchr strstr time umask utime vsnprintf)
 +])#
 +
 +
@@ -78,15 +40,15 @@ diff -Naur a/ucl-1.03/m4/acc1.m4 b/ucl-1.03/m4/acc1.m4
 +AC_CHECK_SIZEOF(int)
 +AC_CHECK_SIZEOF(long)
 +
-+AC_CHECK_SIZEOF(ptrdiff_t)
-+AC_CHECK_SIZEOF(size_t)
++AC_CHECK_SIZEOF(long long)
++AC_CHECK_SIZEOF(__int16)
++AC_CHECK_SIZEOF(__int32)
++AC_CHECK_SIZEOF(__int64)
++
 +AC_CHECK_SIZEOF(void *)
 +AC_CHECK_SIZEOF(char *)
-+
-+AC_CHECK_SIZEOF(long long)
-+AC_CHECK_SIZEOF(unsigned long long)
-+AC_CHECK_SIZEOF(__int64)
-+AC_CHECK_SIZEOF(unsigned __int64)
++AC_CHECK_SIZEOF(size_t)
++AC_CHECK_SIZEOF(ptrdiff_t)
 +])#
 +
 +
@@ -150,10 +112,76 @@ diff -Naur a/ucl-1.03/m4/acc1.m4 b/ucl-1.03/m4/acc1.m4
 +    ;;
 +esac
 +])# mfx_ACC_ACCCHK
-diff -Naur a/ucl-1.03/m4/acc2.m4 b/ucl-1.03/m4/acc2.m4
---- a/ucl-1.03/m4/acc2.m4	1970-01-01 01:00:00.000000000 +0100
-+++ b/ucl-1.03/m4/acc2.m4	2017-08-29 15:35:07.632411306 +0200
-@@ -0,0 +1,42 @@
++
++
++# /***********************************************************************
++# // Check for ACC_conformance
++# ************************************************************************/
++
++AC_DEFUN([mfx_MINIACC_ACCCHK], [
++mfx_tmp=$1
++mfx_save_CPPFLAGS=$CPPFLAGS
++dnl in Makefile.in $(INCLUDES) will be before $(CPPFLAGS), so we mimic this here
++test "X$mfx_tmp" = "X" || CPPFLAGS="$mfx_tmp $CPPFLAGS"
++
++AC_MSG_CHECKING([whether your compiler passes the ACC conformance test])
++
++AC_LANG_CONFTEST([AC_LANG_PROGRAM(
++[[#define ACC_CONFIG_NO_HEADER 1
++#define ACC_WANT_ACC_INCD_H 1
++#include $2
++
++#define ACC_WANT_ACC_CHK_CH 1
++#undef ACCCHK_ASSERT
++#define ACCCHK_ASSERT(expr)     ACC_COMPILE_TIME_ASSERT_HEADER(expr)
++#include $2
++
++#define ACC_WANT_ACC_CHK_CH 1
++#undef ACCCHK_ASSERT
++#define ACCCHK_ASSERT(expr)     ACC_COMPILE_TIME_ASSERT(expr)
++static void test_acc_compile_time_assert(void) {
++#include $2
++}
++
++#undef NDEBUG
++#include <assert.h>
++#define ACC_WANT_ACC_CHK_CH 1
++#undef ACCCHK_ASSERT
++#define ACCCHK_ASSERT(expr)  assert(expr);
++static int test_acc_run_time_assert(int r) {
++#include $2
++return r;
++}
++]], [[
++test_acc_compile_time_assert();
++if (test_acc_run_time_assert(1) != 1) return 1;
++]]
++)])
++
++mfx_tmp=FAILED
++_AC_COMPILE_IFELSE([], [mfx_tmp=yes])
++rm -f conftest.$ac_ext conftest.$ac_objext
++
++CPPFLAGS=$mfx_save_CPPFLAGS
++
++AC_MSG_RESULT([$mfx_tmp])
++case x$mfx_tmp in
++  xpassed | xyes) ;;
++  *)
++    AC_MSG_NOTICE([])
++    AC_MSG_NOTICE([Your compiler failed the ACC conformance test - for details see ])
++    AC_MSG_NOTICE([`config.log'. Please check that log file and consider sending])
++    AC_MSG_NOTICE([a patch or bug-report to <${PACKAGE_BUGREPORT}>.])
++    AC_MSG_NOTICE([Thanks for your support.])
++    AC_MSG_NOTICE([])
++    AC_MSG_ERROR([ACC conformance test failed. Stop.])
++dnl    AS_EXIT
++    ;;
++esac
++])# mfx_MINIACC_ACCCHK
++
++
++
 +# serial 1
 +
 +AC_DEFUN([mfx_PROG_CPPFLAGS], [
@@ -196,16 +224,12 @@ diff -Naur a/ucl-1.03/m4/acc2.m4 b/ucl-1.03/m4/acc2.m4
 +esac
 +])# mfx_PROG_CPPFLAGS
 +
-diff -Naur a/ucl-1.03/m4/acc3.m4 b/ucl-1.03/m4/acc3.m4
---- a/ucl-1.03/m4/acc3.m4	1970-01-01 01:00:00.000000000 +0100
-+++ b/ucl-1.03/m4/acc3.m4	2017-08-29 15:35:07.633411284 +0200
-@@ -0,0 +1,143 @@
 +# serial 3
 +
 +AC_DEFUN([mfx_CHECK_HEADER_SANE_LIMITS_H], [
 +AC_CACHE_CHECK([whether limits.h is sane],
 +mfx_cv_header_sane_limits_h,
-+[AC_TRY_COMPILE([#include <limits.h>
++[AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <limits.h>
 +#if (32767 >= 4294967295ul) || (65535u >= 4294967295ul)
 +#  if defined(__APPLE__) && defined(__GNUC__)
 +#    error "your preprocessor is broken - use compiler option -no-cpp-precomp"
@@ -269,7 +293,7 @@ diff -Naur a/ucl-1.03/m4/acc3.m4 b/ucl-1.03/m4/acc3.m4
 +#if (UINT_MAX > ULONG_MAX)
 +#  include "error UINT_MAX vs ULONG_MAX"
 +#endif
-+],[
++]], [[
 +#if (USHRT_MAX == MFX_0xffff)
 +{ typedef char a_short2a[1 - 2 * !(sizeof(short) == 2)]; }
 +#elif (USHRT_MAX >= MFX_0xffff)
@@ -285,11 +309,13 @@ diff -Naur a/ucl-1.03/m4/acc3.m4 b/ucl-1.03/m4/acc3.m4
 +#elif (ULONG_MAX >= MFX_0xffff)
 +{ typedef char a_long2b[1 - 2 * !(sizeof(long) > 2)]; }
 +#endif
++#if !defined(_CRAY1) /* CRAY PVP systems */
 +#if (USHRT_MAX == MFX_0xffffffffL)
 +{ typedef char a_short4a[1 - 2 * !(sizeof(short) == 4)]; }
 +#elif (USHRT_MAX >= MFX_0xffffffffL)
 +{ typedef char a_short4b[1 - 2 * !(sizeof(short) > 4)]; }
 +#endif
++#endif /* _CRAY1 */
 +#if (UINT_MAX == MFX_0xffffffffL)
 +{ typedef char a_int4a[1 - 2 * !(sizeof(int) == 4)]; }
 +#elif (UINT_MAX >= MFX_0xffffffffL)
@@ -300,10 +326,19 @@ diff -Naur a/ucl-1.03/m4/acc3.m4 b/ucl-1.03/m4/acc3.m4
 +#elif (ULONG_MAX >= MFX_0xffffffffL)
 +{ typedef char a_long4b[1 - 2 * !(sizeof(long) > 4)]; }
 +#endif
-+],
-+mfx_cv_header_sane_limits_h=yes,
-+mfx_cv_header_sane_limits_h=no)])
++]])],
++[mfx_cv_header_sane_limits_h=yes],
++[mfx_cv_header_sane_limits_h=no])])
 +])
++
++# /***********************************************************************
++# // standard
++# ************************************************************************/
++
++AC_DEFUN([mfx_LZO_CHECK_ENDIAN], [
++AC_C_BIGENDIAN([AC_DEFINE(LZO_ABI_BIG_ENDIAN,1,[Define to 1 if your machine is big endian.])],[AC_DEFINE(LZO_ABI_LITTLE_ENDIAN,1,[Define to 1 if your machine is little endian.])])
++])#
++
 +
 +# /***********************************************************************
 +# //
@@ -313,7 +348,6 @@ diff -Naur a/ucl-1.03/m4/acc3.m4 b/ucl-1.03/m4/acc3.m4
 +
 +AC_DEFUN([mfx_CHECK_SIZEOF], [
 +AC_CHECK_SIZEOF(__int32)
-+AC_CHECK_SIZEOF(unsigned __int32)
 +AC_CHECK_SIZEOF(intmax_t)
 +AC_CHECK_SIZEOF(uintmax_t)
 +AC_CHECK_SIZEOF(intptr_t)
@@ -337,50 +371,13 @@ diff -Naur a/ucl-1.03/m4/acc3.m4 b/ucl-1.03/m4/acc3.m4
 +if test "X$GCC" = Xyes; then
 +case $host_os in
 +cygwin* | mingw* | pw32*)
-+     LIBS="$LIBS -lwinmm" ;;
++     test "X$LIBS" != "X" && LIBS="$LIBS "
++     LIBS="${LIBS}-lwinmm" ;;
 +*)
 +     ;;
 +esac
 +fi
 +])#
-diff -Naur a/ucl-1.03/Makefile.am b/ucl-1.03/Makefile.am
---- a/ucl-1.03/Makefile.am	2004-07-20 01:01:47.000000000 +0200
-+++ b/ucl-1.03/Makefile.am	2017-08-29 15:37:52.750652347 +0200
-@@ -5,6 +5,8 @@
- 
- AUTOMAKE_OPTIONS = 1.8.5 foreign
- 
-+ACLOCAL_AMFLAGS = -I m4
-+
- SUBDIRS = include src examples
- 
- dist-hook:
-diff -Naur a/ucl-1.03/src/Makefile.am b/ucl-1.03/src/Makefile.am
---- a/ucl-1.03/src/Makefile.am	2017-08-29 15:36:08.849042097 +0200
-+++ b/ucl-1.03/src/Makefile.am	2017-08-29 15:39:18.292679529 +0200
-@@ -7,8 +7,8 @@
- SUFFIXES = .S
- 
- INCLUDES = -I$(top_srcdir)/include -I$(top_srcdir)
--CPPFLAGS = $(UCL_CPPFLAGS) $(configure_CPPFLAGS) $(UCL_EXTRA_CPPFLAGS)
--CFLAGS = $(UCL_CFLAGS) $(configure_CFLAGS) $(UCL_EXTRA_CFLAGS)
-+AM_CPPFLAGS = -I$(top_srcdir)/include -I$(top_srcdir) $(UCL_CPPFLAGS) $(configure_CPPFLAGS) $(UCL_EXTRA_CPPFLAGS)
-+AM_CFLAGS = $(UCL_CFLAGS) $(configure_CFLAGS) $(UCL_EXTRA_CFLAGS)
- 
- lib_LTLIBRARIES = libucl.la
- 
-diff -Naur a/ucl-1.03/src/ucl_util.c b/ucl-1.03/src/ucl_util.c
---- a/ucl-1.03/src/ucl_util.c	2004-07-20 01:01:47.000000000 +0200
-+++ b/ucl-1.03/src/ucl_util.c	2017-08-29 15:40:54.029472790 +0200
-@@ -55,7 +55,11 @@
-     "<markus@oberhumer.com>\n"
-     "http://www.oberhumer.com $\n\n"
-     "$Id: UCL version: v" UCL_VERSION_STRING ", " UCL_VERSION_DATE " $\n"
-+#if defined (BUILD_DATETIME)
-+    "$Built: " BUILD_DATETIME " $\n"
-+#else
-     "$Built: " __DATE__ " " __TIME__ " $\n"
-+#endif
-     "$Info: " ACC_INFO_OS
- #if defined(ACC_INFO_OS_POSIX)
-     "/" ACC_INFO_OS_POSIX
+-- 
+2.1.4
+

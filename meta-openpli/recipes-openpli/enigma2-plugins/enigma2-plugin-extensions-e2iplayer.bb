@@ -3,7 +3,7 @@ DESCRIPTION = "Watch Videos Online"
 SECTION = "multimedia"
 require conf/license/openpli-gplv2.inc
 
-SRC_URI = "git://github.com/jack2015/e2iplayer.git"
+SRC_URI = "git://gitee.com/jackgee2021/e2iplayer-ov.git;branch=master;protocol=https"
 
 S = "${WORKDIR}/git"
 

@@ -6,4 +6,4 @@ PR = "r3"
 
 inherit autotools pkgconfig git-project
 
-SRC_URI = "git://github.com/mirakels/libdreamdvd.git"
+SRC_URI = "git://gitee.com/jackgee2021/libdreamdvd.git;branch=master;protocol=https"

@@ -9,7 +9,7 @@ PV = "0.1+git${SRCPV}"
 PKGV = "0.1+git${GITPKGV}"
 SRCREV = "${AUTOREV}"
 
-SRC_URI = "git://github.com/jack2015/skin-PLiHD.git"
+SRC_URI = "git://gitee.com/jackgee2021/skin-PLiHD.git;branch=master;protocol=https"
 
 FILES_${PN} = "${datadir}/enigma2/"
 

@@ -11,7 +11,7 @@ INSANE_SKIP_${PN} += "already-stripped"
 
 inherit cmake gitpkgv
 
-SRC_URI = "git://github.com/jack2015/oscam-patched.git;branch=master"
+SRC_URI = "git://gitee.com/jackgee2021/oscam-patched.git;branch=master;protocol=https"
 
 S = "${WORKDIR}/git"
 B = "${S}"

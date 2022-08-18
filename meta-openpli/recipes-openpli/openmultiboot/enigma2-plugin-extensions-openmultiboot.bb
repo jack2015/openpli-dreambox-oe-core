@@ -12,7 +12,7 @@ INHIBIT_PACKAGE_STRIP = "1"
 INSANE_SKIP_${PN} += "already-stripped"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
-SRC_URI = "git://github.com/jack2015/pli-openmultibootmanager.git;protocol=git;branch=master"
+SRC_URI = "git://gitee.com/jackgee2021/pli-openmultibootmanager.git;protocol=https;branch=master"
 
 SRC_URI += " \
 	file://nfidump_mipsel_0.4.2 \

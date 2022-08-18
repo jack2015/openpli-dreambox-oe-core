@@ -8,7 +8,7 @@ inherit gitpkgv
 PV = "2.1+git${SRCPV}"
 PKGV = "2.1+git${GITPKGV}"
 
-SRC_URI = "git://github.com/OpenVisionE2/lsdir.git;protocol=git"
+SRC_URI = "git://gitee.com/jackgee2021/lsdir.git;protocol=https;branch=master"
 
 S = "${WORKDIR}/git/"
 

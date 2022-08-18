@@ -12,7 +12,7 @@ inherit gitpkgv
 PV = "68+gitr${SRCPV}"
 PKGV = "68+gitr${GITPKGV}"
 
-SRC_URI = "git://github.com/OpenVisionE2/exteplayer3.git;branch=master"
+SRC_URI = "git://gitee.com/jackgee2021/exteplayer3.git;branch=master;protocol=https"
 
 S = "${WORKDIR}/git/"
 

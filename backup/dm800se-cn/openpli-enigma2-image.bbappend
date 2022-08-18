@@ -3,7 +3,7 @@ IMAGE_INSTALL_remove = "hdparm"
 IMAGE_INSTALL_remove = "3rd-party-feed-configs"
 IMAGE_INSTALL_remove = "settings-autorestore"
 
-#dm800se-cn
+DEPENDS += " upx-native"
 
 IMAGE_INSTALL_append += " \
 	bitratecalc \

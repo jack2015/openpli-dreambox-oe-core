@@ -1,3 +1,6 @@
+# version
+PR = "r3"
+
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
 # Remove acl, cups etc. support.
@@ -25,8 +28,6 @@ EXTRA_OECONF_remove = " \
                        --with-profiling-data \
                        --with-sockets-dir=/run/samba \
                       "
-
-RDEPENDS_${PN} += "kernel-module-cifs"
 
 SRC_URI += " \
            file://smb.conf \

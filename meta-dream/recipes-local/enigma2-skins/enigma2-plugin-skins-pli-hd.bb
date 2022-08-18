@@ -8,7 +8,7 @@ inherit gitpkgv allarch
 PV = "0.1+git${SRCPV}"
 PKGV = "0.1+git${GITPKGV}"
 
-SRC_URI="git://github.com/jack2015/skin-PLiHD.git;protocol=git"
+SRC_URI="git://gitee.com/jackgee2021/skin-PLiHD.git;protocol=https;branch=master"
 
 FILES_${PN} = "${datadir}/enigma2/"
 

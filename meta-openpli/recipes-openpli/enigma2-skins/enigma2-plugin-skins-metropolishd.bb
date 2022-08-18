@@ -8,7 +8,7 @@ PV = "1.0+git${SRCPV}"
 PKGV = "1.0+git${GITPKGV}"
 SRCREV = "${AUTOREV}"
 
-SRC_URI = "git://github.com/jack2015/skin-MetropolisHD.git"
+SRC_URI = "git://gitee.com/jackgee2021/skin-MetropolisHD.git;branch=master;protocol=https"
 
 FILES_${PN} = "/usr/"
 

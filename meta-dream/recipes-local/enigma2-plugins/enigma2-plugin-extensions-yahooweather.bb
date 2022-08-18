@@ -14,7 +14,7 @@ PKGV = "1.2.+git${GITPKGV}"
 PR = "r0"
 
 
-SRC_URI="git://github.com/oe-alliance/YahooWeather.git"
+SRC_URI="git://gitee.com/jackgee2021/YahooWeather.git;branch=master;protocol=https"
 
 S = "${WORKDIR}/git"
 

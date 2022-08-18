@@ -10,7 +10,10 @@ inherit gitpkgv autotools-brokensep pkgconfig update-rc.d
 PV = "1+git${SRCPV}"
 PKGV = "1+git${GITPKGV}"
 
-SRC_URI = "git://github.com/pcherenkov/udpxy.git file://udpxy.sh"
+SRC_URI = "git://gitee.com/jackgee2021/udpxy.git;branch=master;protocol=https \
+	file://udpxy.sh \
+	"
+
 CFLAGS_append = " -Wno-format-truncation ${@bb.utils.contains("TARGET_ARCH", "sh4", "", "-Wno-error=stringop-truncation", d)} "
 
 S = "${WORKDIR}/git/chipmunk"
