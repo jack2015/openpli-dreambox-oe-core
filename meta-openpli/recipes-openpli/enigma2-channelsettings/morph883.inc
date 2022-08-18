@@ -3,7 +3,8 @@ LICENSE = "CLOSED"
 PV = "1.0+git${SRCPV}"
 PKGV = "1.0+git${GITPKGV}"
 
-SRC_URI = "git://gitee.com/jackgee2021/Enigma2-Settings.git;branch=master;protocol=https"
+GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
+SRC_URI = "${GIT_SITE}/Enigma2-Settings;branch=master;protocol=https"
 S = "${WORKDIR}/git"
 
 inherit gitpkgv allarch

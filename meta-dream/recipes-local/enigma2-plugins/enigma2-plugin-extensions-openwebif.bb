@@ -28,8 +28,28 @@ inherit gitpkgv distutils-openplugins gettext
 
 PV = "git${SRCPV}"
 PKGV = "git${GITPKGV}"
+PR = "r8"
 
-SRC_URI = "git://gitee.com/jackgee2021/e2openplugin-OpenWebif.git;protocol=https;branch=master \
+GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
+
+#ver 1.5.2
+SRCREV = "750dee9e557cc8ef053eabb7da5ff827b3f609a4"
+
+SRC_URI = "${GIT_SITE}/e2openplugin-OpenWebif;protocol=https;branch=master \
+	file://dm800sev2.png"
+
+#ver 1.3.9
+SRCREV_dm800se = "fcf12a42d446022a90b7617a297ba676fc6cfcfe"
+SRCREV_dm500hd = "fcf12a42d446022a90b7617a297ba676fc6cfcfe"
+
+PV_dm800se = "1.3.9+git${SRCPV}"
+PKGV_dm800se = "1.3.9+git${GITPKGV}"
+SRC_URI_dm800se = "${GIT_SITE}/e2openplugin-OpenWebif;protocol=https;branch=NoSix \
+	file://dm800sev2.png"
+
+PV_dm500hd = "1.3.9+git${SRCPV}"
+PKGV_dm500hd = "1.3.9+git${GITPKGV}"
+SRC_URI_dm500hd = "${GIT_SITE}/e2openplugin-OpenWebif;protocol=https;branch=NoSix \
 	file://dm800sev2.png"
 
 S="${WORKDIR}/git"
@@ -40,12 +60,13 @@ PLUGINPATH = "${libdir}/enigma2/python/Plugins/Extensions/OpenWebif"
 # cheetah-compile -R --nobackup --iext=.tmpl ${S}/plugin
 do_compile() {
     cheetah-compile -R --nobackup ${S}/plugin
-    python -O -m compileall -d ${PLUGINPATH} ${S}/plugin
+    python2 -O -m compileall -d ${PLUGINPATH} ${S}/plugin
 }
 
 do_install_append() {
     install -d ${D}${PLUGINPATH}
     cp -r ${S}/plugin/* ${D}${PLUGINPATH}
+    cp -f ${WORKDIR}/dm800sev2.png ${D}${PLUGINPATH}/public/images/boxes/
     chmod a+rX ${D}${PLUGINPATH}
 }
 
@@ -63,6 +84,10 @@ python do_cleanup () {
         target_box = 'dm500hd.png'
         target_remote = 'dmm1.png'
         target_keymap = 'dmm1.html'
+    if mybox_name == 'dm8000':
+        target_box = 'dm8000.png'
+        target_remote = 'dmm1.png'
+        target_keymap = 'dmm1.html'
     if mybox_name == 'dm800se':
         target_box = 'dm800se.png'
         target_remote = 'dmm1.png'
@@ -71,6 +96,10 @@ python do_cleanup () {
         target_box = 'dm800sev2.png'
         target_remote = 'dmm1.png'
         target_keymap = 'dmm1.html'
+    if mybox_name == 'dm500hdv2':
+        target_box = 'dm500hdv2.png'
+        target_remote = 'dmm2.png'
+        target_keymap = 'dmm2.html'
     if mybox_name == 'dm900':
         target_box = 'dm900.png'
         target_remote = 'dmm2.png'
@@ -87,8 +116,20 @@ python do_cleanup () {
         target_box = 'dm520.png'
         target_remote = 'dmm2.png'
         target_keymap = 'dmm2.html'
+    if mybox_name == 'dm525':
+        target_box = 'dm525.png'
+        target_remote = 'dmm2.png'
+        target_keymap = 'dmm2.html'
     if mybox_name == 'dm7080':
         target_box = 'dm7080.png'
+        target_remote = 'dmm2.png'
+        target_keymap = 'dmm2.html'
+    if mybox_name == 'dm7020hd':
+        target_box = 'dm7020hd.png'
+        target_remote = 'dmm2.png'
+        target_keymap = 'dmm2.html'
+    if mybox_name == 'dm7020hdv2':
+        target_box = 'dm7020hdv2.png'
         target_remote = 'dmm2.png'
         target_keymap = 'dmm2.html'
 
@@ -98,8 +139,6 @@ python do_cleanup () {
         for name in files:
             if target_box != name and name != 'unknown.png' and exception != name:
                 os.remove(os.path.join(root, name))
-        if mybox_name == 'dm800sev2':
-            os.system('cd '+ root +' ; cp -pf dm800se.png dm800sev2.png ; chmod -R a+rX dm800sev2.png')
 
     for root, dirs, files in os.walk(images + 'remotes', topdown=False):
         for name in files:

@@ -5,7 +5,8 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=7fc9206801c1cb9a93c37d7dc0667d87"
 
 DEPENDS ="bc-native"
 
-SRC_URI = "git://gitee.com/jackgee2021/RTL8192FU.git;protocol=https;branch=main"
+GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
+SRC_URI = "${GIT_SITE}/RTL8192FU;protocol=https;branch=main"
 
 SRCREV = "${AUTOREV}"
 

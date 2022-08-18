@@ -4,7 +4,8 @@ MAINTAINER = "Open Vision Developers"
 LICENSE = "GPLv3"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=1ebbd3e34237af26da5dc08a4e440464"
 
-SRC_URI = "git://gitee.com/jackgee2021/NewVirtualKeyBoard.git;protocol=https;branch=master"
+GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
+SRC_URI = "${GIT_SITE}/NewVirtualKeyBoard;protocol=https;branch=master"
 
 # don't inherit allarch, it can't work with arch-dependent RDEPENDS
 inherit gitpkgv distutils-openplugins gettext

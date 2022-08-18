@@ -10,10 +10,11 @@ inherit gitpkgv autotools pkgconfig
 PV = "1.0+git${SRCPV}"
 PKGV = "1.0+git${GITPKGV}"
 
-SRC_URI = "git://gitee.com/jackgee2021/openpli-aio-grab.git;branch=master;protocol=https"
-SRC_URI:dm900 = "git://gitee.com/jackgee2021/aio-grab.git;branch=master;protocol=https"
-SRC_URI:dm920 = "git://gitee.com/jackgee2021/aio-grab.git;branch=master;protocol=https"
-SRC_URI:sh4 = "git://gitee.com/jackgee2021/aio-grab.git;branch=master;protocol=https"
+GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
+SRC_URI = "${GIT_SITE}/openpli-aio-grab;branch=master;protocol=https"
+SRC_URI:dm900 = "${GIT_SITE}/aio-grab;branch=master;protocol=https"
+SRC_URI:dm920 = "${GIT_SITE}/aio-grab;branch=master;protocol=https"
+SRC_URI:sh4 = "${GIT_SITE}/aio-grab;branch=master;protocol=https"
 
 S = "${WORKDIR}/git"
 

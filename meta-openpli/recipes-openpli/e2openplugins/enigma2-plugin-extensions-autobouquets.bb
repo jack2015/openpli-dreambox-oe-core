@@ -20,7 +20,8 @@ PR = "r0"
 
 INSANE_SKIP_${PN} += "already-stripped"
 
-SRC_URI = "git://gitee.com/jackgee2021/AutoBouquets.git;branch=${AUTOBOUQUETS_BRANCH};protocol=https"
+GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
+SRC_URI = "${GIT_SITE}/AutoBouquets;branch=release;protocol=https"
 
 S = "${WORKDIR}/git"
 

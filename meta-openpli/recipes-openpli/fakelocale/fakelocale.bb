@@ -7,7 +7,8 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=1ebbd3e34237af26da5dc08a4e440464"
 
 DEPENDS += "cross-localedef-native"
 
-SRC_URI = "git://gitee.com/jackgee2021/fakelocale-locales.git;branch=master;protocol=https \
+GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
+SRC_URI = "${GIT_SITE}/fakelocale-locales;branch=master;protocol=https \
 	file://locale.alias \
 	file://SYS_LC_MESSAGES \
 "

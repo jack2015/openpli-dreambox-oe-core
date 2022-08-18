@@ -2,14 +2,12 @@ SUMMARY = "PLi-HD1 skin"
 MAINTAINER = "littlesat"
 LICENSE = "Proprietary"
 LIC_FILES_CHKSUM = "file://usr/share/enigma2/PLi-HD/skin.xml;beginline=3;endline=8;md5=1d560d35b9194281a488eb3a32d9c8bf"
+require skin-url.inc
 
 inherit gitpkgv allarch
 
 PV = "0.1+git${SRCPV}"
 PKGV = "0.1+git${GITPKGV}"
-SRCREV = "${AUTOREV}"
-
-SRC_URI = "git://gitee.com/jackgee2021/skin-PLiHD.git;branch=master;protocol=https"
 
 FILES_${PN} = "${datadir}/enigma2/"
 

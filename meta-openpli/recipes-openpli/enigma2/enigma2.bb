@@ -111,7 +111,8 @@ inherit gitpkgv pythonnative
 PV = "2.7+git${SRCPV}"
 PKGV = "2.7+git${GITPKGV}"
 
-SRC_URI = "git://gitee.com/jackgee2021/enigma2-openpli.git;branch=${ENIGMA2_BRANCH};protocol=https"
+GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
+SRC_URI = "${GIT_SITE}/enigma2-openpli;branch=${ENIGMA2_BRANCH};protocol=https"
 
 LDFLAGS_prepend = " -lxml2 "
 

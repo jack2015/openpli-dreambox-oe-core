@@ -14,7 +14,8 @@ DESCRIPTION_font-valis-enigma = "Valis enigma font"
 PACKAGES = "${PN} font-valis-enigma"
 PROVIDES += "font-valis-enigma"
 
-SRC_URI = "git://gitee.com/jackgee2021/enigma2-plugin-skins-magic;branch=master;protocol=https"
+GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
+SRC_URI = "${GIT_SITE}/enigma2-plugin-skins-magic;branch=master;protocol=https"
 
 FILES_${PN} = "${datadir}/enigma2/Magic"
 FILES_font-valis-enigma = "${datadir}/fonts/valis_enigma.ttf"

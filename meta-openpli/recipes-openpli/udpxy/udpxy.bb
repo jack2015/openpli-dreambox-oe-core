@@ -10,7 +10,8 @@ inherit gitpkgv autotools-brokensep pkgconfig update-rc.d
 PV = "1+git${SRCPV}"
 PKGV = "1+git${GITPKGV}"
 
-SRC_URI = "git://gitee.com/jackgee2021/udpxy.git;branch=master;protocol=https \
+GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
+SRC_URI = "${GIT_SITE}/udpxy;branch=master;protocol=https \
 	file://udpxy.sh \
 	"
 

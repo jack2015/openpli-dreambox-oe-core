@@ -6,8 +6,9 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=84dcc94da3adb52b53ae4fa38fe49e5d"
 
 inherit autotools-brokensep gitpkgv pythonnative gettext
 
-SRC_URI = "git://gitee.com/jackgee2021/AutoBouquetsMaker.git;protocol=https;branch=master"
-SRC_URI_append = " file://add-dummy-boxbranding.patch"
+GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
+SRC_URI = "${GIT_SITE}/AutoBouquetsMaker;protocol=https;branch=master \
+	file://add-dummy-boxbranding.patch"
 
 PV = "3.1+git${SRCPV}"
 PKGV = "3.1+git${GITPKGV}"

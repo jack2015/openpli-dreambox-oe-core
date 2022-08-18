@@ -12,7 +12,8 @@ inherit gitpkgv
 PV = "68+gitr${SRCPV}"
 PKGV = "68+gitr${GITPKGV}"
 
-SRC_URI = "git://gitee.com/jackgee2021/exteplayer3.git;branch=master;protocol=https"
+GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
+SRC_URI = "${GIT_SITE}/exteplayer3;branch=master;protocol=https"
 
 S = "${WORKDIR}/git/"
 

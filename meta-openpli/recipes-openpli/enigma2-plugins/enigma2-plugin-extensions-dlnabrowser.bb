@@ -5,7 +5,8 @@ LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=c9e255efa454e0155c1fd758df7dcaf3"
 
 S = "${WORKDIR}/git"
-SRC_URI = " git://gitee.com/jackgee2021/dvbapp.git;branch=vuplus_experimental;protocol=https \
+GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
+SRC_URI = "${GIT_SITE}/dvbapp;branch=vuplus_experimental;protocol=https \
 	file://enigma2-plugin-systemplugins-dlnabrowser_20130723.patch \
 "
 

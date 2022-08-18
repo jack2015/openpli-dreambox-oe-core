@@ -7,7 +7,8 @@ require conf/license/license-gplv2.inc
 inherit module
 
 SRCREV = "${AUTOREV}"
-SRC_URI = "git://gitee.com/jackgee2021/mt7603u.git;branch=master;protocol=https"
+GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
+SRC_URI = "${GIT_SITE}/mt7603u.git;branch=master;protocol=https"
 
 EXTRA_OEMAKE = "LINUX_SRC=${STAGING_KERNEL_DIR} KDIR=${STAGING_KERNEL_DIR}"
 

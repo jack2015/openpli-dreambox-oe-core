@@ -4,7 +4,8 @@ LICENSE = "GPLv3"
 AUTHOR = "RAED"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=1ebbd3e34237af26da5dc08a4e440464"
 
-SRC_URI = "git://gitee.com/jackgee2021/KeyAdder.git;protocol=https;branch=master"
+GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
+SRC_URI = "${GIT_SITE}/KeyAdder;protocol=https;branch=master"
 
 inherit gitpkgv distutils-openplugins gettext
 

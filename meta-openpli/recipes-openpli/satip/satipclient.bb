@@ -7,10 +7,9 @@ PV = "1.0+git${SRCPV}"
 PKGV = "1.0+git${GITPKGV}"
 PR = "r0"
 
-SRC_URI = " \
-    git://gitee.com/jackgee2021/satip-client.git;protocol=https;branch=mis \
-    file://satipclient.sh \
-"
+GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
+SRC_URI = "${GIT_SITE}/satip-client;protocol=https;branch=mis \
+    file://satipclient.sh"
 #SRC_URI += "file://auto-detect-and-avoi-ioct-conflicts.patch"
 
 S = "${WORKDIR}/git"

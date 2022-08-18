@@ -11,7 +11,8 @@ PKGV = "git${GITPKGV}"
 FILES_${PN} += "${sysconfdir}/enigma2/Foreca"
 CONFFILES_${PN} = "${sysconfdir}/enigma2/Foreca/City.cfg ${sysconfdir}/enigma2/Foreca/fav1.cfg ${sysconfdir}/enigma2/Foreca/fav2.cfg ${sysconfdir}/enigma2/Foreca/startservice.cfg ${sysconfdir}/enigma2/Foreca/Filter.cfg "
 
-SRC_URI = "git://gitee.com/jackgee2021/e2openplugin-Foreca.git;branch=master;protocol=https"
+GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
+SRC_URI = "${GIT_SITE}/e2openplugin-Foreca;branch=master;protocol=https"
 
 S="${WORKDIR}/git"
 

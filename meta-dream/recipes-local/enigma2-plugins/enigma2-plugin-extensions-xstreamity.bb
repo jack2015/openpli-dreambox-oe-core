@@ -12,7 +12,8 @@ SRCREV = "${AUTOREV}"
 PV = "3.33+git${SRCPV}"
 PKGV = "3.33+git${GITPKGV}"
 
-SRC_URI = "git://gitee.com/jackgee2021/XStreamity.git;protocol=https;branch=master"
+GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
+SRC_URI = "${GIT_SITE}/XStreamity;protocol=https;branch=master"
 
 S = "${WORKDIR}/git"
 FILES_${PN} = "/usr/"

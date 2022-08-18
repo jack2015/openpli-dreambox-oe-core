@@ -5,8 +5,8 @@ LIC_FILES_CHKSUM = "file://README.md;md5=be8c96073836ae962143b35bebc83551"
 
 inherit module siteinfo
 
-SRC_URI = " \
-          git://gitee.com/jackgee2021/rtl8192eu-linux-driver.git;branch=realtek-4.4.x;protocol=https \
+GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
+SRC_URI = "${GIT_SITE}/rtl8192eu-linux-driver;branch=realtek-4.4.x;protocol=https \
           file://rtl8192eu-makefile.patch \
           file://rtl8192eu-gcc5.patch \
           file://CHECKSM_IPV6_H.patch \

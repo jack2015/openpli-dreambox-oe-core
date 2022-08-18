@@ -5,7 +5,8 @@ DEPENDS = "libpng freetype zlib"
 
 inherit gitpkgv
 
-SRC_URI = "git://gitee.com/jackgee2021/tuxtxt.git;branch=master;protocol=https"
+GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
+SRC_URI = "${GIT_SITE}/tuxtxt;branch=master;protocol=https"
 
 S = "${WORKDIR}/git/libtuxtxt"
 

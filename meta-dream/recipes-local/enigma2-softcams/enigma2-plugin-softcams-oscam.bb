@@ -4,14 +4,15 @@ require oscam-version.inc
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 PACKAGES = "${PN}"
 CAMNAME = "oscam"
-DEPENDS = "libusb openssl"
+DEPENDS = "libusb openssl upx-native"
 
 INHIBIT_PACKAGE_STRIP = "1"
 INSANE_SKIP_${PN} += "already-stripped"
 
 inherit cmake gitpkgv
 
-SRC_URI = "git://gitee.com/jackgee2021/oscam-patched.git;branch=master;protocol=https"
+GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
+SRC_URI = "${GIT_SITE}/oscam-patched;branch=master;protocol=https"
 
 S = "${WORKDIR}/git"
 B = "${S}"
@@ -39,10 +40,17 @@ do_install() {
     install -d ${D}${sysconfdir}/tuxbox/config
     install -m 0644 ${WORKDIR}/oscam.conf ${D}${sysconfdir}/tuxbox/config
     install -d ${D}${bindir}
-    upx --best --ultra-brute ${B}/${CAMNAME}
     install -m 0755 ${B}/${CAMNAME} ${D}${bindir}
     install -d ${D}/etc/init.d
     install -m 0755 ${WORKDIR}/softcam.${CAMNAME} ${D}/etc/init.d/softcam.${CAMNAME}
+}
+
+do_install_append_dm800se() {
+    upx --best --ultra-brute ${D}/usr/bin/oscam
+}
+
+do_install_append_dm500hd() {
+    upx --best --ultra-brute ${D}/usr/bin/oscam
 }
 
 CONFFILES = "/etc/tuxbox/config/oscam.conf"

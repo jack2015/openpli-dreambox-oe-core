@@ -6,7 +6,8 @@ SECTION = "multimedia"
 LICENSE = "PD"
 LIC_FILES_CHKSUM = "file://COPYING.GPLv2;md5=b234ee4d69f5fce4486a80fdaf4a4263"
 
-SRC_URI = "git://gitee.com/jackgee2021/enigma2-plugin-youtube.git;branch=master;protocol=https \
+GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
+SRC_URI = "${GIT_SITE}/enigma2-plugin-youtube;branch=master;protocol=https \
         file://0001-Add_option_to_choose_style_of_VirtualKeyBoard.patch \
 "
 

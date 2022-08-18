@@ -13,8 +13,8 @@ PV = "1.2.+git${SRCPV}"
 PKGV = "1.2.+git${GITPKGV}"
 PR = "r0"
 
-
-SRC_URI="git://gitee.com/jackgee2021/YahooWeather.git;branch=master;protocol=https"
+GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
+SRC_URI="${GIT_SITE}/YahooWeather;branch=master;protocol=https"
 
 S = "${WORKDIR}/git"
 

@@ -8,7 +8,8 @@ DEPENDS ="bc-native"
 
 inherit module
 SRCREV = "${AUTOREV}"
-SRC_URI = "git://gitee.com/jackgee2021/RTL8821CU_driver_v5.4.1.git;branch=master;protocol=https \
+GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
+SRC_URI = "${GIT_SITE}/RTL8821CU_driver_v5.4.1;branch=master;protocol=https \
     file://add-5.0-support.patch \
     file://add-5.1-support.patch \
     file://add-5.2-support.patch \

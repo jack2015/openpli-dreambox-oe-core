@@ -11,7 +11,8 @@ inherit autotools-brokensep gitpkgv pythonnative
 PV = "git${SRCPV}"
 PKGV = "git${GITPKGV}"
 
-SRC_URI="git://gitee.com/jackgee2021/branding-module.git;protocol=https;branch=master"
+GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
+SRC_URI="${GIT_SITE}/branding-module;protocol=https;branch=master"
 
 S = "${WORKDIR}/git"
 

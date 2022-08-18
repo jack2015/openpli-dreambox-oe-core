@@ -88,7 +88,8 @@ RRECOMMENDS_${PN} = "\
 	${GST_UGLY_RDEPS} \
 	"
 
-SRC_URI = "git://gitee.com/jackgee2021/servicemp3.git;branch=master;protocol=https"
+GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
+SRC_URI = "${GIT_SITE}/servicemp3;branch=master;protocol=https"
 
 S = "${WORKDIR}/git"
 

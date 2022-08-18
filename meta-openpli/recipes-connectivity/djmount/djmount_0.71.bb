@@ -10,7 +10,9 @@ INITSCRIPT_NAME = "djmount"
 INITSCRIPT_PARAMS = "defaults"
 SRCREV = "02d7d47c4f04054a8a1c174b75839ee38682af86"
 
-SRC_URI = "git://gitee.com/jackgee2021/djmount;protocol=https;branch=fixes"
+GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
+
+SRC_URI = "${GIT_SITE}/djmount;protocol=https;branch=fixes"
 
 SRC_URI_append +=" \
 	file://init \

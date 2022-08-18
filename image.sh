@@ -1,9 +1,32 @@
 #!/bin/sh
 
+##############################
+# Packages required:  dialog #
+##############################
+
+CHECK=`which dialog`
+[ ! $CHECK = /usr/bin/dialog ] && sudo apt install -y dialog
+echo -e "" 
+rm -f build/bitbake.lock
+rm -f build/bitbake.sock
+clear
+
+python --version 2>&1 | awk '{print $2}' > /tmp/python-version
+
+if grep -qs -i '2.7' cat /tmp/python-version ; then
+    echo 'Your python version is ok'
+else
+    echo -e "${RED}Python version is wrong!"
+    echo -e "It means you need to choose Python2!"
+    sudo update-alternatives --config python
+    exit 0
+fi
+
 SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 cd "${SCRIPTPATH}"
 
 rm -f build/bitbake.lock
+rm -f build/bitbake.sock
 
 def_path="${SCRIPTPATH}/meta-dream/recipes-bsp/linux/linux-dreambox-3.2"
 def_path2="${SCRIPTPATH}/meta-dream/recipes-bsp/linux/linux-dreambox-3.14"
@@ -59,6 +82,29 @@ box=$(dialog --stdout --clear --colors --menu "Build Dreambox Image" 22 70 10 ${
     esac
 
 clear
+## Menu Select build code source ##
+TYPE_1="gitlab"
+TYPE_2="gitee"
+list=
+for i in $(seq 1 2); do
+    p="TYPE_$i"
+    list="$list $i ${!p} "
+done
+list=($list)
+codes=$(dialog --stdout --clear --colors --menu "Select build code source" 12 60 10 ${list[@]})
+    case $codes in
+    1)
+    codesource="gitlab"
+    codesource2="gitlab"
+    ;;
+    2)
+    codesource=""
+    codesource2="gitee"
+    ;;
+    *) clear && exit ;;
+    esac
+
+clear
 ## Menu Select build type ##
 TYPE_1="image"
 TYPE_2="feed"
@@ -71,11 +117,11 @@ list=($list)
 build=$(dialog --stdout --clear --colors --menu "Select build type" 12 60 10 ${list[@]})
     case $build in
     1)
-    echostr="Compiling $machinespecific image, please wait ..."
+    echostr="Compiling $machinespecific image with $codesource2, please wait ..."
     MAKETYPE="image"
     ;;
     2)
-    echostr="Compiling $machinespecific image and feed, please wait ..."
+    echostr="Compiling $machinespecific image and feed with $codesource2, please wait ..."
     MAKETYPE="feed"
     ;;
     *) clear && exit ;;
@@ -103,35 +149,35 @@ if [ "$machinespecific" = "dm800se-cn" ]; then
     cp -f backup/dm800se-cn/*.bbappend meta-dream/recipes-local/images/
     cp -f backup/dm800se-en/clone/* meta-dream/recipes-local/drivers/
     echo "$echostr"
-    MACHINE=dm800se MACHINESIM=${boxsim} make ${MAKETYPE}
+    MACHINE=dm800se MACHINESIM=${boxsim} CODEWEB=${codesource} make ${MAKETYPE}
 elif [ "$machinespecific" = "dm800se-en-clone" ]; then
     cp -f backup/dm800se-en/*.bbappend meta-dream/recipes-local/images/
     cp -f backup/dm800se-en/clone/* meta-dream/recipes-local/drivers/
     echo "$echostr"
-    MACHINE=dm800se MACHINESIM=${boxsim} make ${MAKETYPE}
+    MACHINE=dm800se MACHINESIM=${boxsim} CODEWEB=${codesource} make ${MAKETYPE}
 elif [ "$machinespecific" = "dm800se-en-original" ]; then
     cp -f backup/dm800se-en/*.bbappend meta-dream/recipes-local/images/
     cp -f backup/dm800se-en/original/* meta-dream/recipes-local/drivers/
     echo "$echostr"
-    MACHINE=dm800se MACHINESIM=${boxsim} make ${MAKETYPE}
+    MACHINE=dm800se MACHINESIM=${boxsim} CODEWEB=${codesource} make ${MAKETYPE}
 elif [ "$machinespecific" = "dm900-clone" ]; then
     cp -f backup/dm9x0/*.bbappend meta-dream/recipes-local/images/
     cp -f backup/dm900-clone/* meta-dream/recipes-local/drivers/
     echo "$echostr"
-    MACHINE=dm900 MACHINESIM=${boxsim} make ${MAKETYPE}
+    MACHINE=dm900 MACHINESIM=${boxsim} CODEWEB=${codesource} make ${MAKETYPE}
 elif [ "$machinespecific" = "dm900-original" ]; then
     cp -f backup/dm9x0/*.bbappend meta-dream/recipes-local/images/
     cp -f backup/dm900-original/* meta-dream/recipes-local/drivers/
     echo "$echostr"
-    MACHINE=dm900 MACHINESIM=${boxsim} make ${MAKETYPE}
+    MACHINE=dm900 MACHINESIM=${boxsim} CODEWEB=${codesource} make ${MAKETYPE}
 elif [ "$machinespecific" = "dm920" ]; then
     cp -f backup/dm9x0/*.bbappend meta-dream/recipes-local/images/
     echo "$echostr"
-    MACHINE=dm920 MACHINESIM=${boxsim} make ${MAKETYPE}
+    MACHINE=dm920 MACHINESIM=${boxsim} CODEWEB=${codesource} make ${MAKETYPE}
 elif [ "$machinespecific" = "dm500hd" ]; then
     cp -f backup/dm500hd/*.bbappend meta-dream/recipes-local/images/
     echo "$echostr"
-    MACHINE=dm500hd MACHINESIM=${boxsim} make ${MAKETYPE}
+    MACHINE=dm500hd MACHINESIM=${boxsim} CODEWEB=${codesource} make ${MAKETYPE}
 else
 	echo "Please enter a correct choice"
 fi

@@ -11,9 +11,8 @@ PV = "1.0+git${SRCPV}"
 PKGV = "1.0+git${GITPKGV}"
 PR = "r0"
 
-SRC_URI = "git://gitlab.com/e2i/f4mdump.git;protocol=https;branch=master \
-	file://fix-build-openssl110.patch \
-"
+GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
+SRC_URI = "${GIT_SITE}/f4mdump;protocol=https;branch=master"
 
 S = "${WORKDIR}/git/"
 

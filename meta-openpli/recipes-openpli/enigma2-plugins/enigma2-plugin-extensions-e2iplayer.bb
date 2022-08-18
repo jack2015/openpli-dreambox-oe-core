@@ -3,7 +3,8 @@ DESCRIPTION = "Watch Videos Online"
 SECTION = "multimedia"
 require conf/license/openpli-gplv2.inc
 
-SRC_URI = "git://gitee.com/jackgee2021/e2iplayer-ov.git;branch=master;protocol=https"
+GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
+SRC_URI = "${GIT_SITE}/e2iplayer-ov;branch=master;protocol=https"
 
 S = "${WORKDIR}/git"
 
