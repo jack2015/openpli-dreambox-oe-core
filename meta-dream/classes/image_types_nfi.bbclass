@@ -5,9 +5,13 @@ UBINIZE_VOLSIZE ?= "0"
 UBINIZE_DATAVOLSIZE ?= "0"
 UBINIZE_DATAVOL ?= "0"
 EXTRA_BUILDCMD ?= ""
+PDATE = "${DATE}"
+PDATE[vardepsexclude] += "DATE"
 
 IMAGE_CMD_jffs2 = " \
 	rm -f ${DEPLOY_DIR_IMAGE}/*.jffs2; \
+	rm -f ${DEPLOY_DIR_IMAGE}/*.json; \
+	rm -f ${DEPLOY_DIR_IMAGE}/*.manifest; \
 	mkfs.jffs2 \
 		--root=${IMAGE_ROOTFS}/boot \
 		--disable-compressor=lzo \
@@ -27,12 +31,16 @@ IMAGE_CMD_jffs2 = " \
 		--data-partition ${DREAMBOX_PART2_SIZE}:${IMGDEPLOYDIR}/${IMAGE_NAME}${IMAGE_NAME_SUFFIX}.jffs2 \
 		> ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.nfi; \
 	rm -f ${DEPLOY_DIR_IMAGE}/*.zip; \
-	zip -j ${DEPLOY_DIR_IMAGE}/openpli-${DISTRO_VERSION}_${MACHINE}_${MACHINESIMS}_${DATE}.zip ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.nfi; \
+	zip -j ${DEPLOY_DIR_IMAGE}/openpli-${DISTRO_VERSION}-${MACHINE}-${MACHINESIMS}-${PDATE}.zip ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.nfi; \
 	rm -f ${DEPLOY_DIR_IMAGE}/*.nfi; \
 "
 
 IMAGE_CMD_ubifs = " \
 	rm -f ${DEPLOY_DIR_IMAGE}/*.jffs2; \
+	rm -f ${DEPLOY_DIR_IMAGE}/*.json; \
+	rm -f ${DEPLOY_DIR_IMAGE}/*.manifest; \
+	rm -f ${DEPLOY_DIR_IMAGE}/*.ubi; \
+	rm -f ${DEPLOY_DIR_IMAGE}/*.ubifs; \
 	mkfs.jffs2 \
 		--root=${IMAGE_ROOTFS}/boot \
 		--disable-compressor=lzo \
@@ -71,9 +79,9 @@ IMAGE_CMD_ubifs = " \
 		--boot-partition ${DREAMBOX_PART0_SIZE}:${DEPLOY_DIR_IMAGE}/secondstage-${MACHINE}.bin \
 		--data-partition ${DREAMBOX_PART1_SIZE}:${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.boot.jffs2 \
 		--data-partition ${DREAMBOX_PART2_SIZE}:${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}${IMAGE_NAME_SUFFIX}.ubi \
-		> ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.nfi; \
+		> ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}${DMTYPE}.nfi; \
 	rm -f ${DEPLOY_DIR_IMAGE}/*.zip; \
-	zip -j ${DEPLOY_DIR_IMAGE}/openpli-${DISTRO_VERSION}_${MACHINE}_${MACHINESIMS}_${DATE}.zip ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.nfi; \
+	zip -j ${DEPLOY_DIR_IMAGE}/openpli-${DISTRO_VERSION}_${MACHINE}${DMTYPE}_${MACHINESIMS}_${PDATE}.zip ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}${DMTYPE}.nfi; \
 	rm -f ${DEPLOY_DIR_IMAGE}/*.nfi; \
 "
 
