@@ -55,6 +55,7 @@ OPTIONAL_PACKAGES += " \
 
 OPTIONAL_BSP_ENIGMA2_PACKAGES ?= ""
 ENIGMA2_OPTIONAL = " \
+	${@bb.utils.contains_any("MACHINE", "dm900 dm920", "enigma2-display-skins", "", d)} \
 	channelsettings-enigma2-meta \
 	dvb-usb-drivers-meta \
 	network-usb-drivers-meta \

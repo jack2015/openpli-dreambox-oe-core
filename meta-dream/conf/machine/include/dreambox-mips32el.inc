@@ -17,4 +17,4 @@ DVBMEDIASINK_CONFIG:dm520 = "--with-pcm --with-wma --with-wmv --with-dtsdownmix 
 require conf/machine/include/dreambox.inc
 require conf/machine/include/tune-mips32.inc
 
-MACHINE_KERNEL_PR = "r14"
+MACHINE_KERNEL_PR = "r15"

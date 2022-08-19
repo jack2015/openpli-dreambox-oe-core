@@ -41,3 +41,5 @@ do_install_append () {
         install -m 644 ${WORKDIR}/volatiles ${D}${sysconfdir}/default/volatiles/10_davfs2
         rm -rf ${D}${datadir}/davfs2
 }
+
+PACKAGE_NO_LOCALE = "1"
