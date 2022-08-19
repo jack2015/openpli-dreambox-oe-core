@@ -1,8 +1,6 @@
 SUMMARY = "Control your receiver with a browser"
-DESCRIPTION = "Control your receiver with a browser"
 MAINTAINER = "Openpli Developers"
-LICENSE = "GPLv2"
-LIC_FILES_CHKSUM = "file://README;md5=26abba37d1c2fcbf96a087ceb8e1db86"
+require conf/license/license-gplv2.inc
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
@@ -26,17 +24,16 @@ RDEPENDS_${PN} = "\
 
 inherit gitpkgv distutils-openplugins gettext
 
-PV = "git${SRCPV}"
-PKGV = "git${GITPKGV}"
-PR = "r8"
-
 GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
 
 #ver 1.5.2
 SRCREV = "750dee9e557cc8ef053eabb7da5ff827b3f609a4"
 
-SRC_URI = "${GIT_SITE}/e2openplugin-OpenWebif;protocol=https;branch=master \
-	file://dm800sev2.png"
+PV = "git${SRCPV}"
+PKGV = "git${GITPKGV}"
+PR = "r8"
+
+SRC_URI = "${GIT_SITE}/e2openplugin-OpenWebif;protocol=https;branch=master file://dm800sev2.png"
 
 #ver 1.3.9
 SRCREV_dm800se = "fcf12a42d446022a90b7617a297ba676fc6cfcfe"
@@ -44,13 +41,11 @@ SRCREV_dm500hd = "fcf12a42d446022a90b7617a297ba676fc6cfcfe"
 
 PV_dm800se = "1.3.9+git${SRCPV}"
 PKGV_dm800se = "1.3.9+git${GITPKGV}"
-SRC_URI_dm800se = "${GIT_SITE}/e2openplugin-OpenWebif;protocol=https;branch=NoSix \
-	file://dm800sev2.png"
+SRC_URI_dm800se = "${GIT_SITE}/e2openplugin-OpenWebif;protocol=https;branch=NoSix file://dm800sev2.png"
 
 PV_dm500hd = "1.3.9+git${SRCPV}"
 PKGV_dm500hd = "1.3.9+git${GITPKGV}"
-SRC_URI_dm500hd = "${GIT_SITE}/e2openplugin-OpenWebif;protocol=https;branch=NoSix \
-	file://dm800sev2.png"
+SRC_URI_dm500hd = "${GIT_SITE}/e2openplugin-OpenWebif;protocol=https;branch=NoSix file://dm800sev2.png"
 
 S="${WORKDIR}/git"
 
