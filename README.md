@@ -1,5 +1,7 @@
-# openpli-dm8000-oe-core
-Build environment dm800se &amp; dm8000 based on OpenPLi-homebuild (develop branch).
+# openpli-dreambox-oe-core 9.3
+Build environment based on OpenPLi-homebuild (develop branch).
+
+-For dm800se & dm500hd & dm900 & dm920
 
 -GCC 9.3.0 <br>
 -Glibc 2.31 <br>
