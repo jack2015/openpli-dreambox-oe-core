@@ -15,7 +15,7 @@ SRC_URI = "${GIT_SITE}/serviceapp;branch=develop;protocol=https"
 
 S = "${WORKDIR}/git"
 
-inherit autotools gitpkgv pythonnative pkgconfig
+inherit autotools gitpkgv pythonnative pkgconfig gettext
 
 PV = "git${SRCPV}"
 PKGV = "git${GITPKGV}"

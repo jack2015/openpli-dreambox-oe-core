@@ -108,7 +108,9 @@ ENIGMA2_OPTIONAL = " \
 	enigma2-plugin-extensions-openwebif-webtv \
 	enigma2-plugin-extensions-openwebif-themes \
 	enigma2-plugin-extensions-oscamstatus \
+	enigma2-plugin-extensions-ppanel \
 	enigma2-plugin-softcams-oscam \
+	enigma2-plugin-softcams-libcrypto-compat \
 	enigma2-plugin-skins-pli-hd \
 	enigma2-plugin-skins-pli-hd1 \
 	enigma2-plugin-skins-pli-hd2 \

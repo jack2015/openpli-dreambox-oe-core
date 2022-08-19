@@ -3,7 +3,8 @@ HOMEPAGE = "https://github.com/Dima73/pli-openmultibootmanager"
 LICENSE = "PD"
 LIC_FILES_CHKSUM = "file://COPYING;md5=b234ee4d69f5fce4486a80fdaf4a4263"
 
-RDEPENDS_${PN} = "python-subprocess mtd-utils mtd-utils-ubifs kernel-module-nandsim openmultiboot"
+RDEPENDS_${PN} = "python-subprocess mtd-utils mtd-utils-ubifs openmultiboot"
+RRECOMMENDS_${PN} = "kernel-module-nandsim kernel-module-block2mtd"
 inherit gitpkgv distutils-openplugins
 PV = "1.0+git${SRCPV}"
 PKGV = "1.0+git${GITPKGV}"
@@ -21,7 +22,7 @@ SRC_URI += " \
 	file://nfidump_mipsel_2.0.0 \
 	"
 
-FILES_${PN}_append = " /usr/sbin"
+FILES_${PN}_append = " /usr/sbin /sbin"
 NFINAME_dm7020hd = "nfidump_mipsel_1.0.0"
 NFINAME_dm7020hdv2 = "nfidump_mipsel_1.0.0"
 NFINAME_dm8000 = "nfidump_mipsel_1.0.0"
@@ -37,12 +38,10 @@ NFINAME_dm7080 = "nfidump_mipsel_2.0.0"
 S = "${WORKDIR}/git"
 
 do_install_append() {
-    rm -rf ${D}/usr/lib/enigma2/python/Plugins/Extensions/OpenMultiboot/*.py
-    rm -rf ${D}/usr/lib/enigma2/python/Plugins/Extensions/OpenMultiboot/open-multiboot-branding-helper.pyo
-    cp ${S}/src/open-multiboot-branding-helper.py ${D}/usr/lib/enigma2/python/Plugins/Extensions/OpenMultiboot/open-multiboot-branding-helper.py
-    chmod 0755 ${D}/usr/lib/enigma2/python/Plugins/Extensions/OpenMultiboot/install-nandsim.sh
+    find ${D}/ -name '*.sh' -exec chmod a+x {} \;
+    install -d ${D}/sbin
+    cp ${S}/src/open-multiboot-branding-helper.py ${D}/sbin
     install -d ${D}/usr/sbin
-    cp ${S}/src/open-multiboot-branding-helper.py ${D}/usr/sbin
 }
 
 do_install_append_mipsel() {

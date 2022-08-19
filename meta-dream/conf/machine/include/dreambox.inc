@@ -46,5 +46,4 @@ KERNEL_CONSOLE = "ttyS0,115200"
 
 DREAMBOX_BUILDIMAGE = "buildimage --arch ${MACHINE} ${EXTRA_BUILDCMD} \
 	--erase-block-size ${DREAMBOX_ERASE_BLOCK_SIZE} \
-	--flash-size ${DREAMBOX_FLASH_SIZE} \
 	--sector-size ${DREAMBOX_SECTOR_SIZE}"

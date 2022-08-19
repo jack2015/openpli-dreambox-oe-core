@@ -20,10 +20,25 @@ inherit autotools-brokensep pkgconfig
 
 S = "${WORKDIR}/git"
 
+#dreambox /dev/mtd boot partition with kernel
+MTD_KERNEL_dm500hd = "mtd2"
+MTD_KERNEL_dm500hdv2 = "mtd2"
+MTD_KERNEL_dm520 = "mtd2"
+MTD_KERNEL_dm800se = "mtd2"
+MTD_KERNEL_dm800sev2 = "mtd2"
+MTD_KERNEL_dm820 = "mtd2"
+MTD_KERNEL_dm7020hd = "mtd2"
+MTD_KERNEL_dm7020hdv2 = "mtd2"
+MTD_KERNEL_dm7080 = "mtd2"
+MTD_KERNEL_dm8000 = "mtd2"
+MTD_KERNEL_dm900 = "mmcblk0p1"
+MTD_KERNEL_dm920 = "mmcblk0p1"
+
 EXTRA_OEMAKE = " \
     'CFLAGS=${CFLAGS} \
     -I=${includedir}/freetype2 \
-    ${@bb.utils.contains("MACHINE_FEATURES", "singlecore", "-DOMB_DEFAULT_TIMER=10" , "-DOMB_DEFAULT_TIMER=5", d)} \
+    -DOMB_DEFAULT_TIMER=10 \
+    ${@bb.utils.contains("MACHINE_FEATURES", "textlcd", "-DOMB_HAVE_TEXTLCD" , "", d)} \
     ${@bb.utils.contains("MACHINE_FEATURES", "ombv1", "-DOMB_DREAMBOX", "", d)} \
     ${@bb.utils.contains("MACHINE_FEATURES", "ombv2", "-DOMB_MMCBLK", "", d)} \
     -DOMB_KERNEL_MTD=\"/dev/${MTD_KERNEL}\"' \
@@ -54,4 +69,7 @@ rm -rf /sbin/init
 ln -s /sbin/init.sysvinit /sbin/init
 rm -rf /sbin/open-multiboot-branding-helper.py
 exit 0
+}
+
+pkg_postinst_${PN}_openbh() {
 }

@@ -31,6 +31,10 @@ do_install() {
 
 PACKAGES = "${PN}"
 
+INHIBIT_PACKAGE_STRIP = "1"
+INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
+INSANE_SKIP:${PN}:append = " already-stripped"
+
 RDEPENDS_${PN} += "dreambox-secondstage-${MACHINE} kernel-${DM_LOCALVERSION}"
 
 # We don't use KERNEL_VERSION in this recipe, because the

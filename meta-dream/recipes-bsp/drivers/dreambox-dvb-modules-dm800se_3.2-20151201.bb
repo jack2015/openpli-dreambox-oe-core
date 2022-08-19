@@ -5,6 +5,8 @@ SRC_URI[modules.sha256sum] = "71a3b3277d29f57e4949ccd9eed0a1bb18e83189fa184e417f
 DREAMBOX_DVB_MODULES_MIRROR = "https://jack2015.github.io/files"
 
 INHIBIT_PACKAGE_STRIP = "1"
+INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
+INHIBIT_SYSROOT_STRIP = "1"
 INSANE_SKIP_${PN}_append = " already-stripped"
 
 RDEPENDS_${PN} += "kernel-module-stv0299"
