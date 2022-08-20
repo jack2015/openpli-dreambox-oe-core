@@ -148,6 +148,7 @@ ENIGMA2_OPTIONAL = " \
 	enigma2-plugin-extensions-subssupport \
 	enigma2-plugin-extensions-managerautofs \
 	enigma2-plugin-extensions-xstreamity \
+	enigma2-plugin-extensions-jedimakerxtream \
 	enigma2-plugin-extensions-tmbd \
 	enigma2-plugin-extensions-vcs \
 	enigma2-plugin-extensions-xmodem \

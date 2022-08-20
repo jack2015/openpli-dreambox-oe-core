@@ -20,6 +20,7 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-language-zh-cn \
 	enigma2-plugin-font-wqy-microhei \
 	enigma2-plugin-skins-pli-fullnighthd \
+	enigma2-plugin-extensions-keyadder \
 	enigma2-plugin-extensions-fancontrol2 \
 	enigma2-plugin-extensions-audiosync \
 	enigma2-plugin-extensions-autobackup \
