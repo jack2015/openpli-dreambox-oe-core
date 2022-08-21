@@ -15,6 +15,7 @@ IMAGE_INSTALL = "\
 	fakelocale \
 	fuse-exfat \
 	glibc-binary-localedata-en-gb \
+	${@bb.utils.contains("MACHINE_FEATURES", "emmc", "dosfstools mtools e2fsprogs-resize2fs partitions-by-name bzip2 rsync" , "", d)} \
 	hdparm \
 	kernel-params \
 	modutils-loadscript \
