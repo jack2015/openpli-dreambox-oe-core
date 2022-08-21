@@ -104,9 +104,9 @@ PV = "2.7+git${SRCPV}"
 PKGV = "2.7+git${GITPKGV}"
 
 SRC_URI = " git://gitlab.com/jack2015/enigma2-openpli.git;protocol=https;branch=${ENIGMA2_BRANCH} \
-	file://01-use-mallinfo2.patch \
-	file://02-fix-build-gcc11.patch \
-	file://03-get-rid-of-register-keyword.patch \
+	file://001-use-mallinfo2.patch \
+	file://002-fix-build-gcc11.patch \
+	file://003-get-rid-of-register-keyword.patch \
 	"
 
 LDFLAGS:prepend = " -lxml2 "
