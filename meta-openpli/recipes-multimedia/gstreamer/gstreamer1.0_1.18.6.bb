@@ -4,23 +4,28 @@ It supports a wide range of formats including mp3, ogg, avi, mpeg and quicktime.
 HOMEPAGE = "http://gstreamer.freedesktop.org/"
 BUGTRACKER = "https://bugzilla.gnome.org/enter_bug.cgi?product=Gstreamer"
 SECTION = "multimedia"
-LICENSE = "LGPL-2.1-or-later"
+LICENSE = "LGPL-2.0-or-later"
+
+DEPENDS = "glib-2.0 glib-2.0-native libxml2 bison-native flex-native"
+
+inherit meson pkgconfig gettext upstream-version-is-even gobject-introspection ptest-gnome
+
 LIC_FILES_CHKSUM = "file://COPYING;md5=6762ed442b3822387a51c92d928ead0d \
-                    file://gst/gst.h;beginline=1;endline=21;md5=e059138481205ee2c6fc1c079c016d0d \
-                    "
+                    file://gst/gst.h;beginline=1;endline=21;md5=e059138481205ee2c6fc1c079c016d0d"
 
-require gstreamer1.0-common.inc
+S = "${WORKDIR}/gstreamer-${PV}"
 
-DEPENDS = "bison-native flex-native glib-2.0 glib-2.0-native libxml2 libcap"
-
-inherit pkgconfig gobject-introspection
-
-SRCREV_FORMAT = "gst"
-
-SRC_URI = "git://gitlab.freedesktop.org/gstreamer/gstreamer;protocol=https;branch=1.18;name=gst \
-           file://0001-meson-Add-option-for-installed-tests.patch \
-           file://0002-revert-use-new-gst-adapter-get-buffer.patch \
-"
+SRC_URI = "https://gstreamer.freedesktop.org/src/gstreamer/gstreamer-${PV}.tar.xz \
+           file://run-ptest \
+           file://0001-gst-gstpluginloader.c-when-env-var-is-set-do-not-fal.patch \
+           file://0002-Remove-unused-valgrind-detection.patch \
+           file://0003-tests-seek-Don-t-use-too-strict-timeout-for-validati.patch \
+           file://0004-tests-respect-the-idententaion-used-in-meson.patch \
+           file://0005-tests-add-support-for-install-the-tests.patch \
+           file://0006-tests-use-a-dictionaries-for-environment.patch \
+           file://0007-tests-install-the-environment-for-installed_tests.patch \
+           "
+SRC_URI[sha256sum] = "4ec816010dd4d3a93cf470ad0a6f25315f52b204eb1d71dfa70ab8a1c3bd06e6"
 
 PACKAGECONFIG ??= "${@bb.utils.contains('PTEST_ENABLED', '1', 'tests', '', d)} \
                    check \
@@ -65,4 +70,6 @@ FILES:${PN}-dev += "${libdir}/gstreamer-1.0/*.a ${libdir}/gstreamer-1.0/include"
 FILES:${PN}-bash-completion += "${datadir}/bash-completion/completions/ ${datadir}/bash-completion/helpers/gst*"
 FILES:${PN}-dbg += "${datadir}/gdb ${datadir}/gstreamer-1.0/gdb"
 
-require gstreamer1.0-ptest.inc
+CVE_PRODUCT = "gstreamer"
+
+PTEST_BUILD_HOST_FILES = ""

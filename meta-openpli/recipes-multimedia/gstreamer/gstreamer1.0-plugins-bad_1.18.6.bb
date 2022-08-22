@@ -1,41 +1,35 @@
+require gstreamer1.0-plugins-common.inc
+
+DESCRIPTION = "'Bad' GStreamer plugins and helper libraries "
+HOMEPAGE = "https://gstreamer.freedesktop.org/"
+BUGTRACKER = "https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad/-/issues"
+
+SRC_URI = "https://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-${PV}.tar.xz \
+           file://0001-fix-maybe-uninitialized-warnings-when-compiling-with.patch \
+           file://0002-avoid-including-sys-poll.h-directly.patch \
+           file://0003-ensure-valid-sentinals-for-gst_structure_get-etc.patch \
+           file://0004-opencv-resolve-missing-opencv-data-dir-in-yocto-buil.patch \
+           file://0005-msdk-fix-includedir-path.patch \
+           "
+SRC_URI[sha256sum] = "0b1b50ac6311f0c510248b6cd64d6d3c94369344828baa602db85ded5bc70ec9"
+
+S = "${WORKDIR}/gst-plugins-bad-${PV}"
+
 LICENSE = "GPL-2.0-or-later & LGPL-2.0-or-later & LGPL-2.1-or-later"
 LIC_FILES_CHKSUM = "file://COPYING;md5=4fbd65380cdd255951079008b364516c"
 
-# remove at next version upgrade or when output changes
-PR = "r1"
-HASHEQUIV_HASH_VERSION .= ".1"
-
-require gstreamer1.0-plugins-common.inc
-
-DEPENDS += "gstreamer1.0-plugins-base json-glib"
+DEPENDS += "gstreamer1.0-plugins-base"
 
 inherit gobject-introspection
-
-SRCREV_FORMAT = "gst_plugins_bad"
-
-SRC_URI = "git://gitlab.freedesktop.org/gstreamer/gst-plugins-bad;protocol=https;branch=1.18;name=gst_plugins_bad \
-        file://0001-fix-maybe-uninitialized-warnings-when-compiling-with-Os.patch \
-        file://0002-avoid-including-sys-poll.h-directly.patch \
-        file://0003-ensure-valid-sentinels-for-gst_structure_get-etc.patch \
-        file://0004-rtmp-hls-tsdemux-fix.patch \
-        file://0005-rtmp-fix-seeking-and-potential-segfault.patch \
-        file://0006-dvbapi5-fix-old-kernel.patch \
-        file://0007-hls-main-thread-block.patch \
-        file://0001-Revert-tsdemux-Limit-the-maximum-PES-payload-size.patch \
-        file://0002-Revert-tsdemux-always-take-the-seek-segment-stop-int.patch \
-        file://0003-Revert-tsdemux-Use-gst_segment_do_seek.patch \
-"
 
 PACKAGECONFIG ??= " \
     ${GSTREAMER_ORC} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'bluetooth', 'bluez', '', d)} \
-    ${@bb.utils.filter('DISTRO_FEATURES', 'directfb vulkan x11', d)} \
+    ${@bb.utils.filter('DISTRO_FEATURES', 'directfb vulkan', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'wayland', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'gl', '', d)} \
-    bz2 closedcaption curl dash dtls hls openssl sbc smoothstreaming sndfile \
-    ttml uvch264 webp \
-    assrender faac faad libde265 libmms neon opusparse rtmp \
-    ${@bb.utils.contains('TUNE_FEATURES', 'mx32', '', 'rsvg', d)} \
+    bz2 closedcaption curl dash dtls hls openssl rsvg sbc smoothstreaming \
+    sndfile ttml uvch264 webp \
 "
 
 PACKAGECONFIG[aom]             = "-Daom=enabled,-Daom=disabled,aom"
@@ -98,7 +92,6 @@ PACKAGECONFIG[webp]            = "-Dwebp=enabled,-Dwebp=disabled,libwebp"
 PACKAGECONFIG[webrtc]          = "-Dwebrtc=enabled,-Dwebrtc=disabled,libnice"
 PACKAGECONFIG[webrtcdsp]       = "-Dwebrtcdsp=enabled,-Dwebrtcdsp=disabled,webrtc-audio-processing"
 PACKAGECONFIG[zbar]            = "-Dzbar=enabled,-Dzbar=disabled,zbar"
-PACKAGECONFIG[x11]             = "-Dx11=enabled,-Dx11=disabled,libxcb libxkbcommon"
 PACKAGECONFIG[x265]            = "-Dx265=enabled,-Dx265=disabled,x265"
 
 EXTRA_OEMESON += " \
