@@ -1,36 +1,49 @@
 #!/bin/sh
 
-gcc --version | sed -nr '/Ubuntu [0-9]+/ s/.*Ubuntu +([0-9]+).*/\1/p' > /tmp/vision-gcc-version
-VISIONGCCVERSION=`cat /tmp/vision-gcc-version`
-if [ "${VISIONGCCVERSION}" != '10' ]; then
-	echo -e "${RED}GCC version is wrong!"
-	echo -e "It means you need to choose version 10 of GCC!"
-	sudo update-alternatives --config gcc
-	gcc --version | sed -nr '/Ubuntu [0-9]+/ s/.*Ubuntu +([0-9]+).*/\1/p' > /tmp/vision-gcc-version
-	VISIONGCCVERSION=`cat /tmp/vision-gcc-version`
-	echo -e "Done, now GCC version is: ${VISIONGCCVERSION} ${NC}"
-	echo -e ""
-	exit 0
+##############################
+# Packages required:  dialog #
+##############################
+
+CHECK=`which dialog`
+[ ! $CHECK = /usr/bin/dialog ] && sudo apt install -y dialog
+echo -e "" 
+rm -f build/bitbake.lock
+rm -f build/bitbake.sock
+clear
+
+python --version 2>&1 | awk '{print $2}' > /tmp/python-version
+
+if grep -qs -i '2.7' cat /tmp/python-version ; then
+    echo 'Your python version is ok'
+else
+    echo -e "${RED}Python version is wrong!"
+    echo -e "It means you need to choose Python2!"
+    sudo update-alternatives --config python
+    exit 0
 fi
 
 SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 cd "${SCRIPTPATH}"
 
 rm -f build/bitbake.lock
+rm -f build/bitbake.sock
 
 def_path="${SCRIPTPATH}/meta-dream/recipes-bsp/linux/linux-dreambox-3.2"
 def_path2="${SCRIPTPATH}/meta-dream/recipes-bsp/linux/linux-dreambox-3.14"
+def_path3="${SCRIPTPATH}/meta-dream/recipes-bsp/linux/linux-dreambox-3.4"
 
 clear
 ## Menu Select Boxes ##
 BOX_1="dm800se-cn"
-BOX_2="dm800se-en"
-BOX_3="dm800sev2-en"
+BOX_2="dm800se-en-clone"
+BOX_3="dm800se-en-original"
 BOX_4="dm900-clone"
 BOX_5="dm900-original"
 BOX_6="dm920"
+BOX_7="dm500hd"
+
 list=
-for i in $(seq 1 6); do
+for i in $(seq 1 7); do
     p="BOX_$i"
     list="$list $i ${!p} "
 done
@@ -38,99 +51,110 @@ list=($list) #00ff2525
 box=$(dialog --stdout --clear --colors --menu "Build Dreambox Image" 22 70 10 ${list[@]})
     case $box in
     1)
-    echo "($box) Select DM800se chinese language"
     machinespecific="dm800se-cn"
+    boxsim="clone"
     ;;
     2)
-    echo "($box) Select DM800se english language"
-    machinespecific="dm800se-en"
+    machinespecific="dm800se-en-clone"
+    boxsim="clone"
     ;;
     3)
-    echo "($box) Select DM800sev2 english language"
-    machinespecific="dm800sev2-en"
+    machinespecific="dm800se-en-original"
+    boxsim="original"
     ;;
     4)
-    echo "($box) Select DM900 CLONE"
     machinespecific="dm900-clone"
+    boxsim="clone"
     ;;
     5)
-    echo "($box) Select DM900 ORIGINAL"
     machinespecific="dm900-original"
+    boxsim="original"
     ;;
     6)
-    echo "($box) Select DM920"
     machinespecific="dm920"
+    boxsim="original"
+    ;;
+    7)
+    machinespecific="dm500hd"
+    boxsim="original"
     ;;
     *) clear && exit ;;
     esac
 
-if [ "$machinespecific" = "dm800se-only" ]; then
-        cp -pf $def_path/dm800se/defconfig $def_path/defconfig
-	cp -pf backup/dm800se-only/* meta-dream/recipes-local/images/
-	cp -pf backup/image-size/only/* meta-dream/conf/machine/include/
-	cp -pf backup/serviceapp/onlyserviceapp/enigma2.bbappend meta-dream/recipes-local/enigma2/
-	cp -pf backup/serviceapp/onlyserviceapp/enigma2-plugin-systemplugins-serviceapp_0.5.bbappend meta-dream/recipes-local/enigma2-plugins/
-	echo "Compiling $machinespecific image, please wait ..."
-        MACHINE=dm800se make image
-elif [ "$machinespecific" = "dm800se-big" ]; then
-        cp -pf $def_path/dm800se/defconfig $def_path/defconfig
-	cp -pf backup/dm800se-big/* meta-dream/recipes-local/images/
-	cp -pf backup/image-size/big/* meta-dream/conf/machine/include/
-	cp -pf backup/serviceapp/big/enigma2.bbappend meta-dream/recipes-local/enigma2/
-	cp -pf backup/serviceapp/big/enigma2-plugin-systemplugins-serviceapp_0.5.bbappend meta-dream/recipes-local/enigma2-plugins/
-	echo "Compiling $machinespecific image, please wait ..."
-        MACHINE=dm800se make image
-elif [ "$machinespecific" = "dm800se-cn" ]; then
-        cp -pf $def_path/dm800se/defconfig $def_path/defconfig
-	cp -pf backup/dm800se-cn/* meta-dream/recipes-local/images/
-	cp -pf backup/image-size/64m/* meta-dream/conf/machine/include/
-	cp -pf backup/serviceapp/normal/enigma2.bbappend meta-dream/recipes-local/enigma2/
-	cp -pf backup/serviceapp/normal/enigma2-plugin-systemplugins-serviceapp_0.5.bbappend meta-dream/recipes-local/enigma2-plugins/
-	echo "Compiling $machinespecific image, please wait ..."
-        MACHINE=dm800se make image
-elif [ "$machinespecific" = "dm800se-en" ]; then
-        cp -pf $def_path/dm800se/defconfig $def_path/defconfig
-	cp -pf backup/dm800se-en/* meta-dream/recipes-local/images/
-	cp -pf backup/image-size/64m/* meta-dream/conf/machine/include/
-	cp -pf backup/serviceapp/normal/enigma2.bbappend meta-dream/recipes-local/enigma2/
-	cp -pf backup/serviceapp/normal/enigma2-plugin-systemplugins-serviceapp_0.5.bbappend meta-dream/recipes-local/enigma2-plugins/
-	echo "Compiling $machinespecific image, please wait ..."
-        MACHINE=dm800se make image
-elif [ "$machinespecific" = "dm800sev2-en" ]; then
-        cp -pf $def_path/dm800sev2/defconfig $def_path/defconfig
-	cp -pf backup/dm800sev2-en/* meta-dream/recipes-local/images/
-	cp -pf backup/image-size/dm800sev2/* meta-dream/conf/machine/include/
-	cp -pf backup/serviceapp/dm800sev2/enigma2.bbappend meta-dream/recipes-local/enigma2/
-	cp -pf backup/serviceapp/dm800sev2/enigma2-plugin-systemplugins-serviceapp_0.5.bbappend meta-dream/recipes-local/enigma2-plugins/
-	echo "Compiling $machinespecific image, please wait ..."
-        MACHINE=dm800sev2 make image
-elif [ "$machinespecific" = "dm8000" ]; then
-        cp -pf $def_path/dm8000/defconfig $def_path/defconfig
-	echo "Compiling $machinespecific image, please wait ..."
-        MACHINE=dm8000 make image
+clear
+## Menu Select build type ##
+TYPE_1="image"
+TYPE_2="feed"
+list=
+for i in $(seq 1 2); do
+    p="TYPE_$i"
+    list="$list $i ${!p} "
+done
+list=($list)
+build=$(dialog --stdout --clear --colors --menu "Select build type" 12 60 10 ${list[@]})
+    case $build in
+    1)
+    echostr="Compiling $machinespecific image, please wait ..."
+    MAKETYPE="image"
+    ;;
+    2)
+    echostr="Compiling $machinespecific image and feed, please wait ..."
+    MAKETYPE="feed"
+    ;;
+    *) clear && exit ;;
+    esac
+
+clear
+
+########## HACK ###########
+rm -f $def_path/defconfig
+rm -f $def_path2/defconfig
+rm -f $def_path3/defconfig
+
+if [ ! -d meta-dream/recipes-local/images/ ]
+then
+    mkdir meta-dream/recipes-local/images/
+fi
+
+if [ ! -d meta-dream/recipes-local/drivers/ ]
+then
+    mkdir meta-dream/recipes-local/drivers/
+fi
+###########################
+
+if [ "$machinespecific" = "dm800se-cn" ]; then
+    cp -f backup/dm800se-cn/*.bbappend meta-dream/recipes-local/images/
+    cp -f backup/dm800se-en/clone/* meta-dream/recipes-local/drivers/
+    echo "$echostr"
+    MACHINE=dm800se MACHINESIM=${boxsim} make ${MAKETYPE}
+elif [ "$machinespecific" = "dm800se-en-clone" ]; then
+    cp -f backup/dm800se-en/*.bbappend meta-dream/recipes-local/images/
+    cp -f backup/dm800se-en/clone/* meta-dream/recipes-local/drivers/
+    echo "$echostr"
+    MACHINE=dm800se MACHINESIM=${boxsim} make ${MAKETYPE}
+elif [ "$machinespecific" = "dm800se-en-original" ]; then
+    cp -f backup/dm800se-en/*.bbappend meta-dream/recipes-local/images/
+    cp -f backup/dm800se-en/original/* meta-dream/recipes-local/drivers/
+    echo "$echostr"
+    MACHINE=dm800se MACHINESIM=${boxsim} make ${MAKETYPE}
 elif [ "$machinespecific" = "dm900-clone" ]; then
-        cp -pf $def_path2/dm900/defconfig $def_path2/defconfig
-	cp -pf backup/dm900-clone/* meta-dream/recipes-bsp/drivers/
-	cp -pf backup/dm9x0/* meta-dream/recipes-local/images/
-	cp -pf backup/serviceapp/dm9x0/enigma2.bbappend meta-dream/recipes-local/enigma2/
-	cp -pf backup/serviceapp/dm9x0/enigma2-plugin-systemplugins-serviceapp_0.5.bbappend meta-dream/recipes-local/enigma2-plugins/
-	echo "Compiling $machinespecific image, please wait ..."
-        MACHINE=dm900 make image
+    cp -f backup/dm9x0/*.bbappend meta-dream/recipes-local/images/
+    cp -f backup/dm900-clone/* meta-dream/recipes-local/drivers/
+    echo "$echostr"
+    MACHINE=dm900 MACHINESIM=${boxsim} make ${MAKETYPE}
 elif [ "$machinespecific" = "dm900-original" ]; then
-        cp -pf $def_path2/dm900/defconfig $def_path2/defconfig
-	cp -pf backup/dm900-original/* meta-dream/recipes-bsp/drivers/
-	cp -pf backup/dm9x0/* meta-dream/recipes-local/images/
-	cp -pf backup/serviceapp/dm9x0/enigma2.bbappend meta-dream/recipes-local/enigma2/
-	cp -pf backup/serviceapp/dm9x0/enigma2-plugin-systemplugins-serviceapp_0.5.bbappend meta-dream/recipes-local/enigma2-plugins/
-	echo "Compiling $machinespecific image, please wait ..."
-        MACHINE=dm900 make image
+    cp -f backup/dm9x0/*.bbappend meta-dream/recipes-local/images/
+    cp -f backup/dm900-original/* meta-dream/recipes-local/drivers/
+    echo "$echostr"
+    MACHINE=dm900 MACHINESIM=${boxsim} make ${MAKETYPE}
 elif [ "$machinespecific" = "dm920" ]; then
-        cp -pf $def_path2/dm920/defconfig $def_path2/defconfig
-	cp -pf backup/dm9x0/* meta-dream/recipes-local/images/
-	cp -pf backup/serviceapp/dm9x0/enigma2.bbappend meta-dream/recipes-local/enigma2/
-	cp -pf backup/serviceapp/dm9x0/enigma2-plugin-systemplugins-serviceapp_0.5.bbappend meta-dream/recipes-local/enigma2-plugins/
-	echo "Compiling $machinespecific image, please wait ..."
-        MACHINE=dm920 make image
+    cp -f backup/dm9x0/*.bbappend meta-dream/recipes-local/images/
+    echo "$echostr"
+    MACHINE=dm920 MACHINESIM=${boxsim} make ${MAKETYPE}
+elif [ "$machinespecific" = "dm500hd" ]; then
+    cp -f backup/dm500hd/*.bbappend meta-dream/recipes-local/images/
+    echo "$echostr"
+    MACHINE=dm500hd MACHINESIM=${boxsim} make ${MAKETYPE}
 else
 	echo "Please enter a correct choice"
 fi

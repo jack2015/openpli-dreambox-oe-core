@@ -1,8 +1,6 @@
 SUMMARY = "Control your receiver with a browser"
-DESCRIPTION = "Control your receiver with a browser"
 MAINTAINER = "Openpli Developers"
-LICENSE = "GPLv2"
-LIC_FILES_CHKSUM = "file://README;md5=26abba37d1c2fcbf96a087ceb8e1db86"
+require conf/license/license-gplv2.inc
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
@@ -26,10 +24,26 @@ RDEPENDS_${PN} = "\
 
 inherit gitpkgv distutils-openplugins gettext
 
+#ver 1.5.2
+SRCREV = "750dee9e557cc8ef053eabb7da5ff827b3f609a4"
+
 PV = "git${SRCPV}"
 PKGV = "git${GITPKGV}"
+PR = "r8"
 
-SRC_URI = "git://github.com/E2OpenPlugins/e2openplugin-OpenWebif.git;protocol=git;branch=master"
+SRC_URI = "git://gitlab.com/jack2015/e2openplugin-OpenWebif;protocol=https;branch=master file://dm800sev2.png"
+
+#ver 1.3.9
+SRCREV_dm800se = "fcf12a42d446022a90b7617a297ba676fc6cfcfe"
+SRCREV_dm500hd = "fcf12a42d446022a90b7617a297ba676fc6cfcfe"
+
+PV_dm800se = "1.3.9+git${SRCPV}"
+PKGV_dm800se = "1.3.9+git${GITPKGV}"
+SRC_URI_dm800se = "git://gitlab.com/jack2015/e2openplugin-OpenWebif;protocol=https;branch=NoSix file://dm800sev2.png"
+
+PV_dm500hd = "1.3.9+git${SRCPV}"
+PKGV_dm500hd = "1.3.9+git${GITPKGV}"
+SRC_URI_dm500hd = "git://gitlab.com/jack2015/e2openplugin-OpenWebif;protocol=https;branch=NoSix file://dm800sev2.png"
 
 S="${WORKDIR}/git"
 
@@ -45,6 +59,7 @@ do_compile() {
 do_install_append() {
     install -d ${D}${PLUGINPATH}
     cp -r ${S}/plugin/* ${D}${PLUGINPATH}
+    cp -f ${WORKDIR}/dm800sev2.png ${D}${PLUGINPATH}/public/images/boxes/
     chmod a+rX ${D}${PLUGINPATH}
 }
 
@@ -58,20 +73,56 @@ python do_cleanup () {
 
     mybox_name = d.getVar('MACHINE', True)
 
+    if mybox_name == 'dm500hd':
+        target_box = 'dm500hd.png'
+        target_remote = 'dmm1.png'
+        target_keymap = 'dmm1.html'
+    if mybox_name == 'dm8000':
+        target_box = 'dm8000.png'
+        target_remote = 'dmm1.png'
+        target_keymap = 'dmm1.html'
     if mybox_name == 'dm800se':
         target_box = 'dm800se.png'
         target_remote = 'dmm1.png'
         target_keymap = 'dmm1.html'
     if mybox_name == 'dm800sev2':
-        target_box = 'dm800se.png'
+        target_box = 'dm800sev2.png'
         target_remote = 'dmm1.png'
         target_keymap = 'dmm1.html'
+    if mybox_name == 'dm500hdv2':
+        target_box = 'dm500hdv2.png'
+        target_remote = 'dmm2.png'
+        target_keymap = 'dmm2.html'
     if mybox_name == 'dm900':
         target_box = 'dm900.png'
         target_remote = 'dmm2.png'
         target_keymap = 'dmm2.html'
     if mybox_name == 'dm920':
         target_box = 'dm920.png'
+        target_remote = 'dmm2.png'
+        target_keymap = 'dmm2.html'
+    if mybox_name == 'dm820':
+        target_box = 'dm820.png'
+        target_remote = 'dmm2.png'
+        target_keymap = 'dmm2.html'
+    if mybox_name == 'dm520':
+        target_box = 'dm520.png'
+        target_remote = 'dmm2.png'
+        target_keymap = 'dmm2.html'
+    if mybox_name == 'dm525':
+        target_box = 'dm525.png'
+        target_remote = 'dmm2.png'
+        target_keymap = 'dmm2.html'
+    if mybox_name == 'dm7080':
+        target_box = 'dm7080.png'
+        target_remote = 'dmm2.png'
+        target_keymap = 'dmm2.html'
+    if mybox_name == 'dm7020hd':
+        target_box = 'dm7020hd.png'
+        target_remote = 'dmm2.png'
+        target_keymap = 'dmm2.html'
+    if mybox_name == 'dm7020hdv2':
+        target_box = 'dm7020hdv2.png'
         target_remote = 'dmm2.png'
         target_keymap = 'dmm2.html'
 
@@ -81,8 +132,6 @@ python do_cleanup () {
         for name in files:
             if target_box != name and name != 'unknown.png' and exception != name:
                 os.remove(os.path.join(root, name))
-        if mybox_name == 'dm800sev2':
-            os.system('cd '+ root +' ; cp -pf dm800se.png dm800sev2.png ; chmod -R a+rX dm800sev2.png')
 
     for root, dirs, files in os.walk(images + 'remotes', topdown=False):
         for name in files:

@@ -4,7 +4,6 @@ PROVIDES += "virtual/bootloader"
 PRIORITY = "required"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 DEPENDS = "dreambox-buildimage-native"
-PR = "r20"
 
 COMPATIBLE_MACHINE = "dm8000"
 
@@ -23,7 +22,6 @@ do_install() {
 	install -d ${D}/tmp
 	buildimage --arch ${MACHINE} --raw ${EXTRA_BUILDCMD} \
 	--erase-block-size ${DREAMBOX_ERASE_BLOCK_SIZE} \
-	--flash-size ${DREAMBOX_FLASH_SIZE} \
 	--sector-size ${DREAMBOX_SECTOR_SIZE} \
 	--boot-partition=${DREAMBOX_PART0_SIZE}:secondstage-${MACHINE}-${PV}.bin \
 	> ${D}/tmp/secondstage-${MACHINE}.bin

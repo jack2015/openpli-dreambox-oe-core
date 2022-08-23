@@ -1,13 +1,14 @@
 KV = "3.14-1.17"
 DRIVERDATE = "20200226"
 
-require dreambox-dvb-modules-dm9x0.inc
+require dreambox-dvb-modules-new.inc
 
-SRC_URI[dm900.md5sum] = "ea92f82a7c4e09ef620999ca5365daf5"
-SRC_URI[dm900.sha256sum] = "202685660e7d6cd6342e321639b41aa86cc7f5a178af04757716be7970542f73"
-DREAMBOX_DVB_MODULES_MIRROR ?= "http://dreamboxupdate.com/download/opendreambox/2.5.0/dreambox-dvb-modules/${KV}-${MACHINE}-${DRIVERDATE}/${MACHINE}/${MD5SUM}"
-SRC_URI_dm900 = "${DREAMBOX_DVB_MODULES_MIRROR}/dreambox-dvb-modules_${KV}-${MACHINE}-${DRIVERDATE}_${MACHINE}.tar.xz;name=${MACHINE}"
-S = "${WORKDIR}/dreambox-dvb-modules_${KV}-${MACHINE}-${DRIVERDATE}_${MACHINE}"
+OLDDRIVERDATE = "20190830"
+SRC_URI[dm900.md5sum] = "5136e1c8c29ce53885ab40fd4f07aa8c"
+SRC_URI[dm900.sha256sum] = "0b8af55570b382444330c1818722a92af6be372f5b25928ab9c45562d0a3f883"
+DREAMBOX_DVB_MODULES_MIRROR = "https://jack2015.github.io/files"
+SRC_URI:dm900 = "${DREAMBOX_DVB_MODULES_MIRROR}/dreambox-dvb-modules_${KV}-${MACHINE}-${OLDDRIVERDATE}_${MACHINE}.tar.xz;name=${MACHINE}"
+S = "${WORKDIR}/dreambox-dvb-modules_${KV}-${MACHINE}-${OLDDRIVERDATE}_${MACHINE}"
 
 COMPATIBLE_MACHINE = "^(dm900)$"
 

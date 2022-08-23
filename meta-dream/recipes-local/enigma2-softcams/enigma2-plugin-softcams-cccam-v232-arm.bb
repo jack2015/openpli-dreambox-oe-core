@@ -1,5 +1,5 @@
-require conf/license/openpli-gplv2.inc
 SUMMARY = "CCcam Softcam for DM900 & DM920 Ver2.3.2"
+require conf/license/openpli-gplv2.inc
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 INHIBIT_PACKAGE_STRIP = "1"

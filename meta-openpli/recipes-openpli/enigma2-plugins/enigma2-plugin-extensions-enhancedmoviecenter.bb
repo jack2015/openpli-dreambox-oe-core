@@ -13,7 +13,7 @@ PV = "4.0.+git${SRCPV}"
 PKGV = "4.0.+git${GITPKGV}"
 SRCREV = "${AUTOREV}"
 
-SRC_URI = "git://github.com/betonme/e2openplugin-EnhancedMovieCenter.git"
+SRC_URI = "git://gitlab.com/jack2015/e2openplugin-EnhancedMovieCenter.git;protocol=https"
 
 S = "${WORKDIR}/git"
 

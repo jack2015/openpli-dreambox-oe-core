@@ -6,20 +6,28 @@ OPTIONAL_BSP_PACKAGES += "dreambox-buildimage"
 
 EXTRA_IMAGEDEPENDS += "dreambox-secondstage-${MACHINE}"
 
-MACHINE_ESSENTIAL_EXTRA_RDEPENDS += "dreambox-dvb-modules-${MACHINE}"
-
 # KERNEL_MODULE_AUTOLOAD += "xfs"
 
 MACHINE_EXTRA_RRECOMMENDS += " \
+	${@bb.utils.contains_any("MACHINE", "dm500hd dm800se", "", "gstreamer1.0-libav", d)} \
 	gstreamer1.0-plugin-multibox-dvbmediasink \
+	kernel-module-cifs \
 	kernel-module-hmac \
 	kernel-module-md4 \
 	kernel-module-ecb \
 	dreambox-boot-progress \
 	"
+
+MACHINE_ESSENTIAL_EXTRA_RDEPENDS += " \
+	dreambox-dvb-modules-${MACHINE} \
+	kernel-module-stv0299 \
+	libpagecache \
+	libpassthrough \
+	"
+
 GST_VERSION = "1.0"
 	
-MACHINE_FEATURES += "alsa usbhost switchoff dreambox"
+MACHINE_FEATURES += "alsa usbhost dreambox"
 # Add "dreambox" override for recipes
 MACHINEOVERRIDES .= ":dreambox"
 
@@ -38,5 +46,4 @@ KERNEL_CONSOLE = "${@bb.utils.contains('MACHINE_FEATURES', 'usbconsole', 'ttyS0,
 
 DREAMBOX_BUILDIMAGE = "buildimage --arch ${MACHINE} ${EXTRA_BUILDCMD} \
 	--erase-block-size ${DREAMBOX_ERASE_BLOCK_SIZE} \
-	--flash-size ${DREAMBOX_FLASH_SIZE} \
 	--sector-size ${DREAMBOX_SECTOR_SIZE}"

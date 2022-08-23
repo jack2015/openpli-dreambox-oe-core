@@ -11,7 +11,7 @@ SRCREV = "${AUTOREV}"
 PV = "1.0+git${SRCPV}"
 PKGV = "1.0+git${GITPKGV}"
 
-SRC_URI = "git://github.com/jack2015/flashexpander.git;protocol=git"
+SRC_URI = "git://gitlab.com/jack2015/flashexpander;protocol=https;branch=master"
 
 FILES_${PN} = "/usr/"
 

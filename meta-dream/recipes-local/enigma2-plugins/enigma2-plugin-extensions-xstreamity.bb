@@ -1,6 +1,7 @@
 SUMMARY = "IPTV Xtream Codes playlists player by KiddaC"
 HOMEPAGE = "https://www.linuxsat-support.com"
 MAINTAINER = "kiddac"
+PRIORITY = "optional"
 require conf/license/license-gplv2.inc
 
 RDEPENDS_${PN} = "python-argparse python-image python-imaging python-lzma python-multiprocessing python-requests"
@@ -8,10 +9,10 @@ RDEPENDS_${PN} = "python-argparse python-image python-imaging python-lzma python
 inherit gitpkgv allarch
 
 SRCREV = "${AUTOREV}"
-PV = "2.30+git${SRCPV}"
-PKGV = "2.30+git${GITPKGV}"
+PV = "3.33+git${SRCPV}"
+PKGV = "3.33+git${GITPKGV}"
 
-SRC_URI = "git://github.com/kiddac/XStreamity.git;protocol=git"
+SRC_URI = "git://gitlab.com/jack2015/XStreamity;protocol=https;branch=master"
 
 S = "${WORKDIR}/git"
 FILES_${PN} = "/usr/"
@@ -34,18 +35,15 @@ do_install() {
 
 pkg_preinst_${PN}() {
 #!/bin/sh
-if [ -f "$D${sysconfdir}/enigma2/X-Streamity/playlists.json" ]
-	then
+if [ -f "$D${sysconfdir}/enigma2/X-Streamity/playlists.json" ]; then
 	rm -f $D${sysconfdir}/enigma2/X-Streamity/playlists.json > /dev/null 2>&1
 fi
 
-if [ -f "$D${sysconfdir}/enigma2/xstreamity/playlists.json" ]
-	then
+if [ -f "$D${sysconfdir}/enigma2/xstreamity/playlists.json" ]; then
 	rm -f $D${sysconfdir}/enigma2/xstreamity/playlists.json > /dev/null 2>&1
 fi
 
-if [ -f "$D${sysconfdir}/enigma2/xstreamity/x-playlists.json" ]
-	then
+if [ -f "$D${sysconfdir}/enigma2/xstreamity/x-playlists.json" ]; then
 	rm -f $D${sysconfdir}/enigma2/xstreamity/x-playlists.json > /dev/null 2>&1
 fi
 }

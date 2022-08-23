@@ -1,4 +1,5 @@
 SUMMARY = "Hardware drivers for Dreambox"
+SECTION = "base"
 require conf/license/openpli-gplv2.inc
 DEPENDS += "virtual/kernel"
 PRIORITY = "required"
@@ -29,6 +30,10 @@ do_install() {
 }
 
 PACKAGES = "${PN}"
+
+INHIBIT_PACKAGE_STRIP = "1"
+INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
+INSANE_SKIP:${PN}:append = " already-stripped"
 
 RDEPENDS_${PN} += "dreambox-secondstage-${MACHINE} kernel-${DM_LOCALVERSION}"
 

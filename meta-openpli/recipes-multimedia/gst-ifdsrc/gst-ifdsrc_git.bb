@@ -10,7 +10,7 @@ PV = "1.0+git${SRCPV}"
 PKGV = "1.0+git${GITPKGV}"
 PR = "r0"
 
-SRC_URI = "git://github.com/jack2015/gst-ifdsrc.git"
+SRC_URI = "git://gitlab.com/jack2015/gst-ifdsrc.git;protocol=https"
 
 S = "${WORKDIR}/git"
 

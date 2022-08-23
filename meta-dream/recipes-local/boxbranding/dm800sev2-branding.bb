@@ -16,7 +16,7 @@ PR[vardepsexclude] += "DATE"
 
 do_configure[nostamp] = "1"
 
-SRC_URI="git://github.com/jack2015/branding-module.git;protocol=git"
+SRC_URI="git://gitee.com/jackgee2021/branding-module;protocol=https;branch=master"
 
 S = "${WORKDIR}/git"
 
@@ -34,7 +34,7 @@ EXTRA_OECONF = " \
     --with-boxtype="dm800sev2" \
     --with-machinebuild="dm800sev2" \
     --with-imageversion="10.3" \
-    --with-imagebuild="hardknott" \
+    --with-imagebuild="dunfell" \
     --with-imagedevbuild="000" \
     --with-imagetype="develop" \
     --with-feedsurl="http://downloads.openpli.org/feeds/openpli-7-release" \
