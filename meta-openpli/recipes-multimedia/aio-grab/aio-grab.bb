@@ -11,9 +11,9 @@ PV = "1.0+git${SRCPV}"
 PKGV = "1.0+git${GITPKGV}"
 
 SRC_URI = "git://gitlab.com/jack2015/openpli-aio-grab;branch=master;protocol=https"
-SRC_URI:dm900 = "git://gitlab.com/jack2015/aio-grab;branch=master;protocol=https"
-SRC_URI:dm920 = "git://gitlab.com/jack2015/aio-grab;branch=master;protocol=https"
-SRC_URI:sh4 = "git://gitlab.com/jack2015/aio-grab;branch=master;protocol=https"
+SRC_URI_dm900 = "git://gitlab.com/jack2015/aio-grab;branch=master;protocol=https"
+SRC_URI_dm920 = "git://gitlab.com/jack2015/aio-grab;branch=master;protocol=https"
+SRC_URI_sh4 = "git://gitlab.com/jack2015/aio-grab;branch=master;protocol=https"
 
 S = "${WORKDIR}/git"
 

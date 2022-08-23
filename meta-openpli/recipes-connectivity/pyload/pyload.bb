@@ -1,8 +1,9 @@
+SUMMARY = "pyLoad is a fast, lightweight and full featured download manager for many One-Click-Hoster"
 DESCRIPTION = "pyLoad is a fast, lightweight and full featured download manager for many One-Click-Hoster"
 LICENSE = "GPLv3"
 LIC_FILES_CHKSUM = "file://LICENSE.MD;md5=d4333f07cbfa8fe036e90820f556b2ad"
 HOMEPAGE = "http://pyload.org/"
-RDEPENDS:${PN} = "\
+RDEPENDS_${PN} = "\
   python-compression \
   python-db \
   python-email \
@@ -18,7 +19,7 @@ RDEPENDS:${PN} = "\
   python-unixadmin \
   python-xmlrpc \
 "
-RRECOMMENDS:${PN} = "unrar"
+RRECOMMENDS_${PN} = "unrar"
 
 PV = "0.4.20"
 
@@ -31,7 +32,7 @@ SRC_URI = "git://gitlab.com/jack2015/pyload;protocol=https;branch=stable \
 
 S = "${WORKDIR}/git"
 
-FILES:${PN} = "/usr/pyload/* /etc/*"
+FILES_${PN} = "/usr/pyload/* /etc/*"
 
 INITSCRIPT_NAME = "${PN}"
 INITSCRIPT_PARAMS = "defaults 60 "
