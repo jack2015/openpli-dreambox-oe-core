@@ -1,3 +1,3 @@
 # my line
 PACKAGECONFIG_remove = "gnutls"
-PACKAGECONFIG_append += "openssl"
+PACKAGECONFIG_append = " openssl"
