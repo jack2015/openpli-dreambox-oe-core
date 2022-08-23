@@ -20,3 +20,8 @@ PACKAGECONFIG = " \
     sndfile ttml uvch264 webp \
     assrender faac faad libmms neon opusparse rtmp \
 "
+
+PACKAGECONFIG[hls]             = "-Dhls=enabled,-Dhls=disabled,"
+PACKAGECONFIG[nettle]          = "-Dhls-crypto=nettle,,nettle"
+PACKAGECONFIG[openssl]         = "-Dhls-crypto=openssl,,openssl"
+PACKAGECONFIG[gcrypt]          = "-Dhls-crypto=libgcrypt,,libgcrypt"

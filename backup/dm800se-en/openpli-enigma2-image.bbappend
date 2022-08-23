@@ -15,8 +15,14 @@ KERNEL_WIFI_DRIVERS = ""
 EXTERNAL_WIFI_DRIVERS = ""
 
 ENIGMA2_PLUGINS = " \
+	enigma2-plugin-drivers-ntfs-3g \
+	enigma2-plugin-language-de \
 	enigma2-plugin-language-en \
+	enigma2-plugin-language-it \
 	enigma2-plugin-language-ru \
+	enigma2-plugin-language-tr \
+	enigma2-plugin-language-fr \
+	enigma2-plugin-language-es \
 	enigma2-plugin-skins-pli-fullnighthd \
 	enigma2-plugin-extensions-fancontrol2 \
 	enigma2-plugin-extensions-audiosync \
@@ -66,11 +72,19 @@ rmpy() {
 rmpo() {
 	for file2 in `ls -A $1`
 	do
-		if [ $file2 = "en" ]; then
+		if [ $file2 = "de" ]; then
+			echo "do nothing"
+		elif [ $file2 = "en" ]; then
+			echo "do nothing"
+		elif [ $file2 = "it" ]; then
 			echo "do nothing"
 		elif [ $file2 = "ru" ]; then
 			echo "do nothing"
-		elif [ $file2 = "it" ]; then
+		elif [ $file2 = "tr" ]; then
+			echo "do nothing"
+		elif [ $file2 = "fr" ]; then
+			echo "do nothing"
+		elif [ $file2 = "es" ]; then
 			echo "do nothing"
 		else
 			rm -rf $1/$file2
@@ -80,6 +94,8 @@ rmpo() {
 
 upxall() {
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/sbin/ldconfig || true
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/sbin/iwconfig || true
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/sbin/tune2fs.e2fsprogs || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/blindscan || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/bsdcat || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/dbus-daemon || true
@@ -88,15 +104,20 @@ upxall() {
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/gpasswd || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/mpg123 || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/openssl || true
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/out123 || true
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/pzstd || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/sdparm || true
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/zstd || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/alsactl || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/avahi-daemon || true
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/chgpasswd || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/dropbearmulti || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/ethtool || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/exportfs || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/groupadd || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/groupdel || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/groupmod || true
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/grpck || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/newusers || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/parted || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/rpc.mountd || true
@@ -111,36 +132,36 @@ upxall() {
 }
 
 rootfs_myworks() {
-	rm -rf ${IMAGE_ROOTFS}/var/lib/opkg/lists
-	rm -rf ${IMAGE_ROOTFS}/usr/lib/python2.7/site-packages/*egg-info*
-	rmpy ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins
-	rmpy ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Components
-	rm -rf ${IMAGE_ROOTFS}/usr/share/locale/*
-	rm -rf ${IMAGE_ROOTFS}/usr/share/mime/*
-	rm -f ${IMAGE_ROOTFS}/bin/bash.bash
-	ln -sf busybox.nosuid ${IMAGE_ROOTFS}/bin/bash
-	ln -sf busybox.nosuid ${IMAGE_ROOTFS}/bin/sh
-	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/AudioSync/locale
-	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/FanControl2/locale
-	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/AutoBackup/locale
-	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/BackupSuite/locale
-	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/CacheFlush/locale
-	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/locale
-	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/OscamStatus/locale
-	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/MovieCut/locale
-	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/EPGImport/locale
-	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/OpenMultiboot/locale
-	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/SystemPlugins/NetworkBrowser/locale
-	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/SystemPlugins/ServiceApp/locale
-	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/SystemPlugins/SystemTime/locale
-	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/SystemPlugins/MountManager/locale
-	rm -f ${IMAGE_ROOTFS}/usr/share/enigma2/PLi-HD/picon_default.png
-	rm -f ${IMAGE_ROOTFS}/usr/share/enigma2/PLi-FullHD/picon_default.png
-	rm -f ${IMAGE_ROOTFS}/usr/share/enigma2/PLi-FullNightHD/picon_default.png
-	rm -f ${IMAGE_ROOTFS}/usr/lib/locale/locale-archive
-	cp -rf ${THISDIR}/files/dm800se-en/usr ${IMAGE_ROOTFS}/
-	cp -rf ${THISDIR}/files/dm800se-en/etc ${IMAGE_ROOTFS}/
-	upxall
+	rm -rf ${IMAGE_ROOTFS}/var/lib/opkg/lists || true
+	rm -rf ${IMAGE_ROOTFS}/usr/lib/python2.7/site-packages/*egg-info* || true
+	rmpy ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins || true
+	rmpy ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Components || true
+	rm -rf ${IMAGE_ROOTFS}/usr/share/locale/* || true
+	rm -rf ${IMAGE_ROOTFS}/usr/share/mime/* || true
+	rm -f ${IMAGE_ROOTFS}/bin/bash.bash || true
+	ln -sf busybox.nosuid ${IMAGE_ROOTFS}/bin/bash || true
+	ln -sf busybox.nosuid ${IMAGE_ROOTFS}/bin/sh || true
+	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/AudioSync/locale || true
+	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/FanControl2/locale || true
+	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/AutoBackup/locale || true
+	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/BackupSuite/locale || true
+	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/CacheFlush/locale || true
+	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/locale || true
+	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/OscamStatus/locale || true
+	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/MovieCut/locale || true
+	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/EPGImport/locale || true
+	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/OpenMultiboot/locale || true
+	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/SystemPlugins/NetworkBrowser/locale || true
+	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/SystemPlugins/ServiceApp/locale || true
+	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/SystemPlugins/SystemTime/locale || true
+	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/SystemPlugins/MountManager/locale || true
+	rm -f ${IMAGE_ROOTFS}/usr/share/enigma2/PLi-HD/picon_default.png || true
+	rm -f ${IMAGE_ROOTFS}/usr/share/enigma2/PLi-FullHD/picon_default.png || true
+	rm -f ${IMAGE_ROOTFS}/usr/share/enigma2/PLi-FullNightHD/picon_default.png || true
+	rm -f ${IMAGE_ROOTFS}/usr/lib/locale/locale-archive || true
+	cp -rf ${THISDIR}/files/dm800se-en/usr ${IMAGE_ROOTFS}/ || true
+	cp -rf ${THISDIR}/files/dm800se-en/etc ${IMAGE_ROOTFS}/ || true
+	upxall || true
 }
 
 ROOTFS_POSTPROCESS_COMMAND += "rootfs_myworks; "

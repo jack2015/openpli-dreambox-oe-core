@@ -15,6 +15,7 @@ KERNEL_WIFI_DRIVERS = ""
 EXTERNAL_WIFI_DRIVERS = ""
 
 ENIGMA2_PLUGINS = " \
+	enigma2-plugin-drivers-ntfs-3g \
 	enigma2-plugin-language-en \
 	enigma2-plugin-language-zh-cn \
 	enigma2-plugin-font-wqy-microhei \
@@ -76,6 +77,8 @@ rmpo() {
 
 upxall() {
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/sbin/ldconfig || true
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/sbin/iwconfig || true
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/sbin/tune2fs.e2fsprogs || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/blindscan || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/bsdcat || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/dbus-daemon || true
@@ -84,15 +87,20 @@ upxall() {
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/gpasswd || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/mpg123 || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/openssl || true
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/out123 || true
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/pzstd || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/sdparm || true
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/zstd || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/alsactl || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/avahi-daemon || true
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/chgpasswd || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/dropbearmulti || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/ethtool || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/exportfs || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/groupadd || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/groupdel || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/groupmod || true
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/grpck || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/newusers || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/parted || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/rpc.mountd || true

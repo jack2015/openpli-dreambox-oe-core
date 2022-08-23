@@ -14,10 +14,10 @@ SRC_URI = "git://gitlab.com/jack2015/serviceapp.git;protocol=https;branch=develo
 
 S = "${WORKDIR}/git"
 
-inherit autotools gitpkgv pythonnative pkgconfig
+inherit autotools gitpkgv pythonnative pkgconfig gettext
 
-PV = "git${SRCPV}"
-PKGV = "git${GITPKGV}"
+PV = "1.0+git${SRCPV}"
+PKGV = "1.0+git${GITPKGV}"
 
 EXTRA_OECONF = "\
 	BUILD_SYS=${BUILD_SYS} \
@@ -27,7 +27,8 @@ EXTRA_OECONF = "\
 	"
 
 do_install_append() {
-	rm ${D}${libdir}/enigma2/python/Plugins/SystemPlugins/ServiceApp/*.pyc
+	find ${D}/ -name '*.pyc' -exec rm {} \;
+	find ${D}/ -name '*.sh' -exec chmod a+x {} \;
 }
 
 FILES_${PN} = "\
