@@ -18,12 +18,11 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-drivers-ntfs-3g \
 	enigma2-plugin-language-de \
 	enigma2-plugin-language-en \
-	enigma2-plugin-language-lt \
-	enigma2-plugin-language-lv \
-	enigma2-plugin-language-pl \
+	enigma2-plugin-language-it \
 	enigma2-plugin-language-ru \
 	enigma2-plugin-language-tr \
-	enigma2-plugin-language-uk \
+	enigma2-plugin-language-fr \
+	enigma2-plugin-language-es \
 	enigma2-plugin-skins-pli-fullnighthd \
 	enigma2-plugin-extensions-fancontrol2 \
 	enigma2-plugin-extensions-audiosync \
@@ -73,11 +72,19 @@ rmpy() {
 rmpo() {
 	for file2 in `ls -A $1`
 	do
-		if [ $file2 = "en" ]; then
+		if [ $file2 = "de" ]; then
+			echo "do nothing"
+		elif [ $file2 = "en" ]; then
+			echo "do nothing"
+		elif [ $file2 = "it" ]; then
 			echo "do nothing"
 		elif [ $file2 = "ru" ]; then
 			echo "do nothing"
-		elif [ $file2 = "it" ]; then
+		elif [ $file2 = "tr" ]; then
+			echo "do nothing"
+		elif [ $file2 = "fr" ]; then
+			echo "do nothing"
+		elif [ $file2 = "es" ]; then
 			echo "do nothing"
 		else
 			rm -rf $1/$file2

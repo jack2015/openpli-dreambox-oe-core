@@ -42,6 +42,9 @@ SSTATE_DIR = $(TOPDIR)/sstate-cache
 TMPDIR = $(TOPDIR)/tmp
 DEPDIR = $(TOPDIR)/.deps
 
+MACHINESIMS = $(MACHINESIM)
+export MACHINESIMS
+
 BBLAYERS ?= \
 	$(CURDIR)/meta-openembedded/meta-oe \
 	$(CURDIR)/meta-openembedded/meta-filesystems \
@@ -135,8 +138,10 @@ BITBAKE_ENV_HASH := $(call hash, \
 
 $(TOPDIR)/env.source: $(DEPDIR)/.env.source.$(BITBAKE_ENV_HASH)
 	@echo 'Generating $@'
-	@echo 'export BB_ENV_EXTRAWHITE="MACHINE"' > $@
+	@echo 'export BB_ENV_EXTRAWHITE="MACHINE DMTYPE MACHINESIMS"' > $@
 	@echo 'export MACHINE' >> $@
+	@echo 'export DMTYPE' >> $@
+	@echo 'export MACHINESIMS' >> $@
 	@echo 'export PATH=$(CURDIR)/openembedded-core/scripts:$(CURDIR)/bitbake/bin:$${PATH}' >> $@
 	@echo 'export BUILDDIR=$(BUILD_DIR)' >> $@
 
@@ -203,3 +208,9 @@ $(CONFDEPS):
 	@test -d $(@D) || mkdir -p $(@D)
 	@$(RM) $(basename $@).*
 	@touch $@
+
+ifeq ($(MACHINE),dm7020hdv2)
+MACHINE=dm7020hd
+DMTYPE=v2
+endif
+export DMTYPE
