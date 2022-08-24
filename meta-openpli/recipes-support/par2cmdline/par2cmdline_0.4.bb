@@ -17,4 +17,3 @@ inherit autotools pkgconfig
 
 SRC_URI[md5sum] = "1551b63e57e3c232254dc62073b723a9"
 SRC_URI[sha256sum] = "9e32b7dbcf7bca8249f98824757d4868714156fe2276516504cd26f736e9f677"
-

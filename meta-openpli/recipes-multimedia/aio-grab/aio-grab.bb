@@ -12,9 +12,9 @@ PKGV = "1.0+git${GITPKGV}"
 
 GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
 SRC_URI = "${GIT_SITE}/openpli-aio-grab;branch=master;protocol=https"
-SRC_URI:dm900 = "${GIT_SITE}/aio-grab;branch=master;protocol=https"
-SRC_URI:dm920 = "${GIT_SITE}/aio-grab;branch=master;protocol=https"
-SRC_URI:sh4 = "${GIT_SITE}/aio-grab;branch=master;protocol=https"
+SRC_URI_dm900 = "${GIT_SITE}/aio-grab;branch=master;protocol=https"
+SRC_URI_dm920 = "${GIT_SITE}/aio-grab;branch=master;protocol=https"
+SRC_URI_sh4 = "${GIT_SITE}/aio-grab;branch=master;protocol=https"
 
 S = "${WORKDIR}/git"
 
