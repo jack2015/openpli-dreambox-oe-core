@@ -24,12 +24,11 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-language-zh-cn \
 	enigma2-plugin-language-de \
 	enigma2-plugin-language-en \
-	enigma2-plugin-language-lt \
-	enigma2-plugin-language-lv \
-	enigma2-plugin-language-pl \
+	enigma2-plugin-language-it \
 	enigma2-plugin-language-ru \
 	enigma2-plugin-language-tr \
-	enigma2-plugin-language-uk \
+	enigma2-plugin-language-fr \
+	enigma2-plugin-language-es \
 	enigma2-plugin-font-wqy-microhei \
 	enigma2-plugin-skins-pli-fullnighthd \
 	enigma2-plugin-extensions-audiosync \
