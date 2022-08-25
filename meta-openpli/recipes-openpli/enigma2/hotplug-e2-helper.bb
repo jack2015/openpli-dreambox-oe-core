@@ -8,7 +8,7 @@ inherit gitpkgv
 PV = "1.0+git${SRCPV}"
 PKGV = "1.0+git${GITPKGV}"
 
-SRC_URI = "git://gitlab.com/jack2015/${BPN}.git;protocol=https"
+SRC_URI = "git://gitlab.com/jack2015/${BPN}.git;protocol=https;branch=master"
 
 S = "${WORKDIR}/git"
 

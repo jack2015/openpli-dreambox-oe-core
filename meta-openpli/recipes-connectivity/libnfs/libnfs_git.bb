@@ -5,7 +5,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=825301ba17efc9d188ee0abd4b924ada"
 
 PV = "2.0.0+git"
 SRCREV = "6a33413b0f684327e1441f5ec5c4493293009d53"
-SRC_URI = "git://gitlab.com/jack2015/libnfs;protocol=https \
+SRC_URI = "git://gitlab.com/jack2015/libnfs;protocol=https;branch=master \
            file://0001-include-sys-time.h-to-fix-musl-build.patch \
            file://0001-CMakeLists.txt-fix-library-install-path.patch \
           "

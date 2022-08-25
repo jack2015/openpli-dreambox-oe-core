@@ -17,8 +17,7 @@ DEPENDS = "glib-2.0 glib-2.0-native gstreamer1.0 gstreamer1.0-plugins-base libdc
 
 GSTVERSION = "1.0"
 
-GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
-SRC_URI = "${GIT_SITE}/gstreamer1.0-plugin-multibox-dvbmediasink;branch=openatv-dev;protocol=https"
+SRC_URI = "git://gitlab.com/jack2015/gstreamer1.0-plugin-multibox-dvbmediasink;branch=openatv-dev;protocol=https;branch=master"
 
 S = "${WORKDIR}/git"
 

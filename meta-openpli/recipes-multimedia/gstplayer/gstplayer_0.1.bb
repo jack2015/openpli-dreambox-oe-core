@@ -7,7 +7,7 @@ DEPENDS = "gstreamer1.0 gstreamer1.0-plugins-base"
 
 inherit pkgconfig
 
-SRC_URI = "git://gitlab.com/jack2015/gstplayer.git;protocol=https"
+SRC_URI = "git://gitlab.com/jack2015/gstplayer.git;protocol=https;branch=master"
 
 S = "${WORKDIR}/git"
 

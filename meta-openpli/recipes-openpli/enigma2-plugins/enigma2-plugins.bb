@@ -29,7 +29,7 @@ inherit gitpkgv pythonnative pkgconfig
 PV = "10.2.0-git${SRCPV}"
 PKGV = "10.2.0-git${GITPKGV}"
 
-SRC_URI = "git://gitlab.com/jack2015/${BPN}.git;protocol=https"
+SRC_URI = "git://gitlab.com/jack2015/${BPN}.git;protocol=https;branch=master"
 
 EXTRA_OECONF = " \
 	BUILD_SYS=${BUILD_SYS} \

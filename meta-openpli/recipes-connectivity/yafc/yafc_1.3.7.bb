@@ -10,7 +10,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=74f65085a4958dced34e7b33cdf95eaf"
 
 DEPENDS = "krb5 libbsd libssh openssl readline"
 
-SRC_URI = "git://gitlab.com/jack2015/yafc.git;protocol=https"
+SRC_URI = "git://gitlab.com/jack2015/yafc.git;protocol=https;branch=master"
 
 S = "${WORKDIR}/git"
 
