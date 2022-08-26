@@ -8,3 +8,4 @@
 /.deps/
 site.conf
 bblayers.conf
+update.sh
