@@ -8,7 +8,7 @@ DEPENDS += " upx-native"
 IMAGE_INSTALL += " \
 	bitratecalc \
 	busybox-cron \
-	"
+"
 
 KERNEL_WIFI_DRIVERS = ""
 
