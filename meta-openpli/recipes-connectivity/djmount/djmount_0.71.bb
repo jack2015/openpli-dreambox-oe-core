@@ -1,9 +1,9 @@
 DESCRIPTION = "mount UPnP server content as a linux filesystem"
 HOMEPAGE = "http://djmount.sourceforge.net/"
-LICENSE = "GPLv2+"
-DEPENDS = "libupnp fuse"
+LICENSE = "GPL-2.0-or-later"
+DEPENDS = "libupnp1.6 fuse"
 RDEPENDS:${PN} = "fuse"
-PR = "r4"
+PR = "r6"
 
 LIC_FILES_CHKSUM = "file://COPYING;md5=eb723b61539feef013de476e68b5c50a"
 
@@ -18,11 +18,10 @@ SRC_URI = "${SOURCEFORGE_MIRROR}/djmount/djmount-0.71.tar.gz \
 	file://init \
 	file://configure.ac.patch \
 	file://rt_bool_arg_enable.m4.patch \
-	file://01-djmount.1.patch \
-	file://02-libupnp-1.6.6.patch \
-	file://03-libupnp-1.6.13.patch \
-	file://04-support-fstab-mounting.patch \
-	file://05-avoid-crash-by-using-size_t.patch \
+	file://001-libupnp-1.6.6.diff \
+	file://002-libupnp-1.6.13.diff \
+	file://003-support-fstab-mounting.diff \
+	file://004-avoid-crash-by-using-size_t.diff \
 	file://005-fix-build-with-gettext-0.20.x.patch \
 	"
 
@@ -34,6 +33,6 @@ do_configure:prepend() {
 }
 
 do_install:append() {
-	install -d ${D}${sysconfdir}/init.d
-	install -m 0755 ${WORKDIR}/init ${D}${sysconfdir}/init.d/djmount
+	install -d ${D}/etc/init.d
+	install -m 0755 ${WORKDIR}/init ${D}/etc/init.d/djmount
 }
