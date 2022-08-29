@@ -16,6 +16,7 @@ SRC_URI = " \
 	file://0001-KSV-patch-2015-12-15.patch \
 	file://0002-fix-build-openssl102q.patch \
 	file://0003-add-movecast-thx-testi.patch \
+	file://0004-fix-build-openssl111a.patch \
 	"
 
 S = "${WORKDIR}/git"
