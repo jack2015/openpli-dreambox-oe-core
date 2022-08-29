@@ -7,8 +7,7 @@ PV = "1.0+git${SRCPV}"
 PKGV = "1.0+git${GITPKGV}"
 PR = "r0"
 
-SRC_URI = " \
-    git://github.com/oe-alliance/satip-client.git;protocol=git;branch=mis \
+SRC_URI = "git://gitlab.com/jack2015/satip-client.git;protocol=https;branch=mis \
     file://satipclient.sh \
 "
 #SRC_URI += "file://auto-detect-and-avoi-ioct-conflicts.patch"

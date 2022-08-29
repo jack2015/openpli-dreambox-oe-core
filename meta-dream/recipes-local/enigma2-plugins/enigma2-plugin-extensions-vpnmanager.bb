@@ -11,7 +11,8 @@ PV = "1.1.4+git${SRCPV}"
 PKGV = "1.1.4+git${GITPKGV}"
 
 SRCREV = "${AUTOREV}"
-SRC_URI = "git://github.com/jack2015/vpnmanager.git"
+
+SRC_URI = "git://gitlab.com/jack2015/vpnmanager;branch=master;protocol=https"
 
 FILES_${PN} = "/usr/"
 
@@ -36,4 +37,10 @@ pkg_prerm_${PN}() {
 
 pkg_postrm_${PN}() {
 	update-rc.d -f openvpn remove
+}
+
+python populate_packages_prepend() {
+    enigma2_plugindir = bb.data.expand('${libdir}/enigma2/python/Plugins', d)
+    do_split_packages(d, enigma2_plugindir, '^(\w+/\w+)/[a-zA-Z0-9_]+.*$', 'enigma2-plugin-%s', 'Enigma2 Plugin: %s', recursive=True, match_path=True, prepend=True)
+    do_split_packages(d, enigma2_plugindir, '^(\w+/\w+)/.*\.py$', 'enigma2-plugin-%s-src', 'Enigma2 Plugin: %s', recursive=True, match_path=True, prepend=True)
 }

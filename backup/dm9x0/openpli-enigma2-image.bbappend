@@ -5,10 +5,9 @@ IMAGE_INSTALL_remove = "settings-autorestore"
 
 #dm9x0
 
-IMAGE_INSTALL_append = " \
+IMAGE_INSTALL += " \
 	bitratecalc \
 	ofgwrite \
-	libcrypto-compat \
 	busybox-cron \
 	ffmpeg \
 	exteplayer3 \
@@ -19,13 +18,18 @@ KERNEL_WIFI_DRIVERS = ""
 EXTERNAL_WIFI_DRIVERS = ""
 
 ENIGMA2_PLUGINS = " \
-	enigma2-plugin-language-en \
+	enigma2-plugin-drivers-ntfs-3g \
+	enigma2-plugin-softcams-libcrypto-compat \
 	enigma2-plugin-language-zh-cn \
+	enigma2-plugin-language-de \
+	enigma2-plugin-language-en \
+	enigma2-plugin-language-it \
 	enigma2-plugin-language-ru \
-	enigma2-plugin-glibclocale-fake \
+	enigma2-plugin-language-tr \
+	enigma2-plugin-language-fr \
+	enigma2-plugin-language-es \
 	enigma2-plugin-font-wqy-microhei \
 	enigma2-plugin-skins-pli-fullnighthd \
-	\
 	enigma2-plugin-extensions-audiosync \
 	enigma2-plugin-extensions-autobackup \
 	enigma2-plugin-extensions-backupsuite \
@@ -39,11 +43,11 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-extensions-openwebif \
 	enigma2-plugin-extensions-oscamstatus \
 	enigma2-plugin-extensions-pictureplayer \
-	enigma2-plugin-extensions-ppanel \
 	enigma2-plugin-extensions-youtube \
 	enigma2-plugin-extensions-e2iplayer \
 	enigma2-plugin-softcams-oscam \
-	\
+	enigma2-plugin-extensions-openmultiboot \
+	openmultiboot \
 	enigma2-plugin-systemplugins-cablescan \
 	enigma2-plugin-systemplugins-fastscan \
 	enigma2-plugin-systemplugins-mphelp \

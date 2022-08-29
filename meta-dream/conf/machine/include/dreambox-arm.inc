@@ -29,6 +29,7 @@ require conf/machine/include/tune-cortexa15.inc
 MACHINE_EXTRA_RRECOMMENDS += "\
     gstreamer1.0-plugin-multibox-dvbmediasink \
     gstreamer1.0-libav \
+    kernel-module-bluetooth \
     kernel-module-cifs \
     kernel-module-autofs4 \
     kernel-module-hmac \
@@ -39,7 +40,7 @@ MACHINE_EXTRA_RRECOMMENDS += "\
     kernel-module-exportfs \
     kernel-module-snd-oss \
     kernel-module-snd-pcm-oss \
-    ${@bb.utils.contains('MACHINE_FEATURES', 'v3d', 'libvc5dream', '',d)} \
+    libvc5dream \
     "
 
 MACHINE_ESSENTIAL_EXTRA_RDEPENDS += "\
@@ -49,7 +50,9 @@ MACHINE_ESSENTIAL_EXTRA_RDEPENDS += "\
     flash-nrf52 \
     "
 
-DISTRO_FEATURES_remove = "directfb gtk-directfb"
+KERNEL_MODULE_AUTOLOAD += "xfs bluetooth"
+
+# DISTRO_FEATURES_remove = "directfb gtk-directfb"
     
 MACHINE_FEATURES += "dreambox alsa usbhost 3dtv switchoff blindscan-dvbs"
 # Add "dreambox" override for recipes
@@ -58,9 +61,15 @@ MACHINEOVERRIDES .= ":dreambox"
 PREFERRED_PROVIDER_virtual/kernel = "linux-dreambox"
 PREFERRED_PROVIDER_virtual/blindscan-dvbs = "dreambox-blindscan-utils"
 PREFERRED_PROVIDER_virtual/blindscan-dvbc = "dreambox-blindscan-utils"
+PREFERRED_VERSION_linux-dreambox = "3.14"
+
+PREFERRED_PROVIDER_virtual/egl ?= "libvc5dream"
+PREFERRED_PROVIDER_virtual/libgles1 ?= "libvc5dream"
+PREFERRED_PROVIDER_virtual/libgles2 ?= "libvc5dream"
 PREFERRED_PROVIDER_virtual/libgl ?= "mesa-gl"
 PREFERRED_PROVIDER_virtual/mesa ?= "mesa-gl"
-PREFERRED_VERSION_linux-dreambox = "3.14"
+PREFERRED_PROVIDER_jpeg ?= "libjpeg-turbo"
+PREFERRED_PROVIDER_jpeg-native ?= "libjpeg-turbo-native"
 
 TARGET_ARCH = "arm"
 DEFAULTTUNE = "cortexa15hf-neon-vfpv4"
@@ -70,30 +79,6 @@ MACHINE_FEATURES_BACKFILL_CONSIDERED = "rtc gobject-introspection-data"
 
 DREAMBOX_IMAGE_SIZE ??= "1024"
 
-IMAGE_FSTYPES =+ "tar.bz2"
-IMAGEDIR = "${MACHINE}"
+IMAGE_FSTYPES = "tar.bz2"
 
-IMAGE_CMD_tar_prepend = "\
-    mkdir -p ${IMAGE_ROOTFS}/tmp; \
-    mkdir -p ${IMAGE_ROOTFS}/var/lib/opkg/info; \
-    mkdir -p ${DEPLOY_DIR_IMAGE}/${IMAGEDIR}; \
-    cp ${DEPLOY_DIR_IMAGE}/zImage ${DEPLOY_DIR_IMAGE}/${IMAGEDIR}/${KERNEL_FILE}; \
-    echo "${IMAGEVERSION}" > ${DEPLOY_DIR_IMAGE}/${IMAGEDIR}/imageversion; \
-    cd ${IMAGE_ROOTFS}; \
-    tar -cvf ${DEPLOY_DIR_IMAGE}/rootfs.tar -C ${IMAGE_ROOTFS} .; \
-    mv ${DEPLOY_DIR_IMAGE}/rootfs.tar ${DEPLOY_DIR_IMAGE}/${IMAGEDIR}/rootfs.tar; \
-    bzip2 ${DEPLOY_DIR_IMAGE}/${IMAGEDIR}/rootfs.tar; \
-    cd ${DEPLOY_DIR_IMAGE}; \
-    zip ${IMAGE_NAME}_web.zip ${IMAGEDIR}/*; \
-    rm -f ${DEPLOY_DIR_IMAGE}/*.rootfs.tar.bz2; \
-    rm -f ${DEPLOY_DIR_IMAGE}/.tar.bz2; \
-    rm -f ${DEPLOY_DIR_IMAGE}/*.manifest; \
-    rm -f ${DEPLOY_DIR_IMAGE}/.manifest; \
-    rm -Rf ${IMAGEDIR}; \
-    "
-
-IMAGE_CMD_tar_append = ";\
-    cd ${DEPLOY_DIR_IMAGE}; \
-    rm -f *.rootfs.manifest; \
-    rm -f .manifest; \
-    "
+IMAGE_CLASSES += "image_types_tarbz2"

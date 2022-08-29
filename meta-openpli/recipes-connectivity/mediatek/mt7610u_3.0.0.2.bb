@@ -4,21 +4,19 @@ SECTION = "kernel/modules"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://iwpriv_usage.txt;md5=8876ae2c103446a442658f1cc2a01b76"
 
-PACKAGE_ARCH = "${MACHINE_ARCH}"
 
-inherit module machine_kernel_pr
+inherit module
 
-SRC_URI = " \
-	file://mt7610u_wifi_sta_v3002_dpo_20130916.tar.bz2 \
-	file://0001-config.patch;patch=1 \
-	file://0002-change_device_name.patch;patch=1 \
-	file://0003-firmware_file_rename.patch;patch=1 \
-	file://0004-new_devices.patch;patch=1 \
-	file://0005-buildfix.patch;patch=1 \
-	file://0006-kernel-4_6.patch;patch=1 \
-	file://0007-kernel-4_11.patch;patch=1 \
-	${@bb.utils.contains_any("MACHINE", "dm900 dm920", "file://fix-arm-build.patch", "", d)} \
+SRC_URI = "file://mt7610u_wifi_sta_v3002_dpo_20130916.tar.bz2 \
+	file://config.patch;patch=1 \
+	file://change_device_name.patch;patch=1 \
+	file://firmware_file_rename.patch;patch=1 \
+	file://new_devices.patch;patch=1 \
+	file://buildfix.patch;patch=1 \
 	"
+
+SRC_URI_append_dm900 = " file://fix_build_arm.patch;patch=1"
+SRC_URI_append_dm920 = " file://fix_build_arm.patch;patch=1"
 
 S = "${WORKDIR}/mt7610u_wifi_sta_v3002_dpo_20130916"
 
@@ -33,7 +31,10 @@ do_install() {
 	install -m 0644 ${S}/conf/SingleSKU.dat ${D}${sysconfdir}/Wireless/mt7610uSTA/SingleSKU.dat
 }
 
+PACKAGE_ARCH = "${MACHINE_ARCH}"
+
 SRC_URI[md5sum] = "2b552aff1bbd4effe94185e222eb761e"
 SRC_URI[sha256sum] = "c0061b9010b80c1fc09d78786317957044bde43e2a127ecefd66d4faa12d2906"
 
 FILES_${PN} += "${sysconfdir}/Wireless/mt7610uSTA/mt7610uSTACard.dat ${sysconfdir}/Wireless/mt7610uSTA/mt7610uSTA.dat ${sysconfdir}/Wireless/mt7610uSTA/SingleSKU.dat"
+

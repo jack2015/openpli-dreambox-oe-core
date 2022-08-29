@@ -28,10 +28,9 @@ SRC_URI = " \
 	file://0015-log2-give-up-on-gcc-constant-optimizations.patch \
 	file://0016-uaccess-dont-mark-register-as-const.patch \
 	file://0017-makefile-silence-packed-not-aligned-warn.patch \
-	file://0018-remove-redundant-YYLOC-global-declaration-for-gcc10.patch \
-	file://0019-kernel-add-support-for-gcc10.patch \
+	file://0018-make-yyloc-global-declaration-extern.patch \
 	file://defconfig \
-	"
+"
 
 SRC_URI[kernel.md5sum] = "b621207b3f6ecbb67db18b13258f8ea8"
 SRC_URI[kernel.sha256sum] = "61558aa490855f42b6340d1a1596be47454909629327c49a5e4e10268065dffa"

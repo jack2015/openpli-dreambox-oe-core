@@ -1,9 +1,9 @@
-require conf/license/openpli-gplv2.inc
 SUMMARY = "CCcam Softcam for DM900 & DM920 Ver2.3.8"
+require conf/license/openpli-gplv2.inc
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 INHIBIT_PACKAGE_STRIP = "1"
-INSANE_SKIP_${PN}_append = " already-stripped"
+INSANE_SKIP_${PN}_append = "already-stripped"
 DEPENDS += "virtual/crypt"
 RDEPENDS_${PN} += "libxcrypt-compat"
 

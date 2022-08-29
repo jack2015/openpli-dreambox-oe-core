@@ -1,3 +1,4 @@
-SRC_URI += "file://fix_mips_build.patch"
+#
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
-FILESEXTRAPATHS_prepend := "${THISDIR}/nodejs:"
+SRC_URI_append_mipsel = " file://fix_mips_build.patch"

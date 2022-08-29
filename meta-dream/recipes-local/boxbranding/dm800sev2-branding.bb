@@ -16,7 +16,7 @@ PR[vardepsexclude] += "DATE"
 
 do_configure[nostamp] = "1"
 
-SRC_URI="git://github.com/jack2015/branding-module.git;protocol=git"
+SRC_URI="git://gitee.com/jackgee2021/branding-module;protocol=https;branch=master"
 
 S = "${WORKDIR}/git"
 
@@ -25,7 +25,7 @@ EXTRA_OECONF = " \
     HOST_SYS=${HOST_SYS} \
     STAGING_INCDIR=${STAGING_INCDIR} \
     STAGING_LIBDIR=${STAGING_LIBDIR} \
-    --with-visionversion="10.3" \
+    --with-visionversion="10.2" \
     --with-visionrevision="develop" \
     --with-developername="develop" \
     --with-boxbrand="dreambox" \
@@ -33,7 +33,7 @@ EXTRA_OECONF = " \
     --with-distro="openpli" \
     --with-boxtype="dm800sev2" \
     --with-machinebuild="dm800sev2" \
-    --with-imageversion="10.3" \
+    --with-imageversion="10.2" \
     --with-imagebuild="gatesgarth" \
     --with-imagedevbuild="000" \
     --with-imagetype="develop" \

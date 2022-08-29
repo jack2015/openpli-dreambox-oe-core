@@ -1,6 +1,7 @@
 SUMMARY = "Dreambox second stage bootloader"
 require conf/license/openpli-gplv2.inc
 PROVIDES += "virtual/bootloader"
+SECTION = "base"
 PRIORITY = "required"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 DEPENDS = "dreambox-buildimage-native"
@@ -8,6 +9,8 @@ DEPENDS = "dreambox-buildimage-native"
 inherit deploy
 
 do_configure[nostamp] = "1"
+
+SRC_URI = "http://sources.dreamboxupdate.com/download/7020/secondstage-${MACHINE}-${PV}.bin"
 
 PACKAGES = "${PN}"
 
@@ -17,7 +20,6 @@ do_install() {
 	install -d ${D}/tmp
 	buildimage --arch ${MACHINE} --raw ${EXTRA_BUILDCMD} \
 	--erase-block-size ${DREAMBOX_ERASE_BLOCK_SIZE} \
-	--flash-size ${DREAMBOX_FLASH_SIZE} \
 	--sector-size ${DREAMBOX_SECTOR_SIZE} \
 	--boot-partition=${DREAMBOX_PART0_SIZE}:secondstage-${MACHINE}-${PV}.bin \
 	> ${D}/tmp/secondstage-${MACHINE}.bin

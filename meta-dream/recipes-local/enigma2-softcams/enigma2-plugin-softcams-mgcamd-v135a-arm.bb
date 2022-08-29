@@ -1,12 +1,12 @@
-require conf/license/openpli-gplv2.inc
 SUMMARY = "mgcamd softcam for DM900 & DM920 1.35a"
+require conf/license/openpli-gplv2.inc
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 PACKAGES = "${PN}"
 
 INHIBIT_PACKAGE_STRIP = "1"
 INSANE_SKIP_${PN}_append = " already-stripped"
-DEPENDS += "libcrypto-compat virtual/crypt zlib"
-RDEPENDS_${PN} += "libcrypto-compat libxcrypt-compat zlib"
+DEPENDS += "enigma2-plugin-softcams-libcrypto-compat virtual/crypt zlib"
+RDEPENDS_${PN} += "enigma2-plugin-softcams-libcrypto-compat libxcrypt-compat zlib"
 
 PV = "1.35a"
 

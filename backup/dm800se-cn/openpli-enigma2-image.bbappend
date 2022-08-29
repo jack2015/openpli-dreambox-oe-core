@@ -3,11 +3,10 @@ IMAGE_INSTALL_remove = "hdparm"
 IMAGE_INSTALL_remove = "3rd-party-feed-configs"
 IMAGE_INSTALL_remove = "settings-autorestore"
 
-#dm800se-cn
+DEPENDS += " upx-native"
 
-IMAGE_INSTALL_append = " \
+IMAGE_INSTALL_append += " \
 	bitratecalc \
-	libcrypto-compat \
 	busybox-cron \
 	"
 
@@ -16,9 +15,9 @@ KERNEL_WIFI_DRIVERS = ""
 EXTERNAL_WIFI_DRIVERS = ""
 
 ENIGMA2_PLUGINS = " \
+	enigma2-plugin-drivers-ntfs-3g \
 	enigma2-plugin-language-en \
 	enigma2-plugin-language-zh-cn \
-	enigma2-plugin-glibclocale-fake \
 	enigma2-plugin-font-wqy-microhei \
 	enigma2-plugin-skins-pli-fullnighthd \
 	enigma2-plugin-extensions-fancontrol2 \
@@ -33,9 +32,9 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-extensions-moviecut \
 	enigma2-plugin-extensions-oscamstatus \
 	enigma2-plugin-extensions-pictureplayer \
-	enigma2-plugin-extensions-ppanel \
+	enigma2-plugin-extensions-openmultiboot \
+	openmultiboot \
 	enigma2-plugin-softcams-oscam \
-	\
 	enigma2-plugin-systemplugins-cablescan \
 	enigma2-plugin-systemplugins-fastscan \
 	enigma2-plugin-systemplugins-mphelp \
@@ -78,38 +77,41 @@ rmpo() {
 
 upxall() {
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/sbin/ldconfig || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/sbin/udevd || true
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/sbin/iwconfig || true
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/sbin/tune2fs.e2fsprogs || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/blindscan || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/bsdcat || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/dbus-daemon || true
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/chage || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/enigma2 || true
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/gpasswd || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/mpg123 || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/ntfs-3g || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/openssl || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/vpxdec || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/vpxenc || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/udevadm || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/libexec/udevadm || true
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/out123 || true
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/pzstd || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/sdparm || true
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/zstd || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/alsactl || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/avahi-daemon || true
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/chgpasswd || true
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/dropbearmulti || true
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/ethtool || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/exportfs || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/groupadd || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/groupdel || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/groupmod || true
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/grpck || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/newusers || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/parted || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/rpc.mountd || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/rpc.statd || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/wpa_supplicant || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/ethtool || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/dropbearmulti || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/wpa_cli || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/sm-notify || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/useradd || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/userdel || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/usermod || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/vsftpd || true
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/wpa_cli || true
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/wpa_supplicant || true
 }
 
 rootfs_myworks() {
@@ -117,9 +119,9 @@ rootfs_myworks() {
 	rm -rf ${IMAGE_ROOTFS}/usr/lib/python2.7/site-packages/*egg-info* || true
 	rmpy ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins || true
 	rmpy ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Components || true
-	rm -f ${IMAGE_ROOTFS}/usr/lib/locale/locale-archive || true
 	rm -rf ${IMAGE_ROOTFS}/usr/share/locale/* || true
 	rm -rf ${IMAGE_ROOTFS}/usr/share/enigma2/countries/* || true
+	rm -rf ${IMAGE_ROOTFS}/usr/lib/locale/* || true
 	rm -rf ${IMAGE_ROOTFS}/usr/share/mime/* || true
 	rm -f ${IMAGE_ROOTFS}/bin/bash.bash || true
 	ln -sf busybox.nosuid ${IMAGE_ROOTFS}/bin/bash || true
