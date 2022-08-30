@@ -10,42 +10,19 @@ PACKAGES_DYNAMIC = "kernel-*"
 
 # For packages that RDEPEND on particular kernel modules, list the ones built into
 # the kernel here, so that it is known that the kernel has them built in.
-KERNEL_BUILTIN_MODULES = "kernel-module-block2mtd"
+KERNEL_BUILTIN_MODULES = ""
+
 KERNEL_BUILTIN_MODULES:dm8000 = "\
-	kernel-module-aes-generic \
-	kernel-module-block2mtd \
-	kernel-module-crc32c \
-	kernel-module-fuse \
-	kernel-module-mac80211 \
-	kernel-module-cfg80211 \
-	kernel-module-ath \
-	kernel-module-ath5k \
-	kernel-module-sr-mod \
-	kernel-module-isofs \
-	kernel-module-udf \
-	kernel-module-stv0299 \
-	"
-KERNEL_BUILTIN_MODULES:dm800se = "\
-	kernel-module-block2mtd \
-	kernel-module-stv0299 \
-	"
-KERNEL_BUILTIN_MODULES:dm800sev2 = "\
-	kernel-module-block2mtd \
-	kernel-module-stv0299 \
-	"
-KERNEL_BUILTIN_MODULES:dm7020hd = "\
-	kernel-module-block2mtd \
-	kernel-module-fuse \
-	kernel-module-stv0299 \
-	"
-KERNEL_BUILTIN_MODULES:dm7020hdv2 = "\
-	kernel-module-block2mtd \
-	kernel-module-fuse \
-	kernel-module-stv0299 \
-	"
-KERNEL_BUILTIN_MODULES:dm500hd = "\
-	kernel-module-block2mtd \
-	"
+    kernel-module-aes-generic \
+    kernel-module-crc32c \
+    kernel-module-mac80211 \
+    kernel-module-cfg80211 \
+    kernel-module-ath \
+    kernel-module-ath5k \
+    kernel-module-sr-mod \
+    kernel-module-isofs \
+    kernel-module-udf \
+    "
 
 # By default, kernel.bbclass modifies package names to allow multiple kernels
 # to be installed in parallel. We revert this change and rprovide the versioned
