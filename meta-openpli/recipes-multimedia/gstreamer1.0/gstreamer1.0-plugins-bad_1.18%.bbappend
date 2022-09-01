@@ -25,3 +25,5 @@ PACKAGECONFIG[hls]             = "-Dhls=enabled,-Dhls=disabled,"
 PACKAGECONFIG[nettle]          = "-Dhls-crypto=nettle,,nettle"
 PACKAGECONFIG[openssl]         = "-Dhls-crypto=openssl,,openssl"
 PACKAGECONFIG[gcrypt]          = "-Dhls-crypto=libgcrypt,,libgcrypt"
+
+PACKAGE_NO_LOCALE = "1"
