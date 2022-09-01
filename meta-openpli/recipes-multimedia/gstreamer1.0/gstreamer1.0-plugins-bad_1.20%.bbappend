@@ -20,3 +20,5 @@ PACKAGECONFIG = " \
     rtmp sbc smoothstreaming sndfile ttml uvch264 webp \
     ${@bb.utils.contains('TUNE_FEATURES', 'mx32', '', 'rsvg', d)} \
 "
+
+PACKAGE_NO_LOCALE = "1"

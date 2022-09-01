@@ -12,3 +12,5 @@ PACKAGECONFIG = " \
     bz2 cairo flac gdk-pixbuf gudev jpeg lame libpng \
     mpg123 soup speex taglib v4l2 wavpack \
 "
+
+PACKAGE_NO_LOCALE = "1"
