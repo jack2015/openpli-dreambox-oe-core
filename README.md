@@ -16,7 +16,7 @@ In comparison to OpenPLi this repository has:<br>
 
 ******************************************************
 
-Tested with Ubuntu 18.04.06 & 22.04
+Tested with Ubuntu 18.04.06 & 22.04<br><br>
 
 1. Dependencies:
 ```
@@ -25,9 +25,31 @@ flex g++ gawk gcc gettext git git-lfs gzip help2man ncurses-bin lib32ncurses-dev
 libc6-dev libtool make texinfo patch perl pkg-config subversion tar texi2html \
 zlib1g-dev chrpath libxml2-utils lz4 xsltproc libglib2.0-dev python-setuptools \
 libc6-i386 genromfs guile-2.2-libs quilt zstd
+
 ```
 
-2. Install gcc11:
+2. Set python2 as preferred provider for python:
+```
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 1
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 2
+sudo update-alternatives --config python
+↳ Select python2
+
+```
+
+3. Set your shell to /bin/bash:
+```
+sudo dpkg-reconfigure dash
+↳ Select "NO" when asked "Install dash as /bin/sh?"
+```
+
+4. Modify max_user_watches:
+```
+echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf
+sudo sysctl -n -w fs.inotify.max_user_watches=524288
+```
+
+5. Install gcc11:
 ```
 sudo apt-get install software-properties-common
 sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
@@ -36,21 +58,7 @@ sudo apt-get install gcc-11 g++-11
 sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 100 --slave /usr/bin/g++ g++ /usr/bin/g++-11 --slave /usr/bin/gcov gcov /usr/bin/gcov-11
 ```
 
-3. Set python2 as preferred provider for python:
-```
-sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 1
-sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 2
-sudo update-alternatives --config python
-↳ Select python2
-```
-
-4. Set your shell to /bin/bash:
-```
-sudo dpkg-reconfigure dash
-↳ Select "NO" when asked "Install dash as /bin/sh?"
-```
-
-5. Build image step & step:
+6. Build image step & step:
 ```
 git clone https://github.com/jack2015/openpli-dreambox-oe-core.git
 cd openpli-dreambox-oe-core
