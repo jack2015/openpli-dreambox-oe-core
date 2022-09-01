@@ -1,3 +1,5 @@
+GST_VERSION_FULL = "1.18.6"
+
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
 SRC_URI_append = " \
