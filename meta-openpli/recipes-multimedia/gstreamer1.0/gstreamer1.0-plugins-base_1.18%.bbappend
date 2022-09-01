@@ -13,3 +13,5 @@ PACKAGECONFIG = " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'wayland egl', '', d)} \
     cdparanoia opus tremor \
 "
+
+PACKAGE_NO_LOCALE = "1"

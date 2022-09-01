@@ -20,3 +20,5 @@ PACKAGECONFIG = " \
     sndfile ttml uvch264 webp \
     assrender faac faad libmms neon opusparse rtmp \
 "
+
+PACKAGE_NO_LOCALE = "1"
