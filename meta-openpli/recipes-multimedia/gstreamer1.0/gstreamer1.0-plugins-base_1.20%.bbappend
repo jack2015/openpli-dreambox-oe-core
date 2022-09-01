@@ -10,6 +10,8 @@ PACKAGECONFIG = " \
     ${PACKAGECONFIG_GL} \
     ${@bb.utils.filter('DISTRO_FEATURES', 'alsa x11', d)} \
     jpeg ogg pango png theora vorbis \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'wayland egl', '', d)} \
     cdparanoia opus tremor \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'wayland egl', '', d)} \
 "
+
+PACKAGE_NO_LOCALE = "1"

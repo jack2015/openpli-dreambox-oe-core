@@ -13,10 +13,12 @@ SRC_URI:append = " \
 PACKAGECONFIG = " \
     ${GSTREAMER_ORC} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'bluetooth', 'bluez', '', d)} \
-    ${@bb.utils.filter('DISTRO_FEATURES', 'directfb vulkan', d)} \
+    ${@bb.utils.filter('DISTRO_FEATURES', 'directfb vulkan x11', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'wayland', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'gl', '', d)} \
-    bz2 closedcaption curl dash dtls hls openssl rsvg sbc smoothstreaming \
-    sndfile ttml uvch264 webp \
-    assrender faac faad libmms neon opusparse rtmp \
+    assrender bz2 closedcaption curl dash dtls faac faad hls neon openssl opusparse \
+    rtmp sbc smoothstreaming sndfile ttml uvch264 webp \
+    ${@bb.utils.contains('TUNE_FEATURES', 'mx32', '', 'rsvg', d)} \
 "
+
+PACKAGE_NO_LOCALE = "1"
