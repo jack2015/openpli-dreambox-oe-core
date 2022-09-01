@@ -71,7 +71,7 @@ GST_UGLY_RDEPS = "\
 
 DEPENDS = "\
 	enigma2 \
-	gstreamer${GST_VERSION}-plugins-base gstreamer${GST_VERSION} \
+	gstreamer1.0-plugins-base gstreamer1.0 \
 	"
 
 RDEPENDS_${PN} = "\
@@ -80,8 +80,8 @@ RDEPENDS_${PN} = "\
 
 RRECOMMENDS_${PN} = "\
 	glib-networking \
-	gstreamer${GST_VERSION}-plugin-subsink \
-	virtual/gstreamer${GST_VERSION}-dvbmediasink \
+	gstreamer1.0-plugin-subsink \
+	virtual/gstreamer1.0-dvbmediasink \
 	${GST_BASE_RDEPS} \
 	${GST_GOOD_RDEPS} \
 	${GST_BAD_RDEPS} \
