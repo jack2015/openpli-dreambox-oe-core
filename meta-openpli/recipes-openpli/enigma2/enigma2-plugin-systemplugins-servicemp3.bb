@@ -39,6 +39,7 @@ GST_GOOD_RDEPS = "\
 	gstreamer1.0-plugins-good-mpg123 \
 	gstreamer1.0-plugins-good-rtp \
 	gstreamer1.0-plugins-good-rtpmanager \
+	gstreamer1.0-plugins-good-soup \
 	gstreamer1.0-plugins-good-rtsp \
 	gstreamer1.0-plugins-good-udp \
 	gstreamer1.0-plugins-good-wavparse \
@@ -56,7 +57,6 @@ GST_BAD_RDEPS = "\
 	gstreamer1.0-plugins-bad-faad \
 	gstreamer1.0-plugins-bad-hls \
 	gstreamer1.0-plugins-bad-videoparsersbad \
-	gstreamer1.0-plugins-bad-neonhttpsrc \
 	${@bb.utils.contains_any("TARGET_ARCH", "arm aarch64", "gstreamer1.0-plugins-bad-opusparse", "", d)} \
 	"
 
