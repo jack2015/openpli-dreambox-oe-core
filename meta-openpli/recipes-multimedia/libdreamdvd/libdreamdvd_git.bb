@@ -5,11 +5,14 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=94d55d512a9ba36caa9b7df079bae19f"
 DEPENDS = "libdvdnav"
 RDEPENDS:${PN} = "liba52"
 
-PR = "r4"
+inherit gitpkgv autotools pkgconfig
 
-inherit autotools pkgconfig git-project
+PV = "1.0+git${SRCPV}"
+PKGV = "1.0+git${GITPKGV}"
 
 SRC_URI = " git://gitlab.com/jack2015/libdreamdvd.git;protocol=https;branch=master \
-	file://move-function-pointer-away-from-header.patch"
+        file://move-function-pointer-away-from-header.patch"
+
+S = "${WORKDIR}/git"
 
 CFLAGS += " -std=gnu11"
