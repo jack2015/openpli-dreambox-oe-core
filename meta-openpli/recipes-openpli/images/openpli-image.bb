@@ -35,6 +35,7 @@ IMAGE_INSTALL = "\
 	tzdata \
 	volatile-media \
 	vsftpd \
+	libsoup-2.4 \
 "
 
 export IMAGE_BASENAME = "openpli"
