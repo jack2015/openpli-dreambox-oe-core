@@ -15,6 +15,6 @@
 	ignore = dirty
 [submodule "meta-python2"]
 	path = meta-python2
-	url = git://git.openembedded.org/meta-python2
+	url = https://github.com/jack2015/meta-python2
 	branch = master
 	ignore = dirty
