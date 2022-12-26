@@ -63,14 +63,15 @@ inherit autotools-brokensep
 S = "${WORKDIR}/git"
 
 DEPENDS = " \
-	python-pyopenssl \
-	streamripper \
-	python-mutagen \
-	python-twisted \
 	python-daap \
-	libcddb \
+	python-mutagen \
+	python-pyopenssl \
+	python-requests \
+	python-twisted \
 	dvdbackup \
+	libcddb \
 	libtirpc \
+	streamripper \
 	"
 
 CFLAGS += "-I${STAGING_INCDIR}/tirpc"
