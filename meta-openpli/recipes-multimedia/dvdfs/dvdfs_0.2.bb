@@ -15,7 +15,7 @@ TARGET_CC_ARCH += "${LDFLAGS}"
 
 do_install() {
 	install -d ${D}${bindir}
-	install -m 755 ${S}/${PN} ${D}${bindir}/${PN}
+	install -m 755 ${S}/${PN} ${D}${bindir}/${BPN}
 }
 
 SRC_URI[md5sum] = "e9332b7eaf7dd875cea1700d4f7fa52e"
