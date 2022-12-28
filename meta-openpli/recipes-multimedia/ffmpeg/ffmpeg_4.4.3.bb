@@ -50,14 +50,14 @@ ARM_INSTRUCTION_SET:armv6 = "arm"
 # libpostproc was previously packaged from a separate recipe
 PROVIDES = "libav libpostproc"
 
-DEPENDS = "nasm-native libxml2"
+DEPENDS = "nasm-native"
 
-PV = "4.4.2"
+PV = "4.4.3"
 
 inherit autotools pkgconfig gitpkgv
 
 PACKAGECONFIG ??= "avdevice avfilter avcodec avformat swresample swscale postproc avresample \
-                   alsa bzlib gpl libass libbluray libdav1d libfreetype librtmp libv4l2 libvorbis \
+                   alsa bzlib gpl libass libbluray libdav1d libfreetype librtmp libv4l2 libvorbis libxml2 \
                    lzma mp3lame openjpeg openssl pic pthreads shared theora vpx x264 x265 zlib \
                    ${@bb.utils.contains('AVAILTUNES', 'mips32r2', 'mips32r2', '', d)} \
                    ${@bb.utils.contains('DISTRO_FEATURES', 'x11', 'xv xcb', '', d)} \
@@ -80,6 +80,7 @@ PACKAGECONFIG[libdav1d] = "--enable-libdav1d,--disable-libdav1d,libdav1d"
 PACKAGECONFIG[libfreetype] = "--enable-libfreetype,--disable-libfreetype,freetype"
 PACKAGECONFIG[librtmp] = "--enable-librtmp,--disable-librtmp,librtmp rtmpdump"
 PACKAGECONFIG[libv4l2] = "--enable-libv4l2,--disable-libv4l2,v4l-utils"
+PACKAGECONFIG[libxml2] = "--enable-libxml2,--disable-libxml2,libxml2"
 PACKAGECONFIG[libvorbis] = "--enable-libvorbis,--disable-libvorbis,libvorbis"
 PACKAGECONFIG[lzma] = "--enable-lzma,--disable-lzma,xz"
 PACKAGECONFIG[mp3lame] = "--enable-libmp3lame,--disable-libmp3lame,lame"
