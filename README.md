@@ -1,4 +1,3 @@
-# openpli-dreambox-oe-core 9.3
 Build environment based on OpenPLi-homebuild (develop branch).
 
 -For dm800se & dm500hd & dm900 & dm920
