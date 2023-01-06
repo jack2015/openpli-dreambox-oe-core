@@ -2,9 +2,7 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
 PV = "4.4.3"
 
-DEPENDS += "libxml2"
-
-PACKAGECONFIG_append = " libass libbluray libfreetype librtmp libvorbis \
+PACKAGECONFIG_append = " libass libbluray libfreetype librtmp libvorbis libxml2 \
                         mp3lame openjpeg openssl vpx x265 libv4l2"
 
 PACKAGECONFIG[libass] = "--enable-libass,--disable-libass,libass"
@@ -13,6 +11,7 @@ PACKAGECONFIG[libfreetype] = "--enable-libfreetype,--disable-libfreetype,freetyp
 PACKAGECONFIG[librtmp] = "--enable-librtmp,--disable-librtmp,librtmp rtmpdump"
 PACKAGECONFIG[openjpeg] = "--enable-libopenjpeg,--disable-libopenjpeg,openjpeg"
 PACKAGECONFIG[libv4l2] = "--enable-libv4l2,--disable-libv4l2,v4l-utils"
+PACKAGECONFIG[libxml2] = "--enable-libxml2,--disable-libxml2,libxml2"
 PACKAGECONFIG[gnutls] = "--enable-gnutls,--disable-gnutls"
 
 MIPSFPU = "${@bb.utils.contains('TARGET_FPU', 'soft', '--disable-mipsfpu', '--enable-mipsfpu', d)}"
