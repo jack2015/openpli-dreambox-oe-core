@@ -1,6 +1,6 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
-PV = "4.4.2"
+PV = "4.4.3"
 
 DEPENDS += "libxml2"
 

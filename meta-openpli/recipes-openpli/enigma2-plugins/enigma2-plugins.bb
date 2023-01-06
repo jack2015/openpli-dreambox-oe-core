@@ -26,8 +26,8 @@ RRECOMMENDS_enigma2-plugin-extensions-transmission = "transmission transmission-
 
 inherit gitpkgv pythonnative pkgconfig
 
-PV = "9.3.0-git${SRCPV}"
-PKGV = "9.3.0-git${GITPKGV}"
+PV = "9.5.0-git${SRCPV}"
+PKGV = "9.5.0-git${GITPKGV}"
 
 GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
 SRC_URI = "${GIT_SITE}/enigma2-plugins;branch=master;protocol=https"
@@ -67,6 +67,7 @@ DEPENDS = " \
 	python-mutagen \
 	python-twisted \
 	python-daap \
+	python-requests \
 	libcddb \
 	dvdbackup \
 	libtirpc \
