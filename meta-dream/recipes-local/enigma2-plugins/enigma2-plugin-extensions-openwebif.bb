@@ -32,7 +32,7 @@ SRCREV = "750dee9e557cc8ef053eabb7da5ff827b3f609a4"
 
 PV = "git${SRCPV}"
 PKGV = "${GITPKGVTAG}"
-PR = "r8"
+PR = "r1"
 SRC_URI = "${GIT_SITE}/e2openplugin-OpenWebif.git;protocol=https;branch=master \
 	file://dm800sev2.png"
 
