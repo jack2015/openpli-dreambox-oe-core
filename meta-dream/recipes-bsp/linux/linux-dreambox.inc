@@ -35,6 +35,13 @@ RPROVIDES:${KERNEL_PACKAGE_NAME}-image = "kernel-image-${KERNEL_VERSION} ${KERNE
 USB_ROOT = "/dev/sdb2"
 USB_ROOT:dm8000 = "/dev/sdf2"
 
+export OS = "Linux"
+KERNEL_OBJECT_SUFFIX = "ko"
+KERNEL_OUTPUT = "vmlinux"
+KERNEL_IMAGETYPE = "vmlinux"
+KERNEL_IMAGEDEST = "boot"
+KERNEL_OUTPUT_DIR = "."
+
 do_install:append() {
         ${STRIP} ${D}/${KERNEL_IMAGEDEST}/${KERNEL_IMAGETYPE}-${KERNEL_VERSION}
         gzip -9 ${D}/${KERNEL_IMAGEDEST}/${KERNEL_IMAGETYPE}-${KERNEL_VERSION}
@@ -45,10 +52,9 @@ do_install:append() {
 }
 
 # Set FILES for vmlinux package, so that kernel-image gets those files.
+FILES:${KERNEL_PACKAGE_NAME}-image = "/${KERNEL_IMAGEDEST}/${KERNEL_IMAGETYPE}.gz"
 FILES:${KERNEL_PACKAGE_NAME}-image += "/${KERNEL_IMAGEDEST}/autoexec*.bat"
 FILES:${KERNEL_PACKAGE_NAME}-vmlinux = "/boot/vmlinux-${KERNEL_VERSION}*"
-ALLOW_EMPTY:${KERNEL_PACKAGE_NAME}-vmlinux = "1"
-KERNEL_OUTPUT_DIR = "."
 
 pkg_preinst:kernel-image() {
 	if [ -z "$D" ]

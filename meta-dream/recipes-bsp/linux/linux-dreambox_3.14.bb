@@ -57,5 +57,7 @@ KERNEL_DEVICETREE = "dreambox-dm900.dtb"
 
 KERNEL_EXTRA_ARGS = "EXTRA_CFLAGS=-Wno-attribute-alias"
 
+INSANE_SKIP:${PN}:append = " installed-vs-shipped"
+
 do_rm_work() {
 }
