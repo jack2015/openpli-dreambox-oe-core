@@ -45,7 +45,6 @@ do_install:append() {
 }
 
 # Set FILES for vmlinux package, so that kernel-image gets those files.
-
 FILES:${KERNEL_PACKAGE_NAME}-image += "/${KERNEL_IMAGEDEST}/autoexec*.bat"
 FILES:${KERNEL_PACKAGE_NAME}-vmlinux = "/boot/vmlinux-${KERNEL_VERSION}*"
 ALLOW_EMPTY:${KERNEL_PACKAGE_NAME}-vmlinux = "1"
