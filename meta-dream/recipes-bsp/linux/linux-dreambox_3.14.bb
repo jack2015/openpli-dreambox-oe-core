@@ -40,7 +40,7 @@ SRC_URI[stable-patch.sha256sum] = "b391b76f3a5c6c8cf7234f8c01821b88584ddf90f4532
 SRC_URI[dream-patch.md5sum] = "b8e267850e54a1d13be41456be5ec4b5"
 SRC_URI[dream-patch.sha256sum] = "85a18df9f07e221c0fd305cc213e5557d9006a40b3229bf9d13e5bc9ba8e2371"
 
-require linux-dreambox_3.14.inc
+require linux-dreambox-3.14.inc
 
 S = "${WORKDIR}/linux-${PV}"
 B = "${WORKDIR}/build"
@@ -54,6 +54,8 @@ BRCM_PATCHLEVEL = "1.17"
 LINUX_VERSION = "${PV}-${BRCM_PATCHLEVEL}-${MACHINE}"
 KERNEL_IMAGETYPE = "zImage"
 KERNEL_DEVICETREE = "dreambox-dm900.dtb"
+
+KERNEL_EXTRA_ARGS = "EXTRA_CFLAGS=-Wno-attribute-alias"
 
 do_rm_work() {
 }

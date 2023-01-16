@@ -1,4 +1,4 @@
-require linux_3.14.inc
+require linux-3.14.inc
 
 do_configure:prepend() {
         sed -e "/^SUBLEVEL = /d" -i ${S}/Makefile
