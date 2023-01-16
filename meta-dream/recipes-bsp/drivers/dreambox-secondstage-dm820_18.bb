@@ -25,8 +25,3 @@ do_install() {
 PACKAGES = "${PN}"
 RDEPENDS:${PN} = "flash-scripts"
 FILES:${PN} = "/usr/share/dreambox-secondstage/ssbl.bin"
-
-pkg_postinst:${PN}() {
-#!/bin/sh
-[ -n "$D" ] || flash-ssbl /usr/share/dreambox-secondstage/ssbl.bin
-}
