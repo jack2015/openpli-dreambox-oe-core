@@ -3,10 +3,10 @@ require linux-3.4.inc
 # By default, kernel.bbclass modifies package names to allow multiple kernels
 # to be installed in parallel. We revert this change and rprovide the versioned
 # package names instead, to allow only one kernel to be installed.
-PKG:${KERNEL_PACKAGE_NAME}-base = "${KERNEL_PACKAGE_NAME}-base"
-PKG:${KERNEL_PACKAGE_NAME}-image = "${KERNEL_PACKAGE_NAME}-image"
-RPROVIDES:${KERNEL_PACKAGE_NAME}-base = "${KERNEL_PACKAGE_NAME}-${LINUX_VERSION}"
-RPROVIDES:${KERNEL_PACKAGE_NAME}-image = "${KERNEL_PACKAGE_NAME}-image-${LINUX_VERSION}"
+PKG:${KERNEL_PACKAGE_NAME}-base = "kernel-base"
+PKG:${KERNEL_PACKAGE_NAME}-image = "kernel-image"
+RPROVIDES:${KERNEL_PACKAGE_NAME}-base = "kernel-${LINUX_VERSION}"
+RPROVIDES:${KERNEL_PACKAGE_NAME}-image = "kernel-image-${LINUX_VERSION}"
 
 do_install:append() {
         if [ "${KERNEL_IMAGETYPE}" = "vmlinux" ]; then
@@ -22,7 +22,7 @@ do_install:append() {
         install -d ${D}/usr/src/kernel
 }
 
-PACKAGES += "${KERNEL_PACKAGE_NAME}-image-dbg"
+PACKAGES += "kernel-image-dbg"
 
 FILES:${KERNEL_PACKAGE_NAME}-image-dbg = "/${KERNEL_IMAGEDEST}/.debug"
 FILES:${KERNEL_PACKAGE_NAME}-vmlinux = "/boot/vmlinux-${LINUX_VERSION}"
@@ -40,7 +40,7 @@ python populate_packages:prepend() {
 }
 
 # Do not use update-alternatives!
-pkg_postinst:${KERNEL_PACKAGE_NAME}-image () {
+pkg_postinst:kernel-image () {
 }
-pkg_postrm:${KERNEL_PACKAGE_NAME}-image () {
+pkg_postrm:kernel-image () {
 }
