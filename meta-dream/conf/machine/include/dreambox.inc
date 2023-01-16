@@ -36,10 +36,6 @@ PREFERRED_PROVIDER_virtual/blindscan-dvbc = "dreambox-blindscan-utils"
 
 PREFERRED_VERSION_linux-dreambox = "3.2"
 
-KERNEL_IMAGETYPE = "vmlinux"
-KERNEL_OUTPUT = "${KERNEL_IMAGETYPE}"
-KERNEL_OUTPUT_DIR = "."
-# KERNEL_CONSOLE = "ttyS0,115200"
 KERNEL_CONSOLE = "${@bb.utils.contains('MACHINE_FEATURES', 'usbconsole', 'ttyS0,115200', 'null', d)}"
 
 DREAMBOX_BUILDIMAGE = "buildimage --arch ${MACHINE} ${EXTRA_BUILDCMD} \

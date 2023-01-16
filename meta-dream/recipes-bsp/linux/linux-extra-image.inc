@@ -7,12 +7,6 @@ do_install:append() {
         fi
 }
 
-do_install:prepend() {
-   if [ "${KERNEL_IMAGETYPE}" = "vmlinux.bin" ]; then
-      install -m 0644 ${B}/arch/${ARCH}/boot/vmlinux.bin ${B}/
-   fi
-}
-
 KERNEL_EXTRA_IMAGETYPE ?= "${KERNEL_ALT_IMAGETYPE}"
 KERNEL_EXTRA_OUTPUT ?= "arch/${ARCH}/boot/${KERNEL_EXTRA_IMAGETYPE}"
 KERNEL_EXTRA_IMAGE_BASE_NAME ?= "${KERNEL_EXTRA_IMAGETYPE}-${PKGE}-${PKGV}-${PKGR}-${MACHINE}-${DATETIME}"
