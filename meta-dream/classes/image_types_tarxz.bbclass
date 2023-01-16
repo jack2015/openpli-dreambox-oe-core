@@ -8,6 +8,10 @@ IMAGE_CMD:tar = "tar --sort=name --numeric-owner -cf ${IMGDEPLOYDIR}/${IMAGE_NAM
 
 IMAGE_CMD:tar:prepend = " \
     mkdir -p ${IMAGE_ROOTFS}/tmp; \
+    mkdir -p ${IMAGE_ROOTFS}/var/lib/opkg/info; \
+    echo "#!/bin/sh" > ${IMAGE_ROOTFS}/var/lib/opkg/info/dreambox-secondstage.postinst; \
+    echo "[ -n \"\$D\" ] || flash-ssbl /usr/share/dreambox-secondstage/ssbl.bin" >> ${IMAGE_ROOTFS}/var/lib/opkg/info/dreambox-secondstage.postinst; \
+    chmod 777 ${IMAGE_ROOTFS}/var/lib/opkg/info/dreambox-secondstage.postinst; \
     "
 
 CONVERSION_CMD:xz = " \
