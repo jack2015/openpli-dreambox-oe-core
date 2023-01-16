@@ -49,8 +49,6 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-extensions-openwebif-vxg \
 	enigma2-plugin-extensions-oscamstatus \
 	enigma2-plugin-extensions-pictureplayer \
-	enigma2-plugin-extensions-openmultiboot \
-	openmultiboot \
 	enigma2-plugin-softcams-oscam \
 	enigma2-plugin-extensions-fancontrol2 \
 	enigma2-plugin-systemplugins-cablescan \

@@ -77,7 +77,5 @@ do_install:append() {
     oe_runmake headers_install INSTALL_HDR_PATH=${D}${exec_prefix}/src/linux-${LINUX_VERSION} ARCH=$ARCH
 }
 
-PACKAGES =+ "${KERNEL_PACKAGE_NAME}-headers"
-FILES:${KERNEL_PACKAGE_NAME}-headers = "${exec_prefix}/src/linux*"
-
-INSANE_SKIP:${PN} += "installed-vs-shipped"
+PACKAGES =+ "kernel-headers"
+FILES:kernel-headers = "${exec_prefix}/src/linux*"
