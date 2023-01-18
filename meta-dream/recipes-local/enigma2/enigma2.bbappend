@@ -11,6 +11,9 @@ SRC_URI = "${GIT_SITE}/enigma2-openpli.git;protocol=https;branch=${ENIGMA2_BRANC
 	file://005-suppress-compile-errors.patch \
 	"
 
+SRC_URI:append:arm = " file://006-remove-rca-and-hdmi-pc-ports.patch \
+	"
+
 SRC_URI:dm800se = "${GIT_SITE}/enigma2-openpli.git;protocol=https;branch=${ENIGMA2_BRANCH} \
 	file://001-use-mallinfo2.patch \
 	file://002-fix-build-gcc11.patch \
