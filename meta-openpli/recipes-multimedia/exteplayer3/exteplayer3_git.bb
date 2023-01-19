@@ -9,9 +9,12 @@ RDEPENDS:${PN} = "ffmpeg"
 
 inherit gitpkgv
 
-SRCREV = "2063d983e9c0181270da847995e8dd90590432ee"
+SRCREV = "${AUTOREV}"
+SRCREV:dm500hd = "2063d983e9c0181270da847995e8dd90590432ee"
+SRCREV:dm800se = "2063d983e9c0181270da847995e8dd90590432ee"
 PV = "1.0+git${SRCPV}"
 PKGV = "1.0+git${GITPKGV}"
+PR = "r1"
 
 GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
 
