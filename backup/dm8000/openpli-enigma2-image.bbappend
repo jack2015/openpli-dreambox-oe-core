@@ -21,14 +21,49 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-drivers-ntfs-3g \
 	enigma2-plugin-softcams-libcrypto-compat-1.0.2 \
 	enigma2-plugin-softcams-libcrypto-compat-1.1 \
-	enigma2-plugin-language-zh-cn \
-	enigma2-plugin-language-de \
 	enigma2-plugin-language-en \
-	enigma2-plugin-language-it \
 	enigma2-plugin-language-ru \
-	enigma2-plugin-language-tr \
-	enigma2-plugin-language-fr \
+	enigma2-plugin-language-ar \
+	enigma2-plugin-language-de \
 	enigma2-plugin-language-es \
+	enigma2-plugin-language-it \
+	enigma2-plugin-language-tr \
+	enigma2-plugin-language-bg \
+	enigma2-plugin-language-ca \
+	enigma2-plugin-language-cs \
+	enigma2-plugin-language-da \
+	enigma2-plugin-language-el \
+	enigma2-plugin-language-et \
+	enigma2-plugin-language-fa \
+	enigma2-plugin-language-fi \
+	enigma2-plugin-language-fr \
+	enigma2-plugin-language-fy \
+	enigma2-plugin-language-gl \
+	enigma2-plugin-language-he \
+	enigma2-plugin-language-hr \
+	enigma2-plugin-language-hu \
+	enigma2-plugin-language-id \
+	enigma2-plugin-language-is \
+	enigma2-plugin-language-ku \
+	enigma2-plugin-language-lt \
+	enigma2-plugin-language-lv \
+	enigma2-plugin-language-mk \
+	enigma2-plugin-language-nb \
+	enigma2-plugin-language-nl \
+	enigma2-plugin-language-nn \
+	enigma2-plugin-language-pl \
+	enigma2-plugin-language-pt \
+	enigma2-plugin-language-pt-br \
+	enigma2-plugin-language-ro \
+	enigma2-plugin-language-sk \
+	enigma2-plugin-language-sl \
+	enigma2-plugin-language-sr \
+	enigma2-plugin-language-sv \
+	enigma2-plugin-language-th \
+	enigma2-plugin-language-uk \
+	enigma2-plugin-language-vi \
+	enigma2-plugin-language-zh-cn \
+	enigma2-plugin-language-zh-hk \
 	enigma2-plugin-font-wqy-microhei \
 	enigma2-plugin-skins-pli-fullnighthd \
 	enigma2-plugin-extensions-fancontrol2 \
