@@ -2,6 +2,7 @@ IMAGE_INSTALL:remove = "distro-feed-configs"
 IMAGE_INSTALL:remove = "hdparm"
 IMAGE_INSTALL:remove = "3rd-party-feed-configs"
 IMAGE_INSTALL:remove = "settings-autorestore"
+IMAGE_INSTALL:remove = "astra-sm"
 
 IMAGE_INSTALL += " \
 	bitratecalc \

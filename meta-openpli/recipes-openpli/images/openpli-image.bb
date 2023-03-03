@@ -36,6 +36,7 @@ IMAGE_INSTALL = "\
 	volatile-media \
 	vsftpd \
 	libsoup-2.4 \
+	astra-sm \
 "
 
 export IMAGE_BASENAME = "openpli"

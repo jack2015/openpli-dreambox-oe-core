@@ -1,5 +1,13 @@
-FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
+EXTRA_OECONF += "--enable-defrag"
 
-SRC_URI:append:mipsel = "file://Revert-mke2fs-enable-the-metadata_csum.patch"
+do_install:append() {
+	if [ -e ${D}${base_sbindir}/e4defrag ]; then
+		install -d ${D}${sbindir}
+		mv ${D}${base_sbindir}/e4defrag ${D}${sbindir}/e4defrag
+	fi
+}
+
+PACKAGES =+ "e2fsprogs-e4defrag"
+FILES:e2fsprogs-e4defrag = "/usr/sbin/e4defrag"
 
 PACKAGE_NO_LOCALE = "1"
