@@ -39,7 +39,7 @@ do_install:append() {
 
 PACKAGES =+ "${PN}-lcd ${PN}-stb-core"
 
-RDEPENDS:${PN} = "kernel-${KV}-${MACHINE} ${PN}-stb-core"
+RDEPENDS:${PN} = "${PN}-stb-core"
 RDEPENDS:${PN}-lcd = "${PN}-stb-core"
 RRECOMMENDS:${PN} = "${PN}-lcd"
 

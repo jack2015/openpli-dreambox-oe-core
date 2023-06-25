@@ -24,14 +24,6 @@ KERNEL_BUILTIN_MODULES:dm8000 = "\
     kernel-module-udf \
     "
 
-# By default, kernel.bbclass modifies package names to allow multiple kernels
-# to be installed in parallel. We revert this change and rprovide the versioned
-# package names instead, to allow only one kernel to be installed.
-PKG:${KERNEL_PACKAGE_NAME}-base = "kernel-base"
-PKG:${KERNEL_PACKAGE_NAME}-image = "kernel-image"
-RPROVIDES:${KERNEL_PACKAGE_NAME}-base = "kernel-${KERNEL_VERSION}"
-RPROVIDES:${KERNEL_PACKAGE_NAME}-image = "kernel-image-${KERNEL_VERSION} ${KERNEL_BUILTIN_MODULES}"
-
 USB_ROOT = "/dev/sdb2"
 USB_ROOT:dm8000 = "/dev/sdf2"
 
@@ -56,47 +48,36 @@ FILES:${KERNEL_PACKAGE_NAME}-image = "/${KERNEL_IMAGEDEST}/${KERNEL_IMAGETYPE}.g
 FILES:${KERNEL_PACKAGE_NAME}-image += "/${KERNEL_IMAGEDEST}/autoexec*.bat"
 FILES:${KERNEL_PACKAGE_NAME}-vmlinux = "/boot/vmlinux-${KERNEL_VERSION}*"
 
-pkg_preinst:kernel-image() {
-	if [ -z "$D" ]
-	then
-		if mountpoint -q /${KERNEL_IMAGEDEST}
-		then
-			mount -o remount,rw,compr=none /${KERNEL_IMAGEDEST}
-		else
-			mount -t jffs2 -o rw,compr=none mtd:boot /${KERNEL_IMAGEDEST} || mount -t jffs2 -o rw,compr=none mtd:'boot partition' /${KERNEL_IMAGEDEST}
-		fi
+pkg_preinst_ontarget:kernel-image() {
+	if mountpoint -q /${KERNEL_IMAGEDEST}; then
+		mount -o remount,rw,compr=none /${KERNEL_IMAGEDEST}
+	else
+		mount -t jffs2 -o rw,compr=none mtd:boot /${KERNEL_IMAGEDEST} || mount -t jffs2 -o rw,compr=none mtd:'boot partition' /${KERNEL_IMAGEDEST}
 	fi
 }
-pkg_prerm:kernel-image() {
-	if [ -z "$D" ]
-	then
-		if mountpoint -q /${KERNEL_IMAGEDEST}
-		then
-			mount -o remount,rw,compr=none /${KERNEL_IMAGEDEST}
-		else
-			mount -t jffs2 -o rw,compr=none mtd:boot /${KERNEL_IMAGEDEST}
-		fi
+pkg_prerm_ontarget:kernel-image() {
+	if mountpoint -q /${KERNEL_IMAGEDEST}; then
+		mount -o remount,rw,compr=none /${KERNEL_IMAGEDEST}
+	else
+		mount -t jffs2 -o rw,compr=none mtd:boot /${KERNEL_IMAGEDEST}
 	fi
 }
-pkg_postinst:kernel-image() {
-        if [ -z "$D" ] && mountpoint -q /${KERNEL_IMAGEDEST}; then
+pkg_postinst_ontarget:kernel-image() {
+        if mountpoint -q /${KERNEL_IMAGEDEST}; then
                 if grep -q '\<root=/dev/mtdblock3\>' /proc/cmdline && grep -q '\<root=ubi0:rootfs\>' /boot/autoexec.bat; then
                         sed -ie 's!${CMDLINE_UBI}!${CMDLINE_JFFS2}!' /boot/autoexec.bat;
                 fi
                 umount /${KERNEL_IMAGEDEST};
         fi
 }
-pkg_postrm:kernel-image() {
-	if [ -z "$D" ]
-	then
-		umount /${KERNEL_IMAGEDEST}
-	fi
+pkg_postrm_ontarget:kernel-image() {
+	umount /${KERNEL_IMAGEDEST}
 }
 
 # Do not use update-alternatives!
-pkg_postinst:kernel () {
+pkg_postinst_ontarget:kernel () {
 }
-pkg_postrm:kernel () {
+pkg_postrm_ontarget:kernel () {
 }
 
 CMDLINE_JFFS2 = "root=/dev/mtdblock3 rootfstype=jffs2 rw ${CMDLINE_CONSOLE}"

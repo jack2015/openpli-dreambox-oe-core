@@ -9,19 +9,18 @@ KERNEL_ENABLE_CGROUPS = "1"
 # By default, kernel.bbclass modifies package names to allow multiple kernels
 # to be installed in parallel. We revert this change and rprovide the versioned
 # package names instead, to allow only one kernel to be installed.
-PKG:kernel = "kernel"
-PKG:${KERNEL_PACKAGE_NAME}-base = "kernel-base"
-PKG:${KERNEL_PACKAGE_NAME}-image = "kernel-image"
-PKG:${KERNEL_PACKAGE_NAME}-image-zimage = "kernel-image"
-RPROVIDES:${KERNEL_PACKAGE_NAME} = "kernel-${LINUX_VERSION}"
-RPROVIDES:${KERNEL_PACKAGE_NAME}-base = "kernel-${KERNEL_VERSION}"
-RPROVIDES:${KERNEL_PACKAGE_NAME}-image = "kernel-image-${KERNEL_VERSION} kernel-${KERNEL_IMAGETYPE}"
-#RPROVIDES:${KERNEL_PACKAGE_NAME}-image-zimage = "kernel-image"
+# PKG:kernel = "kernel"
+# PKG:${KERNEL_PACKAGE_NAME}-base = "kernel-base"
+# PKG:${KERNEL_PACKAGE_NAME}-image = "kernel-image"
+# PKG:${KERNEL_PACKAGE_NAME}-image-zimage = "kernel-image"
+# RPROVIDES:${KERNEL_PACKAGE_NAME} = "kernel-${LINUX_VERSION}"
+# RPROVIDES:${KERNEL_PACKAGE_NAME}-base = "kernel-${KERNEL_VERSION}"
+# RPROVIDES:${KERNEL_PACKAGE_NAME}-image = "kernel-image-${KERNEL_VERSION} kernel-${KERNEL_IMAGETYPE}"
+# RPROVIDES:${KERNEL_PACKAGE_NAME}-image-zimage = "kernel-image"
+RPROVIDES:${KERNEL_PACKAGE_NAME}-image = "kernel-${KERNEL_IMAGETYPE}"
 RDEPENDS:${KERNEL_PACKAGE_NAME}-image = "kernel-devicetree flash-scripts"
 
-pkg_postinst:kernel-image () {
+pkg_postinst_ontarget:kernel-image () {
 #!/bin/sh
-if [ -z "$D" ]; then
     flash-kernel /${KERNEL_IMAGEDEST}/${KERNEL_IMAGETYPE}-${LINUX_VERSION}
-fi
 }
