@@ -48,18 +48,26 @@ FILES:${KERNEL_PACKAGE_NAME}-image = "/${KERNEL_IMAGEDEST}/${KERNEL_IMAGETYPE}.g
 FILES:${KERNEL_PACKAGE_NAME}-image += "/${KERNEL_IMAGEDEST}/autoexec*.bat"
 FILES:${KERNEL_PACKAGE_NAME}-vmlinux = "/boot/vmlinux-${KERNEL_VERSION}*"
 
-pkg_preinst_ontarget:kernel-image() {
-	if mountpoint -q /${KERNEL_IMAGEDEST}; then
-		mount -o remount,rw,compr=none /${KERNEL_IMAGEDEST}
-	else
-		mount -t jffs2 -o rw,compr=none mtd:boot /${KERNEL_IMAGEDEST} || mount -t jffs2 -o rw,compr=none mtd:'boot partition' /${KERNEL_IMAGEDEST}
+pkg_preinst:kernel-image() {
+	if [ -z "$D" ]
+	then
+		if mountpoint -q /${KERNEL_IMAGEDEST}
+		then
+			mount -o remount,rw,compr=none /${KERNEL_IMAGEDEST}
+		else
+			mount -t jffs2 -o rw,compr=none mtd:boot /${KERNEL_IMAGEDEST} || mount -t jffs2 -o rw,compr=none mtd:'boot partition' /${KERNEL_IMAGEDEST}
+		fi
 	fi
 }
-pkg_prerm_ontarget:kernel-image() {
-	if mountpoint -q /${KERNEL_IMAGEDEST}; then
-		mount -o remount,rw,compr=none /${KERNEL_IMAGEDEST}
-	else
-		mount -t jffs2 -o rw,compr=none mtd:boot /${KERNEL_IMAGEDEST}
+pkg_prerm:kernel-image() {
+	if [ -z "$D" ]
+	then
+		if mountpoint -q /${KERNEL_IMAGEDEST}
+		then
+			mount -o remount,rw,compr=none /${KERNEL_IMAGEDEST}
+		else
+			mount -t jffs2 -o rw,compr=none mtd:boot /${KERNEL_IMAGEDEST}
+		fi
 	fi
 }
 pkg_postinst_ontarget:kernel-image() {
@@ -70,14 +78,17 @@ pkg_postinst_ontarget:kernel-image() {
                 umount /${KERNEL_IMAGEDEST};
         fi
 }
-pkg_postrm_ontarget:kernel-image() {
-	umount /${KERNEL_IMAGEDEST}
+pkg_postrm:kernel-image() {
+	if [ -z "$D" ]
+	then
+		umount /${KERNEL_IMAGEDEST}
+	fi
 }
 
 # Do not use update-alternatives!
 pkg_postinst_ontarget:kernel () {
 }
-pkg_postrm_ontarget:kernel () {
+pkg_postrm:kernel () {
 }
 
 CMDLINE_JFFS2 = "root=/dev/mtdblock3 rootfstype=jffs2 rw ${CMDLINE_CONSOLE}"
