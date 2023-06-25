@@ -9,6 +9,7 @@ SRC_URI = "${GIT_SITE}/enigma2-openpli.git;protocol=https;branch=${ENIGMA2_BRANC
 	file://002-fix-build-gcc11.patch \
 	file://003-get-rid-of-register-keyword.patch \
 	file://005-suppress-compile-errors.patch \
+	file://009-configure-ntp-server.patch \
 	"
 
 SRC_URI:append:arm = " file://006-remove-rca-and-hdmi-pc-ports.patch \
@@ -19,6 +20,7 @@ SRC_URI:dm800se = "${GIT_SITE}/enigma2-openpli.git;protocol=https;branch=${ENIGM
 	file://002-fix-build-gcc11.patch \
 	file://003-get-rid-of-register-keyword.patch \
 	file://004-suppress-compile-errors.patch \
+	file://009-configure-ntp-server.patch \
 	"
 
 SRC_URI:dm800sev2 = "${GIT_SITE}/enigma2-openpli.git;protocol=https;branch=${ENIGMA2_BRANCH} \
@@ -26,6 +28,7 @@ SRC_URI:dm800sev2 = "${GIT_SITE}/enigma2-openpli.git;protocol=https;branch=${ENI
 	file://002-fix-build-gcc11.patch \
 	file://003-get-rid-of-register-keyword.patch \
 	file://004-suppress-compile-errors.patch \
+	file://009-configure-ntp-server.patch \
 	"
 
 do_install:append() {
