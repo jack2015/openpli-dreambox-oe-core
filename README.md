@@ -6,13 +6,13 @@ https://github.com/Hains
 Thanks to OpenPLi & Hains.
 
 In comparison to OpenPLi this repository has:<br>
--Submodules bitbake, openembedded-core and meta-openembedded from master branch,<br>
+-Submodules bitbake, openembedded-core and meta-openembedded from mickledore branch,<br>
 -GCC 12.2.0<br>
 -Glibc 2.37<br>
--GStreamer 1.22.0<br>
+-GStreamer 1.22.2<br>
 -Python 2.7.18<br>
--OpenSSL 3.0.8<br>
--Busybox 1.36.0<br>
+-OpenSSL 3.1.1<br>
+-Busybox 1.36.1<br>
 -Linux OS 3.2/3.4/3.14
 
 ******************************************************

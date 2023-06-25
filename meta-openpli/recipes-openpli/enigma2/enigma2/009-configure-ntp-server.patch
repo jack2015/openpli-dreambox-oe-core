@@ -1,0 +1,38 @@
+diff --git a/lib/python/Components/UsageConfig.py b/lib/python/Components/UsageConfig.py
+index b99989026..86e5fb8b0 100644
+--- a/lib/python/Components/UsageConfig.py
++++ b/lib/python/Components/UsageConfig.py
+@@ -1039,17 +1039,29 @@ def InitUsageConfig():
+ 		if configElement.value == "dvb" or not GetIPsFromNetworkInterfaces():
+ 			eDVBLocalTimeHandler.getInstance().setUseDVBTime(True)
+ 			eEPGCache.getInstance().timeUpdated()
+-			if configElement.value == "dvb" and os.path.islink('/etc/network/if-up.d/ntpdate-sync'):
+-				Console().ePopen("sed -i '/ntpdate-sync/d' /etc/cron/crontabs/root;unlink /etc/network/if-up.d/ntpdate-sync")
+ 		else:
+ 			eDVBLocalTimeHandler.getInstance().setUseDVBTime(False)
+ 			eEPGCache.getInstance().timeUpdated()
+-			if not os.path.islink('/etc/network/if-up.d/ntpdate-sync'):
+-				Console().ePopen("echo '30 * * * *    /usr/bin/ntpdate-sync silent' >>/etc/cron/crontabs/root;ln -s /usr/bin/ntpdate-sync /etc/network/if-up.d/ntpdate-sync")
+ 	config.ntp.timesync = ConfigSelection(default="auto", choices=[("auto", _("auto")), ("dvb", _("Transponder Time")), ("ntp", _("Internet (ntp)"))])
+ 	config.ntp.timesync.addNotifier(timesyncChanged)
+ 	config.ntp.server = ConfigText("pool.ntp.org", fixed_size=False)
+ 
++	config.ntp.server_old = ConfigText("pool.ntp.org")
++	def setNTPServer(configElement):
++		if configElement.value != config.ntp.server_old.value and configElement.value != "" and " " not in configElement.value:
++			f = open("/etc/ntp.conf", "r")
++			lst = f.readlines()
++			f = open("/etc/ntp.conf", "w")
++			for x in lst:
++				x1 = x.split()
++				if len(x1) > 1 and x1[0] == "server":
++					x1[1] = configElement.value
++					x = " ".join(x1) +"\n"
++				f.write(x)
++			f.close()
++			config.ntp.server_old.value = configElement.value
++	config.ntp.server.addNotifier(setNTPServer, immediate_feedback=False)
++
+ 
+ def updateChoices(sel, choices):
+ 	if choices:

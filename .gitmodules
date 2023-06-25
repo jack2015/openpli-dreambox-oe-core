@@ -1,17 +1,17 @@
 [submodule "bitbake"]
 	path = bitbake
 	url = git://git.openembedded.org/bitbake
-	branch = master
+	branch = 2.4
 	ignore = dirty
 [submodule "meta-openembedded"]
 	path = meta-openembedded
 	url = git://git.openembedded.org/meta-openembedded
-	branch = master
+	branch = mickledore
 	ignore = dirty
 [submodule "openembedded-core"]
 	path = openembedded-core
 	url = git://git.openembedded.org/openembedded-core
-	branch = master
+	branch = mickledore
 	ignore = dirty
 [submodule "meta-python2"]
 	path = meta-python2

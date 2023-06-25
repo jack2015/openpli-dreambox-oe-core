@@ -76,7 +76,7 @@ IMAGE_INSTALL += " \
 	cdtextinfo \
 	enigma2 \
 	libavahi-client \
-	ntpdate \
+	ntp \
 	cifs-utils \
 	settings-autorestore \
 	tuxbox-common \

@@ -11,6 +11,7 @@ SRC_URI = "${GIT_SITE}/enigma2-openpli.git;protocol=https;branch=${ENIGMA2_BRANC
 	file://005-suppress-compile-errors.patch \
 	file://006-make-lnb-variable-static.patch \
 	file://007-fix-pointer-may-b-used-after.patch \
+	file://009-configure-ntp-server.patch \
 	"
 
 SRC_URI:append:arm = " file://008-remove-rca-and-hdmi-pc-ports.patch \
@@ -23,6 +24,7 @@ SRC_URI:dm800se = "${GIT_SITE}/enigma2-openpli.git;protocol=https;branch=${ENIGM
 	file://004-suppress-compile-errors.patch \
 	file://006-make-lnb-variable-static.patch \
 	file://007-fix-pointer-may-b-used-after.patch \
+	file://009-configure-ntp-server.patch \
 	"
 
 SRC_URI:dm800sev2 = "${GIT_SITE}/enigma2-openpli.git;protocol=https;branch=${ENIGMA2_BRANCH} \
@@ -32,6 +34,7 @@ SRC_URI:dm800sev2 = "${GIT_SITE}/enigma2-openpli.git;protocol=https;branch=${ENI
 	file://004-suppress-compile-errors.patch \
 	file://006-make-lnb-variable-static.patch \
 	file://007-fix-pointer-may-b-used-after.patch \
+	file://009-configure-ntp-server.patch \
 	"
 
 do_install:append() {

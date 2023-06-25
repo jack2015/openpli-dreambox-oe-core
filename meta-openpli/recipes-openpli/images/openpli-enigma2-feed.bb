@@ -28,7 +28,7 @@ OPTIONAL_PACKAGES += " \
 	dvdfs \
 	edid-decode \
 	evtest \
-	exfat-utils \
+	exfatprogs \
 	exteplayer3 \
 	gdb \
 	grep \
@@ -52,7 +52,6 @@ OPTIONAL_PACKAGES += " \
 	nano \
 	net-tools \
 	ntfs-3g \
-	ntp \
 	openresolv \
 	openssh \
 	openvpn \
