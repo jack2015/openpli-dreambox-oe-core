@@ -86,7 +86,7 @@ pkg_postrm:kernel-image() {
 }
 
 # Do not use update-alternatives!
-pkg_postinst_ontarget:kernel () {
+pkg_postinst:kernel () {
 }
 pkg_postrm:kernel () {
 }

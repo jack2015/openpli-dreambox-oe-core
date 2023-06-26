@@ -10,6 +10,5 @@ RPROVIDES:${KERNEL_PACKAGE_NAME}-image = "kernel-${KERNEL_IMAGETYPE}"
 RDEPENDS:${KERNEL_PACKAGE_NAME}-image = "kernel-devicetree flash-scripts"
 
 pkg_postinst_ontarget:kernel-image () {
-#!/bin/sh
-    flash-kernel /${KERNEL_IMAGEDEST}/${KERNEL_IMAGETYPE}-${LINUX_VERSION}
+flash-kernel /${KERNEL_IMAGEDEST}/${KERNEL_IMAGETYPE}-${LINUX_VERSION}
 }
