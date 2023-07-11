@@ -64,7 +64,7 @@ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 100 --slave 
 git clone https://github.com/jack2015/openpli-dreambox-oe-core.git
 cd openpli-dreambox-oe-core
 make update
-git checkout master
+git checkout mickledore
 make update
 ./image.sh
 ```
