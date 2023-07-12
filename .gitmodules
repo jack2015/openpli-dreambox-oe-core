@@ -16,5 +16,5 @@
 [submodule "meta-python2"]
 	path = meta-python2
 	url = https://gitlab.com/jack2015/meta-python2.git
-	branch = master
+	branch = mickledore
 	ignore = dirty
