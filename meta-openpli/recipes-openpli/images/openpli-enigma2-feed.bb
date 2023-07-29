@@ -98,6 +98,7 @@ OPTIONAL_PACKAGES += " \
 	xfsprogs \
 	yafc \
 	zeroconf \
+	zerotier \
 	zip \
 	zsh \
 	${OPTIONAL_BSP_PACKAGES} \
