@@ -75,7 +75,7 @@ OPTIONAL_PACKAGES += " \
 	rtl-sdr \
 	rtorrent \
 	sabnzbd \
-	samba \
+	${@bb.utils.contains_any("MACHINE", "dm7020hd dm7020hdv2", "", "samba", d)} \
 	satipclient \
 	screen \
 	sed \
