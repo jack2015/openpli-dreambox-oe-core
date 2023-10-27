@@ -12,7 +12,7 @@ PV = "${BINARY_VERSION}"
 
 S = "${WORKDIR}"
 
-SRC_URI = "http://dreamboxupdate.com/download/opendreambox/2.0.0/dreambox-bootlogo/dreambox-bootlogo_${BINARY_VERSION}_${MACHINE}.tar.bz2;name=${MACHINE}"
+SRC_URI = "https://jack2015.github.io/basefile/dreambox-bootlogo_${BINARY_VERSION}_${MACHINE}.tar.bz2;name=${MACHINE}"
 SRC_URI:append:dm800 = " file://dm800-logo.jpg"
 
 SRC_URI[dm800.md5sum] = "0aacd07cc4d19b388c6441b007e3525a"

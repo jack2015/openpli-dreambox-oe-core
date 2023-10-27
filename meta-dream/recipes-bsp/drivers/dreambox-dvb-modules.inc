@@ -10,7 +10,7 @@ INSANE_SKIP:${PN}:append = " already-stripped"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
-DREAMBOX_DVB_MODULES_MIRROR ?= "http://sources.dreamboxupdate.com/download/opendreambox/2.0.0/dreambox-dvb-modules"
+DREAMBOX_DVB_MODULES_MIRROR ?= "https://source.mynonpublic.com/dreambox"
 
 SRC_URI = " \
 	${DREAMBOX_DVB_MODULES_MIRROR}/dreambox-dvb-modules-${MACHINE}-3.2-${MACHINE}-${DRIVERDATE}.tar.bz2;name=modules \

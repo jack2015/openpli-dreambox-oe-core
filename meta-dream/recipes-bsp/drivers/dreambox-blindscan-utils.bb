@@ -1,29 +1,31 @@
 SUMMARY = "Utilities needed to do transponder blindscan with dreambox dvb receivers"
-require conf/license/openpli-gplv2.inc
+LICENSE = "CLOSED"
+require conf/license/license-close.inc
+
+PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 PROVIDES += "virtual/blindscan-dvbs virtual/blindscan-dvbc"
 RPROVIDES:${PN} += "virtual/blindscan-dvbs virtual/blindscan-dvbc"
 
 DEPENDS = "ncurses"
 
-PV = "${@bb.utils.contains("MACHINE", "dm800", "1.9", "1.12", d)}"
+PR = "r4"
 
-DMUPDATEURL = "http://dreamboxupdate.com/download/opendreambox"
-
-SRC_URI = "${DMUPDATEURL}/2.2.0/blindscan-utils/${PV}/${DEFAULTTUNE}/2acb58192434f308bfed6879c51d5d6e/blindscan-utils_${PV}_${DEFAULTTUNE}.tar.xz;name=${DEFAULTTUNE}-dora"
-SRC_URI:dm800 = "${DMUPDATEURL}/2.0.0/blindscan-utils/blindscan-utils_1.9_${DEFAULTTUNE}.tar.bz2;name=${DEFAULTTUNE}-denzil"
-SRC_URI:dm900 = "${DMUPDATEURL}/2.5.0/blindscan-utils/${PV}/${DEFAULTTUNE}/9e93783a6ac4611bb683d0b36fc44a87/blindscan-utils_${PV}_${DEFAULTTUNE}.tar.xz;name=${DEFAULTTUNE}-krogoth"
-SRC_URI:dm920 = "${SRC_URI:dm900}"
-SRC_URI:dm520 = "${DMUPDATEURL}/2.5.0/blindscan-utils/${PV}/${DEFAULTTUNE}/185cd9490723728f39953348e322f5c7/blindscan-utils_${PV}_${DEFAULTTUNE}.tar.xz;name=${DEFAULTTUNE}-krogoth"
-SRC_URI:dm820 = "${SRC_URI:dm520}"
-SRC_URI:dm7080 = "${SRC_URI:dm520}"
+SRC_URI += "https://source.mynonpublic.com/dreambox/blindscan-utils_${PV}_${DEFAULTTUNE}.tar.xz;name=${DEFAULTTUNE}-dora"
+SRC_URI:dm900 += "https://source.mynonpublic.com/dreambox/blindscan-utils_${PV}_${DEFAULTTUNE}.tar.xz;name=${DEFAULTTUNE}-krogoth"
+SRC_URI:dm920 += "https://source.mynonpublic.com/dreambox/blindscan-utils_${PV}_${DEFAULTTUNE}.tar.xz;name=${DEFAULTTUNE}-krogoth"
+SRC_URI:dm520 += "https://source.mynonpublic.com/dreambox/dm520/blindscan-utils_${PV}_${DEFAULTTUNE}.tar.xz;name=${DEFAULTTUNE}-krogoth"
+SRC_URI:dm820 += "https://source.mynonpublic.com/dreambox/dm820/blindscan-utils_${PV}_${DEFAULTTUNE}.tar.xz;name=${DEFAULTTUNE}-krogoth"
+SRC_URI:dm7080 += "https://source.mynonpublic.com/dreambox/dm7080/blindscan-utils_${PV}_${DEFAULTTUNE}.tar.xz;name=${DEFAULTTUNE}-krogoth"
+SRC_URI:dreamone += "https://source.mynonpublic.com/dreambox/blindscan-utils_${PV}_${DEFAULTTUNE}.tar.xz;name=${DEFAULTTUNE}-pyro"
+SRC_URI:dreamtwo += "https://source.mynonpublic.com/dreambox/blindscan-utils_${PV}_${DEFAULTTUNE}.tar.xz;name=${DEFAULTTUNE}-pyro"
 
 S = "${WORKDIR}/blindscan-utils_${PV}_${DEFAULTTUNE}"
 
 PACKAGES = "${PN}"
 
-SRC_URI[mips32el-nf-denzil.md5sum] = "143cb7253132af1ecd3aafa3679c6109"
-SRC_URI[mips32el-nf-denzil.sha256sum] = "53d2760e3aa19eab6e19edabe8b9dd840c693ca30c43495904241e52fd40ea32"
+SRC_URI[aarch64-pyro.md5sum] = "aa6dad1ece041c236338d3a41fd5da1e"
+SRC_URI[aarch64-pyro.sha256sum] = "aeaf9088b3cb2bf91dcab7e7ae8d417ab7eaca304f2f9dc35e5e14838ce5f0cc"
 SRC_URI[mips32el-dora.md5sum] = "2acb58192434f308bfed6879c51d5d6e"
 SRC_URI[mips32el-dora.sha256sum] = "afe56c1d222c4d6d33509208116628c30f88916bda7a19e5c749dcbc914d6020"
 SRC_URI[cortexa15hf-neon-vfpv4-krogoth.md5sum] = "9e93783a6ac4611bb683d0b36fc44a87"
@@ -37,4 +39,3 @@ do_install() {
 
 INHIBIT_PACKAGE_STRIP = "1"
 INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
-PACKAGE_ARCH = "${MACHINE_ARCH}"

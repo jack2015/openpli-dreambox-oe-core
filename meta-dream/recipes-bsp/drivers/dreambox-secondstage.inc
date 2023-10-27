@@ -12,7 +12,7 @@ INSANE_SKIP:${PN} = "empty-dirs"
 
 do_configure[nostamp] = "1"
 
-SRC_URI = "http://sources.dreamboxupdate.com/download/7020/secondstage-${MACHINE}-${PV}.bin"
+SRC_URI = "https://source.mynonpublic.com/dreambox/secondstage-${PRECOMPILED_ARCH}-${PRECOMPILED_VERSION}.bin"
 
 PACKAGES = "${PN}"
 
