@@ -1,6 +1,5 @@
 SUMMARY = "Utilities needed to do transponder blindscan with dreambox dvb receivers"
-LICENSE = "CLOSED"
-require conf/license/license-close.inc
+require conf/license/openpli-gplv2.inc
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
