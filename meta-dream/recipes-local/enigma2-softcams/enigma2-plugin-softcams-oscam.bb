@@ -10,6 +10,7 @@ RDEPENDS:${PN}:mipsel += "libdvbcsa"
 DEPENDS:arm = "openssl libusb pcsc-lite ccid openssl-native upx-native libdvbcsa"
 RDEPENDS:${PN}:arm += "libusb1 pcsc-lite pcsc-lite-lib ccid libdvbcsa"
 LDFLAGS:prepend = "-ldvbcsa "
+GLIBC_64BIT_TIME_FLAGS = ""
 
 inherit cmake gitpkgv
 
