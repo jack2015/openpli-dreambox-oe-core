@@ -10,8 +10,7 @@ inherit gitpkgv autotools pkgconfig
 PV = "1.0+git${SRCPV}"
 PKGV = "1.0+git${GITPKGV}"
 
-SRC_URI = "${CODEWEBSITE}/aio-grab.git;protocol=https;branch=master"
-SRC_URI:dm800se = "${CODEWEBSITE}/openpli-aio-grab.git;protocol=https;branch=master"
+SRC_URI = "${CODEWEBSITE}/openpli-aio-grab.git;protocol=https;branch=master"
 
 S = "${WORKDIR}/git"
 
