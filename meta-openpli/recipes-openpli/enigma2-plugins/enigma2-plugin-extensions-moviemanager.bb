@@ -7,7 +7,7 @@ inherit gitpkgv
 PV = "2.0+git${SRCPV}"
 PKGV = "2.0+git${GITPKGV}"
 
-SRC_URI = "git://gitlab.com/jack2015/MovieManager.git;protocol=https;branch=master"
+SRC_URI = "${CODEWEBSITE}/MovieManager.git;protocol=https;branch=python2"
 
 S="${WORKDIR}/git"
 
