@@ -12,7 +12,7 @@ PV = "1.0+git${SRCPV}"
 PKGV = "1.0+git${GITPKGV}"
 PR = "r1"
 
-SRC_URI = " git://gitlab.com/jack2015/rtl-sdr.git;protocol=https;branch=master"
+SRC_URI = " ${CODEWEBSITE}/rtl-sdr.git;protocol=https;branch=master"
 S = "${WORKDIR}/git"
 
 EXTRA_OECMAKE += " -DLIB_INSTALL_DIR=${libdir}"

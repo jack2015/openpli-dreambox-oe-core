@@ -133,6 +133,7 @@ upxall() {
 }
 
 rootfs_myworks() {
+	echo $(stat -c %s "${IMAGE_ROOTFS}/boot/vmlinux-3.2-dm800se.gz") >> ${IMAGE_ROOTFS}/etc/.kernel_size
 	rm -rf ${IMAGE_ROOTFS}/var/lib/opkg/lists
 	rm -rf ${IMAGE_ROOTFS}/usr/lib/python2.7/site-packages/*egg-info*
 	rmpy ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins

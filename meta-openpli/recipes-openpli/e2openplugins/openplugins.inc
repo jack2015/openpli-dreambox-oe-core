@@ -1,5 +1,3 @@
-
-
 SRC_URI = "${CODEWEBSITE}/e2openplugin-${MODULE}.git;protocol=https;branch=master"
 
 S="${WORKDIR}/git"

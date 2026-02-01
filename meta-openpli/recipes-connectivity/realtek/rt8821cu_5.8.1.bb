@@ -8,7 +8,7 @@ DEPENDS ="bc-native"
 
 inherit module
 SRCREV = "${AUTOREV}"
-SRC_URI = "git://gitlab.com/jack2015/rtl8821cu.git;protocol=https;branch=master \
+SRC_URI = "${CODEWEBSITE}/rtl8821cu.git;protocol=https;branch=master \
     file://add-5.15-support.patch \
 "
 

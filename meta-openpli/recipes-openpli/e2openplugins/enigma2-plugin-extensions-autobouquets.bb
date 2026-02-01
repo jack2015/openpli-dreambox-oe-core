@@ -19,7 +19,7 @@ PR = "r0"
 
 INSANE_SKIP:${PN} += "already-stripped ldflags"
 
-SRC_URI="git://gitlab.com/jack2015/AutoBouquets.git;protocol=https;branch=release"
+SRC_URI="${CODEWEBSITE}/AutoBouquets.git;protocol=https;branch=release"
 
 S = "${WORKDIR}/git"
 

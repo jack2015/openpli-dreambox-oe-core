@@ -5,7 +5,7 @@ require conf/license/license-gplv2.inc
 
 inherit module machine_kernel_pr
 
-SRC_URI = "git://gitlab.com/jack2015/rtl8188eu.git;protocol=https;branch=master"
+SRC_URI = "${CODEWEBSITE}/rtl8188eu.git;protocol=https;branch=master"
 
 S = "${WORKDIR}/git"
 

@@ -29,8 +29,6 @@ inherit gitpkgv pythonnative pkgconfig
 PV = "y-git${SRCPV}"
 PKGV = "y-git${GITPKGV}"
 
-
-
 SRC_URI = "${CODEWEBSITE}/enigma2-plugins.git;protocol=https;branch=master"
 
 EXTRA_OECONF = " \

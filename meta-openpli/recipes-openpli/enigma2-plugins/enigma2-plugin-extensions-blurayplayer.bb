@@ -11,7 +11,7 @@ inherit gitpkgv
 PV = "1+git${SRCPV}"
 PKGV = "1+git${GITPKGV}"
 
-SRC_URI = "git://gitlab.com/jack2015/enigma2-plugin-blurayplayer.git;protocol=https;branch=openpli"
+SRC_URI = "${CODEWEBSITE}/enigma2-plugin-blurayplayer.git;protocol=https;branch=openpli"
 
 S = "${WORKDIR}/git"
 

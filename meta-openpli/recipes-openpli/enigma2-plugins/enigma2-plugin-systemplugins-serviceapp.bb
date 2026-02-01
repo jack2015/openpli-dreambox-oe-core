@@ -9,8 +9,6 @@ DEPENDS = "enigma2 uchardet openssl"
 RDEPENDS:${PN} = "enigma2 uchardet openssl python-json"
 RRECOMMENDS:${PN} = "exteplayer3 gstplayer"
 
-
-
 SRC_URI = "${CODEWEBSITE}/serviceapp.git;protocol=https;branch=develop"
 
 S = "${WORKDIR}/git"
