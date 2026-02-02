@@ -14,7 +14,7 @@ In comparison to OpenPLi this repository has:<br>
 -Python 2.7.18<br>
 -OpenSSL 3.0.18<br>
 -Busybox 1.35.0<br>
--FFmpeg v4.4.3
+-FFmpeg v4.4.7
 
 ******************************************************
 
