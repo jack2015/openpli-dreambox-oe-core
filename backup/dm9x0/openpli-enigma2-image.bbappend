@@ -98,7 +98,6 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-systemplugins-mphelp \
 	enigma2-plugin-systemplugins-hdmicec \
 	enigma2-plugin-systemplugins-hotplug \
-	enigma2-plugin-systemplugins-mountmanager \
 	enigma2-plugin-systemplugins-networkbrowser \
 	enigma2-plugin-systemplugins-osd3dsetup \
 	enigma2-plugin-systemplugins-osdpositionsetup \
