@@ -10,6 +10,9 @@ IMAGE_INSTALL += " \
 	ofgwrite \
 	samba \
 	busybox-cron \
+	exteplayer3\
+	gstplayer\
+	ffmpeg \
 	${@bb.utils.contains("MACHINE_FEATURES", "emmc", "dosfstools mtools e2fsprogs-resize2fs partitions-by-name bzip2 rsync" , "", d)} \
 	"
 
@@ -73,10 +76,8 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-extensions-autobackup \
 	enigma2-plugin-extensions-backupsuite \
 	enigma2-plugin-extensions-cutlisteditor \
-	enigma2-plugin-extensions-cacheflush \
 	enigma2-plugin-extensions-epgimport \
 	enigma2-plugin-extensions-filecommander \
-	enigma2-plugin-extensions-foreca \
 	enigma2-plugin-extensions-graphmultiepg \
 	enigma2-plugin-extensions-mediaplayer \
 	enigma2-plugin-extensions-mediascanner \
@@ -88,12 +89,10 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-extensions-oscamstatus \
 	enigma2-plugin-extensions-pictureplayer \
 	enigma2-plugin-extensions-youtube \
-	enigma2-plugin-extensions-e2iplayer \
 	enigma2-plugin-softcams-oscam \
 	enigma2-plugin-softcams-oscam-emu \
 	enigma2-plugin-extensions-openmultiboot \
 	openmultiboot \
-	enigma2-plugin-systemplugins-autobouquetsmaker \
 	enigma2-plugin-systemplugins-cablescan \
 	enigma2-plugin-systemplugins-fastscan \
 	enigma2-plugin-systemplugins-mphelp \
@@ -106,6 +105,7 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-systemplugins-positionersetup \
 	enigma2-plugin-systemplugins-satfinder \
 	enigma2-plugin-systemplugins-softwaremanager \
+	enigma2-plugin-systemplugins-serviceapp \
 	enigma2-plugin-systemplugins-videomode \
 	enigma2-plugin-systemplugins-videotune \
 	enigma2-plugin-systemplugins-wirelesslan \
