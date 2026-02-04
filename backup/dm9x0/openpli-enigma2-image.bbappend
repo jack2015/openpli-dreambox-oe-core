@@ -6,12 +6,13 @@ IMAGE_INSTALL:remove = "settings-autorestore"
 #dm9x0
 
 IMAGE_INSTALL += " \
-	exteplayer3\
-	gstplayer\
 	bitratecalc \
 	ofgwrite \
 	samba \
 	busybox-cron \
+	exteplayer3\
+	gstplayer\
+	ffmpeg \
 	${@bb.utils.contains("MACHINE_FEATURES", "emmc", "dosfstools mtools e2fsprogs-resize2fs partitions-by-name bzip2 rsync" , "", d)} \
 	"
 
